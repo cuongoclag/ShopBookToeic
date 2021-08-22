@@ -32,7 +32,8 @@
     <div class="container">
       <div class="row">
               <!--LOGO-->
-              <div class="span3"><a class="brand" href="<%=request.getContextPath()%>/home"><img src="${pageContext.request.contextPath}/resources/file/images/logotest.png" /></a></div>
+              <div class="span3"><a class="brand" href="<%=request.getContextPath()%>/home">
+              <img src="${pageContext.request.contextPath}/resources/file/images/logo.png" /></a></div>
               <!-- /LOGO -->
 
             <!-- MAIN NAVIGATION -->  
