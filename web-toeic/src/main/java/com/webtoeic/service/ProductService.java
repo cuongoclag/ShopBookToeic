@@ -103,14 +103,16 @@ public class ProductService {
 //	}
     public List<Product> findProductByStatus() {
 
-        String sql = "select * from tbl_products where status = '1'";
+        String sql = "select * from tbl_product where status = '1'";
         Query query = entityManager.createNativeQuery(sql, Product.class);
         return query.getResultList();
     }
-
+    public List<Product> findAllProduct(){
+        return productRepo.findAll();
+    }
     public List<Product> findProductById(int id) {
 
-        String sql = "select * from tbl_products where id = '" + id + "'";
+        String sql = "select * from tbl_product where id = '" + id + "'";
         Query query = entityManager.createNativeQuery(sql, Product.class);
         return query.getResultList();
     }

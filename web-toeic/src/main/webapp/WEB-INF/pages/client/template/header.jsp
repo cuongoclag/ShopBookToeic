@@ -60,8 +60,8 @@ h3 {
 								<ul class="nav">
 									<c:if test="${pageContext.request.userPrincipal.name == null}">
 										<li class="active"><a href="/webtoeic">Trang chủ</a></li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown">Shop<b class="caret"></b></a>
+										<li class="dropdown"><a href="" class="dropdown-toggle"
+																data-toggle="dropdown">Shop<b class="caret"></b></a>
 											<ul class="dropdown-menu">
 												<li><a href="#">Category</a></li>
 											</ul>
@@ -74,9 +74,11 @@ h3 {
 												<li><a href="/webtoeic/listGrammar">Ngữ pháp</a></li>
 												<li><a href="<%=request.getContextPath()%>/listVocab">Từ
 														vựng</a></li>
-											</ul></li>
+											</ul>
+										</li>
 										<li><a href="<%=request.getContextPath()%>/signin">Đăng nhập</a></li>
 										<li><a href="<%=request.getContextPath()%>/register">Đăng ký</a></li>
+										<li><a href="<%=request.getContextPath()%>/listBook">Shop</a></li>
 
 									</c:if>
 									<c:if test="${pageContext.request.userPrincipal.name != null}">

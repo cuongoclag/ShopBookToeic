@@ -36,57 +36,18 @@
 	<!--/End Headter-->
 
 	<div class="container" id="resultsearch" style="display: flex; flex-wrap: wrap; padding: 5rem">
-	<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
-	<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-	<div class="card" style="width: 20%; margin: 1%">
-	  <img class="card-img-top" src="..." alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">Title</h5>
-	    <p class="card-text">Price </p>
-	    <a href="#" class="btn btn-primary">Detail</a>
-	  </div>
-	</div>
-	<div class="card" style="width: 20%; margin: 1%">
-	  <img class="card-img-top" src="..." alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">Title</h5>
-	    <p class="card-text">Price </p>
-	    <a href="#" class="btn btn-primary margin: 2rem">Detail</a>
-	  </div>
-	</div>
-	<div class="card" style="width: 20%; margin: 1%">
-	  <img class="card-img-top" src="..." alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">Title</h5>
-	    <p class="card-text">Price </p>
-	    <a href="#" class="btn btn-primary">Detail</a>
-	  </div>
-	</div>
-	<div class="card" style="width: 20%; margin: 1%">
-	  <img class="card-img-top" src="..." alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">Title</h5>
-	    <p class="card-text">Price </p>
-	    <a href="#" class="btn btn-primary">Detail</a>
-	  </div>
-	</div>
-	<div class="card" style="width: 20%; margin: 1%">
-	  <img class="card-img-top" src="..." alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">Title</h5>
-	    <p class="card-text">Price </p>
-	    <a href="#" class="btn btn-primary margin: 2rem">Detail</a>
-	  </div>
-	</div>
-	<div class="card" style="width: 20%; margin: 1%">
-	  <img class="card-img-top" src="..." alt="Card image cap">
-	  <div class="card-body">
-	    <h5 class="card-title">Title</h5>
-	    <p class="card-text">Price </p>
-	    <a href="#" class="btn btn-primary">Detail</a>
-	  </div>
-	</div>
-		
+		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
+		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
+		<c:forEach items="${listProduct}" var="list">
+			<div class="card" style="width: 20%; margin: 1%">
+			  <img class="card-img-top" src="" alt="Card image cap">
+			  <div class="card-body">
+				<h5 class="card-title">${list.title}</h5>
+				<p class="card-text">${list.price}</p>
+				<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Detail</a>
+			  </div>
+			</div>
+		</c:forEach>
 	</div>
 	<!--Footer==========================-->
 	<jsp:include page="include/footerHome.jsp"></jsp:include>

@@ -31,28 +31,30 @@
 	<!--Header
 ==========================-->
 
-	<jsp:include page="template/header.jsp"></jsp:include>
+	<jsp:include page="./template/header.jsp"></jsp:include>
 
 	<!--/End Headter-->
 
 	<div class="container" id="resultsearch">
 	<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 	<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
+		<c:forEach items="${list}" var="list">
 	<div class="row" style="display: flex;">
 		<div span5 style="margin : 2%">
 			<img alt="" src="${pageContext.request.contextPath}/resources/file/images/shop.jpg" style="height: 20rem"/>
 		</div>
 		<div span5 style="margin : 2%">
-			<strong>Title</strong>
-			<p>Price</p>
-			<p>Description</p>
-			<button type="button" class="btn btn-primary">To Cart</button>
+			<strong>${list.title}</strong>
+			<p>${list.price}</p>
+			<p>${list.shortDes}</p>
+			<p>${list.shortDetails}</p>
+			<a href="/webtoeic" class="btn btn-primary">Add To Cart</a>
 		</div>
 	</div>
-		
+		</c:forEach>
 	</div>
 	<!--Footer==========================-->
-	<jsp:include page="include/footerHome.jsp"></jsp:include>
+	<jsp:include page="./include/footerHome.jsp"></jsp:include>
 	<!--/.Footer-->
 
 
