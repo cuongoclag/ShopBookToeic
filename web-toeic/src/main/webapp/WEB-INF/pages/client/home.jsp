@@ -165,7 +165,7 @@
 					src="${pageContext.request.contextPath}/resources/file/images/shop.jpg" style="width: 15rem" />
 			</div>
 			<div class="span6" style="line-height: 10;">
-				<a href="">Mua Sách &rarr;</a>
+				<a href="#">Mua Sách &rarr;</a>
 			</div>
 		</div>
 
