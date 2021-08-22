@@ -45,7 +45,7 @@ h3 {
 				<!--LOGO-->
 				<div class="span3">
 					<a class="brand" href="/webtoeic"><img
-						src="/webtoeic/resources/file/images/logotest.png" /></a>
+						src="/webtoeic/resources/file/images/logo.png" style="height : 5rem"/></a>
 				</div>
 				<!-- /LOGO -->
 
@@ -60,6 +60,12 @@ h3 {
 								<ul class="nav">
 									<c:if test="${pageContext.request.userPrincipal.name == null}">
 										<li class="active"><a href="/webtoeic">Trang chủ</a></li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown">Shop<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Category</a></li>
+											</ul>
+										</li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown">Luyện Tập <b class="caret"></b></a>
 											<ul class="dropdown-menu">
@@ -76,6 +82,12 @@ h3 {
 									<c:if test="${pageContext.request.userPrincipal.name != null}">
 										<li class="active"><a href="/webtoeic">Trang chủ</a></li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown">Shop<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Category</a></li>
+											</ul>
+										</li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown">Luyện Tập <b class="caret"></b></a>
 											<ul class="dropdown-menu">
 												<li><a href="/webtoeic/listening/">Luyện bài nghe</a></li>
@@ -85,12 +97,8 @@ h3 {
 														vựng</a></li>
 												<li><a href="<%=request.getContextPath()%>/listExam">Thi
 														thử</a></li>
-											</ul></li>
-										<!-- 
-										<li><a href="#">Services</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="#">Contact</a></li> -->
-
+											</ul>
+										</li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown">${nguoiDung.fullName}<b class="caret"></b></a>
 											<ul class="dropdown-menu">
@@ -99,7 +107,8 @@ h3 {
 															khoản</a></li>
 												</c:if>
 												<li><a href="<%=request.getContextPath()%>/signout">Thoát</a></li>
-											</ul></li>
+											</ul>
+										</li>
 									</c:if>
 								</ul>
 							</div>

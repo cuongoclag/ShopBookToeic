@@ -55,7 +55,7 @@ public class ClientController {
 		return nguoiDung;
 	}
 
-	@GetMapping(value = { "/hometoeic"})
+	@GetMapping(value = { "/"})
 	public String home(Model model, @AuthenticationPrincipal OAuth2User oauth2User, HttpServletRequest request) {
 		model.addAttribute("listslidebanner", slideBannerService.findAll());
 		return "client/home";

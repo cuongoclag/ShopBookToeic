@@ -1,4 +1,4 @@
-F<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -154,6 +154,20 @@ F<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 		</div>
 		<!-- /Carousel -->
+		
+		<div class="row">
+			<div class="span12 cnt-title">
+				<h1>Thư viện sách phong phú</h1>
+				<span>--- Chọn sách phù hợp với bản thân ---</span>
+			</div>
+			<div class="span6" style="text-align: center;">
+				<img
+					src="${pageContext.request.contextPath}/resources/file/images/shop.jpg" style="width: 15rem" />
+			</div>
+			<div class="span6" style="line-height: 10;">
+				<a href="">Mua Sách &rarr;</a>
+			</div>
+		</div>
 
 		<!-- Feature 
   ==============================================-->
@@ -195,31 +209,7 @@ F<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 
 		<!-- /.Feature -->
-
-		<div class="hr-divider"></div>
-
 		<!-- Row View -->
-
-
-		<div class="row">
-			<div class="span8">
-				<img
-					src="${pageContext.request.contextPath}/resources/file/images/background3.png">
-			</div>
-
-			<div class="span4">
-				<!--   <img class="hidden-phone" src="Template/Frontend/img/icon4.png" alt="img not found"> -->
-				<h1 align="center">Tin cậy - uy tín</h1>
-				<p align="justify">Mỗi năm, có hàng nghìn lượt học viên đã tham
-					dự các khóa học tiếng Anh tại CFL và đạt kết quả như ý muốn. Chúng
-					tôi tự hào là một trong những trung tâm ngoại ngữ được yêu thích,
-					là địa chỉ tin cậy của các bạn SV Bách Khoa, Kinh tế, Xây dựng,
-					Ngân hàng... và nhiều người đi làm trên địa bàn Hà Nội.</p>
-
-			</div>
-		</div>
-
-
 	</div>
 
 
