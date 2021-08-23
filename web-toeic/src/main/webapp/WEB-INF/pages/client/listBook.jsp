@@ -40,7 +40,7 @@
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 		<c:forEach items="${listProduct}" var="list">
 			<div class="card" style="width: 20%; margin: 1%">
-			  <img class="card-img-top" src="" alt="Card image cap">
+			  <img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap">
 			  <div class="card-body">
 				<h5 class="card-title">${list.title}</h5>
 				<p class="card-text">${list.price}</p>
