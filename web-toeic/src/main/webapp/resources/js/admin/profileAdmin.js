@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$('.btnCapNhatThongTin').on("click", function(event) {
 		event.preventDefault();
 		var nguoiDungId = $(".nguoiDungId").val();
-		var href = "/webtoeic/api/admin/profile/"+nguoiDungId;
+		var href = "/api/admin/profile/"+nguoiDungId;
 		$.get(href, function(nguoiDung, status) {
 			populate('.formCapNhat', nguoiDung);
 		});		
@@ -40,13 +40,13 @@ $(document).ready(function(){
 	     		async:false,
 	 			type : "POST",
 	 			contentType : "application/json",
-	 			url : "/webtoeic/api/admin/profile/doiMatKhau",
+	 			url : "/api/admin/profile/doiMatKhau",
 	 			data : JSON.stringify(data),
 	 			success : function(response) {
 	 				if(response.status == "success"){
 	 					$('#doiMKModal').modal('hide');
 	 					alert("Đổi mật khẩu thành công. Bạn phải đăng nhập lại để xác nhận");
-	 					location.href = "/webtoeic/logout";
+	 					location.href = "/logout";
 	 				} else {
 	 			    	$('input').next().remove();
 	 		            $.each(response.errorMessages, function(key,value){

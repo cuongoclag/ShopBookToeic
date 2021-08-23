@@ -5,20 +5,20 @@ $(document).ready(function(){
 		var part = $("#partSearch").val();
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/webtoeic/api/client/bai-nghe/all" + "?page=" + page + "&doKho=" + doKho + "&part=" + part,
+			url: "http://localhost:8080/api/client/bai-nghe/all" + "?page=" + page + "&doKho=" + doKho + "&part=" + part,
 			success: function(result){
 				if(result.totalElements > 0){
 					$("#pTag").removeClass().addClass("hidden");
 					$.each(result.content, function(i, baiNghe){
-//						var li = '<li><a href="/webtoeic/listening/part-'+baiNghe.part+'/'+baiNghe.id+'">'+baiNghe.tenBaiNghe+'</a></li>';
+//						var li = '<li><a href="/listening/part-'+baiNghe.part+'/'+baiNghe.id+'">'+baiNghe.tenBaiNghe+'</a></li>';
 						var html = '<div class="span9">'
 							+ '<div class="span3">' 
-							+    '<img class="imageExam" src="/webtoeic/file/images/baiNgheId='+baiNghe.id+'.png" />"'
+							+    '<img class="imageEx/file/images/baiNgheId='+baiNghe.id+'.png" />"'
 							+' </div>'
 							+ '<div class="span1"></div>'
 							+ '<div class="span5"> '
 							+    '<h4 class="content-heading" id="namebaithithu">'+ baiNghe.tenBaiNghe + '</h4>'
-							+    '<a class="btn btn-primary" href="/webtoeic/listening/part-'+baiNghe.part+'/'+baiNghe.id+'"> Chi tiết</button>'
+							+    '<a class="btn btn-primary" href="/listening/part-'+baiNghe.part+'/'+baiNghe.id+'"> Chi tiết</button>'
 							+  '</div>'
 							+ '</div>'
 					    $('.danhSach').append(html);

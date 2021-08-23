@@ -15,8 +15,8 @@
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
 	<script src="<c:url value='/js/client/shop/jquery-3.5.1.js'/>" ></script>
-	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
-	<script src="<c:url value='/js/client/shop/main.js'/>" ></script>
+	
+
 </head>
 <body>
 
@@ -48,5 +48,6 @@
 	<!--Footer==========================-->
 	<jsp:include page="./include/footerHome.jsp"></jsp:include>
 	<!--/.Footer-->
+	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
 </body>
 </html>

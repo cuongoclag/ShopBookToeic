@@ -22,7 +22,7 @@
     </style>
    
     <script src="<c:url value='/js/admin/shop/jquery-3.5.1.min.js'/>" ></script>
-    <script src="<c:url value='/js/admin/shop/delete-category-ajax.js'/>" ></script>
+    <script src="<c:url value='/js/admin/shop/delete-product.js'/>" ></script>
 </head>
 <body>
 <jsp:include page="template/header.jsp"></jsp:include>

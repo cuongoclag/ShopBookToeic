@@ -5,19 +5,19 @@ $(document).ready(function(){
 		var part = $("#partSearch").val();
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/webtoeic/api/client/bai-doc/all" + "?page=" + page + "&doKho=" + doKho + "&part=" + part,
+			url: "http://localhost:8080/api/client/bai-doc/all" + "?page=" + page + "&doKho=" + doKho + "&part=" + part,
 			success: function(result){
 				if(result.totalElements > 0){
 					$("#pTag").removeClass().addClass("hidden");
 					$.each(result.content, function(i, baiDoc){
 						var html = '<div class="span9">'
 							+ '<div class="span3">' 
-							+    '<img class="imageExam" src="/webtoeic/file/images/baiDocId='+baiDoc.id+'.png" style="width: 300px; height: 150px;"/>'
+							+    '<img class="imageExam" src="/file/images/baiDocId='+baiDoc.id+'.png" style="width: 300px; height: 150px;"/>'
 							+' </div>'
 							+ '<div class="span1"></div>'
 							+ '<div class="span5"> '
 							+    '<h4 class="content-heading" id="namebaithithu">'+ baiDoc.tenBaiDoc + '</h4>'
-							+    '<a class="btn btn-primary" href="/webtoeic/reading/part-'+baiDoc.part+'/'+baiDoc.id+'"> Chi tiết</button>'
+							+    '<a class="btn btn-primary" href="/reading/part-'+baiDoc.part+'/'+baiDoc.id+'"> Chi tiết</button>'
 							+  '</div>'
 							+ '</div>'
 					    $('.danhSach').append(html);

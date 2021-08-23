@@ -68,10 +68,10 @@ $(document).ready(function(){
 //			data:jsonAnswerUser,
 //			type:'POST',
 //			
-//			url:"http://localhost:8080/webtoeic/api/client/exam/ajaxTestListening/"+examId+"/"+countCorrect,
+//			url:"http://localhost:8080/api/client/exam/ajaxTestListening/"+examId+"/"+countCorrect,
 //			
 //			 success: function(data){
-//				 window.location.href = "http://localhost:8080/webtoeic/reading?idExam="+examId;
+//				 window.location.href = "http://localhost:8080/reading?idExam="+examId;
 //			
 //				}, error : function(e) {
 //					 alert("error");
@@ -100,7 +100,7 @@ $(document).ready(function(){
 		
 		var examId = $("#id_bai_exam").val();
 		
-		var url="http://localhost:8080/webtoeic/reading/"+examId+"/"+countCorrect;
+		var url="http://localhost:8080/reading/"+examId+"/"+countCorrect;
 		
 		if(window.XMLHttpRequest){
 			xhttp = new XMLHttpRequest();
@@ -164,7 +164,7 @@ $(document).ready(function(){
 		
 		var examId = $("#id_bai_exam").val();
 		
-		var url="http://localhost:8080/webtoeic/showResultListening/"+examId+"/"+countCorrect;
+		var url="http://localhost:8080/showResultListening/"+examId+"/"+countCorrect;
 		if(window.XMLHttpRequest){
 			xhttp = new XMLHttpRequest();
 		}
@@ -212,7 +212,7 @@ function startTimer(duration, display) {
 	       	   var examId = $("#id_bai_exam").val();
 	           alert("Đã hết thời gian làm bài test Listening. Hệ thống sẽ tự động chuyển qua bài test Reading");
 	           $("#btnSubmit").click()
-	           //window.location.href = "http://localhost:8080/webtoeic/reading?idExam="+examId;
+	           //window.location.href = "http://localhost:8080/reading?idExam="+examId;
 
 	        }
 	    },1000);

@@ -1,4 +1,4 @@
-package com.webtoeic.controller.shop;
+package com.webtoeic.controller.client;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -52,7 +52,6 @@ public class CartController{
 		HttpSession httpSession = request.getSession();
 		SaleOrder saleOrder = new SaleOrder();
 		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
-		
 		if(cart == null) {
 			return "client/checkout";
 		} else {
@@ -73,7 +72,7 @@ public class CartController{
 		}		
 	}	
 
-	@RequestMapping(value = { "/webtoeic/cart/mua-hang" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/cart/mua-hang" }, method = RequestMethod.POST)
 	public ResponseEntity<AjaxResponse> muaHang(@RequestBody CartItem data, final ModelMap model,
 			final HttpServletRequest request, final HttpServletResponse response) throws IOException {
 		HttpSession httpSession = request.getSession();

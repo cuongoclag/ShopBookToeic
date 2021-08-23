@@ -108,7 +108,7 @@
 			<br>
 			<div style="display: block;">
 				<p>
-					<a href="/webtoeic" id="backhome" style="display: inline;">&larr;
+					<a href="" id="backhome" style="display: inline;">&larr;
 						Home</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 					&nbsp <span>Bài test Listening</span>
 				</p>

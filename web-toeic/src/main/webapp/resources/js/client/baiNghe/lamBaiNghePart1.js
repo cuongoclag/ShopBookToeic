@@ -7,13 +7,13 @@ $(document).ready(function(){
 		var baiNgheId = $("#baiTapNgheId").val();
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/webtoeic/api/client/bai-nghe/baiNgheId="+ baiNgheId + "?page=" + page,
+			url: "http://localhost:8080/api/client/bai-nghe/baiNgheId="+ baiNgheId + "?page=" + page,
 			success: function(result){
 				soCau = result.totalElements;
 				$.each(result.content, function(i, cauHoi){
 					var divCauHoi = '<div class="postmetadata">'
 						+ '<ul><li><i class="icon-user"></i>Câu '+ cauHoi.soThuTu +'</li></ul></div>'
-						+ '<img src="/webtoeic/file/images/cauHoiBaiNgheId='+cauHoi.id+'.png" style="height: 210px; width:210px; padding-bottom: 5px;"/>'
+						+ '<img src="/file/images/cauHoiBaiNgheId='+cauHoi.id+'.png" style="height: 210px; width:210px; padding-bottom: 5px;"/>'
                         +'<div class="form-group">'
                         +'  <div class="span8" style="float:none;">'
                         +'     <label class="radio-inline radioLabel">'
@@ -127,7 +127,7 @@ $(document).ready(function(){
 		var baiNgheId = $("#baiTapNgheId").val();
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/webtoeic/api/client/bai-nghe/baiNgheId="+ baiNgheId + "?page=" + page,
+			url: "http://localhost:8080/api/client/bai-nghe/baiNgheId="+ baiNgheId + "?page=" + page,
 			success: function(result){
 //				soCau = result.totalElements;
 				$.each(result.content, function(i, cauHoi){
@@ -141,7 +141,7 @@ $(document).ready(function(){
                     }
 	                        
 					divGiaiThich += '</li></ul></div>'
-						+ '<img src="/webtoeic/file/images/cauHoiBaiNgheId='+cauHoi.id+'.png" style="height: 100px; width:150px; padding-bottom: 5px;"/>'
+						+ '<img src="/file/images/cauHoiBaiNgheId='+cauHoi.id+'.png" style="height: 100px; width:150px; padding-bottom: 5px;"/>'
                         +'<div class="form-group">'
                         + '   <textarea style="width: 400px; height: 100px; border: 0px; cursor: default; background-color: white;" disabled> ' 
                         +   cauHoi.giaiThich + '</textarea>'

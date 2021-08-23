@@ -100,14 +100,14 @@ function showMyImage(fileInput) {
     	
 		    		<div class="paging">
             		<c:if test = "${currentPage != 1}">
-                		<a href="/webtoeic/list?page=${currentPage-1}">Back</a>
+                		<a href="/list?page=${currentPage-1}">Back</a>
                 	</c:if>
                 	<c:if test = "${currentPage == 1}">	
         				<a class="current">1</a>
         			</c:if>
                 	
         			<c:if test = "${currentPage != 1}">	
-        				<a href="/webtoeic/list?page=1">1</a>
+        				<a href="/list?page=1">1</a>
         			</c:if>
         			
         			<c:forEach var="pag" items="${pageList}" varStatus="loop">
@@ -115,12 +115,12 @@ function showMyImage(fileInput) {
         					<a class="current">${pag}</a>
         				</c:if>
         				<c:if test = "${currentPage != pag}">	
-        					<a href="/webtoeic/list?page=${pag}">${pag}</a>
+        					<a href="/list?page=${pag}">${pag}</a>
         				</c:if>
       				</c:forEach>
 
             		<c:if test = "${currentPage != totalPage}">
-                		<a href="/webtoeic/list?page=${currentPage+1}">Next</a>	
+                		<a href="/list?page=${currentPage+1}">Next</a>	
                 	</c:if>
 				</div>
 		    	</c:if>

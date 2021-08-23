@@ -58,7 +58,7 @@
 				<section class="section">
 					<div class="container">
 						<a class="btn btn-primary" style="margin-top: 10px;"
-							href="/webtoeic/oauth2/authorization/facebook"> <i class="fa fa-facebook-square"></i> Đăng nhập với Facebook
+							href="/oauth2/authorization/facebook"> <i class="fa fa-facebook-square"></i> Đăng nhập với Facebook
 						</a>
 					</div>
 				</section>

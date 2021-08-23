@@ -148,11 +148,11 @@
 
 					<h3>DANH MỤC</h3>
 					<ul class="nav nav-list">
-						<li><a href="/webtoeic/listening">LUYỆN BÀI NGHE</a></li>
-						<li><a href="/webtoeic/reading">LUYỆN BÀI ĐỌC</a></li>
-						<li><a href="/webtoeic/listExam">THI THỬ</a></li>
-						<li><a href="/webtoeic/listGrammar">HỌC NGỮ PHÁP</a></li>
-						<li><a href="/webtoeic/listVocab">HỌC TỪ VỰNG</a></li>
+						<li><a href="/listening">LUYỆN BÀI NGHE</a></li>
+						<li><a href="/reading">LUYỆN BÀI ĐỌC</a></li>
+						<li><a href="/listExam">THI THỬ</a></li>
+						<li><a href="/listGrammar">HỌC NGỮ PHÁP</a></li>
+						<li><a href="/listVocab">HỌC TỪ VỰNG</a></li>
 					</ul>
 
 				</div>
@@ -168,14 +168,14 @@
 
 		<div class="paging">
 			<c:if test="${currentPage != 1}">
-				<a href="/webtoeic/listGrammar?page=${currentPage-1}">Back</a>
+				<a href="/listGrammar?page=${currentPage-1}">Back</a>
 			</c:if>
 			<c:if test="${currentPage == 1}">
 				<a class="current">1</a>
 			</c:if>
 
 			<c:if test="${currentPage != 1}">
-				<a href="/webtoeic/listGrammar?page=1">1</a>
+				<a href="/listGrammar?page=1">1</a>
 			</c:if>
 
 			<c:forEach var="pag" items="${pageList}" varStatus="loop">
@@ -183,12 +183,12 @@
 					<a class="current">${pag}</a>
 				</c:if>
 				<c:if test="${currentPage != pag}">
-					<a href="/webtoeic/listGrammar?page=${pag}">${pag}</a>
+					<a href="/listGrammar?page=${pag}">${pag}</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="${currentPage != totalPage}">
-				<a href="/webtoeic/listGrammar?page=${currentPage+1} "
+				<a href="/listGrammar?page=${currentPage+1} "
 					class="pageNext">Next</a>
 			</c:if>
 		</div>

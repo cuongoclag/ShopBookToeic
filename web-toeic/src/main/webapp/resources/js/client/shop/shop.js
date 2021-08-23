@@ -92,7 +92,7 @@
 			"quantity" : quantity
 		};
 		$.ajax({
-			url : "/webtoeic/cart/mua-hang",
+			url : "/cart/mua-hang",
 			type : "post",
 			contentType : "application/json", // dữ liệu gửi lên web-service
 			// có dạng là json.

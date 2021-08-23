@@ -20,7 +20,7 @@
 		<div>
 			<div class="tab-content">
 				<div class="tab-pane active" id="information">
-					<form class="form-profile" action="/webtoeic/profile/update" method="post">
+					<form class="form-profile" action="/profile/update" method="post">
 						<div class="form-group">
 							<label style="font-weight: bold" for="staticEmail"
 								class="col-sm-2 col-form-label">Email đăng ký</label>
