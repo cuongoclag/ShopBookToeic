@@ -20,7 +20,9 @@
         }
 
     </style>
-    <script src="<c:url value='./js/admin/delete-category-ajax.js'/>" ></script>
+   
+    <script src="<c:url value='/js/admin/shop/jquery-3.5.1.min.js'/>" ></script>
+    <script src="<c:url value='/js/admin/shop/delete-category-ajax.js'/>" ></script>
 </head>
 <body>
 <jsp:include page="template/header.jsp"></jsp:include>
@@ -77,10 +79,5 @@
 </div>
 
 <jsp:include page="template/footer.jsp"></jsp:include>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script src="<c:url value='./js/admin/quanLyBaiDoc.js'/>" ></script>
-
-<script src="<c:url value='./js/admin/jquery.easing.min.js'/>" ></script>
-<script src="<c:url value='./js/admin/jquery.min.js'/>" ></script>
 </body>
 </html>

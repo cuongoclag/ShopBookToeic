@@ -14,17 +14,9 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
-
-
+	<script src="<c:url value='/js/client/shop/jquery-3.5.1.js'/>" ></script>
+	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
+	<script src="<c:url value='/js/client/shop/main.js'/>" ></script>
 </head>
 <body>
 
@@ -48,7 +40,7 @@
 			<p>${list.price}</p>
 			<p>${list.shortDes}</p>
 			<p>${list.shortDetails}</p>
-			<a href="/webtoeic" class="btn btn-primary">Add To Cart</a>
+			<button type="button" onclick="Shop.addItemToCart(${list.id}, 1)" class="btn btn-primary">Add to cart</button>
 		</div>
 	</div>
 		</c:forEach>
@@ -56,50 +48,5 @@
 	<!--Footer==========================-->
 	<jsp:include page="./include/footerHome.jsp"></jsp:include>
 	<!--/.Footer-->
-
-
-	<!-- Start Modal -->
-
-	<div class="modal fade" id="openModal" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">DANH SÁCH LOẠT BÀI HƯỚNG DẪN</h4>
-				</div>
-
-				<div class="modal-body">
-
-					<div class="media">
-						<a class="pull-left"><img src="" id="image1" class="media-object"  /></a>
-						<div class="media-body">
-							<h3>
-								<a href="" id="name1" name="name1"></a>
-							</h3>
-						</div>
-					</div>
-
-					<div class="media">
-						<a class="pull-left"><img src="" id="image2" class="media-object"  /></a>
-						<div class="media-body">
-							<h3>
-								<a href="" id="name2" name="name2"></a>
-							</h3>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Thoát</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<!-- End Modal -->
-
 </body>
 </html>
