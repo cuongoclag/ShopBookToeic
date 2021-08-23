@@ -10,9 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.webtoeic.entities.*;
+import com.webtoeic.service.NguoiDungService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,12 +27,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.annotation.SessionScope;
 
-import com.webtoeic.entities.AjaxResponse;
-import com.webtoeic.entities.Cart;
-import com.webtoeic.entities.CartItem;
-import com.webtoeic.entities.Product;
-import com.webtoeic.entities.SaleOrder;
-import com.webtoeic.entities.SaleOrderProducts;
 import com.webtoeic.repository.ProductRepository;
 import com.webtoeic.repository.SaleOrderRepository;
 import com.webtoeic.service.ProductService;
@@ -45,6 +43,9 @@ public class CartController{
 	ProductService productService;
 	@Autowired
 	SaleOrderService saleOrderService;
+
+	@Autowired
+	private NguoiDungService nguoiDungService;
 	
 	@RequestMapping(value = { "/cart/check-out" }, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
@@ -70,9 +71,50 @@ public class CartController{
 			model.addAttribute("TOTAL", sum);
 			return "client/checkout";
 		}		
-	}	
+	}
 
-	@RequestMapping(value = { "/cart/mua-hang" }, method = RequestMethod.POST)
+	@RequestMapping(value = "/cart/check-out/update", method = RequestMethod.POST)
+	public String update(@RequestParam("quantities") int[] quantities, HttpSession httpSession) {
+		Cart cart = null;
+		if(httpSession.getAttribute("GIO_HANG") != null) {
+			cart = (Cart) httpSession.getAttribute("GIO_HANG");
+			List<CartItem> cartItems = cart.getCartItems();
+			for(int i = 0; i < cartItems.size(); i++) {
+				cartItems.get(i).setQuantity(quantities[i]);
+			}
+			httpSession.setAttribute("GIO_HANG", cart);
+		}
+
+		return "redirect:/cart/check-out";
+	}
+
+	@RequestMapping(value = {
+			"/cart/check-out/delete-product-cart-with-ajax/{productId}" }, method = RequestMethod.POST)
+	public ResponseEntity<AjaxResponse> subscribe(@RequestBody CartItem data, @PathVariable("productId") int productId,
+												  final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+
+		HttpSession httpSession = request.getSession();
+		Cart cart = null;
+		if (httpSession.getAttribute("GIO_HANG") != null) {
+			cart = (Cart) httpSession.getAttribute("GIO_HANG");
+		} else {
+			cart = new Cart();
+			httpSession.setAttribute("GIO_HANG", cart);
+		}
+
+		List<CartItem> cartItems = cart.getCartItems();
+
+		for (int a = 0; a < cartItems.size(); a++) {
+			if (cartItems.get(a).getProductId() == productId) {
+				cartItems.remove(a);
+			}
+		}
+
+		return ResponseEntity.ok(new AjaxResponse(200, "Success"));
+	}
+
+	@RequestMapping(value = {"/cart/mua-hang"}, method = RequestMethod.POST)
 	public ResponseEntity<AjaxResponse> muaHang(@RequestBody CartItem data, final ModelMap model,
 			final HttpServletRequest request, final HttpServletResponse response) throws IOException {
 		HttpSession httpSession = request.getSession();
@@ -111,4 +153,120 @@ public class CartController{
 		return ResponseEntity.ok(new AjaxResponse(200, String.valueOf(quantity)));
 	}
 
+
+
+
+
+	@ModelAttribute("loggedInUser")
+	public NguoiDung loggedInUser() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		NguoiDung nguoiDung = new NguoiDung();
+		if (auth.getClass().isAssignableFrom(OAuth2AuthenticationToken.class)) {
+			String principal = auth.getPrincipal().toString();
+			String[] part = principal.split(",");
+			String name = part[2].split("=")[1];
+			nguoiDung.setFullName(name);
+			nguoiDung.setLoginOauth2(true);
+			return nguoiDung;
+		} else {
+			return nguoiDungService.findByEmail(auth.getName());
+		}
+	}
+
+	public NguoiDung getSessionUser(HttpServletRequest request) {
+		NguoiDung nguoiDung = (NguoiDung) request.getSession().getAttribute("loggedInUser");
+		return nguoiDung;
+	}
+
+
+
+
+
+
+	@RequestMapping(value = { "/cart/finish" }, method = RequestMethod.POST)
+	public String finish(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		HttpSession httpSession = request.getSession();
+
+		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
+				model.addAttribute("user", getSessionUser(request));
+//				model.addAttribute("customerName", ((NguoiDung) principal).getFullName());
+//				model.addAttribute("customerAddress", ((NguoiDung) principal).getAddress());
+//				model.addAttribute("customerPhone", ((NguoiDung) principal).getPhone());
+//				model.addAttribute("customerEmail", ((NguoiDung) principal).getEmail());
+			} else {
+				return "dangNhap";
+			}
+		}
+
+		SaleOrder saleOrder = new SaleOrder();
+		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
+		List<CartItem> cartItems = cart.getCartItems();
+
+		BigDecimal sum = new BigDecimal(0);
+		String sumVN = null;
+		for (CartItem item : cartItems) {
+			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+			saleOrderProducts.setQuantity(item.getQuantity());
+			saleOrder.addSaleOrderProducts(saleOrderProducts);
+			for (int i = 1; i <= item.getQuantity(); i++) {
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+			}
+			Locale locale = new Locale("vi", "VN");
+			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+			sumVN = fmt.format(sum);
+		}
+		model.addAttribute("quantityCart", cartItems.size());
+		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("sumVN", sumVN);
+		model.addAttribute("sum", sum);
+		return "client/finish";
+	}
+
+
+	@RequestMapping(value = { "/cart/thankyou" }, method = RequestMethod.POST)
+	public String thankyou(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		HttpSession httpSession = request.getSession();
+		String customerName = null;
+		String customerAddress = null;
+		String customerPhone = null;
+		String customerEmail = null;
+		Long userId = null;
+		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("user", getSessionUser(request));
+		}
+		SaleOrder saleOrder = new SaleOrder();
+		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
+		List<CartItem> cartItems = cart.getCartItems();
+		BigDecimal sum = new BigDecimal(0);
+		String sumVN = null;
+		for (CartItem item : cartItems) {
+			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+			saleOrderProducts.setQuantity(item.getQuantity());
+			saleOrder.addSaleOrderProducts(saleOrderProducts);
+			for (int i = 1; i <= item.getQuantity(); i++) {
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+			}
+			Locale locale = new Locale("vi", "VN");
+			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+			sumVN = fmt.format(sum);
+		}
+		model.addAttribute("quantityCart", cartItems.size());
+		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("sumVN", sumVN);
+		NguoiDung currentUser = getSessionUser(request);
+		customerPhone = currentUser.getPhone();
+		customerAddress = currentUser.getAddress();
+		customerName = currentUser.getFullName();
+		customerEmail = currentUser.getEmail();
+		userId = currentUser.getId();
+		saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, userId, httpSession);
+		return "client/thankyou";
+	}
 }

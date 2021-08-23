@@ -9,8 +9,10 @@ import com.webtoeic.repository.ProductRepository;
 import com.webtoeic.repository.SaleOrderProductRepository;
 import com.webtoeic.repository.SaleOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -126,15 +128,15 @@ public class SaleOrderService {
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
+
         MimeMessage message = mailSender.createMimeMessage();
+
         MimeMessageHelper helper = new MimeMessageHelper(message);
         helper.setFrom("fastsneakercompany@gmail.com", senderName);
         helper.setTo(saleOrder.getCustomerEmail());
         helper.setSubject(subject);
         helper.setText(mailContent, true);
-
         mailSender.send(message);
-
     }
 
     @Transactional(rollbackOn = Exception.class)
@@ -154,7 +156,6 @@ public class SaleOrderService {
         List<CartItem> cartItems = cart.getCartItems();
 
         BigDecimal sum = new BigDecimal(0);
-
         for (CartItem item : cartItems) {
             SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
             saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
@@ -164,7 +165,6 @@ public class SaleOrderService {
             for (int i = 1; i <= item.getQuantity(); i++) {
                 sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
             }
-
         }
         saleOrder.setCreatedDate(java.time.LocalDateTime.now());
         saleOrder.setTotal(sum);
@@ -174,7 +174,6 @@ public class SaleOrderService {
         httpSession.setAttribute("GIO_HANG", null);
     }
 
-
     @Transactional(rollbackOn = Exception.class)
     public void sendEmailPaypal(SaleOrder saleOrder, List<CartItem> cartItems)
             throws UnsupportedEncodingException, MessagingException {
@@ -182,7 +181,7 @@ public class SaleOrderService {
         String subject = "Thông báo xác nhận đơn hàng";
         String senderName = "FastSneaker Company";
         String mailContent = "<p> Dear " + saleOrder.getCustomerName() + "</p>";
-        mailContent += "<h2> Thông tin đơn hàng " + saleOrder.getCode() + "</h2>";
+        mailContent += "<h2> Thông tin đơn hàng" + saleOrder.getCode() + "</h2>";
 
         for (CartItem cartItem : cartItems) {
             mailContent += "<p> " + cartItem.getProductName() + " X " + cartItem.getQuantity()
@@ -210,7 +209,6 @@ public class SaleOrderService {
         helper.setText(mailContent, true);
 
         mailSender.send(message);
-
     }
 
     @Transactional(rollbackOn = Exception.class)

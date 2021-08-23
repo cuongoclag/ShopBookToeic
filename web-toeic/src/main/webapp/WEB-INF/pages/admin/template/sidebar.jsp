@@ -62,6 +62,10 @@
                 <a href="<c:url value='/admin/list-product' />">
                     <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Product</a>
             </li>
+            <li class="side-bar main-menu">
+                <a href="<c:url value='/admin/list-order' />">
+                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Order</a>
+            </li>
         </ul>
       </div>
     </div>

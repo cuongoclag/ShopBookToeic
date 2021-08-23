@@ -80,9 +80,6 @@ public class ClientController {
 		model.addAttribute("list", list);
 		return "client/detailBook";
 	}
-
-
-
 	@GetMapping(value = "test")
 	public String testmarkdown() {
 		return "client/testMardown";

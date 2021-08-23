@@ -9,7 +9,7 @@
 <head>
 
     <meta charset="ISO-8859-1">
-    <title>Quản lý Category</title>
+    <title>Quản lý Order</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
         .hidden {
@@ -37,38 +37,41 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Code Order</th>
+                        <th>Username</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Created Day</th>
+                        <th>Total</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${categories }" var="category">
-                            <tr>
-                                <td>${category.name }</td>
-                                <td>${category.description }</td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${category.status =='true'}">
-                                                            <span
-                                                                    style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Active&nbsp;</span>
-                                        </c:when>
-                                        <c:otherwise>
-                                                            <span
-                                                                    style="background: #c12731; border-radius: 5px; color: white;">&nbsp;Inactive&nbsp;</span>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </td>
-                                <td>
-                                    <a href="<c:url value='/admin/edit-category/${category.seo}' />"
-                                       class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                    <button type="button" id="delete" name=""
-                                            onclick="confirmDelete('${category.seo }')"
-                                            class="btn btn-danger btn-sm"><i class="fas fa-eye-slash"></i></button>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                    <c:forEach items="${saleOrders }" var="saleOrder">
+                        <tr>
+                            <td>${saleOrder.code }</td>
+                            <td>${saleOrder.customerName }</td>
+                            <td>${saleOrder.customerPhone }</td>
+                            <td>${saleOrder.customerEmail }</td>
+                            <td>${saleOrder.createdDate }</td>
+                            <td>${saleOrder.totalVN }</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${saleOrder.status =='true'}">
+                                        <span style="background: #FFFF00; border-radius: 5px; color: white;">&nbsp;Pending&nbsp;</span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span style="background: #0099FF; border-radius: 5px; color: white;">&nbsp;Completed&nbsp;</span>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <a href="/admin/view-order/${saleOrder.id}"
+                                   class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<!-- spring taglibs -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
@@ -39,6 +44,7 @@
 		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 		<div>
+			<form method="post" action="${base }/cart/check-out/update">
 			<table class="table">
 			  <thead>
 			    <tr>
@@ -50,19 +56,22 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  <c:forEach items="${GIO_HANG.cartItems}" var="item">
 			    <tr>
-			      <td>TOEIC</td>
-			      <td>1000</td>
-			      <td><input class="form-control" type="number" min="1" max="100" name="quantities" /></td>
-			      <td>2000</td>
-			      <td><i class="far fa-times-circle"></i></td>
+			      <td>${item.productName }</td>
+			      <td>${item.unitPrice }</td>
+			      <td><input class="form-control" type="number" min="1" max="100" name="quantities" value="${item.quantity }" onblur="this.form.submit()" /></td>
+			      <td>${item.unitPrice*item.quantity }</td>
+			      <td><i class="far fa-times-circle" onclick="confirmDelete('${item.productId}')"></i></td>
 			    </tr>
+			  </c:forEach>
 			  </tbody>
 			</table>
+			</form>
 		</div>
 		<div style="text-align: end">
-			<strong>TOTAL PRICE : 1000</strong>
-			<form action="#" method="post">
+			<strong>TOTAL PRICE : ${TOTAL}</strong>
+			<form action="${base }/cart/finish" method="post">
 				<button type="submit">Process to checkout <i class="fas fa-arrow-right"></i></button>
 			</form>
 		</div>
@@ -115,6 +124,8 @@
 		</div>
 	</div>
 	<!-- End Modal -->
-
+	<script src="<c:url value='/js/client/shop/jquery-3.5.1.js'/>" ></script>
+	<script src="<c:url value='/js/client/shop/Cart.js'/>" ></script>
 </body>
+
 </html>
