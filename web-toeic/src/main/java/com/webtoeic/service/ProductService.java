@@ -139,7 +139,7 @@ public class ProductService {
                     List<ProductImages> productImages = productInDb.getProductImages();
                     // xoá ảnh cũ đi
                     for (ProductImages _images : productImages) {
-                        new File("D:\\phuong_project4\\fastsneaker-main\\upload" + _images.getPath()).delete();
+                        new File("E:\\ShopBookToeic\\web-toeic\\src\\main\\webapp\\resources\\file\\images\\upload\\" + _images.getPath()).delete();
                     }
                     product.clearProductImages();
                 } else { // ảnh phải giữ nguyên
@@ -151,7 +151,7 @@ public class ProductService {
                 for (MultipartFile image : images) {
                     // Lưu file vào host.
                     image.transferTo(new File(
-                            "D:\\phuong_project4\\fastsneaker-main\\upload" + image.getOriginalFilename()));
+                            "E:\\ShopBookToeic\\web-toeic\\src\\main\\webapp\\resources\\file\\images\\upload\\" + image.getOriginalFilename()));
                     ProductImages productImages = new ProductImages();
                     productImages.setTitle(image.getOriginalFilename());
                     productImages.setPath(image.getOriginalFilename());
