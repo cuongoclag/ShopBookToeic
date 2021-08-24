@@ -66,6 +66,10 @@
                 <a href="<c:url value='/admin/list-order' />">
                     <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Order</a>
             </li>
+            <li class="side-bar main-menu">
+                <a href="<c:url value='/admin/BarGraph' />">
+                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Doanh số</a>
+            </li>
         </ul>
       </div>
     </div>

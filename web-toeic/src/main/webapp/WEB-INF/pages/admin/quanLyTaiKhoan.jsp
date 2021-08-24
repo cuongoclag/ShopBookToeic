@@ -18,6 +18,9 @@
 
 		<button class="btn btn-success btnThemTaiKhoan">Thêm mới tài
 			khoản</button>
+			
+		<a href="/pdf" class="btn btn-primary btn-icon-split">
+                     <span class="text">Jasper Export</span></a>
 		<hr>
 		<div class="form-group form-inline">
 			<label for="sel1"><strong>Lọc tài khoản:</strong> </label> <select
