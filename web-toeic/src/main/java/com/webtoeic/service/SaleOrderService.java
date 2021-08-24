@@ -169,7 +169,7 @@ public class SaleOrderService {
         saleOrder.setCreatedDate(java.time.LocalDateTime.now());
         saleOrder.setTotal(sum);
         saleOrderRepo.save(saleOrder);
-        sendEmail(saleOrder, cartItems);
+//        sendEmail(saleOrder, cartItems);
         httpSession.setAttribute("SL_SP_GIO_HANG", 0);
         httpSession.setAttribute("GIO_HANG", null);
     }

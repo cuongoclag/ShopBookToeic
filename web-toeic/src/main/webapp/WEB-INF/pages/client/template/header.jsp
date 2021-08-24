@@ -107,6 +107,7 @@ h3 {
 													<li><a href="<%=request.getContextPath()%>/profile">Tài
 															khoản</a></li>
 												</c:if>
+												<li><a href="<%=request.getContextPath()%>/orderUser/${nguoiDung.id }">Order</a></li>
 												<li><a href="<%=request.getContextPath()%>/signout">Thoát</a></li>
 											</ul>
 										</li>

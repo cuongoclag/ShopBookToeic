@@ -5,7 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.webtoeic.entities.Product;
-import com.webtoeic.service.ProductService;
+import com.webtoeic.entities.SaleOrder;
+import com.webtoeic.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,9 +20,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import com.webtoeic.entities.NguoiDung;
-import com.webtoeic.service.VocabularyExercisesService;
-import com.webtoeic.service.NguoiDungService;
-import com.webtoeic.service.SlideBannerService;
 
 import java.util.List;
 
@@ -38,6 +36,9 @@ public class ClientController {
 
 	@Autowired
 	private ProductService productService;
+
+	@Autowired
+	private SaleOrderService saleOrderService;
 
 	@ModelAttribute("loggedInUser")
 	public NguoiDung loggedInUser() {
@@ -80,6 +81,28 @@ public class ClientController {
 		model.addAttribute("list", list);
 		return "client/detailBook";
 	}
+	//	---------------------- order User -------------------------------------------
+
+	@RequestMapping(value = { "/orderUser/{id}" }, method = RequestMethod.GET)
+	public String OrderUser(@PathVariable("id") int id, final ModelMap model, final HttpServletRequest request,
+							final HttpServletResponse response) throws Exception {
+		List<SaleOrder> list = saleOrderService.findSaleOrderByUserId(id);
+		model.addAttribute("listOrder", list);
+		return "client/orderUser";
+	}
+
+	//---------------------Order Details User -------------------------------------
+	@RequestMapping(value = { "/orderDetailsUser/{code}"}, method = RequestMethod.GET)
+	public String saleOrderProduct(@PathVariable("code") String code,final ModelMap model, final HttpServletRequest request,
+								   final HttpServletResponse response) throws Exception {
+
+		model.addAttribute("saleOrderProducts", saleOrderService.findSaleOrderProductbyCode(code));
+		model.addAttribute("saleOrders", saleOrderService.findSaleOrderByCode(code));
+		return "client/orderDetailsUser";
+	}
+
+// ---------------------And Order Details User -------------------------------------
+
 	@GetMapping(value = "test")
 	public String testmarkdown() {
 		return "client/testMardown";
