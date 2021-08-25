@@ -47,6 +47,8 @@ public class CartController{
 	@Autowired
 	private NguoiDungService nguoiDungService;
 	
+	private static final String QR_CODE_IMAGE_PATH = "/resources/file/images/QRCode.png";
+	
 	@RequestMapping(value = { "/cart/check-out" }, method = RequestMethod.GET)
 	public String checkOut(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
@@ -349,5 +351,46 @@ public class CartController{
 		userId = currentUser.getId();
 		saleOrderService.saveOrderProductPayPal(customerAddress, customerName, customerPhone, customerEmail, userId, httpSession);
 		return "client/thankyouPayPal";
+	}
+	
+	@RequestMapping(value = { "/qrpayment" }, method = RequestMethod.POST)
+	public String qrpayment(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		HttpSession httpSession = request.getSession();
+
+		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
+				model.addAttribute("user", getSessionUser(request));	
+			}
+		}
+
+		SaleOrder saleOrder = new SaleOrder();
+		Cart cart = (Cart)
+ httpSession.getAttribute("GIO_HANG");
+		List<CartItem> cartItems = cart.getCartItems();
+
+		BigDecimal sum = new BigDecimal(0);
+		String sumVN = null;
+		for (CartItem item : cartItems) {
+			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+			saleOrderProducts.setQuantity(item.getQuantity());
+			saleOrder.addSaleOrderProducts(saleOrderProducts);
+			for (int i = 1; i <= item.getQuantity(); i++) {
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+			}
+			Locale locale = new Locale("vi", "VN");
+			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+			sumVN = fmt.format(sum);
+		}
+		model.addAttribute("quantityCart", cartItems.size());
+		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("sumVN", sumVN);
+		model.addAttribute("sum", sum);
+		QRCodeGenerator.generateQRCodeImage("Thanh toán thành công ví QRCode tổng giá tiền là "+ sumVN, 350, 350, QR_CODE_IMAGE_PATH);
+        model.addAttribute("qrcode","http://localhost:8080/files/QRcode.png");
+		//saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, httpSession);
+		return "client/qrpayment";
 	}
 }

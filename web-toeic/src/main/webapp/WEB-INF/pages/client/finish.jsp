@@ -90,6 +90,14 @@
                     <button type="submit" class="ps-btn ps-btn--fullwidth">PAYPAL<i class="ps-icon-next"></i></button>
                 </form>
             </div>
+            <div class="form-group qr">
+                <div class="ps-radio--inline"  style="color: white">
+                    <label>QR Payment</label>
+                </div>
+                <form action="${base }/qrpayment" method="post">
+                    <button type="submit" class="ps-btn ps-btn--fullwidth">QR Payment<i class="ps-icon-next"></i></button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
