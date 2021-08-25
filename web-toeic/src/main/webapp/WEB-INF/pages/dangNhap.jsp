@@ -21,8 +21,7 @@
 </head>
 
 <body>
-
-
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 	<div class="login-page">
 		<div class="form">
@@ -45,7 +44,7 @@
 				</div>
 			</c:if>
 
-			<form class="login-form" method="POST" action="${contextPath}/login">
+			<form class="login-form" method="POST" action="${contextPath}/login" onsubmit="return validateForm()">
 
 				<input type="text" placeholder="Email" name="email" required="required"
 					style="padding: 10px;" /> <input type="password" placeholder="Mật khẩu"
@@ -54,6 +53,7 @@
 					style="padding-right: 130px; font-size: 15px;" id="label"> <input
 					type="checkbox" class="form-check-input" id="" name="remember-me">
 					Duy trì đăng nhập
+				<div class="g-recaptcha" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
 				</label> <input id="submit" type="submit" value="ĐĂNG NHẬP">
 				<section class="section">
 					<div class="container">
@@ -71,6 +71,16 @@
 	</div>
 
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
+	<script type="text/javascript">
+    
+	function validateForm(){
+		if(grecaptcha.getResponse()){
+			return true;
+		} else {
+			alert("Vui lòng xác nhận mã captcha!!");
+			return false;
+		}
+	}
+	</script>
 </body>
 </html>

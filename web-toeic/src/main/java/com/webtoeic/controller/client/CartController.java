@@ -154,9 +154,6 @@ public class CartController{
 	}
 
 
-
-
-
 	@ModelAttribute("loggedInUser")
 	public NguoiDung loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -177,11 +174,6 @@ public class CartController{
 		NguoiDung nguoiDung = (NguoiDung) request.getSession().getAttribute("loggedInUser");
 		return nguoiDung;
 	}
-
-
-
-
-
 
 	@RequestMapping(value = { "/cart/finish" }, method = RequestMethod.POST)
 	public String finish(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
@@ -268,5 +260,86 @@ public class CartController{
 		userId = currentUser.getId();
 		saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, userId, httpSession);
 		return "client/thankyou";
+	}
+	
+	@RequestMapping(value = { "/paypal" }, method = RequestMethod.POST)
+	public String paypal(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		HttpSession httpSession = request.getSession();
+
+		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
+				model.addAttribute("user", getSessionUser(request));	
+			}
+		}
+
+		SaleOrder saleOrder = new SaleOrder();
+		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
+		List<CartItem> cartItems = cart.getCartItems();
+
+		BigDecimal sum = new BigDecimal(0);
+		String sumVN = null;
+		for (CartItem item : cartItems) {
+			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+			saleOrderProducts.setQuantity(item.getQuantity());
+			saleOrder.addSaleOrderProducts(saleOrderProducts);
+			for (int i = 1; i <= item.getQuantity(); i++) {
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+			}
+			Locale locale = new Locale("vi", "VN");
+			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+			sumVN = fmt.format(sum);
+		}
+		model.addAttribute("quantityCart", cartItems.size());
+		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("sumVN", sumVN);
+		model.addAttribute("sum", sum);
+		//saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, httpSession);
+		return "client/paypal";
+	}
+
+	@RequestMapping(value = { "/cart/thankyouPayPal" }, method = RequestMethod.POST)
+	public String thankyouPayPal(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		HttpSession httpSession = request.getSession();
+		String customerName = null;
+		String customerAddress = null;
+		String customerPhone = null;
+		String customerEmail = null;
+		Long userId = null;
+		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("user", getSessionUser(request));
+		}
+		SaleOrder saleOrder = new SaleOrder();
+		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
+		List<CartItem> cartItems = cart.getCartItems();
+		BigDecimal sum = new BigDecimal(0);
+		String sumVN = null;
+		for (CartItem item : cartItems) {
+			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+			saleOrderProducts.setQuantity(item.getQuantity());
+			saleOrder.addSaleOrderProducts(saleOrderProducts);
+			for (int i = 1; i <= item.getQuantity(); i++) {
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+			}
+			Locale locale = new Locale("vi", "VN");
+			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+			sumVN = fmt.format(sum);
+		}
+		model.addAttribute("quantityCart", cartItems.size());
+		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("sumVN", sumVN);
+		NguoiDung currentUser = getSessionUser(request);
+		customerPhone = currentUser.getPhone();
+		customerAddress = currentUser.getAddress();
+		customerName = currentUser.getFullName();
+		customerEmail = currentUser.getEmail();
+		userId = currentUser.getId();
+		saleOrderService.saveOrderProductPayPal(customerAddress, customerName, customerPhone, customerEmail, userId, httpSession);
+		return "client/thankyouPayPal";
 	}
 }

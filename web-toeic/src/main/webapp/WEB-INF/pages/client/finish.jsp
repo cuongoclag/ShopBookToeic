@@ -86,7 +86,7 @@
                 <div class="ps-radio--inline"  style="color: white">
                     <label>Paypal</label>
                 </div>
-                <form action="${base }/paypal" method="post">
+                <form action="${base }/payPaypalService.java" method="post">
                     <button type="submit" class="ps-btn ps-btn--fullwidth">PAYPAL<i class="ps-icon-next"></i></button>
                 </form>
             </div>

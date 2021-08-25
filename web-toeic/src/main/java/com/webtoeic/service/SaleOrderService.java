@@ -243,7 +243,7 @@ public class SaleOrderService {
         saleOrder.setCreatedDate(java.time.LocalDateTime.now());
         saleOrder.setTotal(sum);
         saleOrderRepo.save(saleOrder);
-        sendEmailPaypal(saleOrder, cartItems);
+        //sendEmailPaypal(saleOrder, cartItems);
         httpSession.setAttribute("SL_SP_GIO_HANG", 0);
         httpSession.setAttribute("GIO_HANG", null);
     }
