@@ -147,7 +147,7 @@ public class PaypalController {
 	        		model.addAttribute("sumVN", sumVN);
 	        		model.addAttribute("sum", sum);
 	        		//saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, httpSession);
-	                return "success";
+	                return "client/success";
 	            }
 	        } catch (PayPalRESTException e) {
 	         System.out.println(e.getMessage());

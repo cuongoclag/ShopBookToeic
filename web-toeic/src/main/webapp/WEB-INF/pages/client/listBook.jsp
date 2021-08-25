@@ -92,13 +92,13 @@
 		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 		<div class="row">
-			<div class="span9">
+			<div class="span9" style="display: flex; flex-wrap: wrap;">
 				<c:if test="${fn:length(listProduct) == 0 }">
 					<h3>Không tìm thấy dữ liệu</h3>
 				</c:if>
 				<c:forEach items="${listProduct}" var="list">
 					<div class="card" style="width: 20%; margin: 1%">
-						<img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap">
+						<img style="height: 15rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">${list.title}</h5>
 							<p class="card-text">${list.price}</p>
@@ -108,7 +108,7 @@
 				</c:forEach>
 				<c:forEach items="${products}" var="list">
 					<div class="card" style="width: 20%; margin: 1%">
-						<img class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap">
+						<img style="height: 15rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">${list.title}</h5>
 							<p class="card-text">${list.price}</p>
