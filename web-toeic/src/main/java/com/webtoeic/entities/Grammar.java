@@ -51,6 +51,7 @@ public class Grammar {
 	public void setContentMarkDown(String contentMarkDown) {
 		this.contentMarkDown = contentMarkDown;
 	}
+
 	public Grammar() {
 	}
 	public Grammar(Integer grammarId, String grammarTitle, String grammarImage, String contentHTML,

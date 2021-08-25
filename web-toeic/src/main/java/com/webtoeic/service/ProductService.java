@@ -76,7 +76,6 @@ public class ProductService {
             query.setFirstResult((productSearch.getCurrentPage() - 1) * ProductSearch.SIZE_ITEMS_ON_PAGE);
             query.setMaxResults(ProductSearch.SIZE_ITEMS_ON_PAGE);
         }
-
         return query.getResultList();
     }
 

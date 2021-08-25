@@ -26,14 +26,14 @@ public class TaiKhoanDto {
 
 	@NotEmpty(message = "Số điện thoại không được trống")
 	private String sdt;
-	private int vaiTro;
+	private int roles;
 
-	public int getVaiTro() {
-		return vaiTro;
+	public int getRoles() {
+		return roles;
 	}
 
-	public void setVaiTro(int vaiTro) {
-		this.vaiTro = vaiTro;
+	public void setRoles(int roles) {
+		this.roles = roles;
 	}
 
 	public String getId() {

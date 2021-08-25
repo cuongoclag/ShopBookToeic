@@ -57,7 +57,6 @@
 				document.getElementById("resultsearch").innerHTML = data;
 			}
 		}
-
 		xhttp.open("POST", url, true);
 		xhttp.send();
 
@@ -125,7 +124,6 @@
 
 					</c:forEach>
 				</div>
-
 				<div class="span3">
 					<div class="side-bar">
 

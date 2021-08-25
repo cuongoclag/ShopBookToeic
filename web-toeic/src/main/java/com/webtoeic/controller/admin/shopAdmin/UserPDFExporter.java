@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.devpro.entities.User;
+
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
@@ -17,11 +17,12 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import com.webtoeic.entities.NguoiDung;
 
 public class UserPDFExporter {
-	private List<User> listUsers;
+	private List<NguoiDung> listUsers;
 
-	public UserPDFExporter(List<User> listUsers) {
+	public UserPDFExporter(List<NguoiDung> listUsers) {
 		this.listUsers = listUsers;
 	}
 	
@@ -39,8 +40,8 @@ public class UserPDFExporter {
 		cell.setPhrase(new Phrase("Email", font));
 		table.addCell(cell);
 		
-		cell.setPhrase(new Phrase("Name", font));
-		table.addCell(cell);
+//		cell.setPhrase(new Phrase("Name", font));
+//		table.addCell(cell);
 		
 		cell.setPhrase(new Phrase("Address", font));
 		table.addCell(cell);
@@ -50,10 +51,10 @@ public class UserPDFExporter {
 	}
 	
 	private void writeTableData(PdfPTable table) {
-		for (User user : listUsers) {
+		for (NguoiDung user : listUsers) {
 			table.addCell(String.valueOf(user.getId()));
 			table.addCell(user.getEmail());
-			table.addCell(user.getName());
+			table.addCell(user.getFullName());
 			table.addCell(user.getAddress());
 			table.addCell(user.getPhone());
 		}

@@ -45,14 +45,11 @@
 </style>
 <script type="text/javascript">
 	function Search(){
-
 		var baseUrl = document.getElementById('baseUrl').value;
 		var xhttp;
 		var search = document.getElementById('searchGrammar').value;
-
 		//remove special letters
 		var convertSearch = search.replace(/[^a-zA-Z0-9 ]/g, "");
-		
 		var url;
 		if(!search == ' ')	
 		{	url= baseUrl+"/searchGrammar/"+convertSearch;
@@ -73,7 +70,6 @@
 					document.getElementById("resultsearchGrammar").innerHTML = data;
 				}
 			}
-			
 			xhttp.open("POST",url,true);
 			xhttp.send();
 
@@ -90,38 +86,35 @@
 	<div class="container">
 		<!--PAGE TITLE-->
 		<div class="row">
-		<div class="span9" style="text-align: center">
-			<div class="page-header">
-				<h4 style="font-weight: bold;">DANH SÁCH BÀI GRAMMAR</h4>
-			</div>
-		</div>
-		<div class="span3">
-			<div class="navbar  pull-right">
-					<div>
-							<input type="text" class="form-control" id="searchGrammar"
-								placeholder="Tìm kiếm bài grammar..." 
-								style="width: 300px; margin-top:6px;margin-right:-40px;"
-								name="search"
-								onkeyup="Search()">
-					</div>
+			<div class="span9" style="text-align: center">
+				<div class="page-header">
+					<h4 style="font-weight: bold;">DANH SÁCH BÀI GRAMMAR</h4>
 				</div>
-		</div>
+			</div>
+			<div class="span3">
+				<div class="navbar  pull-right">
+						<div>
+								<input type="text" class="form-control" id="searchGrammar"
+									placeholder="Tìm kiếm bài grammar..."
+									style="width: 300px; margin-top:6px;margin-right:-40px;"
+									name="search"
+									onkeyup="Search()">
+						</div>
+					</div>
+			</div>
 		</div>
 		<!-- /. PAGE TITLE-->
 	<div id="resultsearchGrammar">
 		<div class="row">
-
 			<div class="span9">
 				<c:if test="${fn:length(listData) == 0 }">
 					<h3>Không tìm thấy dữ liệu</h3>
 				</c:if>
-
 				<c:forEach items="${listData}" var="list" varStatus="loop">
 					<div class="span9">
 						<div class="span3">
 							<img class="imageGrammar"
 								src="${pageContext.request.contextPath}/resources/file/images/grammar/${list.grammarImage}" />
-
 						</div>
 						<div class="span1"></div>
 
@@ -134,18 +127,13 @@
 									href=" <c:url value="/detailGram?idGram=${list.grammarId}"/>  "
 									class="btn btn-primary">Chi tiết</a>
 							</div>
-
 						</div>
 					</div>
-
 				</c:forEach>
 				<br>
 			</div>
-
-
 			<div class="span3">
 				<div class="side-bar">
-
 					<h3>DANH MỤC</h3>
 					<ul class="nav nav-list">
 						<li><a href="/listening">LUYỆN BÀI NGHE</a></li>
@@ -154,15 +142,9 @@
 						<li><a href="/listGrammar">HỌC NGỮ PHÁP</a></li>
 						<li><a href="/listVocab">HỌC TỪ VỰNG</a></li>
 					</ul>
-
 				</div>
 			</div>
-
 		</div>
-
-
-
-
 	<!--Pagination-->
 	<c:if test="${listData.size() != 0}">
 

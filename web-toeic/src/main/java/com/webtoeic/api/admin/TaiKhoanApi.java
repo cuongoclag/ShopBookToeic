@@ -39,8 +39,8 @@ public class TaiKhoanApi {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@GetMapping("/all")
-	public Page<NguoiDung> getNguoiDungByVaiTro(@RequestParam("vaiTro") int vaiTroValue, @RequestParam(defaultValue = "1") int page) {
-		return nguoiDungService.findByVaiTro(page, Roles.findByAbbr(vaiTroValue));
+	public Page<NguoiDung> getNguoiDungByRoles(@RequestParam("roles") int vaiTroValue, @RequestParam(defaultValue = "1") int page) {
+		return nguoiDungService.findByRoles(page, Roles.findByAbbr(vaiTroValue));
 	}
 
 	@PostMapping("/save")
@@ -64,7 +64,7 @@ public class TaiKhoanApi {
 			nd.setEmail(dto.getEmail());
 			nd.setPhone(dto.getSdt());
 			nd.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
-			nd.setRoles(Roles.findByAbbr(dto.getVaiTro()));
+			nd.setRoles(Roles.findByAbbr(dto.getRoles()));
 			nguoiDungService.saveUser(nd);
 		}
 		return ro;

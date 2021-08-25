@@ -4,15 +4,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 
+import com.webtoeic.repository.NguoiDungRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.devpro.repositories.UserRepo;
-import com.devpro.services.UserService;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -25,7 +23,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @Controller
 public class ReportUserController {
 	@Autowired
-	private UserRepo userRepo;
+	private NguoiDungRepository userRepo;
 	
 	@GetMapping("/pdf")
 	public ResponseEntity<byte[]> generatePdf() throws FileNotFoundException, JRException {

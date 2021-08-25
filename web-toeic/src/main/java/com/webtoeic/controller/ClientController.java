@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.webtoeic.entities.Category;
 import com.webtoeic.entities.Product;
 import com.webtoeic.entities.SaleOrder;
 import com.webtoeic.service.*;
@@ -40,6 +41,9 @@ public class ClientController {
 	@Autowired
 	private SaleOrderService saleOrderService;
 
+	@Autowired
+	private CategoryService categoryService;
+
 	@ModelAttribute("loggedInUser")
 	public NguoiDung loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -66,42 +70,6 @@ public class ClientController {
 		model.addAttribute("listslidebanner", slideBannerService.findAll());
 		return "client/home";
 	}
-	//Trả về trang listBook
-	@GetMapping(value = "/listBook")
-	public String listBook(Model model){
-		List<Product> productList = productService.findAllProduct();
-		model.addAttribute("listProduct", productList);
-		return "client/listBook";
-	}
-
-	@RequestMapping(value = { "/bookDetails/{id}" }, method = RequestMethod.GET)
-	public String detailsBook(@PathVariable("id") int id, final ModelMap model, final HttpServletRequest request,
-								  final HttpServletResponse response) throws Exception {
-		List<Product> list = productService.findProductById(id);
-		model.addAttribute("list", list);
-		return "client/detailBook";
-	}
-	//	---------------------- order User -------------------------------------------
-
-	@RequestMapping(value = { "/orderUser/{id}" }, method = RequestMethod.GET)
-	public String OrderUser(@PathVariable("id") int id, final ModelMap model, final HttpServletRequest request,
-							final HttpServletResponse response) throws Exception {
-		List<SaleOrder> list = saleOrderService.findSaleOrderByUserId(id);
-		model.addAttribute("listOrder", list);
-		return "client/orderUser";
-	}
-
-	//---------------------Order Details User -------------------------------------
-	@RequestMapping(value = { "/orderDetailsUser/{code}"}, method = RequestMethod.GET)
-	public String saleOrderProduct(@PathVariable("code") String code,final ModelMap model, final HttpServletRequest request,
-								   final HttpServletResponse response) throws Exception {
-
-		model.addAttribute("saleOrderProducts", saleOrderService.findSaleOrderProductbyCode(code));
-		model.addAttribute("saleOrders", saleOrderService.findSaleOrderByCode(code));
-		return "client/orderDetailsUser";
-	}
-
-// ---------------------And Order Details User -------------------------------------
 
 	@GetMapping(value = "test")
 	public String testmarkdown() {

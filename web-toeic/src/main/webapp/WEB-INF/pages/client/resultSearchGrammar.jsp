@@ -14,17 +14,17 @@
 			<div class="span9">
 				<div class="span3">
 					<img class="imageGrammar"
-						src="${pageContext.request.contextPath}/resources/file/images/grammar/${list.anhbaigrammar}" />
+						src="${pageContext.request.contextPath}/resources/file/images/grammar/${list.grammarImage}" />
 
 				</div>
 				<div class="span1"></div>
 
 				<div class="span5">
 					<div class="content-heading">
-						<h4>${list.tenbaigrammar}</h4>
+						<h4>${list.grammarTitle}</h4>
 					</div>
 					<div>
-						<a href=" <c:url value="/detailGram?idGram=${list.baigrammarid}"/>  "
+						<a href=" <c:url value="/detailGram?idGram=${list.grammarId}"/>  "
 							class="btn btn-primary">Chi tiết</a>
 					</div>
 

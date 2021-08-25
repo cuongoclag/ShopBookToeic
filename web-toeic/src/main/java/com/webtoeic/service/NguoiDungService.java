@@ -51,11 +51,15 @@ public class NguoiDungService {
 		nguoiDungRepo.save(nd);
 	}
 
-	public Page<NguoiDung> findByVaiTro(int page, Roles roles) {
+	public Page<NguoiDung> findByRoles(int page, Roles roles) {
 		return nguoiDungRepo.findByRoles(roles, PageRequest.of(page - 1, 6));
 	}
 	public List<NguoiDung> findAll() {
 		return nguoiDungRepo.findAll();
+	}
+
+	public List<NguoiDung> findAllByRoles(Roles Roles){
+		return nguoiDungRepo.findByRoles(Roles);
 	}
 
 	public void deleteById(long id) {

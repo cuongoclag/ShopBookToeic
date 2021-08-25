@@ -34,7 +34,7 @@
 			</staticText>
 			<staticText>
 				<reportElement x="110" y="16" width="100" height="30" uuid="e786b8c2-d6d3-4352-8d42-900abe4842db"/>
-				<text><![CDATA[Username]]></text>
+				<text><![CDATA[FullName]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="220" y="16" width="100" height="30" uuid="e18521ba-7b74-4728-b2f9-67eaf7f7258e"/>
@@ -58,7 +58,7 @@
 			</textField>
 			<textField>
 				<reportElement x="110" y="10" width="100" height="30" uuid="48ad2c69-bfeb-4d75-8f20-c9dd2f17b81a"/>
-				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="220" y="10" width="100" height="30" uuid="5779ce09-31ef-4cab-beb5-d2fd9bd25df3"/>
