@@ -63,12 +63,12 @@
                 <c:forEach items="${cartItems}" var="item">
                     <tr>
                         <td>${item.productName } $ x ${item.quantity }</td>
-                        <td>${item.unitPrice*item.quantity } $</td>
+                        <td>${item.unitPrice*item.quantity }</td>
                     </tr>
                 </c:forEach>
                 <tr>
                     <td  style="color: yellow">Order Total</td>
-                    <td  style="color: yellow">${sum } $</td>
+                    <td  style="color: yellow">${sumVN }</td>
                 </tr>
                 </tbody>
             </table>

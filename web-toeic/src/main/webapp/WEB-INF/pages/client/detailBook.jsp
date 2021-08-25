@@ -37,7 +37,13 @@
 		</div>
 		<div span5 style="margin : 2%">
 			<strong>${list.title}</strong>
-			<p>${list.price}</p>
+			<c:if test="${list.price == list.promotionalPrice}">
+				<p class="card-text">${list.priceVN}</p>
+			</c:if>
+			<c:if test="${list.price > list.promotionalPrice}">
+				<p class="card-text" style="text-decoration: line-through;">${list.priceVN}</p>
+				<p class="card-text">${list.promotionalPriceVN}</p>
+			</c:if>
 			<p>${list.shortDes}</p>
 			<p>${list.shortDetails}</p>
 			<button type="button" onclick="Shop.addItemToCart(${list.id}, 1)" class="btn btn-primary">Add to cart</button>

@@ -48,7 +48,7 @@ public class CartController{
 	private NguoiDungService nguoiDungService;
 	
 	@RequestMapping(value = { "/cart/check-out" }, method = RequestMethod.GET)
-	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+	public String checkOut(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
 		HttpSession httpSession = request.getSession();
 		SaleOrder saleOrder = new SaleOrder();
@@ -64,11 +64,17 @@ public class CartController{
 				saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
 				saleOrderProducts.setQuantity(item.getQuantity());
 				saleOrder.addSaleOrderProducts(saleOrderProducts);
+				
+				
+				
 				for (int i = 1; i <= item.getQuantity(); i++) {
-					sum = sum.add(saleOrderProducts.getProduct().getPrice());
+					sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 				}
+				Locale locale = new Locale("vi", "VN");
+				NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+				sumVN = fmt.format(sum);
 			}
-			model.addAttribute("TOTAL", sum);
+			model.addAttribute("TOTAL", sumVN);
 			return "client/checkout";
 		}		
 	}
@@ -76,12 +82,14 @@ public class CartController{
 	@RequestMapping(value = "/cart/check-out/update", method = RequestMethod.POST)
 	public String update(@RequestParam("quantities") int[] quantities, HttpSession httpSession) {
 		Cart cart = null;
+		
 		if(httpSession.getAttribute("GIO_HANG") != null) {
 			cart = (Cart) httpSession.getAttribute("GIO_HANG");
 			List<CartItem> cartItems = cart.getCartItems();
 			for(int i = 0; i < cartItems.size(); i++) {
 				cartItems.get(i).setQuantity(quantities[i]);
 			}
+			
 			httpSession.setAttribute("GIO_HANG", cart);
 		}
 
@@ -138,10 +146,10 @@ public class CartController{
 			}
 		}
 		if (!isExists) {
-
+		
 			Product product = productRepo.getOne(data.getProductId());
 			data.setProductName(product.getTitle());
-			data.setUnitPrice(product.getPrice());
+			data.setUnitPrice(product.getPromotionalPrice());
 			cart.getCartItems().add(data);
 		}
 		for (CartItem item : cartItems) {
