@@ -36,18 +36,21 @@ public class BookController {
     @RequestMapping(value = "/listBook")
     public String listBook(Model model, @Param("keyword") String keyword, final HttpServletRequest request){
         ProductSearch productSearch = new ProductSearch();
+
+        String price = request.getParameter("price");
         keyword = request.getParameter("keyword");
         productSearch.setStatusProduct(1);
         if (keyword != null) {
             productSearch.setKeyword(keyword);
         }
-//        List<Product> product = productService.search(productSearch);
+        if (price != null) {
+            productSearch.setTypePrice(price);
+        }
+
         productSearch.parseRequest(request);
 
-//        List<Product> productList = productService.findAllProduct();
         List<Category> categoryList = categoryService.findAllCategory();
         model.addAttribute("listProduct", productService.search(productSearch));
-//        model.addAttribute("listProduct", productList);
         model.addAttribute("listCategory", categoryList);
         return "client/listBook";
     }

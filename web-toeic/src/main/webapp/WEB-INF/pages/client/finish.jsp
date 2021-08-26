@@ -27,79 +27,78 @@
 
 <!--/End Headter-->
 
-<div class="container" id="resultsearch">
+<div class="container" id="resultsearch" style="padding: 5% 0">
     <input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
     <input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
     <div class="row">
         <div class="span6">
-            <h3>Billing Detail</h3>
-            <div class="form-group form-group--inline">
-                <label for="exampleInputEmail1">Name<span>*</span>
-                </label>${user.fullName }
-            </div>
-            <div class="form-group form-group--inline">
-                <label for="exampleInputEmail1">Phone<span>*</span>
-                </label>${user.phone }
-            </div>
-            <div class="form-group form-group--inline">
-                <label for="exampleInputPassword1">Email Address<span>*</span>
-                </label>${user.email }
-            </div>
-            <div class="form-group form-group--inline">
-                <label for="exampleInputPassword1">Address<span>*</span>
-                </label>${user.address }
-            </div>
+            <h3>Chi Tiết Người Nhận</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Họ Tên Người Nhận: <span style="color: blue">${user.fullName }</span></td>
+                    </tr>
+                    <tr>
+                        <td>Số Điện Thoại: <span style="color: blue">${user.phone }</span></td>
+                    </tr>
+                    <tr>
+                        <td>Email: <span style="color: blue">${user.email }</span></td>
+                    </tr>
+                    <tr>
+                        <td>Địa Chỉ: <span style="color: blue">${user.address }</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="span6">
-            <h3>Your Order</h3>
+            <h3>Đơn Hàng Của Bạn</h3>
             <table class="table ps-checkout__products">
                 <thead>
                 <tr>
-                    <th class="text-uppercase">Product</th>
-                    <th class="text-uppercase">Total</th>
+                    <th class="text-uppercase">Sản Phẩm</th>
+                    <th class="text-uppercase">Số Lượng</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${cartItems}" var="item">
                     <tr>
-                        <td>${item.productName } $ x ${item.quantity }</td>
-                        <td>${item.unitPrice*item.quantity }</td>
+                        <td>${item.productName }</td>
+                        <td>${item.quantity }</td>
                     </tr>
                 </c:forEach>
                 <tr>
-                    <td  style="color: yellow">Order Total</td>
-                    <td  style="color: yellow">${sumVN }</td>
+                    <td  style="color: blue">Tổng Giá</td>
+                    <td  style="color: blue">${sumVN }</td>
                 </tr>
                 </tbody>
             </table>
-
-            <h3>Payment Method</h3>
-            <div class="form-group cheque">
-                <div class="" style="color: white">
-                    <label>Cheque Payment</label>
-                    <form action="${base }/cart/thankyou" method="post">
-                        <button type="submit" class="ps-btn ps-btn--fullwidth">CHEQUE PAYMENT<i class="ps-icon-next"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="form-group paypal">
-                <div class="ps-radio--inline"  style="color: white">
-                    <label>Paypal</label>
-                </div>
-                <form action="${base }/paypal" method="post">
-                    <button type="submit" class="ps-btn ps-btn--fullwidth">PAYPAL<i class="ps-icon-next"></i></button>
-                </form>
-            </div>
-            <div class="form-group qr">
-                <div class="ps-radio--inline"  style="color: white">
-                    <label>QR Payment</label>
-                </div>
-                <form action="${base }/qrpayment" method="post">
-                    <button type="submit" class="ps-btn ps-btn--fullwidth">QR Payment<i class="ps-icon-next"></i></button>
-                </form>
-            </div>
         </div>
     </div>
+    <h3 style="color: blue">Chọn Phương Thức Thanh Toán.</h3>
+    <table class="table" style="border-top: 5px solid deepskyblue">
+        <tbody>
+        <tr>
+            <td style="text-align: center">
+                <form action="${base }/cart/thankyou" method="post">
+                    <button type="submit" class="btn btn-primary" style="width: 50%; height: 4rem; font-size: 20px; font-weight: bold;">
+                        Thanh Toán Sau.</button>
+                </form>
+            </td>
+            <td style="text-align: center">
+                <form action="${base }/paypal" method="post">
+                    <button type="submit" class="btn btn-primary" style="width: 50%; height: 4rem; font-size: 20px; font-weight: bold;">
+                        Thanh Toán PAYPAL.</button>
+                </form>
+            </td>
+            <td style="text-align: center">
+                <form action="${base }/qrpayment" method="post">
+                    <button type="submit" class="btn btn-primary" style="width: 50%; height: 4rem; font-size: 20px; font-weight: bold;">
+                        Thanh Toán QR.</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <!--Footer==========================-->
 <jsp:include page="./include/footerHome.jsp"></jsp:include>

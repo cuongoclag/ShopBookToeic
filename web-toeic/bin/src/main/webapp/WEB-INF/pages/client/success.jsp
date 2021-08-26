@@ -43,49 +43,63 @@
 	<div class="container" id="resultsearch">
 		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-		
-		<form class="ps-checkout__form" action="/pay" method="post">
-            <div class="row">
-                  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+		<div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="ps-checkout__billing">
-                      <h3>Payment</h3>
-                      <label>Accepted Cards</label>
-                      <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:navy;"></i>
-                        <i class="fa fa-cc-amex" style="color:blue;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                        <i class="fa fa-cc-discover" style="color:orange;"></i>
-                      </div>
+				      <h3 style="color: red">The customer has paid via Paypal the amount ${sum } $</h3>
+                      <h3>Order confirmation</h3>
                             <div class="form-group form-group--inline">
-                              <label for="price">Total<span>*</span>
+                              <label for="exampleInputEmail1">Name<span>*</span>
                               </label>
-                              <input class="form-control" type="text" id="price" name="price" value="${sum}">
+                              ${customerName }     
                             </div>
                             <div class="form-group form-group--inline">
-                              <label for="currency">Currency<span>*</span>
+                              <label for="exampleInputEmail1">Phone<span>*</span>
                               </label>
-                              <input class="form-control" type="text" id="currency" name="currency" value="USD">
+                              ${customerPhone }
                             </div>
                             <div class="form-group form-group--inline">
-                              <label for="method">Payment Method<span>*</span>
+                              <label for="exampleInputPassword1">Email Address<span>*</span>
                               </label>
-                              <input class="form-control" type="text" id="method" name="method" value="PayPal"> 
+                              ${customerAddress }
                             </div>
                             <div class="form-group form-group--inline">
-                              <label for="intent">Intent<span>*</span>
+                              <label for="exampleInputPassword1">Address<span>*</span>
                               </label>
-                              <input class="form-control" type="text" id="intent" name="intent" value="sale">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="description">Payment Description<span>*</span>
-                              </label>
-                              <input class="form-control" type="text" id="description" name="description" value="Payment Description">
+                              ${customerEmail }
                             </div>
                     </div>
                   </div>
-                  <button class="ps-btn ps-btn--fullwidth">Continue to checkout<i class="ps-icon-next"></i></button>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">Name</th>
+					      <th scope="col">Price</th>
+					      <th scope="col">Quantity</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <c:forEach items="${cartItems}" var="item">
+					    <tr>
+					      	<td>${item.productName }</td>
+							<td>${item.unitPrice }</td>
+							<td>${item.quantity }</td>
+					    </tr>
+					  </c:forEach>
+					  </tbody>
+					  <tbody>
+						<tr>
+							<td>Total:</td>
+							<td>${sum } $</td>
+						</tr>
+					  </tbody>
+					</table>
+                  </div>
+                  <form action="${base }/cart/thankyouPayPal" method="post">
+					 <button type="submit" class="btn btn-primary">Confirm</button>
+				  </form>
             </div>
-          </form>
 		
 	</div>
 	<!--Footer==========================-->

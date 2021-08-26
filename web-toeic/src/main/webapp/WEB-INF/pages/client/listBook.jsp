@@ -85,9 +85,7 @@
 ==========================-->
 
 	<jsp:include page="template/header.jsp"></jsp:include>
-
 	<!--/End Headter-->
-
 	<div class="container" id="resultsearchBook" style="display: flex; flex-wrap: wrap; padding: 5rem">
 		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
@@ -97,19 +95,23 @@
 					<h3>Không tìm thấy dữ liệu</h3>
 				</c:if>
 				<c:forEach items="${listProduct}" var="list">
-					<div class="card" style="width: 20%; margin: 1%">
-						<a href="<%=request.getContextPath()%>/bookDetails/${list.id }"><img style="height: 15rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap"></a>
+					<div class="card" style="width: 30%; margin: 1%">
+						<a href="<%=request.getContextPath()%>/bookDetails/${list.id }"><img style="height: 20rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap"></a>
 						<div class="card-body">
-							<h5 class="card-title" style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis;">
+							<h5 class="card-title" style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis; font-size: 20px">
 								<a href="<%=request.getContextPath()%>/bookDetails/${list.id }">${list.title}</a>
 							</h5>
 							<c:if test="${list.price == list.promotionalPrice}">
-								<p class="card-text">${list.priceVN}</p>
+								<p class="card-text" style="font-size: 25px">${list.priceVN}</p>
 							</c:if>
+
 							<c:if test="${list.price > list.promotionalPrice}">
-								<p class="card-text" style="text-decoration: line-through;">${list.priceVN}</p>
-								<p class="card-text">${list.promotionalPriceVN}</p>
+
+									<p class="card-text" style="font-size: 25px">${list.promotionalPriceVN}</p>
+									<p class="card-text" style="text-decoration: line-through; font-size: 20px">${list.priceVN}</p>
+
 							</c:if>
+
 							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Detail</a>
 						</div>
 					</div>
@@ -141,6 +143,14 @@
 						<input class="form-control" name="keyword" th:value="${keyword }" type="text" placeholder="Tìm Kiếm Sách...">
 						<button class="btn btn-primary" type="submit" value="Search">Search</button>
 					</form>
+					<h3>Lọc Theo Giá</h3>
+					<div class="ps-widget__content">
+						<a href="${base }/listBook/?price=1" onclick=""> < 200.000 VNĐ</a> <br><br>
+						<a href="${base }/listBook/?price=2" onclick="">200.000 VNĐ - 400.000 VNĐ</a><br><br>
+						<a href="${base }/listBook/?price=3" onclick="">400.000 VNĐ - 600.000 VNĐ</a><br><br>
+						<a href="${base }/listBook/?price=4" onclick="">600.000 VNĐ - 800.000 VNĐ</a><br><br>
+						<a href="${base }/listBook/?price=5" onclick=""> > 800.000 VNĐ</a>
+					</div>
 					<h3>DANH MỤC</h3>
 					<ul class="nav nav-list">
 						<li>

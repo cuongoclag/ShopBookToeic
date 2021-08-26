@@ -43,8 +43,7 @@ h3 {
 			<div class="row">
 				<!--LOGO-->
 				<div class="span3">
-					<a class="brand" href=""><img
-						src="/resources/file/images/logo.png" style="height : 5rem"/></a>
+					<a class="brand" href="/"><img src="/resources/file/images/logo.png" style="height : 5rem"/></a>
 				</div>
 				<!-- /LOGO -->
 
@@ -61,9 +60,11 @@ h3 {
 										<li class="active"><a href="/">Trang chủ</a></li>
 										<li class="dropdown"><a href="" class="dropdown-toggle"
 																data-toggle="dropdown">Shop<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Category</a></li>
-											</ul>
+										<c:forEach var="category" items="${categories }">
+											<li class="menu-item">
+												<a href="${base }/product/category/${category.seo}">${category.name }
+												</a></li>
+										</c:forEach>
 										</li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown">Luyện Tập <b class="caret"></b></a>
@@ -84,9 +85,11 @@ h3 {
 										<li class="active"><a href="/">Trang chủ</a></li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown">Shop<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Category</a></li>
-											</ul>
+											<c:forEach var="category" items="${categories }">
+												<li class="menu-item">
+													<a href="${base }/product/category/${category.seo}">${category.name }
+													</a></li>
+											</c:forEach>
 										</li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown">Luyện Tập <b class="caret"></b></a>

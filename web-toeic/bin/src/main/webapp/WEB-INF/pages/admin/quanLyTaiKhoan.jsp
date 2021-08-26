@@ -45,17 +45,6 @@
 					<th>Vai trò</th>
 					<th></th>
 				</tr>
-				<c:forEach items="${listAll}" var="list">
-					<tr>
-						<th>${list.id}</th>
-						<th>${list.fullName}</th>
-						<th>${list.email}</th>
-						<th>${list.phone}</th>
-						<th>${list.address}</th>
-						<th>${list.roles}</th>
-						<th></th>
-					</tr>
-				</c:forEach>
 			</thead>
 			<tbody>
 			</tbody>

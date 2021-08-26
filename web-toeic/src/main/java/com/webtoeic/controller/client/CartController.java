@@ -47,7 +47,7 @@ public class CartController{
 	@Autowired
 	private NguoiDungService nguoiDungService;
 	
-	private static final String QR_CODE_IMAGE_PATH = "/resources/file/images/QRCode.png";
+	private static final String QR_CODE_IMAGE_PATH = "E:\\ShopBookToeic\\web-toeic\\src\\main\\webapp\\resources\\file\\images\\QRCode.png";
 	
 	@RequestMapping(value = { "/cart/check-out" }, method = RequestMethod.GET)
 	public String checkOut(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
@@ -269,6 +269,7 @@ public class CartController{
 		customerEmail = currentUser.getEmail();
 		userId = currentUser.getId();
 		saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, userId, httpSession);
+
 		return "client/thankyou";
 	}
 	
@@ -389,7 +390,7 @@ public class CartController{
 		model.addAttribute("sumVN", sumVN);
 		model.addAttribute("sum", sum);
 		QRCodeGenerator.generateQRCodeImage("Thanh toán thành công ví QRCode tổng giá tiền là "+ sumVN, 350, 350, QR_CODE_IMAGE_PATH);
-        model.addAttribute("qrcode","http://localhost:8080/files/QRcode.png");
+        model.addAttribute("qrcode","http://localhost:8080/resources/file/images/QRCode.png");
 		//saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, httpSession);
 		return "client/qrpayment";
 	}

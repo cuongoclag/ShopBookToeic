@@ -63,12 +63,12 @@
                 <c:forEach items="${cartItems}" var="item">
                     <tr>
                         <td>${item.productName } $ x ${item.quantity }</td>
-                        <td>${item.unitPrice*item.quantity } $</td>
+                        <td>${item.unitPrice*item.quantity }</td>
                     </tr>
                 </c:forEach>
                 <tr>
                     <td  style="color: yellow">Order Total</td>
-                    <td  style="color: yellow">${sum } $</td>
+                    <td  style="color: yellow">${sumVN }</td>
                 </tr>
                 </tbody>
             </table>
@@ -88,6 +88,14 @@
                 </div>
                 <form action="${base }/paypal" method="post">
                     <button type="submit" class="ps-btn ps-btn--fullwidth">PAYPAL<i class="ps-icon-next"></i></button>
+                </form>
+            </div>
+            <div class="form-group qr">
+                <div class="ps-radio--inline"  style="color: white">
+                    <label>QR Payment</label>
+                </div>
+                <form action="${base }/qrpayment" method="post">
+                    <button type="submit" class="ps-btn ps-btn--fullwidth">QR Payment<i class="ps-icon-next"></i></button>
                 </form>
             </div>
         </div>

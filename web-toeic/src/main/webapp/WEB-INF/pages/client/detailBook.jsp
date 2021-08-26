@@ -33,7 +33,8 @@
 		<c:forEach items="${list}" var="list">
 	<div class="row" style="display: flex;">
 		<div span5 style="margin : 2%">
-			<img alt="" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" style="height: 20rem; width: 50rem"/>
+			<img alt="" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}"
+				 style="height: 30rem; width: 50rem"/>
 		</div>
 		<div span5 style="margin : 2%">
 			<strong>${list.title}</strong>

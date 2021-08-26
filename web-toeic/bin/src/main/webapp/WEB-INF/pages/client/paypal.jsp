@@ -59,7 +59,7 @@
                             <div class="form-group form-group--inline">
                               <label for="price">Total<span>*</span>
                               </label>
-                              <input class="form-control" type="text" id="price" name="price" value="${sum}">
+                              <input class="form-control" type="text" id="price" name="price" value="${sum }">
                             </div>
                             <div class="form-group form-group--inline">
                               <label for="currency">Currency<span>*</span>

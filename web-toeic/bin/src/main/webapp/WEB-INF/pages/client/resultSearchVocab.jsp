@@ -15,16 +15,16 @@
 
 				<div class="span3">
 					<img class="imageVocab"
-						src="${pageContext.request.contextPath}/resources/file/images/vocab/${list.anhbaituvung}" />
+						src="${pageContext.request.contextPath}/resources/file/images/vocab/${list.vocabularyImage}" />
 				</div>
 				<div class="span1"></div>
 
 				<div class="span5">
 					<div class="content-heading">
-						<h4>${list.tenbaituvung}</h4>
+						<h4>${list.vocabularyTitle}</h4>
 					</div>
 					<div>
-						<a href=" <c:url value="/detailVocab?idVocab=${list.baitaptuvungid}"/>  "
+						<a href=" <c:url value="/detailVocab?idVocab=${list.id}"/>  "
 							class="btn btn-primary">Chi tiết</a>
 					</div>
 

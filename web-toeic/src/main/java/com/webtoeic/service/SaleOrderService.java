@@ -99,7 +99,6 @@ public class SaleOrderService {
             throw e;
         }
     }
-
     // gửi email khi đặt hàng xong
     @Transactional(rollbackOn = Exception.class)
     public void sendEmail(SaleOrder saleOrder, List<CartItem> cartItems)
@@ -127,7 +126,7 @@ public class SaleOrderService {
         mailContent += "<p>Shop ABC</p>";
 
         Properties props = new Properties();
-        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.starttls.enable","true");
 
         MimeMessage message = mailSender.createMimeMessage();
 
@@ -136,6 +135,7 @@ public class SaleOrderService {
         helper.setTo(saleOrder.getCustomerEmail());
         helper.setSubject(subject);
         helper.setText(mailContent, true);
+
         mailSender.send(message);
     }
 
@@ -169,7 +169,7 @@ public class SaleOrderService {
         saleOrder.setCreatedDate(java.time.LocalDateTime.now());
         saleOrder.setTotal(sum);
         saleOrderRepo.save(saleOrder);
-//        sendEmail(saleOrder, cartItems);
+        sendEmail(saleOrder, cartItems);
         httpSession.setAttribute("SL_SP_GIO_HANG", 0);
         httpSession.setAttribute("GIO_HANG", null);
     }

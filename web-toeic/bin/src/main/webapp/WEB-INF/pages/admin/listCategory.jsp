@@ -51,7 +51,7 @@
                                 <td>
                                     <c:choose>
                                         <c:when test="${category.status =='true'}">
-                                                            <span
+                                               <span
                                                                     style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Active&nbsp;</span>
                                         </c:when>
                                         <c:otherwise>
@@ -62,10 +62,10 @@
                                 </td>
                                 <td>
                                     <a href="<c:url value='/admin/edit-category/${category.seo}' />"
-                                       class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                       class="btn btn-primary btn-sm">Chỉnh Sửa</a>
                                     <button type="button" id="delete" name=""
                                             onclick="confirmDelete('${category.seo }')"
-                                            class="btn btn-danger btn-sm"><i class="fas fa-eye-slash"></i></button>
+                                            class="btn btn-danger btn-sm">Ẩn</button>
                                 </td>
                             </tr>
                         </c:forEach>

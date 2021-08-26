@@ -51,7 +51,7 @@
 			      <th scope="col">PRODUCTS</th>
 			      <th scope="col">PRICE</th>
 			      <th scope="col">QUANTITY</th>
-			      <th scope="col">TOTAL</th>
+<%--			      <th scope="col">TOTAL</th>--%>
 			      <th scope="col"></th>
 			    </tr>
 			  </thead>
@@ -62,9 +62,9 @@
 			      <td>${item.unitPriceVN }</td>
 			      <td><input class="form-control" type="number" min="1" max="100" name="quantities" value="${item.quantity }" onblur="this.form.submit()" /></td>
 			      
-			      <td>
-			      ${item.unitPrice*item.quantity}
-			      </td>
+<%--			      <td>--%>
+<%--			      ${item.unitPrice*item.quantity}--%>
+<%--			      </td>--%>
 			      <td><i class="far fa-times-circle" onclick="confirmDelete('${item.productId}')"></i></td>
 			    </tr>
 			  </c:forEach>

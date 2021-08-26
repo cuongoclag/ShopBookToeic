@@ -4,7 +4,7 @@ $(document).ready(function() {
 	ajaxGet(1);	
 	
 	function ajaxGet(page){		
-		var data = { vaiTro :$("#vaiTro").val()};
+		var data = { roles :$("#roles").val()};
 		$.ajax({
 			type: "GET",	
 			data: data,
@@ -14,11 +14,11 @@ $(document).ready(function() {
 				$.each(result.content, function(i, taiKhoan){
 					var taiKhoanRow = '<tr>' +
 					                  '<td>' + taiKhoan.id+ '</td>' +
-					                  '<td>' + taiKhoan.hoTen + '</td>' +
+					                  '<td>' + taiKhoan.fullName + '</td>' +
 					                  '<td>' + taiKhoan.email + '</td>' +
-					                  '<td>' + taiKhoan.soDienThoai + '</td>' +
-					                  '<td>' + taiKhoan.diaChi + '</td>'+ 
-					                  '<td>' + taiKhoan.vaiTro + '</td>';				  
+					                  '<td>' + taiKhoan.phone + '</td>' +
+					                  '<td>' + taiKhoan.address + '</td>'+ 
+					                  '<td>' + taiKhoan.roles + '</td>';
 					  taiKhoanRow +='</td>' +
 					                  '<td width="0%">'+'<input type="hidden" id="idTaiKhoan" value=' + taiKhoan.id + '>'+ '</td>'+
 //					                  '<td><button class="btn btn-primary btnCapNhat" >Cập nhật</button></td>' + 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 	};
 	
 	// event khi click vào dropdown chọn danh mục thêm sản phẩm
-	$('#vaiTro').mouseup(function() {
+	$('#roles').mouseup(function() {
 		var open = $(this).data("isopen");
 		if (open) {
 			resetData();

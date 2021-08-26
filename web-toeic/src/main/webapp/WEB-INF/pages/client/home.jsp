@@ -60,8 +60,6 @@
 	<div class="container" id="resultsearch">
 	<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 	<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-		
-		
 		<div class="row">
 			<div class="span12 cnt-title">
 				<h1>Thư viện sách phong phú</h1>
@@ -72,12 +70,11 @@
 								background-size: cover; 
 								position: relative;
 								height : 35rem;">
-				<a href="/listBook" style="position: absolute;
-								    top: 40%;
-								    right: 25%;
-								    font-size: 3rem;
-								    text-decoration: underline;">
-								  	Mua Sách &rarr;</a>
+				<div style="text-align: center;background-image:linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);  width: 19rem;height: 5rem;position: absolute;top: 30%;right: 23%;line-height: 5rem;">
+					<a href="/listBook" style=" font-size: 3rem; color: white">
+						Mua Sách &rarr;</a>
+				</div>
+
 			</div>
 		</div>
 
