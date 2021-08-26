@@ -100,7 +100,9 @@
 					<div class="card" style="width: 20%; margin: 1%">
 						<a href="<%=request.getContextPath()%>/bookDetails/${list.id }"><img style="height: 15rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap"></a>
 						<div class="card-body">
-							<h5 class="card-title"><a href="<%=request.getContextPath()%>/bookDetails/${list.id }">${list.title}</a></h5>
+							<h5 class="card-title" style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis;">
+								<a href="<%=request.getContextPath()%>/bookDetails/${list.id }">${list.title}</a>
+							</h5>
 							<c:if test="${list.price == list.promotionalPrice}">
 								<p class="card-text">${list.priceVN}</p>
 							</c:if>
@@ -116,7 +118,9 @@
 					<div class="card" style="width: 20%; margin: 1%">
 						<a href="<%=request.getContextPath()%>/bookDetails/${list.id }"><img style="height: 15rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap"></a>
 						<div class="card-body">
-							<h5 class="card-title"><a href="<%=request.getContextPath()%>/bookDetails/${list.id }">${list.title}</a></h5>
+							<h5 class="card-title" style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis;">
+								<a href="<%=request.getContextPath()%>/bookDetails/${list.id }">${list.title}</a>
+							</h5>
 							
 							<c:if test="${list.price == list.promotionalPrice}">
 								<p class="card-text">${list.priceVN}</p>

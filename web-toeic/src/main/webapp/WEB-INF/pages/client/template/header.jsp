@@ -58,51 +58,13 @@ h3 {
 								<ul class="nav">
 									<c:if test="${pageContext.request.userPrincipal.name == null}">
 										<li class="active"><a href="/">Trang chủ</a></li>
-										<li class="dropdown"><a href="" class="dropdown-toggle"
-																data-toggle="dropdown">Shop<b class="caret"></b></a>
-										<c:forEach var="category" items="${categories }">
-											<li class="menu-item">
-												<a href="${base }/product/category/${category.seo}">${category.name }
-												</a></li>
-										</c:forEach>
-										</li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown">Luyện Tập <b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="/listening/">Luyện bài nghe</a></li>
-												<li><a href="/reading/">Luyện bài đọc</a></li>
-												<li><a href="/listGrammar">Ngữ pháp</a></li>
-												<li><a href="<%=request.getContextPath()%>/listVocab">Từ
-														vựng</a></li>
-											</ul>
 										</li>
 										<li><a href="<%=request.getContextPath()%>/signin">Đăng nhập</a></li>
-										<li><a href="<%=request.getContextPath()%>/register">Đăng ký</a></li>
 										<li><a href="<%=request.getContextPath()%>/listBook">Shop</a></li>
 										<li><a href="/cart/check-out"><i class="fas fa-shopping-cart" style="font-size: 1.5rem;"></i></a></li>
 									</c:if>
 									<c:if test="${pageContext.request.userPrincipal.name != null}">
 										<li class="active"><a href="/">Trang chủ</a></li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown">Shop<b class="caret"></b></a>
-											<c:forEach var="category" items="${categories }">
-												<li class="menu-item">
-													<a href="${base }/product/category/${category.seo}">${category.name }
-													</a></li>
-											</c:forEach>
-										</li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown">Luyện Tập <b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="/listening/">Luyện bài nghe</a></li>
-												<li><a href="/reading/">Luyện bài đọc</a></li>
-												<li><a href="/listGrammar">Ngữ pháp</a></li>
-												<li><a href="<%=request.getContextPath()%>/listVocab">Từ
-														vựng</a></li>
-												<li><a href="<%=request.getContextPath()%>/listExam">Thi
-														thử</a></li>
-											</ul>
-										</li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown">${nguoiDung.fullName}<b class="caret"></b></a>
 											<ul class="dropdown-menu">

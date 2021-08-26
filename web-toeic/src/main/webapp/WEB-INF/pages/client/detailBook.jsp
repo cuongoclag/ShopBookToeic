@@ -45,10 +45,11 @@
 				<p class="card-text">${list.promotionalPriceVN}</p>
 			</c:if>
 			<p>${list.shortDes}</p>
-			<p>${list.shortDetails}</p>
 			<button type="button" onclick="Shop.addItemToCart(${list.id}, 1)" class="btn btn-primary">Add to cart</button>
 		</div>
 	</div>
+	<h3>REVIEWS :</h3>
+	<p>${list.shortDetails}</p>
 		</c:forEach>
 	</div>
 	<!--Footer==========================-->

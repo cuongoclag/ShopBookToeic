@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Laptop Shop - Đăng ký</title>
+<title>Đăng ký</title>
 <link rel="stylesheet" href="<c:url value='/css/login.css' />">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,8 +25,7 @@
 	<div class="login-page">
 		<div class="form">
 			<form:form method="POST" action='register' modelAttribute="newUser">
-				<h2 class="form-signin-heading" style="text-align: center">Web Toeic
-					- Đăng ký tài khoản</h2>
+				<h2 class="form-signin-heading" style="text-align: center">Đăng ký tài khoản</h2>
 				<hr />
 				<div class="form-group">
 					<form:input type="email" path="email" class="form-control"
@@ -66,7 +65,7 @@
 				</div>
 				<input id="submit" type="submit" value="ĐĂNG KÝ">
 				<p class="message" style="font-size: 18; padding-top: 10px"> Đã có tài khoản? <a
-						href="<c:url value='/login'/> ">Đăng nhập</a></p>
+						href="<c:url value='/signin'/> ">Đăng nhập</a></p>
 			</form:form>
 		</div>
 	</div>

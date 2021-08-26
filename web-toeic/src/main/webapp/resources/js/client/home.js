@@ -84,7 +84,7 @@ $(document).ready(function() {
 		var name = $('#nameUser').val();
 		if(name === ''){
 		if(confirm("Bạn phải đăng nhập để thực hiện chức năng này")){
-			var url = baseUrl+"/login";
+			var url = baseUrl+"/signin";
 			window.location.href = url;
 		}
 			}

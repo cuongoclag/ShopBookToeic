@@ -60,112 +60,24 @@
 	<div class="container" id="resultsearch">
 	<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 	<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-		<!--Carousel
-  ==================================================-->
-		<!-- slide 1 là để cứng. 2 slide còn lại dùng for each. load từ database lên -->
-		<div id="myCarousel" class="carousel slide">
-			<div class="carousel-inner">
-
-				<div class="active item">
-					<div class="container">
-						<div class="row">
-
-							<div class="span6">
-								<div class="carousel-caption">
-									<h1>Đào tạo chất lượng</h1>
-									<p class="lead">Chúng tôi cung cấp cho các bạn những kiến
-										thức tốt nhất.</p>
-									<c:if test="${pageContext.request.userPrincipal.name == null}">
-										<a class="btn btn-large btn-primary openModalFunction" href="#"
-											 id="modal1">Tham gia</a>
-									</c:if>
-									<c:if test="${pageContext.request.userPrincipal.name != null}">
-										<a class="btn btn-large btn-primary openModalFunction" href="#"
-											 id="modal1">Xem ngay</a>
-									</c:if>
-								</div>
-							</div>
-
-							<div class="span6">
-								<img
-									src="${pageContext.request.contextPath}/resources/file/images/slide/aaa.jpg"
-									alt="img not found aab" />
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<c:forEach items="${listslidebanner}" var="list">
-					<div class="item">
-						<div class="container">
-							<div class="row">
-
-								<div class="span6">
-									<div class="carousel-caption">
-										<h1>${list.getSlidename()}</h1>
-										<p class="lead">${list.getSlidecontent()}</p>
-
-										<c:if test="${pageContext.request.userPrincipal.name == null}">
-											
-											<c:if test="${list.getSlideimage() == 'slide2'}">
-													<a class="btn btn-large btn-primary openModalFunction" id="modal2">Tham gia</a>
-											</c:if>
-											<c:if test="${list.getSlideimage() == 'slide3'}">
-													<a class="btn btn-large btn-primary doExam ">Tham gia</a>
-											</c:if>
-											
-										</c:if>
-										<c:if test="${pageContext.request.userPrincipal.name != null}">
-
-											<c:choose>
-												<c:when test="${list.getSlideimage() == 'slide2'}">
-													<a class="btn btn-large btn-primary openModalFunction"  id="modal2">Xem ngay</a>
-												</c:when>
-
-												<c:otherwise>
-													<a class="btn btn-large btn-primary  doExam">Xem ngay</a>
-												</c:otherwise>
-											</c:choose>
-
-										</c:if>
-									</div>
-
-								</div>
-
-								<div class="span6">
-									<img
-										src="${pageContext.request.contextPath}/resources/file/images/slide/${list.getSlideimage()}.jpg">
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-
-				</c:forEach>
-
-			</div>
-			<!-- Carousel nav -->
-			<a class="carousel-control left " href="#myCarousel"
-				data-slide="prev"><i class="icon-chevron-left"></i></a> <a
-				class="carousel-control right" href="#myCarousel" data-slide="next"><i
-				class="icon-chevron-right"></i></a>
-			<!-- /.Carousel nav -->
-
-		</div>
-		<!-- /Carousel -->
+		
 		
 		<div class="row">
 			<div class="span12 cnt-title">
 				<h1>Thư viện sách phong phú</h1>
 				<span>--- Chọn sách phù hợp với bản thân ---</span>
 			</div>
-			<div class="span6" style="text-align: center;">
-				<img
-					src="${pageContext.request.contextPath}/resources/file/images/shop.jpg" style="width: 15rem" />
-			</div>
-			<div class="span6" style="line-height: 10;">
-				<a href="/listBook">Mua Sách &rarr;</a>
+			<div class="span12" style="background-image : url(${pageContext.request.contextPath}/resources/file/images/banner1.png);
+								background-repeat: no-repeat; 
+								background-size: cover; 
+								position: relative;
+								height : 35rem;">
+				<a href="/listBook" style="position: absolute;
+								    top: 40%;
+								    right: 25%;
+								    font-size: 3rem;
+								    text-decoration: underline;">
+								  	Mua Sách &rarr;</a>
 			</div>
 		</div>
 

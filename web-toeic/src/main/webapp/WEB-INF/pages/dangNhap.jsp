@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Webtoeic - Đăng nhập</title>
+<title>Đăng nhập</title>
 <link rel="stylesheet" href="<c:url value='/css/login.css'/>">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,8 +25,7 @@
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 	<div class="login-page">
 		<div class="form">
-			<h2 class="form-signin-heading" style="text-align: center">WebToeic -
-				Đăng nhập</h2>
+			<h2 class="form-signin-heading" style="text-align: center">Đăng nhập</h2>
 			<hr>
 			<c:if test="${param.error != null}">
 				<div class="alert alert-danger">
@@ -46,22 +45,18 @@
 
 			<form class="login-form" method="POST" action="${contextPath}/login" onsubmit="return validateForm()">
 
-				<input type="text" placeholder="Email" name="email" required="required"
-					style="padding: 10px;" /> <input type="password" placeholder="Mật khẩu"
-					name="password" required="required" style="padding: 10px;" /> <input
-					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> <label
-					style="padding-right: 130px; font-size: 15px;" id="label"> <input
-					type="checkbox" class="form-check-input" id="" name="remember-me">
+				<input type="text" placeholder="Email" name="email" required="required" style="padding: 10px;" /> 
+				<input type="password" placeholder="Mật khẩu"
+					name="password" required="required" style="padding: 10px;" /> 
+				<input
+					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+				<label
+					style=" width: 100%; font-size: 15px; text-align: center;" id="label"> 
+				<input
+					type="checkbox" class="form-check-input" id="" name="remember-me" />
 					Duy trì đăng nhập
-				<div class="g-recaptcha" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
+				<div class="g-recaptcha" style="margin: 0 15%;" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
 				</label> <input id="submit" type="submit" value="ĐĂNG NHẬP">
-				<section class="section">
-					<div class="container">
-						<a class="btn btn-primary" style="margin-top: 10px;"
-							href="/oauth2/authorization/facebook"> <i class="fa fa-facebook-square"></i> Đăng nhập với Facebook
-						</a>
-					</div>
-				</section>
 				<p class="message" style="font-size: 18; padding-top: 10px">
 					Chưa có tài khoản? <a href="<c:url value='/register'/> ">Tạo tài khoản
 						mới</a>

@@ -40,7 +40,7 @@
 
 	<!--/End Headter-->
 
-	<div class="container" id="resultsearch">
+	<div class="container" id="resultsearch" style="padding: 5rem 0">
 		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 		<div>
@@ -75,7 +75,7 @@
 		<div style="text-align: end">
 			<strong>TOTAL PRICE : ${TOTAL}</strong>
 			<form action="${base }/cart/finish" method="post">
-				<button type="submit">Process to checkout <i class="fas fa-arrow-right"></i></button>
+				<button type="submit" class="btn btn-primary" style="margin: 2% 0">Process to checkout <i class="fas fa-arrow-right"></i></button>
 			</form>
 		</div>
 		
