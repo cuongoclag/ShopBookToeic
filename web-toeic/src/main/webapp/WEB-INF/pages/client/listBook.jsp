@@ -143,14 +143,6 @@
 						<input class="form-control" name="keyword" th:value="${keyword }" type="text" placeholder="Tìm Kiếm Sách...">
 						<button class="btn btn-primary" type="submit" value="Search">Search</button>
 					</form>
-					<h3>Lọc Theo Giá</h3>
-					<div class="ps-widget__content">
-						<a href="${base }/listBook/?price=1" onclick=""> < 200.000 VNĐ</a> <br><br>
-						<a href="${base }/listBook/?price=2" onclick="">200.000 VNĐ - 400.000 VNĐ</a><br><br>
-						<a href="${base }/listBook/?price=3" onclick="">400.000 VNĐ - 600.000 VNĐ</a><br><br>
-						<a href="${base }/listBook/?price=4" onclick="">600.000 VNĐ - 800.000 VNĐ</a><br><br>
-						<a href="${base }/listBook/?price=5" onclick=""> > 800.000 VNĐ</a>
-					</div>
 					<h3>DANH MỤC</h3>
 					<ul class="nav nav-list">
 						<li>
@@ -162,6 +154,14 @@
 								</a></li>
 						</c:forEach>
 					</ul>
+					<h3>Lọc Theo Giá</h3>
+					<div class="ps-widget__content">
+						<a href="${base }/listBook/?price=1" onclick=""> < 200.000 VNĐ</a> <br><br>
+						<a href="${base }/listBook/?price=2" onclick="">200.000 VNĐ - 400.000 VNĐ</a><br><br>
+						<a href="${base }/listBook/?price=3" onclick="">400.000 VNĐ - 600.000 VNĐ</a><br><br>
+						<a href="${base }/listBook/?price=4" onclick="">600.000 VNĐ - 800.000 VNĐ</a><br><br>
+						<a href="${base }/listBook/?price=5" onclick=""> > 800.000 VNĐ</a>
+					</div>
 				</div>
 			</div>
 		</div>
