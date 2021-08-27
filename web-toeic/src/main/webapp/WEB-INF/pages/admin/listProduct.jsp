@@ -53,8 +53,7 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${product.status =='true'}">
-														<span
-                                                                style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Active&nbsp;</span>
+                                        <span style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Active&nbsp;</span>
                                     </c:when>
                                     <c:otherwise>
 														<span
@@ -64,7 +63,7 @@
                             </td>
                             <td>
                                 <a href="<c:url value='/admin/edit-product/${product.seo}' />"
-                                   class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                   class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                 <button type="button" id="delete" name=""
                                         onclick="confirmDelete('${product.seo }')"
                                         class="btn btn-danger btn-sm"><i class="fas fa-eye-slash"></i></button>

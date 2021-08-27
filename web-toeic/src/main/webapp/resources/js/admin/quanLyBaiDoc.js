@@ -28,8 +28,8 @@ $(document).ready(function(){
 					}
 					                 
 					baiDocRow += '<td>'+'<input type="hidden" value=' + baiDoc.id + '>'
-					                    + '  <button class="btn btn-primary btnCapNhatBaiDoc" >Cập nhật</button>' 
-					                    + '   <button class="btn btn-danger btnXoaBaiDoc">Xóa</button></td>'
+					                    + '  <button class="btn btn-primary btnCapNhatBaiDoc" ><i class="fas fa-edit"></i></button>'
+					                    + '   <button class="btn btn-danger btnXoaBaiDoc"><i class="fas fa-trash"></i></button></td>'
 				                      '</tr>';
 					$('.baiDocTable tbody').append(baiDocRow);
 				});		

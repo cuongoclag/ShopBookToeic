@@ -221,11 +221,11 @@ $(document).ready(function() {
 		     
 		            +'<td class = "center"> <a id="edit.'+ jsonArr[i].baituvungid+' "'
 		            
-		            +'class="yellow editBaiVocab"><button class="btn btn-warning">Cập nhật</button></a> '
+		            +'class="yellow editBaiVocab"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></a> '
 		     
 		            +' <a id="delete.'+jsonArr[i].baituvungid+' "'
 		            
-		            +'class="red deleteBaiVocab" ><button class="btn btn-danger">Xóa</button></a> </td>'
+		            +'class="red deleteBaiVocab" ><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a> </td>'
 
 		            +'</tr>';
 		       }

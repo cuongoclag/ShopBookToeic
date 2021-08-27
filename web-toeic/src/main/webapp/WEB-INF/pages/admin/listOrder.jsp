@@ -64,7 +64,7 @@
                             </td>
                             <td>
                                 <a href="/admin/view-order/${saleOrder.id}"
-                                   class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                   class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                             </td>
                         </tr>
                     </c:forEach>

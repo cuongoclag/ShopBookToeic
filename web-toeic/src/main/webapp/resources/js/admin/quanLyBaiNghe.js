@@ -29,8 +29,8 @@ $(document).ready(function() {
 					}
 
 					baiNgheRow += '<td>' + '<input type="hidden" value=' + baiNghe.id + '>'
-					            + '  <button class="btn btn-warning btnCapNhatBaiNghe">Cập nhật</button>'
-					             + '   <button class="btn btn-danger btnXoaBaiNghe">Xóa</button></td>'
+					            + '  <button class="btn btn-warning btnCapNhatBaiNghe"><i class="fas fa-edit"></i></button>'
+					             + '   <button class="btn btn-danger btnXoaBaiNghe"><i class="fas fa-trash"></i></button></td>'
 					'</tr>';
 					$('.baiNgheTable tbody').append(baiNgheRow);
 				});
