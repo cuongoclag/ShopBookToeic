@@ -43,12 +43,25 @@
 	<div class="container" id="resultsearch">
 		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-		
-		<img src="${qrcode}" style="width:350px; height:350px;" alt="">
+
+		<h3 style="color: #0e90d2">Vui lòng chọn 1 trong 2 cách thanh toán sau :</h3>
+		<div class="row">
+			<div class="span6">
+				<p>-Thanh toán bằng QR Code</p>
+				<img src="${qrcode}" style="width:350px; height:350px;" alt="qrcode"/ >
+			</div>
+			<div class="span6">
+				<p>-Thanh toán bằng chuyển khoản</p>
+				<p>Vietcombank : cpdenglish</p>
+				<p>STK : 2727272727</p>
+			</div>
+		</div>
+		<h3 style="color: #0e90d2">Vui lòng gửi ảnh thanh toán tại đây</h3>
 		<td style="text-align: center">
 			<form action="${base }/cart/thankyouQR" method="post" enctype="multipart/form-data">
 				<input class="form-control" type="file" name="images" required/>
-				<button type="submit" class="btn btn-primary" style="width: 50%; height: 4rem; font-size: 20px; font-weight: bold;">
+				<br/>
+				<button type="submit" class="btn btn-primary" style="width: 15%; height: 3rem; font-size: 20px; font-weight: bold;">
 					Xác Nhận</button>
 			</form>
 		</td>
