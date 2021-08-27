@@ -15,20 +15,20 @@
 <jsp:include page="template/header.jsp"></jsp:include>
 <jsp:include page="template/sidebar.jsp"></jsp:include>
 	 <!-- Begin Page Content -->
-           <div class="quantity" style="width: 1100px; line-height:50px; margin:auto; border:1px solid red;margin-top:20px;margin-bottom:20px; display: flex; text-align: center;border-radius: 5px; background: #ffffff;">
+           <div class="quantity" style="width: 1100px; line-height:50px; margin:20px 20%; border:1px solid red;display: flex; text-align: center;border-radius: 5px; background: #ffffff;">
 			<div style="width: 550px; border-right:1px solid red; font-size:18px; color:red;">
-				<span>Number of products sold during the year :</span>
+				<span>Số lượng đơn hàng trong năm :</span>
 				<span>${quantity }</span>
 			</div>
 			<div style="width: 550px;font-size:18px;color:red;">
-				<span>Total revenue for the year :</span>
+				<span>Tổng giá trị đơn hàng :</span>
 				<span>${sum }</span>
 			</div>
 		</div>
 		<div class="container">
 
 			<div id="container"
-				style="width: 1100px; height: 600px; margin: 0 auto"></div>
+				style="width: 1100px; height: 600px; margin: 20px 10%;"></div>
 		</div>   
 <jsp:include page="template/footer.jsp"></jsp:include>
 
@@ -45,7 +45,7 @@
             type: 'column'
         },
         title: {
-            text: 'Monthly revenue statistics'
+            text: 'Bảng thống kê hàng tháng'
         },
       
         xAxis: {
@@ -56,7 +56,7 @@
             min: 0,
             max:100000000,
             title: {
-                text: '$'
+                text: 'VND'
             }
         },
         tooltip: {

@@ -9,7 +9,7 @@
 <head>
 
     <meta charset="ISO-8859-1">
-    <title>Quản lý Category</title>
+    <title>Danh sách sản phẩm</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
         .hidden {
@@ -30,7 +30,7 @@
 
 <div class="col-md-9 animated bounce">
 
-    <a href="<c:url value='/admin/add-product'/> " class="btn btn-primary btn-icon-split">
+    <a href="<c:url value='/admin/add-product'/> " class="btn btn-success btn-icon-split">
         <span class="text">Add Product</span>
     </a>
     <div class="card shadow mb-4">
@@ -39,10 +39,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Tên</th>
+                        <th>Mô Tả</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Chức Năng</th>
                     </tr>
                     </thead>
                     <tbody>

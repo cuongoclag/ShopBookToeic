@@ -45,6 +45,13 @@
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 		
 		<img src="${qrcode}" style="width:350px; height:350px;" alt="">
+		<td style="text-align: center">
+			<form action="${base }/cart/thankyouQR" method="post" enctype="multipart/form-data">
+				<input class="form-control" type="file" name="images" required/>
+				<button type="submit" class="btn btn-primary" style="width: 50%; height: 4rem; font-size: 20px; font-weight: bold;">
+					Xác Nhận</button>
+			</form>
+		</td>
 		
 	</div>
 	<!--Footer==========================-->

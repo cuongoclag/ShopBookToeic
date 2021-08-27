@@ -52,6 +52,9 @@ public class SaleOrder {
     @Column(name = "seo")
     private String seo;
 
+    @Column(name = "payment")
+    private String payment;
+
     @Transient
     private String totalVN;
 
@@ -170,6 +173,14 @@ public class SaleOrder {
 
     public void setSeo(String seo) {
         this.seo = seo;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 
     public List<SaleOrderProducts> getSaleOrderProducts() {

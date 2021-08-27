@@ -1,5 +1,6 @@
 package com.webtoeic.controller.client;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -19,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +33,7 @@ import com.webtoeic.repository.ProductRepository;
 import com.webtoeic.repository.SaleOrderRepository;
 import com.webtoeic.service.ProductService;
 import com.webtoeic.service.SaleOrderService;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class CartController{
@@ -47,7 +50,7 @@ public class CartController{
 	@Autowired
 	private NguoiDungService nguoiDungService;
 	
-	private static final String QR_CODE_IMAGE_PATH = "E:\\ShopBookToeic\\web-toeic\\src\\main\\webapp\\resources\\file\\images\\QRCode.png";
+	private static final String QR_CODE_IMAGE_PATH = "C:\\Users\\ACER\\Documents\\workspace-spring-tool-suite-4-4.11.0.RELEASE\\ShopBookToeic\\web-toeic\\src\\main\\webapp\\resources\\file\\images\\QRCode.png";
 	
 	@RequestMapping(value = { "/cart/check-out" }, method = RequestMethod.GET)
 	public String checkOut(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
@@ -269,7 +272,6 @@ public class CartController{
 		customerEmail = currentUser.getEmail();
 		userId = currentUser.getId();
 		saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, userId, httpSession);
-
 		return "client/thankyou";
 	}
 	
@@ -368,7 +370,7 @@ public class CartController{
 
 		SaleOrder saleOrder = new SaleOrder();
 		Cart cart = (Cart)
- httpSession.getAttribute("GIO_HANG");
+ 		httpSession.getAttribute("GIO_HANG");
 		List<CartItem> cartItems = cart.getCartItems();
 
 		BigDecimal sum = new BigDecimal(0);
@@ -393,5 +395,53 @@ public class CartController{
         model.addAttribute("qrcode","http://localhost:8080/resources/file/images/QRCode.png");
 		//saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, httpSession);
 		return "client/qrpayment";
+	}
+
+	@RequestMapping(value = { "/cart/thankyouQR" }, method = RequestMethod.POST)
+	public String thankyouQR(@RequestParam("images") MultipartFile images, final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+			throws Exception {
+		HttpSession httpSession = request.getSession();
+		String customerName = null;
+		String customerAddress = null;
+		String customerPhone = null;
+		String customerEmail = null;
+		Long userId = null;
+		String fileName = StringUtils.cleanPath(images.getOriginalFilename());
+		images.transferTo(new File(
+				"C:\\Users\\ACER\\Documents\\workspace-spring-tool-suite-4-4.11.0.RELEASE\\ShopBookToeic\\web-toeic\\upload\\" + images.getOriginalFilename()));
+
+		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("user", getSessionUser(request));
+		}
+		SaleOrder saleOrder = new SaleOrder();
+		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
+		List<CartItem> cartItems = cart.getCartItems();
+		BigDecimal sum = new BigDecimal(0);
+		String sumVN = null;
+		for (CartItem item : cartItems) {
+			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+			saleOrderProducts.setQuantity(item.getQuantity());
+			saleOrder.addSaleOrderProducts(saleOrderProducts);
+			for (int i = 1; i <= item.getQuantity(); i++) {
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+			}
+			Locale locale = new Locale("vi", "VN");
+			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+			sumVN = fmt.format(sum);
+		}
+		model.addAttribute("quantityCart", cartItems.size());
+		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("sumVN", sumVN);
+		NguoiDung currentUser = getSessionUser(request);
+		customerPhone = currentUser.getPhone();
+		customerAddress = currentUser.getAddress();
+		customerName = currentUser.getFullName();
+		customerEmail = currentUser.getEmail();
+		userId = currentUser.getId();
+		saleOrderService.saveOrderProductQR(customerAddress, customerName, customerPhone, customerEmail, userId, fileName, httpSession);
+
+		return "client/thankyouQR";
 	}
 }

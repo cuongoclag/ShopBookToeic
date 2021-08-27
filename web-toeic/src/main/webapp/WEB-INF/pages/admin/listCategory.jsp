@@ -9,7 +9,7 @@
 <head>
 
     <meta charset="ISO-8859-1">
-    <title>Quản lý Category</title>
+    <title>Danh Sách Loại</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
         .hidden {
@@ -21,6 +21,7 @@
 
     </style>
     <script src="<c:url value='/js/admin/shop/delete-category-ajax.js'/>" ></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 </head>
 <body>
 <jsp:include page="template/header.jsp"></jsp:include>
@@ -28,8 +29,8 @@
 
 <div class="col-md-9 animated bounce">
 
-    <a href="<c:url value='/admin/add-category'/> " class="btn btn-primary btn-icon-split">
-        <span class="text">Add Category</span>
+    <a href="<c:url value='/admin/add-category'/> " class="btn btn-success btn-icon-split">
+        <span class="text">Thêm Loại Sản Phẩm</span>
     </a>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -37,10 +38,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Chức năng</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,10 +63,10 @@
                                 </td>
                                 <td>
                                     <a href="<c:url value='/admin/edit-category/${category.seo}' />"
-                                       class="btn btn-primary btn-sm">Chỉnh Sửa</a>
+                                       class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                     <button type="button" id="delete" name=""
                                             onclick="confirmDelete('${category.seo }')"
-                                            class="btn btn-danger btn-sm">Ẩn</button>
+                                            class="btn btn-danger btn-sm"><i class="fas fa-eye-slash"></i></button>
                                 </td>
                             </tr>
                         </c:forEach>

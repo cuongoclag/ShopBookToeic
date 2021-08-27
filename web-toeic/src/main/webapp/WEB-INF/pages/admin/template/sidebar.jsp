@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false"%>
 
 <div class="container-fluid">
-    <div class="col-md-3">
+    <div class="col-md-2">
 
       <div id="sidebar">
         <div class="container-fluid tmargin">

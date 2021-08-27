@@ -10,6 +10,8 @@ import com.webtoeic.repository.SaleOrderProductRepository;
 import com.webtoeic.repository.SaleOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
@@ -22,6 +24,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.List;
@@ -35,11 +38,12 @@ public class SaleOrderService {
     protected EntityManager entityManager;
     @Autowired
     SaleOrderRepository saleOrderRepo;
-    //Không @Autowired đc. Luu ý
-//    @Autowired
-    private JavaMailSender mailSender;
-    @Autowired
 
+    //Không @Autowired đc. Luu ý
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
     SaleOrderProductRepository saleOrderProductsRepo;
     @Autowired
     NguoiDungRepository userRepo;
@@ -105,7 +109,7 @@ public class SaleOrderService {
             throws UnsupportedEncodingException, MessagingException {
 
         String subject = "Thông báo xác nhận đơn hàng";
-        String senderName = "FastSneaker Company";
+        String senderName = "CPD ENGLSH";
         String mailContent = "<p> Dear " + saleOrder.getCustomerName() + "</p>";
         mailContent += "<h2> Thông tin đơn hàng " + saleOrder.getCode() + "</h2>";
 
@@ -123,7 +127,7 @@ public class SaleOrderService {
         mailContent += "<p> Địa chỉ: " + saleOrder.getCustomerAddress() + "</p>";
         mailContent += "<p> Phương thức thanh toán: Thanh toán khi nhận hàng</p>";
         mailContent += "<p>Cám ơn bạn đã mua hàng!</p>";
-        mailContent += "<p>Shop ABC</p>";
+        mailContent += "<p>CPD ENGLISH</p>";
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable","true");
@@ -135,7 +139,6 @@ public class SaleOrderService {
         helper.setTo(saleOrder.getCustomerEmail());
         helper.setSubject(subject);
         helper.setText(mailContent, true);
-
         mailSender.send(message);
     }
 
@@ -179,7 +182,7 @@ public class SaleOrderService {
             throws UnsupportedEncodingException, MessagingException {
 
         String subject = "Thông báo xác nhận đơn hàng";
-        String senderName = "FastSneaker Company";
+        String senderName = "CPD ENGLISH";
         String mailContent = "<p> Dear " + saleOrder.getCustomerName() + "</p>";
         mailContent += "<h2> Thông tin đơn hàng" + saleOrder.getCode() + "</h2>";
 
@@ -197,7 +200,7 @@ public class SaleOrderService {
         mailContent += "<p> Địa chỉ: " + saleOrder.getCustomerAddress() + "</p>";
         mailContent += "<p> Phương thức thanh toán: Thanh Toán PayPal</p>";
         mailContent += "<p>Cám ơn bạn đã mua hàng!</p>";
-        mailContent += "<p>Shop ABC</p>";
+        mailContent += "<p>CPD ENGLISH</p>";
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
@@ -244,6 +247,80 @@ public class SaleOrderService {
         saleOrder.setTotal(sum);
         saleOrderRepo.save(saleOrder);
         //sendEmailPaypal(saleOrder, cartItems);
+        httpSession.setAttribute("SL_SP_GIO_HANG", 0);
+        httpSession.setAttribute("GIO_HANG", null);
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    public void sendEmailQR(SaleOrder saleOrder, List<CartItem> cartItems)
+            throws UnsupportedEncodingException, MessagingException {
+
+        String subject = "Thông báo xác nhận đơn hàng";
+        String senderName = "CPD ENGLSH";
+        String mailContent = "<p> Dear " + saleOrder.getCustomerName() + "</p>";
+        mailContent += "<h2> Thông tin đơn hàng " + saleOrder.getCode() + "</h2>";
+
+        for (CartItem cartItem : cartItems) {
+            mailContent += "<p> " + cartItem.getProductName() + " X " + cartItem.getQuantity()
+                    + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + cartItem.getUnitPriceVN()
+                    + "</p>";
+        }
+        mailContent += "<h4> Tổng Cộng:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + saleOrder.getTotalVN() + "</h4>";
+        mailContent += "<p>-------------------------------------------------------------</p>";
+        mailContent += "<h2> Thông tin khách hàng </h2>";
+        mailContent += "<p> Tên Khách Hàng: " + saleOrder.getCustomerName() + "</p>";
+        mailContent += "<p> Số điện thoại liên lạc: " + saleOrder.getCustomerPhone() + "</p>";
+        mailContent += "<p> Địa chỉ: " + saleOrder.getCustomerAddress() + "</p>";
+        mailContent += "<p> Phương thức thanh toán: Thanh toán qua mã QR</p>";
+        mailContent += "<p>Cám ơn bạn đã mua hàng!</p>";
+        mailContent += "<p>CPD ENGLISH</p>";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable","true");
+
+        MimeMessage message = mailSender.createMimeMessage();
+
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+        helper.setFrom("fastsneakercompany@gmail.com", senderName);
+        helper.setTo(saleOrder.getCustomerEmail());
+        helper.setSubject(subject);
+        helper.setText(mailContent, true);
+        mailSender.send(message);
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    public void saveOrderProductQR(String customerAddress, String customerName, String customerPhone,
+                                 String customerEmail, Long user , String fileName , HttpSession httpSession) throws Exception {
+        SaleOrder saleOrder = new SaleOrder();
+        saleOrder.setCode("ORDER-" + System.currentTimeMillis());
+        saleOrder.setSeo("ORDER-" + System.currentTimeMillis());
+        saleOrder.setCustomerName(customerName);
+        saleOrder.setCustomerAddress(customerAddress);
+        saleOrder.setCustomerPhone(customerPhone);
+        saleOrder.setCustomerEmail(customerEmail);
+        saleOrder.setNguoiDung(userRepo.getById(user));
+        saleOrder.setStatus(true);
+        saleOrder.setPayment(fileName);
+
+        Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
+        List<CartItem> cartItems = cart.getCartItems();
+
+        BigDecimal sum = new BigDecimal(0);
+        for (CartItem item : cartItems) {
+            SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+            saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+            saleOrderProducts.setQuantity(item.getQuantity());
+            saleOrder.addSaleOrderProducts(saleOrderProducts);
+            saleOrderProducts.setStatus(true);
+            for (int i = 1; i <= item.getQuantity(); i++) {
+                sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+            }
+        }
+        saleOrder.setCreatedDate(java.time.LocalDateTime.now());
+        saleOrder.setTotal(sum);
+        saleOrderRepo.save(saleOrder);
+        sendEmail(saleOrder, cartItems);
         httpSession.setAttribute("SL_SP_GIO_HANG", 0);
         httpSession.setAttribute("GIO_HANG", null);
     }

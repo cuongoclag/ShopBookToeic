@@ -9,7 +9,7 @@
 <head>
 
     <meta charset="ISO-8859-1">
-    <title>Quản lý Order</title>
+    <title>Quản lý Đặt Hàng</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
         .hidden {
@@ -26,25 +26,21 @@
 <jsp:include page="template/header.jsp"></jsp:include>
 <jsp:include page="template/sidebar.jsp"></jsp:include>
 
-<div class="col-md-9 animated bounce">
-
-    <a href="<c:url value='/admin/add-category'/> " class="btn btn-primary btn-icon-split">
-        <span class="text">Add Category</span>
-    </a>
+<div class="col-md-10 animated bounce">
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>Code Order</th>
-                        <th>Username</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Created Day</th>
-                        <th>Total</th>
+                        <th>Mã Đặt Hàng</th>
+                        <th>Người đặt</th>
+                        <th>SĐT</th>
+                        <th>Ngày đặt</th>
+                        <th>Tổng tiền</th>
+                        <th>Thanh Toán</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Chức Năng</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,16 +49,16 @@
                             <td>${saleOrder.code }</td>
                             <td>${saleOrder.customerName }</td>
                             <td>${saleOrder.customerPhone }</td>
-                            <td>${saleOrder.customerEmail }</td>
                             <td>${saleOrder.createdDate }</td>
                             <td>${saleOrder.totalVN }</td>
+                            <td><img style="height: 20rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" alt="payment"></td>
                             <td>
                                 <c:choose>
                                     <c:when test="${saleOrder.status =='true'}">
-                                        <span style="background: #FFFF00; border-radius: 5px; color: white;">&nbsp;Pending&nbsp;</span>
+                                        <span style="background: #FFFF00; border-radius: 5px; color: white;">&nbsp;Đang xử lý&nbsp;</span>
                                     </c:when>
                                     <c:otherwise>
-                                        <span style="background: #0099FF; border-radius: 5px; color: white;">&nbsp;Completed&nbsp;</span>
+                                        <span style="background: #0099FF; border-radius: 5px; color: white;">&nbsp;Đã Hoàn Thành&nbsp;</span>
                                     </c:otherwise>
                                 </c:choose>
                             </td>

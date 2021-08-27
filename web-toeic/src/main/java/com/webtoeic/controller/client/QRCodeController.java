@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class QRCodeController {
 
-    private static final String QR_CODE_IMAGE_PATH = "E:\\ShopBookToeic\\web-toeic\\src\\main\\webapp\\resources\\file\\images\\QRCode.png";
+    private static final String QR_CODE_IMAGE_PATH = "C:\\Users\\ACER\\Documents\\workspace-spring-tool-suite-4-4.11.0.RELEASE\\ShopBookToeic\\web-toeic\\src\\main\\webapp\\resources\\file\\images\\QRCode.png";
 
     @GetMapping(value = "/genrateAndDownloadQRCode/{codeText}/{width}/{height}")
     public void download(
