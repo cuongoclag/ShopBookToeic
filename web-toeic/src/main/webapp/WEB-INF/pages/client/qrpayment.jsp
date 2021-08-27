@@ -28,7 +28,22 @@
 	src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#images').change(function () {
+			showImageThumbnail(this);
+		});
+	});
+	function showImageThumbnail(fileInput) {
+		file = fileInput.files[0];
+		reader = new FileReader();
+		reader.onload = function (e) {
+			$('#thumbnail').attr('src', e.target.result);
+		};
+		reader.readAsDataURL(file);
 
+	}
+</script>
 
 </head>
 <body>
@@ -44,28 +59,28 @@
 		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 
-		<h3 style="color: #0e90d2">Vui lòng chọn 1 trong 2 cách thanh toán sau :</h3>
 		<div class="row">
 			<div class="span6">
+				<h3 style="color: #0e90d2">Vui lòng chọn 1 trong 2 cách thanh toán sau :</h3
 				<p>-Thanh toán bằng QR Code</p>
 				<img src="${qrcode}" style="width:350px; height:350px;" alt="qrcode"/ >
-			</div>
-			<div class="span6">
+
 				<p>-Thanh toán bằng chuyển khoản</p>
 				<p>Vietcombank : cpdenglish</p>
 				<p>STK : 2727272727</p>
 			</div>
+			<div class="span6">
+				<h3 style="color: #0e90d2">Vui lòng gửi ảnh thanh toán tại đây :</h3>
+				<form action="${base }/cart/thankyouQR" method="post" enctype="multipart/form-data">
+					<input class="form-control" type="file" name="images" id="images" required/>
+					<br/>
+					<img id="thumbnail" alt="Review Images">
+					<br/>
+					<button type="submit" class="btn btn-primary" style="width: 30%; height: 3rem; font-size: 20px; font-weight: bold;">
+						Xác Nhận</button>
+				</form>
+			</div>
 		</div>
-		<h3 style="color: #0e90d2">Vui lòng gửi ảnh thanh toán tại đây</h3>
-		<td style="text-align: center">
-			<form action="${base }/cart/thankyouQR" method="post" enctype="multipart/form-data">
-				<input class="form-control" type="file" name="images" required/>
-				<br/>
-				<button type="submit" class="btn btn-primary" style="width: 15%; height: 3rem; font-size: 20px; font-weight: bold;">
-					Xác Nhận</button>
-			</form>
-		</td>
-		
 	</div>
 	<!--Footer==========================-->
 	<jsp:include page="include/footerHome.jsp"></jsp:include>

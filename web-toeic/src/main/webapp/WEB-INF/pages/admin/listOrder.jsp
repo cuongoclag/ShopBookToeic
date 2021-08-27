@@ -21,6 +21,13 @@
 
     </style>
     <script src="<c:url value='/js/admin/shop/delete-category-ajax.js'/>" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.images-enlarge a').fancybox();
+        });
+    </script>
 </head>
 <body>
 <jsp:include page="template/header.jsp"></jsp:include>
@@ -51,7 +58,13 @@
                             <td>${saleOrder.customerPhone }</td>
                             <td>${saleOrder.createdDate }</td>
                             <td>${saleOrder.totalVN }</td>
-                            <td><img style="height: 20rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" alt="payment"></td>
+                            <td>
+                                <div class="images-enlarge">
+                                    <a data-fancybox="gallery" href="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" data-caption="Caption for single image">
+                                    <img style="height: 10rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" alt="payment">
+                                    </a>
+                                </div>
+                            </td>
                             <td>
                                 <c:choose>
                                     <c:when test="${saleOrder.status =='true'}">
