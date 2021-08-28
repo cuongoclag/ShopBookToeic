@@ -46,7 +46,7 @@
 		<div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="ps-checkout__billing">
-				      <h3 style="color: red">The customer has paid via Paypal the amount ${sum } $</h3>
+				      <h3 style="color: red">Bạn đã thanh toán thành công số tiền ${sumVN }</h3>
                       <h3>Order confirmation</h3>
                             <div class="form-group form-group--inline">
                               <label for="exampleInputEmail1">Name<span>*</span>
@@ -74,16 +74,16 @@
                     <table class="table">
 					  <thead>
 					    <tr>
-					      <th scope="col">Name</th>
-					      <th scope="col">Price</th>
-					      <th scope="col">Quantity</th>
+					      <th scope="col">Tên</th>
+					      <th scope="col">Giá</th>
+					      <th scope="col">Số lượng</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 					  <c:forEach items="${cartItems}" var="item">
 					    <tr>
 					      	<td>${item.productName }</td>
-							<td>${item.unitPrice }</td>
+							<td>${item.unitPriceVN }</td>
 							<td>${item.quantity }</td>
 					    </tr>
 					  </c:forEach>
@@ -91,13 +91,13 @@
 					  <tbody>
 						<tr>
 							<td>Total:</td>
-							<td>${sum } $</td>
+							<td>${sumVN }</td>
 						</tr>
 					  </tbody>
 					</table>
                   </div>
                   <form action="${base }/cart/thankyouPayPal" method="post">
-					 <button type="submit" class="btn btn-primary">Confirm</button>
+					 <button type="submit" class="btn btn-primary">Xác nhận</button>
 				  </form>
             </div>
 		
