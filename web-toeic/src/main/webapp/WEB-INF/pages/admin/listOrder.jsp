@@ -59,11 +59,21 @@
                             <td>${saleOrder.createdDate }</td>
                             <td>${saleOrder.totalVN }</td>
                             <td>
-                                <div class="images-enlarge">
-                                    <a data-fancybox="gallery" href="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" data-caption="Caption for single image">
-                                    <img style="height: 10rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" alt="payment">
-                                    </a>
-                                </div>
+                                <c:choose>
+                                <c:when test="${saleOrder.payment == 'Thanh toan sau'}">
+                                    Thanh toan sau
+                                </c:when>
+                                <c:when test="${saleOrder.payment == 'paypal'}">
+                                    Paypal
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="images-enlarge">
+                                        <a data-fancybox="gallery" href="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" data-caption="Caption for single image">
+                                            <img style="height: 10rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/${saleOrder.payment}" alt="payment">
+                                        </a>
+                                    </div>
+                                </c:otherwise>
+                                </c:choose>
                             </td>
                             <td>
                                 <c:choose>

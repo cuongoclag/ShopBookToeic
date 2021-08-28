@@ -154,6 +154,7 @@ public class SaleOrderService {
         saleOrder.setCustomerEmail(customerEmail);
         saleOrder.setNguoiDung(userRepo.getById(user));
         saleOrder.setStatus(true);
+        saleOrder.setPayment("Thanh toan sau");
 
         Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
         List<CartItem> cartItems = cart.getCartItems();
@@ -226,6 +227,7 @@ public class SaleOrderService {
         saleOrder.setCustomerEmail(customerEmail);
         saleOrder.setNguoiDung(userRepo.getById(user));
         saleOrder.setStatus(true);
+        saleOrder.setPayment("paypal");
 
         Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
         List<CartItem> cartItems = cart.getCartItems();
