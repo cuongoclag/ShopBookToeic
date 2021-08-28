@@ -40,39 +40,68 @@
     <div class="card shadow mb-4">
         <div class="card-body" >
             <div id="print_div">
-                <h1 class="h3 mb-2 text-gray-800">Orders Details</h1>
+                <h2 class="h3 mb-2 text-gray-800">Thông tin đặt hàng <span style="color: red;">${saleOrders.code }</span></h2>
+                <div class="table-responsive">
+                    <h3>Thông tin người dùng</h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th scope="col">Tên</th>
+                            <th scope="col">SĐT</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Địa Chỉ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>${saleOrders.customerName }</th>
+                            <th>${saleOrders.customerPhone }</th>
+                            <th>${saleOrders.customerEmail }</th>
+                            <th>${saleOrders.customerAddress }</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th class="text-center h3 font-weight-bold">Img</th>
-                            <th class="text-center h3 font-weight-bold">Product</th>
-                            <th class="text-center h3 font-weight-bold">Price</th>
-                            <th class="text-center h3 font-weight-bold">Sale Price</th>
-                            <th class="text-center h3 font-weight-bold">Quantity</th>
-                            <th class="text-center h3 font-weight-bold">Provisional</th>
+<%--                            <th class="text-center h3 font-weight-bold">Ảnh</th>--%>
+                            <th class="text-center h3 font-weight-bold">Tên</th>
+                            <th class="text-center h3 font-weight-bold">Giá</th>
+                            <th class="text-center h3 font-weight-bold">Giá Sale</th>
+                            <th class="text-center h3 font-weight-bold">Số lượng</th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach var="saleOrderProduct" items="${saleOrderProducts }">
                             <tr>
-                                <td><img alt="" style="width: 80px" src="${pageContext.request.contextPath}/resources/file/images/upload/${saleOrderProduct.product.productImages[0].path}"></td>
+<%--                                <td><img alt="" style="width: 80px" src="${pageContext.request.contextPath}/resources/file/images/upload/${saleOrderProduct.product.productImages[0].path}"></td>--%>
                                 <td><span>
-                            <a href="${base}/bookDetails/${saleOrderProduct.product.id }">${saleOrderProduct.product.title }</a>
-                        </span>
+                                        <a href="${base}/bookDetails/${saleOrderProduct.product.id }">${saleOrderProduct.product.title }</a>
+                                    </span>
                                 </td>
                                 <td>${saleOrderProduct.product.priceVN }</td>
-                                <td>0 đ</td>
+                                <td>${saleOrderProduct.product.promotionalPriceVN}</td>
                                 <td>${saleOrderProduct.quantity }</td>
-                                <td>${saleOrderProduct.product.price } $</td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
                 </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="color: red">Tổng</th>
+                            <th>${saleOrders.totalVN }</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
-            <a href="<%=request.getContextPath()%>/orderUser/${nguoiDung.id }" class="btn btn-danger btn-sm">Back</a>
-            <button type="button" name="" class="btn btn-primary btn-sm" onclick="printdiv('print_div')">Print</button>
+            <a href="<%=request.getContextPath()%>/orderUser/${nguoiDung.id }" class="btn btn-danger btn-sm">Trở lại</a>
+            <button type="button" name="" class="btn btn-primary btn-sm" onclick="printdiv('print_div')">In</button>
         </div>
     </div>
 </div>

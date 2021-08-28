@@ -48,9 +48,9 @@
 			<table class="table">
 			  <thead>
 			    <tr>
-			      <th scope="col">PRODUCTS</th>
-			      <th scope="col">PRICE</th>
-			      <th scope="col">QUANTITY</th>
+			      <th scope="col">SẢN PHẨM</th>
+			      <th scope="col">GIÁ</th>
+			      <th scope="col">SỐ LƯỢNG</th>
 <%--			      <th scope="col">TOTAL</th>--%>
 			      <th scope="col"></th>
 			    </tr>
@@ -73,9 +73,9 @@
 			</form>
 		</div>
 		<div style="text-align: end">
-			<strong>TOTAL PRICE : ${TOTAL}</strong>
+			<strong>TỔNG : ${TOTAL}</strong>
 			<form action="${base }/cart/finish" method="post">
-				<button type="submit" class="btn btn-primary" style="margin: 2% 0">Process to checkout <i class="fas fa-arrow-right"></i></button>
+				<button type="submit" class="btn btn-primary" style="margin: 2% 0">Xác nhận giỏ hàng <i class="fas fa-arrow-right"></i></button>
 			</form>
 		</div>
 		

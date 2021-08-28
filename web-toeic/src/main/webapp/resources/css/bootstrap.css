@@ -3376,7 +3376,7 @@ input[type="button"].btn-block {
 .btn-primary.disabled,
 .btn-primary[disabled] {
   color: #ffffff;
-  background-color: #0044cc;
+  background-color: deepskyblue;
   *background-color: #003bb3;
 }
 

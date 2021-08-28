@@ -38,18 +38,18 @@
 <div class="container" id="resultsearch" style="display: flex; flex-wrap: wrap; padding: 5rem">
     <input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
     <input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-    <h1 class="h3 mb-2 text-gray-800">List Orders</h1>
+    <h1 class="h3 mb-2 text-gray-800">Danh sách đơn hàng</h1>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Code Order</th>
-            <th>Username</th>
-            <th>Phone</th>
+            <th>Mã Đơn Hàng</th>
+            <th>Tên</th>
+            <th>SĐT</th>
             <th>Email</th>
-            <th>Created Day</th>
-            <th>Total</th>
-            <th>Tracking</th>
-            <th>Action</th>
+            <th>Ngày đặt</th>
+            <th>Tổng</th>
+            <th>Trạng thái</th>
+            <th>Chức năng</th>
         </tr>
         </thead>
         <tbody>

@@ -112,7 +112,7 @@
 
 							</c:if>
 
-							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Detail</a>
+							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Chi tiết</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -132,7 +132,7 @@
 								<p class="card-text">${list.promotionalPriceVN}</p>
 							</c:if>
 							
-							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Detail</a>
+							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Chi tiết</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -141,7 +141,7 @@
 				<div class="side-bar">
 					<form class="form-control" action="${base}/listBook" method="get">
 						<input class="form-control" name="keyword" th:value="${keyword }" type="text" placeholder="Tìm Kiếm Sách...">
-						<button class="btn btn-primary" type="submit" value="Search">Search</button>
+<%--						<button class="btn btn-primary" type="submit" value="Search">Tìm Kiếm</button>--%>
 					</form>
 					<h3>DANH MỤC</h3>
 					<ul class="nav nav-list">

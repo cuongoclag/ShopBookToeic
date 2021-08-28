@@ -56,15 +56,15 @@
           </li>
             <li class="side-bar main-menu">
                 <a href="<c:url value='/admin/list-category' />">
-                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Category</a>
+                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Loại</a>
             </li>
             <li class="side-bar main-menu">
                 <a href="<c:url value='/admin/list-product' />">
-                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Product</a>
+                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Sản Phẩm</a>
             </li>
             <li class="side-bar main-menu">
                 <a href="<c:url value='/admin/list-order' />">
-                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Order</a>
+                    <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Đơn Hàng</a>
             </li>
             <li class="side-bar main-menu">
                 <a href="<c:url value='/admin/BarGraph' />">

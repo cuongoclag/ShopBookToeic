@@ -48,8 +48,7 @@
             <div class="row">
                   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
                     <div class="ps-checkout__billing">
-                      <h3>Payment</h3>
-                      <label>Accepted Cards</label>
+                      <h3>Thanh Toán Paypal</h3>
                       <div class="icon-container">
                         <i class="fa fa-cc-visa" style="color:navy;"></i>
                         <i class="fa fa-cc-amex" style="color:blue;"></i>
@@ -57,33 +56,33 @@
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                       </div>
                             <div class="form-group form-group--inline">
-                              <label for="price">Total<span>*</span>
+                              <label for="price">Tổng<span>*</span>
                               </label>
                               <input class="form-control" type="text" id="price" name="price" value="${sum/20000}" readonly>
                             </div>
                             <div class="form-group form-group--inline">
-                              <label for="currency">Currency<span>*</span>
+                              <label for="currency">Đơn vị tiền tệ<span>*</span>
                               </label>
                               <input class="form-control" type="text" id="currency" name="currency" value="USD">
                             </div>
                             <div class="form-group form-group--inline">
-                              <label for="method">Payment Method<span>*</span>
+                              <label for="method">Phương thức thanh toán<span>*</span>
                               </label>
                               <input class="form-control" type="text" id="method" name="method" value="PayPal"> 
                             </div>
                             <div class="form-group form-group--inline">
-                              <label for="intent">Intent<span>*</span>
+                              <label for="intent">Nội dung<span>*</span>
                               </label>
                               <input class="form-control" type="text" id="intent" name="intent" value="sale">
                             </div>
                             <div class="form-group form-group--inline">
-                              <label for="description">Payment Description<span>*</span>
+                              <label for="description">Mô tả<span>*</span>
                               </label>
                               <input class="form-control" type="text" id="description" name="description" value="Payment Description">
                             </div>
                     </div>
                   </div>
-                  <button class="ps-btn ps-btn--fullwidth">Continue to checkout<i class="ps-icon-next"></i></button>
+                  <button class="btn btn-primary">Xác nhận liên kết ví <i class="ps-icon-next"></i></button>
             </div>
           </form>
 		

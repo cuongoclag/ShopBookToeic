@@ -31,46 +31,48 @@
     <div class="card shadow mb-4">
         <div class="card-body" >
             <div id="print_div">
-                <h1 class="h3 mb-2 text-gray-800">Order Information <span style="color: red;">${saleOrder.code }</span></h1>
+                <h1 class="h3 mb-2 text-gray-800">Thông tin đặt hàng <span style="color: red;">${saleOrder.code }</span></h1>
                 <div class="table-responsive">
-                    <h3>User Information</h3>
+                    <h3>Thông tin người dùng</h3>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Phone</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">SĐT</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Address</th>
+                            <th scope="col">Địa Chỉ</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <th>${saleOrder.customerName }</th>
-                            <td>${saleOrder.customerPhone }</td>
-                            <td>${saleOrder.customerEmail }</td>
-                            <td>${saleOrder.customerAddress }</td>
+                            <th>${saleOrder.customerPhone }</th>
+                            <th>${saleOrder.customerEmail }</th>
+                            <th>${saleOrder.customerAddress }</th>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <h3>List Product</h3>
+                <h3>Danh sách sản phẩm</h3>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
+                            <th scope="col">Tên Sản Phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Giá Sale</th>
+                            <th scope="col">Số lượng</th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${saleOrderProduct }" var="saleOrderProducts">
                             <tr>
                                 <th>${saleOrderProducts.id}</th>
-                                <td>${saleOrderProducts.product.title }</td>
-                                <td>${saleOrderProducts.product.price } $</td>
-                                <td>${saleOrderProducts.quantity}</td>
+                                <th>${saleOrderProducts.product.title }</th>
+                                <th>${saleOrderProducts.product.priceVN }</th>
+                                <th>${saleOrderProducts.product.promotionalPriceVN}</th>
+                                <th>${saleOrderProducts.quantity}</th>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -80,8 +82,8 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th style="color: red">TOTAL</th>
-                            <th>${saleOrder.total } $</th>
+                            <th style="color: red">Tổng</th>
+                            <th>${saleOrder.totalVN }</th>
                         </tr>
                         </thead>
                     </table>
