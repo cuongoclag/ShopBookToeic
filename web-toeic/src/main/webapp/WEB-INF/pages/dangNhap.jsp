@@ -27,6 +27,16 @@
 		<div class="form">
 			<h2 class="form-signin-heading" style="text-align: center">Đăng nhập</h2>
 			<hr>
+			<c:if test="${error!= null}">
+				<div class="alert alert-danger">
+					<p>${error }</p>
+				</div>
+			</c:if>
+			<c:if test="${message!= null}">
+				<div class="alert alert-success">
+					<p>${message }</p>
+				</div>
+			</c:if>
 			<c:if test="${param.error != null}">
 				<div class="alert alert-danger">
 					<p>Tên đăng nhập hoặc mật khẩu không đúng.</p>
@@ -45,7 +55,7 @@
 
 			<form class="login-form" method="POST" action="${contextPath}/login" onsubmit="return validateForm()">
 
-				<input type="text" placeholder="Email" name="email" required="required" style="padding: 10px;" /> 
+				<input type="email" placeholder="Email" name="email" required="required" style="padding: 10px;" />
 				<input type="password" placeholder="Mật khẩu"
 					name="password" required="required" style="padding: 10px;" /> 
 				<input
@@ -60,6 +70,9 @@
 				<p class="message" style="font-size: 18; padding-top: 10px">
 					Chưa có tài khoản? <a href="<c:url value='/register'/> ">Tạo tài khoản
 						mới</a>
+				</p>
+				<p style="text-align: center; text-decoration: underline">
+					<a href="/forgot_password">Quên mật khẩu</a>
 				</p>
 			</form>
 		</div>

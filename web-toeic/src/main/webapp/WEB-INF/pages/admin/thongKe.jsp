@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Quản lý nhãn hiệu</title>
+<title>Quản lý chart</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script>

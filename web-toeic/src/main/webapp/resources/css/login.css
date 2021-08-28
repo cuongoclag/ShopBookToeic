@@ -27,6 +27,19 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+
+.form input[type=email], .form input[type=password] {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #ffffff;
+  width: 100%;
+  border: 2;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
 #submit{
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;

@@ -18,4 +18,6 @@ public interface NguoiDungRepository extends JpaRepository<NguoiDung, Long> {
 	List<NguoiDung> findByRoles(Roles roles);
 
 	List<NguoiDung> findAll();
+
+	NguoiDung findByResetPasswordToken(String token);
 }

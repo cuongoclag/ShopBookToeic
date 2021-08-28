@@ -23,6 +23,7 @@ public class NguoiDung {
 	private String fullName;
 	private String phone;
 	private String address;
+	private String resetPasswordToken;
 
 	@Transient
 	private boolean loginOauth2;
@@ -100,6 +101,14 @@ public class NguoiDung {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	public NguoiDung(String email, String password) {

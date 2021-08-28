@@ -65,4 +65,27 @@ public class NguoiDungService {
 	public void deleteById(long id) {
 		nguoiDungRepo.deleteById(id);
 	}
+
+	public void updateResetPasswordToken(String token, String email) throws NguoiDungNotFoundException {
+		NguoiDung nguoiDung = nguoiDungRepo.findByEmail(email);
+		if(nguoiDung != null){
+			nguoiDung.setResetPasswordToken(token);
+			nguoiDungRepo.save(nguoiDung);
+		} else {
+			throw new NguoiDungNotFoundException("Không tìm thấy user nào với email" + email);
+		}
+	}
+
+	public NguoiDung get(String resetPasswordToken){
+		return nguoiDungRepo.findByResetPasswordToken(resetPasswordToken);
+	}
+
+	public void updatePassword(NguoiDung nguoiDung, String newPassword){
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodePassword = passwordEncoder.encode(newPassword);
+
+		nguoiDung.setPassword(encodePassword);
+		nguoiDung.setResetPasswordToken(null);
+		nguoiDungRepo.save(nguoiDung);
+	}
 }

@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Quản lý Category</title>
+    <title>Quản lý chart</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
@@ -54,7 +54,7 @@
         },
         yAxis: {
             min: 0,
-            max:100000000,
+            max:50000000,
             title: {
                 text: 'VND'
             }
@@ -62,19 +62,19 @@
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.0f} VND</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
         },
         plotOptions: {
             column: {
-                pointPadding: 0.2,
+                pointPadding: 0.1,
                 borderWidth: 0
             }
         },
         series: [{
-            name: 'Month',
+            name: 'Tháng',
             data: data1
         }]
 
