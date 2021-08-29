@@ -78,28 +78,24 @@ public class TestApi {
 		// System.out.println("id="+baithithu.getBaithithuid());
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + "exam." + baithithu.getTestId()
-					+ "." + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
-			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + "" + baithithu.getTestId()
-					+ "." + file_image.getOriginalFilename());
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
 
 			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/exam/" + ""
-						+ baithithu.getTestId() + "." + single_image.getOriginalFilename());
+				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/exam/"  + single_image.getOriginalFilename());
 				single_image.transferTo(new File(pathImageQuestion.toString()));
 			}
 
 			for (MultipartFile single_listening : file_listening) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/exam/" + ""
-						+ baithithu.getTestId() + "." + single_listening.getOriginalFilename());
+				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/exam/" + single_listening.getOriginalFilename());
 				single_listening.transferTo(new File(pathListening.toString()));
 			}
 
 			baithithu.setTestTitle(name);
-			baithithu.setTestImage(baithithu.getTestId() + "." + file_image.getOriginalFilename());
+			baithithu.setTestImage( file_image.getOriginalFilename());
 			testService.save(baithithu);
 
 			// save data from file excel
@@ -133,28 +129,24 @@ public class TestApi {
 		Test baithithu = testService.getTest(id).get(0);
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + "exam." + baithithu.getTestId()
-					+ "." + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
-			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + "" + baithithu.getTestId()
-					+ "." + file_image.getOriginalFilename());
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
 
 			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/exam/" + ""
-						+ baithithu.getTestId() + "." + single_image.getOriginalFilename());
+				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/exam/" + single_image.getOriginalFilename());
 				single_image.transferTo(new File(pathImageQuestion.toString()));
 			}
 
 			for (MultipartFile single_listening : file_listening) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/exam/" + ""
-						+ baithithu.getTestId() + "." + single_listening.getOriginalFilename());
+				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/exam/" + single_listening.getOriginalFilename());
 				single_listening.transferTo(new File(pathListening.toString()));
 			}
 
 			baithithu.setTestTitle(name);
-			baithithu.setTestImage(baithithu.getTestId() + "." + file_image.getOriginalFilename());
+			baithithu.setTestImage( file_image.getOriginalFilename());
 			testService.save(baithithu);
 
 			TestApi btt = new TestApi();
@@ -196,11 +188,11 @@ public class TestApi {
 
 				if (row.getCell(1) != null)
 					cauhoiexam.setImage(
-							baithithu.getTestId() + "." + row.getCell(1).getStringCellValue().toString());
+							row.getCell(1).getStringCellValue().toString());
 
 				if (row.getCell(2) != null)
 					cauhoiexam.setAudiomp3(
-							baithithu.getTestId() + "." + row.getCell(2).getStringCellValue().toString());
+							 row.getCell(2).getStringCellValue().toString());
 
 				if (row.getCell(3) != null)
 					cauhoiexam.setParagraph(row.getCell(3).getStringCellValue().toString());
