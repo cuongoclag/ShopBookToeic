@@ -79,28 +79,24 @@ public class VocabularyExercisesApi {
 		// System.out.println("id="+baithithu.getBaithithuid());
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + "vocab."
-					+ bttuvung.getId() + "." + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
-			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/vocab/" + ""
-					+ bttuvung.getId() + "." + file_image.getOriginalFilename());
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/vocab/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
 
 			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/vocab/" + ""
-						+ bttuvung.getId() + "." + single_image.getOriginalFilename());
+				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/vocab/" + single_image.getOriginalFilename());
 				single_image.transferTo(new File(pathImageQuestion.toString()));
 			}
 
 			for (MultipartFile single_listening : file_listening) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/vocab/" + ""
-						+ bttuvung.getId() + "." + single_listening.getOriginalFilename());
+				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/vocab/" + single_listening.getOriginalFilename());
 				single_listening.transferTo(new File(pathListening.toString()));
 			}
 
 			bttuvung.setVocabularyTitle(name);
-			bttuvung.setVocabularyImage(bttuvung.getId() + "." + file_image.getOriginalFilename());
+			bttuvung.setVocabularyImage(file_image.getOriginalFilename());
 			vocabularyExercisesService.save(bttuvung);
 
 			// save data from file excel
@@ -145,28 +141,24 @@ public class VocabularyExercisesApi {
 		// System.out.println("id="+baithithu.getBaithithuid());
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + "vocab."
-					+ bttuvung.getId() + "." + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" +  file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
-			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/vocab/" + ""
-					+ bttuvung.getId() + "." + file_image.getOriginalFilename());
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/vocab/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
 
 			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/vocab/" + ""
-						+ bttuvung.getId() + "." + single_image.getOriginalFilename());
+				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/vocab/" + single_image.getOriginalFilename());
 				single_image.transferTo(new File(pathImageQuestion.toString()));
 			}
 
 			for (MultipartFile single_listening : file_listening) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/vocab/" + ""
-						+ bttuvung.getId() + "." + single_listening.getOriginalFilename());
+				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/vocab/"  + single_listening.getOriginalFilename());
 				single_listening.transferTo(new File(pathListening.toString()));
 			}
 
 			bttuvung.setVocabularyTitle(name);
-			bttuvung.setVocabularyImage(bttuvung.getId() + "." + file_image.getOriginalFilename());
+			bttuvung.setVocabularyImage( file_image.getOriginalFilename());
 			vocabularyExercisesService.save(bttuvung);
 
 			// save data from file excel
@@ -209,12 +201,10 @@ public class VocabularyExercisesApi {
 					noidungbaitaptuvung.setTranscribe(row.getCell(2).getStringCellValue());
 
 				if (row.getCell(3) != null)
-					noidungbaitaptuvung.setImage(
-							bttuvung.getId() + "." + row.getCell(3).getStringCellValue().toString());
+					noidungbaitaptuvung.setImage(row.getCell(3).getStringCellValue().toString());
 
 				if (row.getCell(4) != null)
-					noidungbaitaptuvung
-							.setAudiomp3(bttuvung.getId() + "." + row.getCell(4).getStringCellValue());
+					noidungbaitaptuvung.setAudiomp3(row.getCell(4).getStringCellValue());
 
 				if (row.getCell(5) != null)
 					noidungbaitaptuvung.setMeaning(row.getCell(5).getStringCellValue());

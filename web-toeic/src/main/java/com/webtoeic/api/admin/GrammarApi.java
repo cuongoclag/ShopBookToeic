@@ -70,10 +70,9 @@ public class GrammarApi {
 		grammarService.save(baigrammar);
 		try {
 			// save file upload to local folder
-			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/grammar/" + "" + baigrammar.getGrammarId() + "."
-					+ file_image.getOriginalFilename());
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/grammar/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
-			baigrammar.setGrammarImage(baigrammar.getGrammarId() + "." + file_image.getOriginalFilename());
+			baigrammar.setGrammarImage( file_image.getOriginalFilename());
 			baigrammar.setGrammarTitle(name);
 			baigrammar.setContentMarkDown(contentMarkdown);
 			baigrammar.setContentHTML(contentHtml);
@@ -103,10 +102,9 @@ public class GrammarApi {
 		try {
 			// save file upload to local folder
 			if(!file_image.isEmpty()) {
-				Path pathImage = Paths.get(rootDirectory + "/resources/file/images/grammar/" + "" + baigrammar.getGrammarId() + "."
-						+ file_image.getOriginalFilename());
+				Path pathImage = Paths.get(rootDirectory + "/resources/file/images/grammar/" + file_image.getOriginalFilename());
 				file_image.transferTo(new File(pathImage.toString()));
-				baigrammar.setGrammarImage(baigrammar.getGrammarId() + "." + file_image.getOriginalFilename());
+				baigrammar.setGrammarImage( file_image.getOriginalFilename());
 			}
 
 			baigrammar.setGrammarTitle(name);
