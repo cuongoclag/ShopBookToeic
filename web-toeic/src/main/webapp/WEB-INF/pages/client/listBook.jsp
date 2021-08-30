@@ -117,8 +117,8 @@
 					</div>
 				</c:forEach>
 				<c:forEach items="${products}" var="list">
-					<div class="card" style="width: 20%; margin: 1%">
-						<a href="<%=request.getContextPath()%>/bookDetails/${list.id }"><img style="height: 15rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap"></a>
+					<div class="card" style="width: 30%; margin: 1%">
+						<a href="<%=request.getContextPath()%>/bookDetails/${list.id }"><img style="height: 20rem" class="card-img-top" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="Card image cap"></a>
 						<div class="card-body">
 							<h5 class="card-title" style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis;">
 								<a href="<%=request.getContextPath()%>/bookDetails/${list.id }">${list.title}</a>
@@ -128,8 +128,8 @@
 								<p class="card-text">${list.priceVN}</p>
 							</c:if>
 							<c:if test="${list.price > list.promotionalPrice}">
-								<p class="card-text" style="text-decoration: line-through;">${list.priceVN}</p>
-								<p class="card-text">${list.promotionalPriceVN}</p>
+								<p class="card-text" style="font-size: 25px">${list.promotionalPriceVN}</p>
+								<p class="card-text" style="text-decoration: line-through; font-size: 20px">${list.priceVN}</p>
 							</c:if>
 							
 							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Chi tiết</a>
