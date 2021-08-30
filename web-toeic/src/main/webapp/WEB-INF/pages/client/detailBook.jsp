@@ -51,6 +51,16 @@
 	</div>
 	<h3>REVIEWS :</h3>
 	<p>${list.shortDetails}</p>
+			<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous"
+					src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0"
+					nonce="1L3hNQ0b"></script>
+
+			<div id="comment_fb">
+				<div class="fb-comments"
+					 data-href="http://localhost:8080/bookDetails/${list.id }"
+					 data-numposts="5" data-width="1150"></div>
+			</div>
 		</c:forEach>
 	</div>
 	<!--Footer==========================-->
