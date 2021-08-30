@@ -50,6 +50,7 @@
                             <th scope="col">SĐT</th>
                             <th scope="col">Email</th>
                             <th scope="col">Địa Chỉ</th>
+                            <th scope="col">Trạng thái đơn hàng</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,6 +59,15 @@
                             <th>${saleOrders.customerPhone }</th>
                             <th>${saleOrders.customerEmail }</th>
                             <th>${saleOrders.customerAddress }</th>
+                            <th>
+                                <c:choose>
+                                <c:when test="${saleOrders.status =='true'}">
+                                    <a href="#">Đang Xử Lý</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <span style="color: red">Đã Giao Hàng</span>
+                                </c:otherwise>
+                            </c:choose></th>
                         </tr>
                         </tbody>
                     </table>

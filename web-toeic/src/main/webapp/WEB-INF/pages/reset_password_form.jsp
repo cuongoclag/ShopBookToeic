@@ -29,14 +29,12 @@
 			<form class="sign-in-form" method="post" action="/reset_password">
 				<input type="hidden" name="token" value="${token }"/>
 				<div class="input-field">
-					<i class="fas fa-lock"></i>
 					<input type="password" placeholder="Nhập mật khẩu mới" name="password" id="password" required="required" autofocus="autofocus"/>
 				</div>
 				<div class="input-field">
-					<i class="fas fa-lock"></i>
 					<input type="password" placeholder="Nhập lại mật khẩu" name="confirmPassword" required="required" autofocus="autofocus" oninput="checkPasswordMatch(this);"/>
 				</div>
-				<button class="btn solid" type="submit">Đổi mật khẩu</button>
+				<button class="btn" id="submit"type="submit">Đổi mật khẩu</button>
 			</form>
 		</div>
 	</div>

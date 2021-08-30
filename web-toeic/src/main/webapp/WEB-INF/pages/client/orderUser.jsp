@@ -67,7 +67,7 @@
                             <a href="#">Đang Xử Lý</a>
                         </c:when>
                         <c:otherwise>
-                            <span>Đã Giao Hàng</span>
+                            <span style="color: red">Đã Giao Hàng</span>
                         </c:otherwise>
                     </c:choose>
                 </td>
