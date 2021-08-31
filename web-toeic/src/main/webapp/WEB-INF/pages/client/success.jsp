@@ -47,27 +47,23 @@
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="ps-checkout__billing">
 				      <h3 style="color: red">Bạn đã thanh toán thành công số tiền ${sumVN }</h3>
-                      <h3>Order confirmation</h3>
-                            <div class="form-group form-group--inline">
-                              <label for="exampleInputEmail1">Name<span>*</span>
-                              </label>
-                              ${customerName }     
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="exampleInputEmail1">Phone<span>*</span>
-                              </label>
-                              ${customerPhone }
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="exampleInputPassword1">Email Address<span>*</span>
-                              </label>
-                              ${customerAddress }
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="exampleInputPassword1">Address<span>*</span>
-                              </label>
-                              ${customerEmail }
-                            </div>
+                      <h3>Thông tin đơn hàng</h3>
+						<table>
+							<tbody>
+							<tr>
+								<td>Họ Tên Người Nhận: <span style="color: blue">${user.fullName }</span></td>
+							</tr>
+							<tr>
+								<td>Số Điện Thoại: <span style="color: blue">${user.phone }</span></td>
+							</tr>
+							<tr>
+								<td>Email: <span style="color: blue">${user.email }</span></td>
+							</tr>
+							<tr>
+								<td>Địa Chỉ: <span style="color: blue">${user.address }</span></td>
+							</tr>
+							</tbody>
+						</table>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">

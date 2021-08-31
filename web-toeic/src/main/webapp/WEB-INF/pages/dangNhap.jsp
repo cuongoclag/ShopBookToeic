@@ -61,10 +61,7 @@
 				<input
 					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 				<label
-					style=" width: 100%; font-size: 15px; text-align: center;" id="label"> 
-				<input
-					type="checkbox" class="form-check-input" id="" name="remember-me" />
-					Duy trì đăng nhập
+					style=" width: 100%; font-size: 15px; text-align: center;" id="label">
 				<div class="g-recaptcha" style="margin: 0 15%;" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
 				</label> <input id="submit" type="submit" value="ĐĂNG NHẬP">
 				<p class="message" style="font-size: 18; padding-top: 10px">

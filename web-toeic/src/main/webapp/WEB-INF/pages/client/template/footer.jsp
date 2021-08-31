@@ -1,26 +1,41 @@
-<footer  class="footer">
-<!-- style=" height: 20px; width:100%;left: 0;bottom: 0; " -->
- <div class="container">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'  />" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="<c:url value='/css/bootstrap-responsive.min.css'  />" />
+    <link rel="stylesheet" href="<c:url value='/css/style.css'  />" />
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="<c:url value='/js/bootstrap.min.js' />"></script>
+
+    <style>
+        @media print {
+            #footer-row {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+ <div class="container" id="footer-row">
       <div class="row">
-      
-      
         <div class="span6" align="center">Copyright &copy; CPD ENGLISH 2021 | All Rights Reserved<br>
         <small>FPT APTECH</small>
         </div>
-      
-      
-        <div class="span6">
-            <div class="social pull-right">
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/googleplus.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/dribbble.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/twitter.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/dribbble.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/rss.png" alt=""></a>
-            </div>
-        </div>
       </div>
-    </div>
-</footer>
+ </div>
 <!--Start of Tawk.to Script-->
 	<script type="text/javascript">
 		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

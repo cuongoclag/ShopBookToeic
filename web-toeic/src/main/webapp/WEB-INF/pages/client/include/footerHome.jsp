@@ -15,11 +15,17 @@
      
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    
+    <style>
+        @media print {
+            #footer-row {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 <footer>
- <div class="container">
+ <div class="container" id="footer-row">
       <div class="row">
       
       

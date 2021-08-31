@@ -192,7 +192,6 @@ public class CartController{
 	public String finish(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		HttpSession httpSession = request.getSession();
-
 		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {

@@ -21,18 +21,11 @@
 <script src="<c:url value='/js/bootstrap.min.js' />"></script>
 
 <style>
-.radio-inline {
-	display: inline-flex;
-	padding-left: 35px;
-}
-
-input[type=radio] {
-	margin-right: 5px;
-}
-
-h3 {
-	margin: 0;
-}
+	@media print {
+		#header-row {
+			display: none;
+		}
+	}
 </style>
 </head>
 

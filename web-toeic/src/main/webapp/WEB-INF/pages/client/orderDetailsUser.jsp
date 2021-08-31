@@ -24,7 +24,19 @@
     <script
             src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
 
-
+<style type="text/css">
+    #headerTitlePrint{
+        display: none;
+    }
+    @media print {
+        #headerTitlePrint {
+            display: block;
+        }
+        #linkA, #linkB {
+            display: none;
+        }
+    }
+</style>
 </head>
 <body>
 
@@ -40,10 +52,11 @@
     <div class="card shadow mb-4">
         <div class="card-body" >
             <div id="print_div">
-                <h2 class="h3 mb-2 text-gray-800">Thông tin đặt hàng <span style="color: red;">${saleOrders.code }</span></h2>
+                <img src="/resources/file/images/logo.png" alt="" style="width: 10rem; height: 10rem" id="headerTitlePrint">
+                <h2 class="h3 mb-2 text-gray-800" style="text-align: center">Thông tin đặt hàng <span style="color: red;">${saleOrders.code }</span></h2>
                 <div class="table-responsive">
                     <h3>Thông tin người dùng</h3>
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" width="100%" cellspacing="0" border="1">
                         <thead>
                         <tr>
                             <th scope="col">Tên</th>
@@ -73,7 +86,7 @@
                     </table>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover" border="1">
                         <thead>
                         <tr>
 <%--                            <th class="text-center h3 font-weight-bold">Ảnh</th>--%>
@@ -87,8 +100,9 @@
                         <c:forEach var="saleOrderProduct" items="${saleOrderProducts }">
                             <tr>
 <%--                                <td><img alt="" style="width: 80px" src="${pageContext.request.contextPath}/resources/file/images/upload/${saleOrderProduct.product.productImages[0].path}"></td>--%>
-                                <td><span>
-                                        <a href="${base}/bookDetails/${saleOrderProduct.product.id }">${saleOrderProduct.product.title }</a>
+                                <td>
+                                    <span>
+                                        ${saleOrderProduct.product.title }
                                     </span>
                                 </td>
                                 <td>${saleOrderProduct.product.priceVN }</td>
@@ -110,8 +124,8 @@
                     </table>
                 </div>
             </div>
-            <a href="<%=request.getContextPath()%>/orderUser/${nguoiDung.id }" class="btn btn-danger btn-sm">Trở lại</a>
-            <button type="button" name="" class="btn btn-primary btn-sm" onclick="printdiv('print_div')">In</button>
+            <a href="<%=request.getContextPath()%>/orderUser/${nguoiDung.id }" class="btn btn-danger" id="linkA">Trở lại</a>
+            <button type="button" name="" class="btn btn-primary" onclick="printdiv('print_div')" id="linkB">In</button>
         </div>
     </div>
 </div>
@@ -120,14 +134,7 @@
 <!--/.Footer-->
 <script type="text/javascript">
     function printdiv(printpage) {
-        var headstr = "<html><head><title></title></head><body>";
-        var footstr = "</body>";
-        var newstr = document.all.item(printpage).innerHTML;
-        var oldstr = document.body.innerHTML;
-        document.body.innerHTML = headstr + newstr + footstr;
         window.print();
-        document.body.innerHTML = oldstr;
-        return false;
     }
 </script>
 </body>

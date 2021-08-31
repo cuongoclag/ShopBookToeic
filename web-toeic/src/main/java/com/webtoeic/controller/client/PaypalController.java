@@ -111,14 +111,8 @@ public class PaypalController {
 	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, final ModelMap model, final HttpServletRequest request, final HttpServletResponse response) {
 	        try {
 	            Payment payment = service.executePayment(paymentId, payerId);
-	            System.out.println(payment.toJSON());
 	            if (payment.getState().equals("approved")) {
 	            	HttpSession httpSession = request.getSession();
-	        		String customerName = null;
-	        		String customerAddress = null;
-	        		String customerPhone = null;
-	        		String customerEmail = null;
-
 	        		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
 	        				Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	        				model.addAttribute("user", getSessionUser(request));
@@ -136,7 +130,7 @@ public class PaypalController {
 	        			saleOrderProducts.setQuantity(item.getQuantity());
 	        			saleOrder.addSaleOrderProducts(saleOrderProducts);
 	        			for (int i = 1; i <= item.getQuantity(); i++) {
-	        				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+	        				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 	        			}
 	        			Locale locale = new Locale("vi", "VN");
 	        			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);

@@ -12,13 +12,17 @@
     <title>Order Information</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
-        .hidden {
+        #headerTitlePrint{
             display: none;
         }
-        .error-message {
-            color: red;
+        @media print {
+            #headerTitlePrint {
+                display: block;
+            }
+            #linkA, #linkB , #linkC, #linkD{
+                display: none;
+            }
         }
-
     </style>
     <script src="<c:url value='/js/admin/shop/delete-saleOrder.js'/>" ></script>
 
@@ -31,10 +35,11 @@
     <div class="card shadow mb-4">
         <div class="card-body" >
             <div id="print_div">
-                <h1 class="h3 mb-2 text-gray-800">Thông tin đặt hàng <span style="color: red;">${saleOrder.code }</span></h1>
+                <img src="/resources/file/images/logo.png" alt="" style="width: 10rem; height: 10rem" id="headerTitlePrint">
+                <h1 class="h3 mb-2 text-gray-800" style="text-align: center">Thông tin đặt hàng <span style="color: red;">${saleOrder.code }</span></h1>
                 <div class="table-responsive">
                     <h3>Thông tin người dùng</h3>
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
                         <thead>
                         <tr>
                             <th scope="col">Tên</th>
@@ -55,7 +60,7 @@
                 </div>
                 <h3>Danh sách sản phẩm</h3>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" border="1">
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -94,15 +99,15 @@
                 <c:when test="${saleOrder.status =='true'}">
                     <button type="button" name=""
                             onclick="confirmDelete('${saleOrder.id }')"
-                            class="btn btn-primary btn-sm">Complete </button>
+                            class="btn btn-primary" id="linkC">Complete </button>
                 </c:when>
                 <c:otherwise>
-                    <button type="button" name="" class="btn btn-danger btn-sm"
+                    <button type="button" name="" class="btn btn-danger" id="linkD"
                     ">Completed</button>
                 </c:otherwise>
             </c:choose>
-            <a href="${base }/admin/list-order" class="btn btn-danger btn-sm">Back</a>
-            <button type="button" name="" class="btn btn-primary btn-sm" onclick="printdiv('print_div')">Print</button>
+            <a href="${base }/admin/list-order" class="btn btn-danger" id="linkA">Back</a>
+            <button type="button" name="" class="btn btn-primary" onclick="printdiv('print_div')" id="linkB">Print</button>
         </div>
     </div>
 </div>
@@ -113,14 +118,7 @@
 
 <script type="text/javascript">
     function printdiv(printpage) {
-        var headstr = "<html><head><title></title></head><body>";
-        var footstr = "</body>";
-        var newstr = document.all.item(printpage).innerHTML;
-        var oldstr = document.body.innerHTML;
-        document.body.innerHTML = headstr + newstr + footstr;
         window.print();
-        document.body.innerHTML = oldstr;
-        return false;
     }
 </script>
 </body>
