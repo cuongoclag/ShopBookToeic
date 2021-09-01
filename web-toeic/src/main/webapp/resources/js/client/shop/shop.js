@@ -101,7 +101,7 @@
 			dataType : "json", // dữ liệu từ web-service trả về là json.
 			success : function(jsonResult) { // được gọi khi web-service trả
 				// về dữ liệu.
-				alert('Success');
+				alert('Bạn đã thêm vào giỏ hàng!');
 
 				$("#btnCheckout").html("(" + jsonResult.data + ")");
 
@@ -112,6 +112,33 @@
 			}
 		});
 	},
+
+		addItemWishlist : function(productId, quantity) {
+			var data = {
+				"productId" : productId,
+				"quantity" : quantity
+			};
+			$.ajax({
+				url : "/wishlist",
+				type : "post",
+				contentType : "application/json", // dữ liệu gửi lên web-service
+				// có dạng là json.
+				data : JSON.stringify(data), // object json -> string json
+
+				dataType : "json", // dữ liệu từ web-service trả về là json.
+				success : function(jsonResult) { // được gọi khi web-service trả
+					// về dữ liệu.
+					alert('Bạn đã thêm vào yêu thích!');
+
+					$("#btnCheckout").html("(" + jsonResult.data + ")");
+
+					$('html, body').animate({
+						scrollTop : $("#btnCheckout").offset().top - 100
+					}, 1000);
+
+				}
+			});
+		},
 
 	saveContact : function() {
 		var data = {};

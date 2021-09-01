@@ -18,6 +18,7 @@
 			src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
 	<link rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/paging.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
 	<style type="text/css">
 		.hidden {
@@ -113,6 +114,7 @@
 							</c:if>
 
 							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Chi tiết</a>
+							<button type="button" onclick="Shop.addItemWishlist(${list.id}, 1)" class="btn btn-primary"><i class="fas fa-star"></i></button>
 						</div>
 					</div>
 				</c:forEach>
@@ -133,6 +135,7 @@
 							</c:if>
 							
 							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Chi tiết</a>
+							<button type="button" onclick="Shop.addItemWishlist(${list.id}, 1)" class="btn btn-primary"><i class="fas fa-star"></i></button>
 						</div>
 					</div>
 				</c:forEach>
@@ -170,6 +173,7 @@
 	<!--Footer==========================-->
 	<jsp:include page="include/footerHome.jsp"></jsp:include>
 	<!--/.Footer-->
+	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
 
 </body>
 </html>

@@ -1,16 +1,17 @@
 package com.webtoeic.controller.client;
 
 import com.webtoeic.common.ProductSearch;
-import com.webtoeic.entities.Category;
-import com.webtoeic.entities.Grammar;
-import com.webtoeic.entities.Product;
+import com.webtoeic.entities.*;
 import com.webtoeic.repository.ProductRepository;
+import com.webtoeic.repository.SaleOrderRepository;
 import com.webtoeic.service.CategoryService;
 import com.webtoeic.service.GrammarService;
 import com.webtoeic.service.ProductService;
+import com.webtoeic.service.SaleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,9 +19,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class BookController {
@@ -28,8 +34,13 @@ public class BookController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+
     @Autowired
-    private ProductRepository productRepository;
+    ProductRepository productRepo;
+    @Autowired
+    SaleOrderRepository saleOrderRepo;
+    @Autowired
+    SaleOrderService saleOrderService;
 
 
     //Trả về trang listBook
@@ -107,4 +118,101 @@ public class BookController {
 //        }
 //        return "client/resultSearchGrammar";
 //    }
+
+    @RequestMapping(value = { "/wishlist" }, method = RequestMethod.GET)
+    public String checkOut(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+            throws IOException {
+        HttpSession httpSession = request.getSession();
+        SaleOrder saleOrder = new SaleOrder();
+        Cart cart = (Cart) httpSession.getAttribute("WISHLIST");
+        if(cart == null) {
+            return "client/wishlist";
+        } else {
+            List<CartItem> cartItems = cart.getCartItems();
+            BigDecimal sum = new BigDecimal(0);
+            String sumVN = null;
+            for (CartItem item : cartItems) {
+                SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+                saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+                saleOrderProducts.setQuantity(item.getQuantity());
+                saleOrder.addSaleOrderProducts(saleOrderProducts);
+
+
+
+                for (int i = 1; i <= item.getQuantity(); i++) {
+                    sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
+                }
+                Locale locale = new Locale("vi", "VN");
+                NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+                sumVN = fmt.format(sum);
+            }
+            model.addAttribute("TOTAL", sumVN);
+            return "client/wishlist";
+        }
+    }
+
+    @RequestMapping(value = {"/wishlist"}, method = RequestMethod.POST)
+    public ResponseEntity<AjaxResponse> muaHang(@RequestBody CartItem data, final ModelMap model,
+                                                final HttpServletRequest request, final HttpServletResponse response) throws IOException {
+        HttpSession httpSession = request.getSession();
+
+        Cart cart = null;
+
+        if (httpSession.getAttribute("WISHLIST") != null) {
+            cart = (Cart) httpSession.getAttribute("WISHLIST");
+        } else {
+            cart = new Cart();
+            httpSession.setAttribute("WISHLIST", cart);
+        }
+
+        List<CartItem> cartItems = cart.getCartItems();
+        boolean isExists = false;
+        int quantity = 0;
+        for (CartItem item : cartItems) {
+            if (item.getProductId() == data.getProductId()) {
+                isExists = true;
+                item.setQuantity(item.getQuantity() + data.getQuantity());
+            }
+        }
+        if (!isExists) {
+
+            Product product = productRepo.getOne(data.getProductId());
+            data.setProductName(product.getTitle());
+            data.setUnitPrice(product.getPromotionalPrice());
+            cart.getCartItems().add(data);
+        }
+        for (CartItem item : cartItems) {
+            quantity += item.getQuantity();
+        }
+
+        httpSession.setAttribute("SL_SP_WISHLIST", quantity);
+
+        return ResponseEntity.ok(new AjaxResponse(200, String.valueOf(quantity)));
+    }
+
+    @RequestMapping(value = {
+            "/wishlist/delete-product-wishlist-with-ajax/{productId}" }, method = RequestMethod.POST)
+    public ResponseEntity<AjaxResponse> subscribe(@RequestBody CartItem data, @PathVariable("productId") int productId,
+                                                  final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
+            throws Exception {
+
+        HttpSession httpSession = request.getSession();
+        Cart cart = null;
+        if (httpSession.getAttribute("WISHLIST") != null) {
+            cart = (Cart) httpSession.getAttribute("WISHLIST");
+        } else {
+            cart = new Cart();
+            httpSession.setAttribute("WISHLIST", cart);
+        }
+
+        List<CartItem> cartItems = cart.getCartItems();
+
+        for (int a = 0; a < cartItems.size(); a++) {
+            if (cartItems.get(a).getProductId() == productId) {
+                cartItems.remove(a);
+            }
+        }
+
+        return ResponseEntity.ok(new AjaxResponse(200, "Success"));
+    }
 }

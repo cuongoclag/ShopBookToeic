@@ -65,6 +65,7 @@
 															khoản</a></li>
 												</c:if>
 												<li><a href="<%=request.getContextPath()%>/orderUser/${nguoiDung.id }">Đơn hàng của bạn</a></li>
+												<li><a href="<%=request.getContextPath()%>/wishlist">Yêu thích</a></li>
 												<li><a href="<%=request.getContextPath()%>/signout">Thoát</a></li>
 											</ul>
 										</li>

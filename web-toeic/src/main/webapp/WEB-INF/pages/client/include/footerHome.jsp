@@ -35,13 +35,7 @@
       
       
         <div class="span6">
-            <div class="social pull-right">
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/googleplus.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/dribbble.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/twitter.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/dribbble.png" alt=""></a>
-                <a href="#"><img src="${pageContext.request.contextPath}/resources/file/images/social/rss.png" alt=""></a>
-            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3192813592364!2d106.664085614684!3d10.786840061951292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed2392c44df%3A0xd2ecb62e0d050fe9!2zRlBUIEFwdGVjaCBIQ00gLSBI4buHIFRo4buRbmcgxJDDoG8gVOG6oW8gTOG6rXAgVHLDrG5oIFZpw6puIFF14buRYyBU4bq_IChTaW5jZSAxOTk5KQ!5e0!3m2!1svi!2s!4v1630429504942!5m2!1svi!2s" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </div>
