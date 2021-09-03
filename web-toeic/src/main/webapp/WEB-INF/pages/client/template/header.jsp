@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="google-translate-customization" content="9f841e7780177523-3214ceb76f765f38-gc38c6fe6f9d06436-c"></meta>
 
 
 <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'  />" />
@@ -19,6 +20,13 @@
 <link rel="stylesheet" href="<c:url value='/css/style.css'  />" />
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="<c:url value='/js/bootstrap.min.js' />"></script>
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement({pageLanguage: 'vi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+		}
+	</script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 <style>
 	@media print {
@@ -54,6 +62,7 @@
 										</li>
 										<li><a href="<%=request.getContextPath()%>/signin">Đăng nhập</a></li>
 										<li><a href="/cart/check-out"><i class="fas fa-shopping-cart" style="font-size: 1.5rem;"></i></a></li>
+										<li style="height: 40px; line-height: 40px"><div id="google_translate_element"></div></li>
 									</c:if>
 									<c:if test="${pageContext.request.userPrincipal.name != null}">
 										<li class="active"><a href="/">Trang chủ</a></li>
@@ -70,6 +79,7 @@
 											</ul>
 										</li>
 										<li><a href="/cart/check-out"><i class="fas fa-shopping-cart" style="font-size: 1.5rem;"></i></a></li>
+										<li style="height: 40px; line-height: 40px><div id="google_translate_element"></div></li>
 									</c:if>
 								</ul>
 							</div>

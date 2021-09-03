@@ -114,7 +114,7 @@
 							</c:if>
 
 							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Chi tiết</a>
-							<button type="button" onclick="Shop.addItemWishlist(${list.id}, 1)" class="btn btn-primary"><i class="fas fa-star"></i></button>
+							<button type="button" onclick="Shop.addItemWishlist(${list.id}, 1)" class="btn"><i class="fas fa-heart" style="color: red; font-size: 20px"></i></button>
 						</div>
 					</div>
 				</c:forEach>
@@ -135,7 +135,7 @@
 							</c:if>
 							
 							<a href="<%=request.getContextPath()%>/bookDetails/${list.id }" class="btn btn-primary">Chi tiết</a>
-							<button type="button" onclick="Shop.addItemWishlist(${list.id}, 1)" class="btn btn-primary"><i class="fas fa-star"></i></button>
+							<button type="button" onclick="Shop.addItemWishlist(${list.id}, 1)" class="btn"><i class="fas fa-heart" style="color: red; font-size: 20px"></i></button>
 						</div>
 					</div>
 				</c:forEach>

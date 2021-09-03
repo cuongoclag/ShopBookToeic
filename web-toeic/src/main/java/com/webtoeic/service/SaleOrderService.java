@@ -111,33 +111,77 @@ public class SaleOrderService {
         String subject = "Thông báo xác nhận đơn hàng";
         String senderName = "CPD ENGLSH";
         String mailContent = "<p> Dear " + saleOrder.getCustomerName() + "</p>";
-        mailContent += "<h2> Thông tin đơn hàng " + saleOrder.getCode() + "</h2>";
-
-        for (CartItem cartItem : cartItems) {
-            mailContent += "<p> " + cartItem.getProductName() + " X " + cartItem.getQuantity()
-                    + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + cartItem.getUnitPriceVN()
-                    + "</p>";
-        }
-        mailContent += "<h4> Tổng Cộng:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + saleOrder.getTotalVN() + "</h4>";
-        mailContent += "<p>-------------------------------------------------------------</p>";
+        mailContent += "<img src='C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/ShopBookToeic/web-toeic/src/main/webapp/resources/file/images/logo.png' style='width:100px;height:100px;'/>";
+        mailContent += "<h2 style=\"text-align: center\"> Thông tin đơn hàng " + saleOrder.getCode() + "</h2>";
         mailContent += "<h2> Thông tin khách hàng </h2>";
-        mailContent += "<p> Tên Khách Hàng: " + saleOrder.getCustomerName() + "</p>";
-        mailContent += "<p> Số điện thoại liên lạc: " + saleOrder.getCustomerPhone() + "</p>";
-        mailContent += "<p> Địa chỉ: " + saleOrder.getCustomerAddress() + "</p>";
-        mailContent += "<p> Phương thức thanh toán: Thanh toán khi nhận hàng</p>";
-        mailContent += "<p>Cám ơn bạn đã mua hàng!</p>";
-        mailContent += "<p>CPD ENGLISH</p>";
+        mailContent += "<table class=\"table table-bordered\" width=\"100%\" cellspacing=\"0\" border=\"1\">\n" +
+                "                        <thead>\n" +
+                "                        <tr>\n" +
+                "                            <th scope=\"col\">Tên</th>\n" +
+                "                            <th scope=\"col\">SĐT</th>\n" +
+                "                            <th scope=\"col\">Email</th>\n" +
+                "                            <th scope=\"col\">Địa Chỉ</th>\n" +
+                "                            <th scope=\"col\">Phương thức thanh toán</th>\n" +
+                "                        </tr>\n" +
+                "                        </thead>\n" +
+                "                        <tbody>\n" +
+                "                        <tr>\n" +
+                "                            <th>" + saleOrder.getCustomerName() + "</th>\n" +
+                "                            <th>" + saleOrder.getCustomerPhone() + "</th>\n" +
+                "                            <th>" + saleOrder.getCustomerEmail() + "</th>\n" +
+                "                            <th>" + saleOrder.getCustomerAddress() + "</th>\n" +
+                "                            <th>\n" +
+                "                                Thanh toán khi nhận hàng\n" +
+                "                            </th>\n" +
+                "                        </tr>\n" +
+                "                        </tbody>\n" +
+                "                    </table>";
+        mailContent += "<br/>";
+        mailContent += "<br/>";
+        mailContent += "<table class=\"table table-bordered\" width=\"100%\" cellspacing=\"0\" border=\"1\">\n" +
+                "                        <thead>\n" +
+                "                        <tr>\n" +
+                "                            <th class=\"text-center h3 font-weight-bold\">Tên</th>\n" +
+                "                            <th class=\"text-center h3 font-weight-bold\">Giá</th>\n" +
+                "                            <th class=\"text-center h3 font-weight-bold\">Số lượng</th>\n" +
+                "                        </tr>\n" +
+                "                        </thead>\n" +
+                "                        <tbody>\n";
+                                            for (CartItem cartItem : cartItems) {
+        mailContent +=  "                        <tr>\n" +
+                "                                <th>\n" +
+                "                                    <span>\n" +
+                "                                        "+ cartItem.getProductName() +"\n" +
+                "                                    </span>\n" +
+                "                                </th>\n" +
+                "                                <th>" + cartItem.getUnitPriceVN()+ "</th>\n" +
+                "                                <th>" + cartItem.getQuantity() + "</th>\n" +
+                "                            </tr>\n";
+                                             }
+        mailContent +=  "            </tbody>\n" +
+                "                    </table>";
+        mailContent += "<br/>";
+        mailContent += "<br/>";
+        mailContent += "<table class=\"table\">\n" +
+                 "                        <thead>\n" +
+                 "                        <tr>\n" +
+                 "                            <th style=\"color: red\">Tổng</th>\n" +
+                 "                            <th>" + saleOrder.getTotalVN() + "</th>\n" +
+                 "                        </tr>\n" +
+                 "                        </thead>\n" +
+                 "                    </table>";
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable","true");
 
         MimeMessage message = mailSender.createMimeMessage();
 
-        MimeMessageHelper helper = new MimeMessageHelper(message);
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setFrom("fastsneakercompany@gmail.com", senderName);
         helper.setTo(saleOrder.getCustomerEmail());
         helper.setSubject(subject);
+        helper.addInline("logo",
+                new File("C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/ShopBookToeic/web-toeic/src/main/webapp/resources/file/images/logo.png"));
         helper.setText(mailContent, true);
         mailSender.send(message);
     }
@@ -183,35 +227,80 @@ public class SaleOrderService {
             throws UnsupportedEncodingException, MessagingException {
 
         String subject = "Thông báo xác nhận đơn hàng";
-        String senderName = "CPD ENGLISH";
+        String senderName = "CPD ENGLSH";
         String mailContent = "<p> Dear " + saleOrder.getCustomerName() + "</p>";
-        mailContent += "<h2> Thông tin đơn hàng" + saleOrder.getCode() + "</h2>";
-
-        for (CartItem cartItem : cartItems) {
-            mailContent += "<p> " + cartItem.getProductName() + " X " + cartItem.getQuantity()
-                    + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + cartItem.getUnitPriceVN()
-                    + "</p>";
-        }
-        mailContent += "<h4> Tổng Cộng:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + saleOrder.getTotalVN() + "</h4>";
-        mailContent += "<p>-------------------------------------------------------------</p>";
+        mailContent += "<img src='C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/ShopBookToeic/web-toeic/src/main/webapp/resources/file/images/logo.png' style='width:100px;height:100px;'/>";
+        mailContent += "<h2 style=\"text-align: center\"> Thông tin đơn hàng " + saleOrder.getCode() + "</h2>";
         mailContent += "<h2> Thông tin khách hàng </h2>";
-        mailContent += "<p> Tên Khách Hàng: " + saleOrder.getCustomerName() + "</p>";
-        mailContent += "<p> Số điện thoại liên lạc: " + saleOrder.getCustomerPhone() + "</p>";
-        mailContent += "<p> Địa chỉ: " + saleOrder.getCustomerAddress() + "</p>";
-        mailContent += "<p> Phương thức thanh toán: Thanh Toán PayPal</p>";
-        mailContent += "<p>Cám ơn bạn đã mua hàng!</p>";
-        mailContent += "<p>CPD ENGLISH</p>";
+        mailContent += "<table class=\"table table-bordered\" width=\"100%\" cellspacing=\"0\" border=\"1\">\n" +
+                "                        <thead>\n" +
+                "                        <tr>\n" +
+                "                            <th scope=\"col\">Tên</th>\n" +
+                "                            <th scope=\"col\">SĐT</th>\n" +
+                "                            <th scope=\"col\">Email</th>\n" +
+                "                            <th scope=\"col\">Địa Chỉ</th>\n" +
+                "                            <th scope=\"col\">Phương thức thanh toán</th>\n" +
+                "                        </tr>\n" +
+                "                        </thead>\n" +
+                "                        <tbody>\n" +
+                "                        <tr>\n" +
+                "                            <th>" + saleOrder.getCustomerName() + "</th>\n" +
+                "                            <th>" + saleOrder.getCustomerPhone() + "</th>\n" +
+                "                            <th>" + saleOrder.getCustomerEmail() + "</th>\n" +
+                "                            <th>" + saleOrder.getCustomerAddress() + "</th>\n" +
+                "                            <th>\n" +
+                "                                Thanh toán Paypal\n" +
+                "                            </th>\n" +
+                "                        </tr>\n" +
+                "                        </tbody>\n" +
+                "                    </table>";
+        mailContent += "<br/>";
+        mailContent += "<br/>";
+        mailContent += "<table class=\"table table-bordered\" width=\"100%\" cellspacing=\"0\" border=\"1\">\n" +
+                "                        <thead>\n" +
+                "                        <tr>\n" +
+                "                            <th class=\"text-center h3 font-weight-bold\">Tên</th>\n" +
+                "                            <th class=\"text-center h3 font-weight-bold\">Giá</th>\n" +
+                "                            <th class=\"text-center h3 font-weight-bold\">Số lượng</th>\n" +
+                "                        </tr>\n" +
+                "                        </thead>\n" +
+                "                        <tbody>\n";
+        for (CartItem cartItem : cartItems) {
+            mailContent +=  "                        <tr>\n" +
+                    "                                <th>\n" +
+                    "                                    <span>\n" +
+                    "                                        "+ cartItem.getProductName() +"\n" +
+                    "                                    </span>\n" +
+                    "                                </th>\n" +
+                    "                                <th>" + cartItem.getUnitPriceVN()+ "</th>\n" +
+                    "                                <th>" + cartItem.getQuantity() + "</th>\n" +
+                    "                            </tr>\n";
+        }
+        mailContent +=  "            </tbody>\n" +
+                "                    </table>";
+        mailContent += "<br/>";
+        mailContent += "<br/>";
+        mailContent += "<table class=\"table\">\n" +
+                "                        <thead>\n" +
+                "                        <tr>\n" +
+                "                            <th style=\"color: red\">Tổng</th>\n" +
+                "                            <th>" + saleOrder.getTotalVN() + "</th>\n" +
+                "                        </tr>\n" +
+                "                        </thead>\n" +
+                "                    </table>";
 
         Properties props = new Properties();
-        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.starttls.enable","true");
+
         MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setFrom("fastsneakercompany@gmail.com", senderName);
         helper.setTo(saleOrder.getCustomerEmail());
         helper.setSubject(subject);
+        helper.addInline("logo",
+                new File("C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/ShopBookToeic/web-toeic/src/main/webapp/resources/file/images/logo.png"));
         helper.setText(mailContent, true);
-
         mailSender.send(message);
     }
 

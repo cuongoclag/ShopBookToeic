@@ -40,12 +40,13 @@
 
 <!--/End Headter-->
 
-<div class="container" id="resultsearch">
+<div class="container" id="resultsearch" style="margin-top: 9%; margin-bottom: 9%">
     <input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
     <input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 
-    <div>
-        ThankYou
+    <div style="text-align: center; font-size: 2rem">
+        <p>Yêu cầu của bạn đã được gửi</p>
+        <p>Vui lòng kiểm tra lịch sử mua hàng của bạn</p>
     </div>
 
 </div>
