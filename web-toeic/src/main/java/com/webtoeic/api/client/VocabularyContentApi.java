@@ -72,16 +72,13 @@ public class VocabularyContentApi {
 		cmt.setUsers(currentUser);
 		cmt.setCmtVocabularyContent(contentComment);
 		commentTuVungService.save(cmt);
-
 		// get all comment by baituvung
 //		List<CommentTuVung> listCmt = commentTuVungService.findByBaiTapTuVung(baitaptuvung.get(0));
 //		int last_cmt = listCmt.size()-1;
 //		System.out.println(cmt.toString());
 //    	return listCmt.get(last_cmt);
-
 		response.add(cmt.toString());
 		return response;
-
 	}
 
 }

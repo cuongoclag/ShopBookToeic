@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.webtoeic.entities.ListeningExercises;
 import com.webtoeic.repository.ListeningExercisesRepository;
 import com.webtoeic.repository.NguoiDungRepository;
-import com.webtoeic.util.ExcelUtil;
+//import com.webtoeic.util.ExcelUtil;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,8 +25,8 @@ public class WebToeicApplicationTests {
 	@Autowired
 	ListeningExercisesRepository repo;
 
-	@Autowired
-	ExcelUtil excelUtil;
+//	@Autowired
+//	ExcelUtil excelUtil;
 
 	@Test
 	public void contextLoads() {

@@ -23,7 +23,7 @@ public class ListeningExercises {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Integer id;
 	private String listeningTitle;
 
 	private int difficult; // 1: dễ, 2:trung bình, 3: khó
@@ -42,18 +42,16 @@ public class ListeningExercises {
 	@Transient
 	private MultipartFile fileExcelQuestions;
 
-	@Column(columnDefinition = "TEXT")
-	private String script; // chi tiết bài nghe
 
 	@OneToMany(mappedBy = "listeningExercises", cascade = CascadeType.ALL)
 	@JsonBackReference
 	List<ListeningExercisesQuestions> listListeningExercisesQuestions;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -87,14 +85,6 @@ public class ListeningExercises {
 
 	public void setListListeningExercisesQuestions(List<ListeningExercisesQuestions> listListeningExercisesQuestions) {
 		this.listListeningExercisesQuestions = listListeningExercisesQuestions;
-	}
-
-	public String getScript() {
-		return script;
-	}
-
-	public void setScript(String script) {
-		this.script = script;
 	}
 
 	public MultipartFile getFileExcelQuestions() {

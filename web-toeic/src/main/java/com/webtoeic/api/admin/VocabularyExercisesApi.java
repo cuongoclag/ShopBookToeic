@@ -79,7 +79,7 @@ public class VocabularyExercisesApi {
 		// System.out.println("id="+baithithu.getBaithithuid());
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/vocab/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
 			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/vocab/" + file_image.getOriginalFilename());
@@ -141,7 +141,7 @@ public class VocabularyExercisesApi {
 		// System.out.println("id="+baithithu.getBaithithuid());
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" +  file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/vocab/" +  file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
 			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/vocab/" + file_image.getOriginalFilename());

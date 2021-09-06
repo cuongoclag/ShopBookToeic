@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ReadingExercises {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String listeningTitle;
+	private Integer id;
+	private String readingTitle;
 
 	private int difficult; // 1: dễ, 2:trung bình, 3: khó
 
 	@Transient
 	@JsonIgnore
-	private MultipartFile listeningPhoto; // ảnh bài nghe nếu có
+	private MultipartFile readingPhoto; // ảnh bài nghe nếu có
 
 	private int part; // phần 1,2,3,4 ?
 
@@ -39,67 +39,24 @@ public class ReadingExercises {
 	@Transient
 	private MultipartFile fileExcelQuestions;
 
-	@Column(columnDefinition = "TEXT")
-	private String script; // chi tiết bài nghe
-
-	@OneToMany(mappedBy = "listeningExercises", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "readingExercises", cascade = CascadeType.ALL)
 	@JsonBackReference
-	List<ListeningExercisesQuestions> listListeningExercisesQuestions;
+	List<ReadingExercisesQuestions> readingExercisesQuestions;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getListeningTitle() {
-		return listeningTitle;
+	public String getReadingTitle() {
+		return readingTitle;
 	}
 
-	public void setListeningTitle(String listeningTitle) {
-		this.listeningTitle = listeningTitle;
-	}
-
-	public MultipartFile getListeningPhoto() {
-		return listeningPhoto;
-	}
-
-	public void setListeningPhoto(MultipartFile listeningPhoto) {
-		this.listeningPhoto = listeningPhoto;
-	}
-
-	public MultipartFile getAudio() {
-		return audio;
-	}
-
-	public void setAudio(MultipartFile audio) {
-		this.audio = audio;
-	}
-
-	public List<ListeningExercisesQuestions> getListListeningExercisesQuestions() {
-		return listListeningExercisesQuestions;
-	}
-
-	public void setListListeningExercisesQuestions(List<ListeningExercisesQuestions> listListeningExercisesQuestions) {
-		this.listListeningExercisesQuestions = listListeningExercisesQuestions;
-	}
-
-	public String getScript() {
-		return script;
-	}
-
-	public void setScript(String script) {
-		this.script = script;
-	}
-
-	public MultipartFile getFileExcelQuestions() {
-		return fileExcelQuestions;
-	}
-
-	public void setFileExcelQuestions(MultipartFile fileExcelQuestions) {
-		this.fileExcelQuestions = fileExcelQuestions;
+	public void setReadingTitle(String readingTitle) {
+		this.readingTitle = readingTitle;
 	}
 
 	public int getDifficult() {
@@ -110,6 +67,14 @@ public class ReadingExercises {
 		this.difficult = difficult;
 	}
 
+	public MultipartFile getReadingPhoto() {
+		return readingPhoto;
+	}
+
+	public void setReadingPhoto(MultipartFile readingPhoto) {
+		this.readingPhoto = readingPhoto;
+	}
+
 	public int getPart() {
 		return part;
 	}
@@ -118,8 +83,31 @@ public class ReadingExercises {
 		this.part = part;
 	}
 
+	public MultipartFile getAudio() {
+		return audio;
+	}
+
+	public void setAudio(MultipartFile audio) {
+		this.audio = audio;
+	}
+
+	public MultipartFile getFileExcelQuestions() {
+		return fileExcelQuestions;
+	}
+
+	public void setFileExcelQuestions(MultipartFile fileExcelQuestions) {
+		this.fileExcelQuestions = fileExcelQuestions;
+	}
+
+	public List<ReadingExercisesQuestions> getReadingExercisesQuestions() {
+		return readingExercisesQuestions;
+	}
+
+	public void setReadingExercisesQuestions(List<ReadingExercisesQuestions> readingExercisesQuestions) {
+		this.readingExercisesQuestions = readingExercisesQuestions;
+	}
 	@Override
 	public String toString() {
-		return "ListeningExercises listeningTitle=" + listeningTitle;
+		return "ReadingExercises readingTitle=" + readingTitle;
 	}
 }

@@ -48,8 +48,8 @@ $(document).ready(function() {
              	
      	        var image1Src = baseUrl+"/resources/file/images/exercise-listen.png";
 					var image2Src = baseUrl+"/resources/file/images/exercise-read.png";
-					var href1 = baseUrl+"/listening";
-					var href2 = baseUrl+"/reading";
+					var href1 = baseUrl+"/listListening";
+					var href2 = baseUrl+"/listReading";
 				
 					 $('#name1').text("Bài tập phần nghe");
 					 $('#name2').text("Bài tập phần đọc");

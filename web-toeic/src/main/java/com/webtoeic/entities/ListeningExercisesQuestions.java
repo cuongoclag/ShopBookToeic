@@ -17,61 +17,70 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ListeningExercisesQuestions {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String numericalOrder;
+	private Integer id;
+	@Column(name = "number")
+	private Integer number;
+
+	@Column(name = "image")
+	private String image;
+
+	@Column(name = "audiomp3")
+	private String audiomp3;
+
+	@Column(columnDefinition = "TEXT")
+	private String paragraph;
+	@Column(name = "question")
 	private String question;
-	private String photoName;
-
-	@Transient
-	@JsonIgnore
-	private byte[] photoData;
-
-	@Column(columnDefinition ="TEXT")
-	private String script;
 
 	private String answer_1;
 	private String answer_2;
 	private String answer_3;
 	private String answer_4;
 	private String correctAnswer;
-
-	@Column(columnDefinition = "TEXT")
-	private String explains;
+	private String answerUser;
 
 	@ManyToOne
 	@JoinColumn(name = "listeningExercisesId")
 	private ListeningExercises listeningExercises;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNumericalOrder() {
-		return numericalOrder;
+	public Integer getNumber() {
+		return number;
 	}
 
-	public void setNumericalOrder(String numericalOrder) {
-		this.numericalOrder = numericalOrder;
+	public void setNumber(Integer number) {
+		this.number = number;
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getImage() {
+		return image;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-	public String getPhotoName() {
-		return photoName;
+	public String getAudiomp3() {
+		return audiomp3;
 	}
 
-	public void setPhotoName(String photoName) {
-		this.photoName = photoName;
+	public void setAudiomp3(String audiomp3) {
+		this.audiomp3 = audiomp3;
+	}
+
+	public String getParagraph() {
+		return paragraph;
+	}
+
+	public void setParagraph(String paragraph) {
+		this.paragraph = paragraph;
 	}
 
 	public String getAnswer_1() {
@@ -114,12 +123,12 @@ public class ListeningExercisesQuestions {
 		this.correctAnswer = correctAnswer;
 	}
 
-	public String getExplains() {
-		return explains;
+	public String getAnswerUser() {
+		return answerUser;
 	}
 
-	public void setExplains(String explains) {
-		this.explains = explains;
+	public void setAnswerUser(String answerUser) {
+		this.answerUser = answerUser;
 	}
 
 	public ListeningExercises getListeningExercises() {
@@ -130,27 +139,30 @@ public class ListeningExercisesQuestions {
 		this.listeningExercises = listeningExercises;
 	}
 
-	public String getScript() {
-		return script;
+	public ListeningExercisesQuestions() {
 	}
 
-	public void setScript(String script) {
-		this.script = script;
+	public String getQuestion() {
+		return question;
 	}
 
-	public byte[] getPhotoData() {
-		return photoData;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 
-	public void setPhotoData(byte[] photoData) {
-		this.photoData = photoData;
+	public ListeningExercisesQuestions(Integer id, Integer number, String image, String audiomp3, String paragraph, String question, String answer_1, String answer_2, String answer_3, String answer_4, String correctAnswer, String answerUser, ListeningExercises listeningExercises) {
+		this.id = id;
+		this.number = number;
+		this.image = image;
+		this.audiomp3 = audiomp3;
+		this.paragraph = paragraph;
+		this.question = question;
+		this.answer_1 = answer_1;
+		this.answer_2 = answer_2;
+		this.answer_3 = answer_3;
+		this.answer_4 = answer_4;
+		this.correctAnswer = correctAnswer;
+		this.answerUser = answerUser;
+		this.listeningExercises = listeningExercises;
 	}
-
-	@Override
-	public String toString() {
-		return "CauHoiBaiTapNghe [id=" + id + ", numericalOrder=" + numericalOrder + ", question=" + question + ", photoName=" + photoName + ", photoData="
-				+ Arrays.toString(photoData) + ", answer_1=" + answer_1 + ", answer_2=" + answer_2 + ", answer_3=" + answer_3 + ", answer_4=" + answer_4
-				+ ", correctAnswer=" + correctAnswer + ", explains=" + explains + "]";
-	}
-
 }

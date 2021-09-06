@@ -109,6 +109,7 @@ public class ProductService {
     public List<Product> findAllProduct(){
         return productRepo.findAll();
     }
+
     public List<Product> findProductById(int id) {
 
         String sql = "select * from tbl_product where id = '" + id + "'";

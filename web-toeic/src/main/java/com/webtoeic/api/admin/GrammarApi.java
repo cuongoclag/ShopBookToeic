@@ -70,7 +70,7 @@ public class GrammarApi {
 		grammarService.save(baigrammar);
 		try {
 			// save file upload to local folder
-			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/grammar/" + file_image.getOriginalFilename());
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/Grammar/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
 			baigrammar.setGrammarImage( file_image.getOriginalFilename());
 			baigrammar.setGrammarTitle(name);

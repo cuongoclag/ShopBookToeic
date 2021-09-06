@@ -32,8 +32,7 @@ import com.webtoeic.service.NguoiDungService;
 public class FullTestController {
 	@Autowired
 	TestService baithithuService;
-	
-	
+
 	@Autowired
 	TestQuestionsService cauhoibaithithuService;
 	
@@ -52,15 +51,10 @@ public class FullTestController {
 	public String getListExam(@RequestParam(defaultValue = "1") int page, Model model) {
 	
 		// default value lấy từ kết quả đầu tiên
-		
 		try {
-		
 				Page<Test> list = baithithuService.getTest(page-1, 4);
-				
 				int totalPage = list.getTotalPages();
-				
 				List<Integer> pagelist = new ArrayList<Integer>();
-				
 				//Lap ra danh sach cac trang
 				if(page==1 || page ==2 )
 				{
@@ -91,19 +85,14 @@ public class FullTestController {
 				model.addAttribute("totalPage",totalPage);
 				model.addAttribute("listData",list.getContent());
 				model.addAttribute("currentPage",page);
-
-		
 		return "client/listExam";
-		
 		}catch(Exception e) {
 			System.out.println("error:"+e);
 			return "client/error";
 		}
 	}
-	
 	@GetMapping("/doExam")
 	public String DetailListening(Model model,@RequestParam("idExam") int id) {
-		
 		try {
 				List<TestQuestions> list = cauhoibaithithuService.getListQuestions(baithithuService.getTest(id).get(0));
 				model.addAttribute("listQuestion",list);
@@ -113,13 +102,7 @@ public class FullTestController {
 			System.out.println("error:"+e);
 			return "client/error";
 		}
-		
-		
-		
 	}
-	
-	
-	
 	@RequestMapping(value="/saveResultUser/{examId}/{correctListening}/{correctReading}",method=RequestMethod.POST)
 	public String showResultUser(Model model,@PathVariable("correctListening") int correctListening,
 											@PathVariable("correctReading") int correctReading,
@@ -127,7 +110,6 @@ public class FullTestController {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		NguoiDung currentUser = nguoiDungService.findByEmail(auth.getName());
-		
 	 	Date time = new Date();
 		ResultTest ketquabaitest = new ResultTest();
 		ketquabaitest.setDayTest(time);
@@ -142,8 +124,7 @@ public class FullTestController {
 		model.addAttribute("correctListening",correctListening);
 		model.addAttribute("correctReading",correctReading);
 		model.addAttribute("total",correctReading+ correctListening);
-		
-		
+
 		return "client/resultTestUser";
 	}
 }

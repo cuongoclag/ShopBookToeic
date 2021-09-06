@@ -66,7 +66,8 @@ public class TestApi {
 	@PostMapping(value = "/save", consumes = "multipart/form-data")
 	@ResponseBody
 	public List<String> addBaiThiThu(@RequestParam("file_excel") MultipartFile file_excel,
-									 @RequestParam("file_image") MultipartFile file_image, @RequestParam("name") String name,
+									 @RequestParam("file_image") MultipartFile file_image,
+									 @RequestParam("name") String name,
 									 @RequestParam("file_image_question") MultipartFile[] file_image_question,
 									 @RequestParam("file_listening") MultipartFile[] file_listening) {
 		List<String> response = new ArrayList<String>();
@@ -78,41 +79,31 @@ public class TestApi {
 		// System.out.println("id="+baithithu.getBaithithuid());
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/exam/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
-
 			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
-
 			for (MultipartFile single_image : file_image_question) {
 				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/exam/"  + single_image.getOriginalFilename());
 				single_image.transferTo(new File(pathImageQuestion.toString()));
 			}
-
 			for (MultipartFile single_listening : file_listening) {
 				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/exam/" + single_listening.getOriginalFilename());
 				single_listening.transferTo(new File(pathListening.toString()));
 			}
-
 			baithithu.setTestTitle(name);
 			baithithu.setTestImage( file_image.getOriginalFilename());
 			testService.save(baithithu);
-
 			// save data from file excel
-
 			TestApi btt = new TestApi();
 			List<TestQuestions> listCauHoiFull = btt.getListFromExcel(pathExcel.toString(), baithithu);
-
 			for (int i = 0; i < listCauHoiFull.size(); i++) {
 				testQuestionsService.save(listCauHoiFull.get(i));
 			}
-
 		} catch (Exception e) {
 			response.add(e.toString());
 			System.out.println("ErrorReadFileExcel:" + e);
-
 		}
-
 		return response;
 	}
 
@@ -129,7 +120,7 @@ public class TestApi {
 		Test baithithu = testService.getTest(id).get(0);
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/" + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/exam/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
 			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + file_image.getOriginalFilename());

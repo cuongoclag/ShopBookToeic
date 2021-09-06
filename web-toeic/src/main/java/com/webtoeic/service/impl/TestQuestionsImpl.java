@@ -17,6 +17,7 @@ public class TestQuestionsImpl implements TestQuestionsService {
 
 	@Override
 	public void  save(TestQuestions cauhoibaithithu) {
+
 		testQuestionsRespository.save(cauhoibaithithu);
 	}
 
@@ -24,4 +25,5 @@ public class TestQuestionsImpl implements TestQuestionsService {
 	public List<TestQuestions> getListQuestions(Test test){
 		return testQuestionsRespository.findByTest(test);
 	}
+
 }

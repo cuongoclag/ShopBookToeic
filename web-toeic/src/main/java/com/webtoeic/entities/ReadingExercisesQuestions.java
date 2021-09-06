@@ -15,49 +15,63 @@ import javax.persistence.ManyToOne;
 public class ReadingExercisesQuestions {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String numericalOrder;
-	@Column(columnDefinition = "TEXT")
-	private String questions;
+	private Integer id;
+	@Column(name = "number")
+	private Integer number;
 
+	@Column(name = "image")
+	private String image;
+
+	@Column(name = "audiomp3")
+	private String audiomp3;
+
+	@Column(columnDefinition = "TEXT")
+	private String paragraph;
+	@Column(name = "question")
+	private String question;
 
 	private String answer_1;
 	private String answer_2;
 	private String answer_3;
 	private String answer_4;
 	private String correctAnswer;
-	private String explains;
-
-	@Column(columnDefinition = "TEXT")
-	private String paragraph;
+	private String answerUser;
 
 
 	@ManyToOne
-	@JoinColumn(name = "readingExerciseId")
+	@JoinColumn(name = "readingExercisesId")
 	private ReadingExercises readingExercises;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNumericalOrder() {
-		return numericalOrder;
+	public Integer getNumber() {
+		return number;
 	}
 
-	public void setNumericalOrder(String numericalOrder) {
-		this.numericalOrder = numericalOrder;
+	public void setNumber(Integer number) {
+		this.number = number;
 	}
 
-	public String getExplains() {
-		return explains;
+	public String getImage() {
+		return image;
 	}
 
-	public void setExplains(String explains) {
-		this.explains = explains;
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getAudiomp3() {
+		return audiomp3;
+	}
+
+	public void setAudiomp3(String audiomp3) {
+		this.audiomp3 = audiomp3;
 	}
 
 	public String getParagraph() {
@@ -66,6 +80,14 @@ public class ReadingExercisesQuestions {
 
 	public void setParagraph(String paragraph) {
 		this.paragraph = paragraph;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 
 	public String getAnswer_1() {
@@ -100,20 +122,20 @@ public class ReadingExercisesQuestions {
 		this.answer_4 = answer_4;
 	}
 
-	public String getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(String questions) {
-		this.questions = questions;
-	}
-
 	public String getCorrectAnswer() {
 		return correctAnswer;
 	}
 
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
+	}
+
+	public String getAnswerUser() {
+		return answerUser;
+	}
+
+	public void setAnswerUser(String answerUser) {
+		this.answerUser = answerUser;
 	}
 
 	public ReadingExercises getReadingExercises() {
@@ -124,12 +146,22 @@ public class ReadingExercisesQuestions {
 		this.readingExercises = readingExercises;
 	}
 
-	@Override
-	public String toString() {
-		return "CauHoiBaiTapDoc [id=" + id + ", numericalOrder=" + numericalOrder + ", questions=" + questions + ",  paragraph=" + paragraph + ", answer_1=" + answer_1 + ", answer_2=" + answer_2
-				+ ", answer_3=" + answer_3 + ", answer_4=" + answer_4 + ", correctAnswer=" + correctAnswer + ", explains="
-				+ explains + "]";
+	public ReadingExercisesQuestions() {
 	}
-	
-	
+
+	public ReadingExercisesQuestions(Integer id, Integer number, String image, String audiomp3, String paragraph, String question, String answer_1, String answer_2, String answer_3, String answer_4, String correctAnswer, String answerUser, ReadingExercises readingExercises) {
+		this.id = id;
+		this.number = number;
+		this.image = image;
+		this.audiomp3 = audiomp3;
+		this.paragraph = paragraph;
+		this.question = question;
+		this.answer_1 = answer_1;
+		this.answer_2 = answer_2;
+		this.answer_3 = answer_3;
+		this.answer_4 = answer_4;
+		this.correctAnswer = correctAnswer;
+		this.answerUser = answerUser;
+		this.readingExercises = readingExercises;
+	}
 }

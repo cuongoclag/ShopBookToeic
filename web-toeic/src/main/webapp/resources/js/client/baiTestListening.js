@@ -16,34 +16,21 @@ function correctAnswer(){
 			
 	return correctArr;
 }
-
 function answerUser(){
-	
 	//var form = document.getElementById("submitForm");
 	// array index start = 0
 	var answerArr = [];
-	
 	for (var i = 1; i < 51; i++) {
 		 var nameRadio = "question"+i;
 		 var result = document.getElementById("submitForm").elements.namedItem(nameRadio);
-		
 		 if(result == null) answerArr.push("");
 		 else{
-			 	
 		 var x = document.getElementById("submitForm").elements.namedItem(nameRadio).value;
 		 answerArr.push(x);}
-			
 	}
-
 	return answerArr;
 }
-
-
-
 $(document).ready(function(){
-
-	
-	
 //	$('#btnSubmit').click(function(){
 //		
 //		 var answerArr = answerUser();
@@ -80,90 +67,55 @@ $(document).ready(function(){
 //			});
 //
 //	});
-	
-	
 	$('#btnSubmit').click(function(){
 		startReadingClock ()
 		var answerArr = answerUser();
 		var correctArr = correctAnswer();
 		var countCorrect = 0;
-		
-		
-			
 			for(var i = 0; i<50; i++){
 			 if(answerArr[i] == correctArr[i] && answerArr[i] != ' ' ) countCorrect++;
-				
 			}
-			
-				
 		var jsonAnswerUser = JSON.stringify(answerArr);
-		
 		var examId = $("#id_bai_exam").val();
-		
 		var url="http://localhost:8080/reading/"+examId+"/"+countCorrect;
-		
 		if(window.XMLHttpRequest){
 			xhttp = new XMLHttpRequest();
 		}
 		else{
 			xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
-		
 		xhttp.open("POST",url,true);
-		
 			xhttp.onreadystatechange = function(){
 			if(xhttp.readyState == 4){
-				
 				var data = xhttp.responseText;
 				document.getElementById("testReading").innerHTML = data;
-				
 			}
 		}
-		
-		
 		xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
 		xhttp.send(jsonAnswerUser);
-		
-		
 	});
-	
 
-	
 	$('#btnResult').click(function(){
-		
 		//clear clock,stop countdown
 	    clearInterval(timecheck);
 		//tranfer information
-	    
 	    //remove btn XemdapAn, show btn lamlai
 	    $('#btnResult').hide();
 	    //$('#btndoAgain').show();
 	    
 		document.getElementById("btnSubmit").style.margin = "0px 0px 0px 80px";
 
-	    
 	    var answerArr = answerUser();
-
 		var correctArr = correctAnswer();
 		var countCorrect = 0;
-		
 		for(var i = 0; i<50; i++){
 		 if(answerArr[i] == correctArr[i] && answerArr[i] != ' ' ) countCorrect++;
-			
 		}
-		
-			
 		var jsonAnswerUser = JSON.stringify(answerArr);
-		
 		//console.log("answerARR="+answerArr);
 		//console.log("correctArr="+correctArr);
 		//console.log("correctCount="+countCorrect);
-
-		
-		
 		var examId = $("#id_bai_exam").val();
-		
 		var url="http://localhost:8080/showResultListening/"+examId+"/"+countCorrect;
 		if(window.XMLHttpRequest){
 			xhttp = new XMLHttpRequest();
@@ -171,18 +123,13 @@ $(document).ready(function(){
 		else{
 			xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
-		
 		xhttp.open("POST",url,true);
-		
 			xhttp.onreadystatechange = function(){
 			if(xhttp.readyState == 4){
-				
 				var data = xhttp.responseText;
 				document.getElementById("main").innerHTML = data;
 			}
 		}
-		
-		
 		xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
 		xhttp.send(jsonAnswerUser);

@@ -100,7 +100,6 @@
 
 					</c:if>
 
-
 					<c:if test="${list.correctAnswer== 'A' }">
 						<c:if test="${list.getAnswerUser() == 'A'}">
 							<input disabled type="radio" value="A" /> A. ${list.option1}&nbsp;<img

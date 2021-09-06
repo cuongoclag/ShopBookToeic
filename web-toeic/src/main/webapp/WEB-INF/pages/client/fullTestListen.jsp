@@ -120,27 +120,19 @@
 			<div class="numberCircle" id="answer${loop.index}">${loop.index}</div>	  		 
 		</c:forEach>
 </div>
-
 -->
-
-
 		</div>
-
-
 		<!--/End Header-->
-
 		<div id="content" class="container-fluid fill">
 			<form id="submitForm" name="submitForm">
 				<div class="row">
 					<div id="navigation" class="col-md-3">
-
 						<div class="fix-scrolling">
 							<br>
 							<div>
 								<span id="time">30:00</span>
 							</div>
 							<hr width="60%">
-
 							<c:forEach begin="1" end="50" varStatus="loop">
 								<div class="numberCircle" id="answer${loop.index}">${loop.index}</div>
 							</c:forEach>
@@ -151,22 +143,15 @@
 								class="btn btn-danger" id="btnSubmit" value="Làm bài đọc" /> <br>
 							<hr width="60%">
 						</div>
-
-
 					</div>
-
 					<div class="col-md-3 ">
 						<!-- Placeholder - keep empty -->
 					</div>
-
 					<!--Nội dung bài test -->
 					<div id="main" class="col-md-8 web-font">
-
 						<c:forEach items="${listQuestion}" var="list">
 							<input class="hidden" id="correctanswer"
 								name="correctanswer${list.number}" value="${list.correctAnswer}" />
-
-
 							<!-- show part1 -->
 							<c:if test="${list.number == 1 }">
 								<p>
@@ -181,7 +166,6 @@
 									<p>
 										<b>Question ${list.number}:</b>
 									</p>
-
 									<img
 										src="${pageContext.request.contextPath}/resources/file/images/exam/${list.image}.jpg"
 										alt="image not found"
@@ -204,7 +188,6 @@
 								</div>
 								<br>
 							</c:if>
-
 							<!-- show part 2 -->
 							<c:if test="${list.number == 4 }">
 								<br>

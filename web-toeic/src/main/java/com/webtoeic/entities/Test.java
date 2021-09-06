@@ -14,15 +14,12 @@ public class Test {
 	@Column(name = "testId", nullable = false)
 	private Integer testId;
 
-
 	@Column(name = "testTitle")
 	private String testTitle;
 
 	@Column(name = "testImage")
+
 	private String testImage;
-
-
-
 	public Test() {
 
 	}

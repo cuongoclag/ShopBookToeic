@@ -43,7 +43,6 @@ public class TestListeningApi {
 		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
 	}
 
-
 	@RequestMapping(value="/ajaxTestListening/{baithithuId}/{socaudung}", method = RequestMethod.POST)
 	public @ResponseBody
 	List<String>  AjaxListening(@RequestBody String[] jsonAnswerUser,
@@ -61,10 +60,8 @@ public class TestListeningApi {
 //		ketquabaitest.setBaithithu(baithithuService.getBaiThiThu(id).get(0));
 //		ketquabaitest.setCorrectlisten(socaudung);
 //		ketquabaitest.setNguoidung(currentUser);
-//		
+//
 //		ketquabaitestService.save(ketquabaitest);
-
-
 
 
 		List<String> response = new ArrayList<String>();
