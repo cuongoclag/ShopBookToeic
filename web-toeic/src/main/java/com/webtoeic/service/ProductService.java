@@ -79,27 +79,6 @@ public class ProductService {
         return query.getResultList();
     }
 
-    //	@SuppressWarnings("unchecked")
-//	public List<Product> findProductByCategory(final String seo) {
-//
-//		String jpql = "Select p from Product p where p.category.seo = '" + seo + "'";
-//		Query query = entityManager.createQuery(jpql, Product.class);
-//
-////		String sql = "select * from tbl_products where category_id = (select id from tbl_category where seo='" + seo
-////				+ "')";
-////		Query query = entityManager.createNativeQuery(sql, Product.class);
-//		return query.getResultList();
-//	}
-//
-//	public Product findProductBySeo(final String seo) {
-//
-////		String jpql = "Select p from Product p where p.seo = '" + seo + "'";
-////		Query query = entityManager.createQuery(jpql, Product.class);
-//
-//		String sql = "select * from tbl_products where seo = '" + seo + "'";
-//		Query query = entityManager.createNativeQuery(sql, Product.class);
-//		return (Product) query.getSingleResult();
-//	}
     public List<Product> findProductByStatus() {
 
         String sql = "select * from tbl_product where status = '1'";
@@ -165,4 +144,6 @@ public class ProductService {
             throw e;
         }
     }
+
+
 }

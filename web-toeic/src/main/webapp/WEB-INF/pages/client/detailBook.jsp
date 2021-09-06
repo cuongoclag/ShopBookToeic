@@ -62,6 +62,30 @@
 					 data-numposts="5" data-width="1150"></div>
 			</div>
 	</div>
+	<h2>Review </h2>
+	<table>
+		<c:forEach var="r" items="${list.reviews}" varStatus="i">
+			<tr>
+				<td>
+					<script type="text/javascript">
+						$(function () {
+							$("#rating${i.index}").rateYo({
+								rating: ${r.rating},
+								readOnly: true
+							});
+						})
+					</script>
+						${r.userName}
+						<br>
+						<div id="rating${i.index}"></div>
+						<br>
+						${r.comment}
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+
+
 
     <form:form method="post" action="/createReview" modelAttribute="review" commandName="review">
         <form:input path="userName" placeholder="Name" name="userName"/>
@@ -69,7 +93,7 @@
         <form:textarea path="comment"  rows="5"  placeholder="Enter your review here..." name="comment"  cols="50" ></form:textarea>
         <div id="rateYo"></div>
         <input type="hidden" name="hdrating" path="hdrating" id="hdrating"/>
-        <button class="btn btn-success btn-lg" type="submit">Save</button>
+        <input class="btn btn-success btn-lg" type="submit" value="Save">
         <form:hidden  path="product.id" name="product.id"/>
     </form:form>
 	<!--Footer==========================-->
@@ -86,7 +110,7 @@
                 maxValue: 5,
                 halfStar: true,
                 onChange: function (rating, rateYoInstance) {
-                    $('#rateYo').val(rating);
+                    $('#hdrating').val(rating);
                 }
             });
         })

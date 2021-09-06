@@ -75,6 +75,7 @@ public class BookController {
                               final HttpServletResponse response) throws Exception {
         Product list = productService.findProductById(id);
         model.addAttribute("list", list);
+
         Review newReview = new Review();
         newReview.setProduct(list);
         newReview.setRating(5);
@@ -83,25 +84,10 @@ public class BookController {
     }
 
     @RequestMapping(value = "/createReview",method = RequestMethod.POST/*, consumes = {"application/json;charset=utf-8"}*/)
-    public @ResponseBody String getTranslitURL(Review review) {
-        System.out.println("*");
-        System.out.println("request is "+review.toString());
-        System.out.println("*");
-        String errorMessage="";
-        if(review.getUserName()==null || review.getUserName().equals("")){
-            errorMessage+="User name is required! ";
-        }
-        if(review.getUserEmail()==null || review.getUserEmail().equals("")
-                || review.getUserEmail().indexOf("@")<0){
-            errorMessage+="Valid email is required!";
-        }
-        if(errorMessage.equals("")){
+    public String saverating(@RequestParam("hdrating") float hdrating,Review review) {
+        review.setRating(hdrating);
             reviewRepository.save(review);
-            //productService.updateRating(review.getProduct().getId());
-            return "SUCCESS";
-        }else{
-            return errorMessage;
-        }
+        return "redirect:/bookDetails/" + review.getProduct().getId();
     }
 
 //

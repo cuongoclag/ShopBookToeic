@@ -47,6 +47,9 @@ public class Product {
     @Column(name = "detail_description", length = 10000, nullable = false)
     private String shortDetails;
 
+//    @Column(name="rating", columnDefinition = "int default 0")
+//    private float rating;
+
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Review> reviews;
 
@@ -209,6 +212,14 @@ public class Product {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
+//    public float getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(float rating) {
+//        this.rating = rating;
+//    }
 
     @Transient
     public String getPriceVN() {
