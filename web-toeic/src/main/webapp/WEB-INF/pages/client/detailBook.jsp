@@ -10,14 +10,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trang chủ</title>
 
-
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css"
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -62,6 +61,18 @@
 					 data-numposts="5" data-width="1150"></div>
 			</div>
 	</div>
+	<div class="ratings">
+		${fn:length(list.reviews)} reviews
+		<c:forEach begin="1" end="${list.rating}" varStatus="loop">
+			<span class="glyphicon glyphicon-star"></span>
+		</c:forEach>
+		<c:forEach begin="${list.rating}" end="4" varStatus="loop">
+			<span class="glyphicon glyphicon-star-empty"></span>
+		</c:forEach> ${list.rating}stars
+	</div>
+
+
+
 	<h2>Review </h2>
 	<table>
 		<c:forEach var="r" items="${list.reviews}" varStatus="i">

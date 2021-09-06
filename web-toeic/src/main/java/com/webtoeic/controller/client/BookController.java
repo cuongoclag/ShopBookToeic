@@ -87,6 +87,7 @@ public class BookController {
     public String saverating(@RequestParam("hdrating") float hdrating,Review review) {
         review.setRating(hdrating);
             reviewRepository.save(review);
+        productService.updateRating(review.getProduct().getId());
         return "redirect:/bookDetails/" + review.getProduct().getId();
     }
 

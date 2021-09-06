@@ -4,18 +4,22 @@ import com.webtoeic.common.ProductSearch;
 import com.webtoeic.common.Utilities;
 import com.webtoeic.entities.Product;
 import com.webtoeic.entities.ProductImages;
+import com.webtoeic.entities.Review;
 import com.webtoeic.repository.ProductRepository;
 import com.webtoeic.repository.SaleOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 @Service
 public class ProductService {
@@ -95,6 +99,20 @@ public class ProductService {
         Query query = entityManager.createNativeQuery(sql, Product.class);
         return (Product) query.getSingleResult();
     }
+
+
+    @Transactional
+    public void updateRating(int productId) {
+        List<Review> reviews = productRepo.findById(productId).get().getReviews();
+        OptionalDouble rating = reviews.stream().mapToDouble(a -> a.getRating()).average();
+        String sql = "update tbl_product set rating = '"+Math.round(rating.getAsDouble())+"' where id = '"+productId+"'";
+        //UPDATE `test_spring`.`product` SET `rating`='2' WHERE `id`='2';
+//        Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+        Query query = entityManager.createNativeQuery(sql, Product.class);
+        System.out.println(query);
+        query.executeUpdate();
+    }
+
 
     private boolean isEmptyUploadFile(MultipartFile[] images) {
         if (images == null || images.length <= 0)
