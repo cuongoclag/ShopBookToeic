@@ -47,6 +47,9 @@ public class Product {
     @Column(name = "detail_description", length = 10000, nullable = false)
     private String shortDetails;
 
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<Review> reviews;
+
     @Transient
     private String priceVN;
 
@@ -197,6 +200,14 @@ public class Product {
 
     public void setProductImages(List<ProductImages> productImages) {
         this.productImages = productImages;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @Transient

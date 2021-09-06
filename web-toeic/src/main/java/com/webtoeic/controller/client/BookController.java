@@ -3,11 +3,9 @@ package com.webtoeic.controller.client;
 import com.webtoeic.common.ProductSearch;
 import com.webtoeic.entities.*;
 import com.webtoeic.repository.ProductRepository;
+import com.webtoeic.repository.ReviewRepository;
 import com.webtoeic.repository.SaleOrderRepository;
-import com.webtoeic.service.CategoryService;
-import com.webtoeic.service.GrammarService;
-import com.webtoeic.service.ProductService;
-import com.webtoeic.service.SaleOrderService;
+import com.webtoeic.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -42,6 +40,12 @@ public class BookController {
     @Autowired
     SaleOrderService saleOrderService;
 
+    @Autowired
+    ReviewService reviewService;
+
+    @Autowired
+    ReviewRepository reviewRepository;
+
 
     //Trả về trang listBook
     @RequestMapping(value = "/listBook")
@@ -69,9 +73,35 @@ public class BookController {
     @RequestMapping(value = { "/bookDetails/{id}" }, method = RequestMethod.GET)
     public String detailsBook(@PathVariable("id") int id, final ModelMap model, final HttpServletRequest request,
                               final HttpServletResponse response) throws Exception {
-        List<Product> list = productService.findProductById(id);
+        Product list = productService.findProductById(id);
         model.addAttribute("list", list);
+        Review newReview = new Review();
+        newReview.setProduct(list);
+        newReview.setRating(5);
+        model.addAttribute("review",newReview);
         return "client/detailBook";
+    }
+
+    @RequestMapping(value = "/createReview",method = RequestMethod.POST/*, consumes = {"application/json;charset=utf-8"}*/)
+    public @ResponseBody String getTranslitURL(Review review) {
+        System.out.println("*");
+        System.out.println("request is "+review.toString());
+        System.out.println("*");
+        String errorMessage="";
+        if(review.getUserName()==null || review.getUserName().equals("")){
+            errorMessage+="User name is required! ";
+        }
+        if(review.getUserEmail()==null || review.getUserEmail().equals("")
+                || review.getUserEmail().indexOf("@")<0){
+            errorMessage+="Valid email is required!";
+        }
+        if(errorMessage.equals("")){
+            reviewRepository.save(review);
+            //productService.updateRating(review.getProduct().getId());
+            return "SUCCESS";
+        }else{
+            return errorMessage;
+        }
     }
 
 //

@@ -110,11 +110,11 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public List<Product> findProductById(int id) {
+    public Product findProductById(int id) {
 
         String sql = "select * from tbl_product where id = '" + id + "'";
         Query query = entityManager.createNativeQuery(sql, Product.class);
-        return query.getResultList();
+        return (Product) query.getSingleResult();
     }
 
     private boolean isEmptyUploadFile(MultipartFile[] images) {

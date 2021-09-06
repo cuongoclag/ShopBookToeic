@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
@@ -14,8 +16,7 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
-	<script src="<c:url value='/js/client/shop/jquery-3.5.1.js'/>" ></script>
-	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
 </head>
 <body>
@@ -30,7 +31,6 @@
 	<div class="container" id="resultsearch">
 	<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 	<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-		<c:forEach items="${list}" var="list">
 	<div class="row" style="display: flex;">
 		<div span5 style="margin : 2%">
 			<img alt="" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}"
@@ -61,11 +61,35 @@
 					 data-href="http://localhost:8080/bookDetails/${list.id }"
 					 data-numposts="5" data-width="1150"></div>
 			</div>
-		</c:forEach>
 	</div>
+
+    <form:form method="post" action="/createReview" modelAttribute="review" commandName="review">
+        <form:input path="userName" placeholder="Name" name="userName"/>
+        <form:input path="userEmail" placeholder="Email" name="userEmail"/>
+        <form:textarea path="comment"  rows="5"  placeholder="Enter your review here..." name="comment"  cols="50" ></form:textarea>
+        <div id="rateYo"></div>
+        <input type="hidden" name="hdrating" path="hdrating" id="hdrating"/>
+        <button class="btn btn-success btn-lg" type="submit">Save</button>
+        <form:hidden  path="product.id" name="product.id"/>
+    </form:form>
 	<!--Footer==========================-->
 	<jsp:include page="./include/footerHome.jsp"></jsp:include>
 	<!--/.Footer-->
 	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#rateYo").rateYo({
+                rating: 0,
+                numStars: 5,
+                maxValue: 5,
+                halfStar: true,
+                onChange: function (rating, rateYoInstance) {
+                    $('#rateYo').val(rating);
+                }
+            });
+        })
+    </script>
 </body>
 </html>
