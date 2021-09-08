@@ -163,8 +163,7 @@
 					 Đăng nhập để bình luận bài viết
 					</textarea>
 						<br>
-						<button type="button" class="btn btn-primary"disabled  ">Đăng
-							bình luận</button>
+						<button type="button" class="btn btn-primary"disabled >Đăng bình luận</button>
 					</fieldset>
 
 				</form>

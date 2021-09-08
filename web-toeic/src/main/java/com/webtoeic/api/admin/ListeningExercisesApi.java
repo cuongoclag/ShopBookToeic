@@ -70,16 +70,16 @@ public class ListeningExercisesApi {
 
 		try {
 			// save file upload to local folder
-			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/Listening/" + file_excel.getOriginalFilename());
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/listening/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
 
 			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/Listening/"  + single_image.getOriginalFilename());
+				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/listening/"  + single_image.getOriginalFilename());
 				single_image.transferTo(new File(pathImageQuestion.toString()));
 			}
 
 			for (MultipartFile single_listening : file_listening) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/Listening/" + single_listening.getOriginalFilename());
+				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/listening/" + single_listening.getOriginalFilename());
 				single_listening.transferTo(new File(pathListening.toString()));
 			}
 

@@ -26,14 +26,14 @@ public class AdminOrderController {
     public String listOrder(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
             throws Exception {
         model.addAttribute("saleOrders", saleOrderRepo.findAll());
-        return "admin/listOrder";
+        return "admin/ListOrder";
     }
     @RequestMapping(value = { "/admin/view-order/{id}" }, method = RequestMethod.GET)
     public String viewListProductOrder(final ModelMap model, @PathVariable("id") int id,
                                        final HttpServletRequest request, final HttpServletResponse response) throws Exception {
         model.addAttribute("saleOrder", saleOrderService.findSaleOrderById(id));
         model.addAttribute("saleOrderProduct", saleOrderService.findOrderProductByOrderId(id));
-        return "admin/viewOrder";
+        return "admin/ViewOrder";
     }
 
     @RequestMapping(value = { "/admin/list-order/delete-saleOrder-with-ajax/{id}" }, method = RequestMethod.POST)

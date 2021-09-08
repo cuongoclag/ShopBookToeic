@@ -30,7 +30,7 @@ public class AdminProductController {
     public String listProduct(final ModelMap model, final HttpServletRequest request,
                               final HttpServletResponse response) throws Exception {
         model.addAttribute("products", productRepo.findAll());
-        return "admin/listProduct";
+        return "admin/ListProduct";
     }
 
     @RequestMapping(value = { "/admin/add-product" }, method = RequestMethod.GET)
@@ -38,7 +38,7 @@ public class AdminProductController {
             throws Exception {
         model.addAttribute("categories", categoryRepo.findAll());
         model.addAttribute("product", new Product());
-        return "admin/addProduct";
+        return "admin/AddProduct";
     }
 
     @RequestMapping(value = { "/admin/edit-product/{seo}" }, method = RequestMethod.GET)
@@ -49,7 +49,7 @@ public class AdminProductController {
         ProductSearch productSearch = new ProductSearch();
         productSearch.setSeoProduct(seo);
         model.addAttribute("product", productService.search(productSearch).get(0));
-        return "admin/addProduct";
+        return "admin/AddProduct";
     }
 
     @RequestMapping(value = { "/admin/save-product" }, method = RequestMethod.POST)

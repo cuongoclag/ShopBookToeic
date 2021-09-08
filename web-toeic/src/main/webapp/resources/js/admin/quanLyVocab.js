@@ -217,7 +217,7 @@ $(document).ready(function() {
 		            trHTML += '<tr><td class= "center">' + jsonArr[i].baituvungid + '</td>'
 		            +'<td class= "center">' + jsonArr[i].tenbaituvung+ '</td>'
 		            
-		            +'<td class= "center">' + jsonArr[i].anhbaituvung + '</td>'
+		            // +'<td class= "center">' + jsonArr[i].anhbaituvung + '</td>'
 		     
 		            +'<td class = "center"> <a id="edit.'+ jsonArr[i].baituvungid+' "'
 		            
@@ -225,7 +225,7 @@ $(document).ready(function() {
 		     
 		            +' <a id="delete.'+jsonArr[i].baituvungid+' "'
 		            
-		            +'class="red deleteBaiVocab" ><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a> </td>'
+		            +'class="red deleteBaiVocab" ><button class="delete btn btn-danger"><i class="fas fa-trash"></i></button></a> </td>'
 
 		            +'</tr>';
 		       }

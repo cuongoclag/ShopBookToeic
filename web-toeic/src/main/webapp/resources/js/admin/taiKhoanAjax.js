@@ -19,12 +19,10 @@ $(document).ready(function() {
 					                  '<td>' + taiKhoan.phone + '</td>' +
 					                  '<td>' + taiKhoan.address + '</td>'+ 
 					                  '<td>' + taiKhoan.roles + '</td>';
-					  taiKhoanRow +='</td>' +
-					                  '<td width="0%">'+'<input type="hidden" id="idTaiKhoan" value=' + taiKhoan.id + '>'+ '</td>'+
-//					                  '<td><button class="btn btn-primary btnCapNhat" >Cập nhật</button></td>' + 
-					                  '<td><button class="btn btn-danger btnXoa" ><i class="fas fa-trash"></i></button></td>';			;
+					taiKhoanRow +='</td>' +
+						'<td><button class="delete btn btn-danger btnXoa" ><i class="fas fa-trash"></i></button></td>'+
+					                  '<td>'+'<input type="hidden" id="idTaiKhoan" value=' + taiKhoan.id + '>'+ '</td>';
 					$('.taiKhoanTable tbody').append(taiKhoanRow);
-
 				});
 								
 				if(result.totalPages > 1 ){

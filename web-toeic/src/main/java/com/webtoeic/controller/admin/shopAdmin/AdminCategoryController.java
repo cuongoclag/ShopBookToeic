@@ -26,7 +26,7 @@ public class AdminCategoryController {
     public String listCategory(final ModelMap model, final HttpServletRequest request,
                                final HttpServletResponse response) throws Exception {
         model.addAttribute("categories", categoryRepository.findAll());
-        return "admin/listCategory";
+        return "admin/ListCategory";
     }
 
     @RequestMapping(value = { "/admin/add-category" }, method = RequestMethod.GET)
@@ -34,7 +34,7 @@ public class AdminCategoryController {
                               final HttpServletResponse response) throws Exception {
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("category", new Category());
-        return "admin/addCategory";
+        return "admin/AddCategory";
     }
 
     @RequestMapping(value = { "/admin/edit-category/{seo}" }, method = RequestMethod.GET)
@@ -42,7 +42,7 @@ public class AdminCategoryController {
                                final HttpServletResponse response) throws Exception {
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("category", categoryService.findCategoryBySeo(seo));
-        return "admin/addCategory";
+        return "admin/AddCategory";
     }
     @RequestMapping(value = { "/admin/save-category" }, method = RequestMethod.POST)
     public String saveCategory(@ModelAttribute("category") Category category, final ModelMap model,

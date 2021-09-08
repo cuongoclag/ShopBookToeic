@@ -17,8 +17,6 @@ $(document).ready(function() {
 	};
 	
 	
-	
-	
 	function loadAllGrammar(){
 		$.ajax({
 			dataType : 'json',
@@ -55,7 +53,7 @@ $(document).ready(function() {
 		            trHTML += '<tr><td class= "center">' + jsonArr[i].baigrammarid + '</td>'
 		            +'<td class= "center">' + jsonArr[i].tenbaigrammar+ '</td>'
 		            
-		            +'<td class= "center">' + jsonArr[i].anhbaigrammar + '</td>'
+		            // +'<td class= "center">' + jsonArr[i].anhbaigrammar + '</td>'
 		     
 		            +'<td class = "center"> <a id="edit.'+ jsonArr[i].baigrammarid+' "'
 		            
@@ -63,7 +61,7 @@ $(document).ready(function() {
 		     
 		            +' <a id="delete.'+jsonArr[i].baigrammarid+' "'
 		            
-		            +'class="red deleteBaiGrammar" ><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a> </td>'
+		            +'class="red deleteBaiGrammar" ><button class="delete btn btn-danger"><i class="fas fa-trash"></i></button></a> </td>'
 
 		            +'</tr>';
 		       }

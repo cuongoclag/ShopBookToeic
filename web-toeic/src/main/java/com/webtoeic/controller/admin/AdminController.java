@@ -43,24 +43,24 @@ public class AdminController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return nguoiDungService.findByEmail(auth.getName());
 	}
-//	@GetMapping()
-//	public String adminPage() {
-//		return "admin/homepage";
-//	}
+	@GetMapping({"/AdminIndex", ""})
+	public String AdminIndex() {
+		return "admin/AdminIndex";
+	}
 
-	@GetMapping({"/bai-nghe", ""})
+	@GetMapping({"/bai-nghe"})
 	public String quanLyBaiNghePage() {
-		return "admin/quanLyBaiNghe";
+		return "admin/Listening";
 	}
 
 	@GetMapping("/bai-doc")
 	public String quanLyBaiDocPage() {
-		return "admin/quanLyBaiDoc";
+		return "admin/Reading";
 	}
 
 	@GetMapping("/grammar")
 	public String quanLyGrammar() {
-		return "admin/quanLyGrammar";
+		return "admin/Grammar";
 	}
 
 	@GetMapping("/vocab")
@@ -68,26 +68,26 @@ public class AdminController {
 		model.addAttribute("listVocab", baitaptuvungService.findAll());
 		model.addAttribute("baitaptuvung", new VocabularyExercises());
 
-		return "admin/quanLyVocab";
+		return "admin/Vocabulary";
 	}
 	
 	@GetMapping("/exam")
 	public String quanLyExam(Model model) {
 		model.addAttribute("baithithu", new VocabularyExercises());
-		return "admin/quanLyExam";
+		return "admin/Exam";
 	}
 	
 	@GetMapping("/tai-khoan")
 	public String quanLyTaiKhoan(Model model) {
 	    model.addAttribute("listVaiTro", Roles.values());
 	    model.addAttribute("listAll", nguoiDungService.findAll());
-		return "admin/quanLyTaiKhoan";
+		return "admin/Account";
 	}
 	
 	@GetMapping("/profile")
 	public String profilePage(Model model, HttpServletRequest request) {
 		model.addAttribute("user", getSessionUser(request));
-		return "admin/profile";
+		return "admin/Profile";
 	}
 
 	@PostMapping("/profile/update")
@@ -97,7 +97,7 @@ public class AdminController {
 		currentUser.setFullName(nd.getFullName());
 		currentUser.setPhone(nd.getPhone());
 		nguoiDungService.updateUser(currentUser);
-		return "redirect:/admin/profile";
+		return "redirect:/admin/Profile";
 	}
 	
 	public NguoiDung getSessionUser(HttpServletRequest request) {

@@ -24,7 +24,7 @@ public class AdminReviewController {
     public String listRating(final ModelMap model, final HttpServletRequest request,
                                final HttpServletResponse response) throws Exception {
         model.addAttribute("review", reviewRepository.findAll());
-        return "admin/listReview";
+        return "admin/ListReview";
     }
     @RequestMapping(value = { "/admin/delete-review/{id}" }, method = RequestMethod.GET)
     public String deleteReview(@PathVariable("id") long id){

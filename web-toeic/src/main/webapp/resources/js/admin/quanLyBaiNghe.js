@@ -150,13 +150,10 @@ $(document).ready(function () {
                 for(var i = 0; i <data.length; i++){
                     var jsonObject = new Object();
                         fields = data[i].split(',');
-
                         id = fields[0].split(':');
                         jsonObject.baingheid = id[1];
-
                         tenbainghe = fields[1].split(':');
                         jsonObject.tenBaiNghe = tenbainghe[1];
-
                         part = fields[2].split(':');
                         jsonObject.part = part[1];
                         jsonArray.push(jsonObject);

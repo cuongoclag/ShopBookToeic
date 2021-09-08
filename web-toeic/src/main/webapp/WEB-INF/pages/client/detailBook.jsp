@@ -70,9 +70,6 @@
 			<span class="glyphicon glyphicon-star-empty"></span>
 		</c:forEach> ${list.rating}stars
 	</div>
-
-
-
 	<h2>Review </h2>
 	<table>
 		<c:forEach var="r" items="${list.reviews}" varStatus="i">
