@@ -9,32 +9,39 @@
 <meta charset="ISO-8859-1">
 <title>Danh sách bài thi thử</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/paging.css">
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/html5shiv.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+<%--<link rel="stylesheet"--%>
+<%--	href="${pageContext.request.contextPath}/resources/css/paging.css">--%>
+<%--<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>--%>
+<%--<script--%>
+<%--	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>--%>
+<%--<script--%>
+<%--	src="${pageContext.request.contextPath}/resources/js/html5shiv.js"></script>--%>
+<%--<script--%>
+<%--	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>--%>
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
 .hidden {
 	display: none;
 }
-
-.error-message {
-	color: red;
-}
-
-.anchor {
-	display: block;
-	height: 115px; /*same height as header*/
-	margin-top: -115px; /*same height as header*/
-	visibility: hidden;
-}
-
 .imageExam {
 	float: left;
 	height: 150px;
@@ -85,7 +92,7 @@
 	<input id="baseUrl" value="${pageContext.request.contextPath}" style="display:none;"/>
 	<div class="container">
 		<!--PAGE TITLE-->
-		<div class="span9" style="text-align: center">
+		<div class="col-md-9" style="text-align: center">
 			<div class="page-header">
 				<h4 style="font-weight: bold;">DANH SÁCH BÀI THI THỬ</h4>
 			</div>
@@ -94,22 +101,22 @@
 		<!-- /. PAGE TITLE-->
 		<div class="row">
 
-			<div class="span9">
+			<div class="col-md-9">
 				<c:if test="${fn:length(listData) == 0 }">
 					<h3>Không tìm thấy dữ liệu</h3>
 				</c:if>
 
 				<c:forEach items="${listData}" var="list" varStatus="loop">
 
-					<div class="span9">
-						<div class="span3">
+					<div class="col-md-12">
+						<div class="col-md-4">
 							<img class="imageExam"
 								src="${pageContext.request.contextPath}/resources/file/images/exam/${list.testImage}" />
 						</div>
-						<div class="span1"></div>
-						<div class="span5">
-							<h4 class="content-heading" id="namebaithithu">
-								${list.testTitle}</h4>
+
+						<div class="col-md-8">
+							<h5 class="content-heading" id="namebaithithu">
+								${list.testTitle}</h5>
 							<button class="btn btn-primary openModalExam"
 								value="${list.testId}" id="openModalExam.${loop.index}">
 								Chi tiết</button>
@@ -123,7 +130,7 @@
 				<br>
 			</div>
 
-			<div class="span3">
+			<div class="col-md-3">
 				<div class="side-bar">
 
 					<h3>DANH MỤC</h3>
@@ -139,8 +146,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 
 	<!--Pagination-->
@@ -186,9 +191,7 @@
 	<!-- Modal -->
 	<div class="modal fade" id="examModal" role="dialog">
 		<div class="modal-dialog">
-
 			<!-- Modal content -->
-
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -196,21 +199,18 @@
 				</div>
 				<div class="modal-body">
 					<input class="hidden" id="idExamModal">
-					<p>Bài thi thử gồm 2 phần: (100 câu hỏi)</p>
+					<h6>Bài thi thử gồm 2 phần: (100 câu hỏi)</h6>
 					<img style="float: left"
 						src="https://img.icons8.com/nolan/64/000000/reading.png"> <br>
-					<p>Phần 1: Listening skills (30 phút - 50 câu hỏi)</p>
+					<h6>Phần 1: Listening skills (30 phút - 50 câu hỏi)</h6>
 					<br> <img style="float: left"
 						src="https://img.icons8.com/nolan/64/000000/reading.png"> <br>
-					<p>Phần 2: Reading skills (45 phút - 50 câu hỏi)</p>
+					<h6>Phần 2: Reading skills (45 phút - 50 câu hỏi)</h6>
 
 					<br>
-					<p>Bài thi được thực hiện sau khi xác nhận làm bài thi</p>
-
+					<h6>Bài thi được thực hiện sau khi xác nhận làm bài thi</h6>
 				</div>
 			</div>
-
-
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" id="btnLamBaiThi">Làm
 					bài thi</button>
@@ -220,12 +220,19 @@
 
 		</div>
 	</div>
-
-
 	<!-- Modal -->
 
-	<jsp:include page="include/footerHome.jsp"></jsp:include>
+	<jsp:include page="template/footer.jsp"></jsp:include>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
 
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 
 </body>
 
