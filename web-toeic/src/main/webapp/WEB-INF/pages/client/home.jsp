@@ -8,172 +8,152 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trang chủ</title>
 
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
 
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
 
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
-
-	<!--Header
-==========================-->
-
-	<jsp:include page="template/header.jsp"></jsp:include>
-
-	<!--/End Headter-->
-
-	<!-- Search -->
-
-	<div class="container">
-
-		<div class="row">
-
-			<br>
-			<div class="span12">
-				<div class="navbar  pull-right">
-					<div id="size">
-						<form name="myform">
-
-
-						</form>
-					</div>
-				</div>
-			</div>
+	<!-- LOADER -->
+	<div id="loader">
+		<div class="position-center-center">
+			<div class="ldr"></div>
 		</div>
 	</div>
+	<!-- Wrap -->
+	<div id="wrap">
 
-	<!-- End search -->
+		<!-- Header -->
+		<jsp:include page="template/header.jsp"></jsp:include>
 
-	<div class="container" id="resultsearch">
-	<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
-	<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-		<div class="row">
-			<div class="span12 cnt-title">
-				<h1>Thư viện sách phong phú</h1>
-				<span>--- Chọn sách phù hợp với bản thân ---</span>
-			</div>
-			<div class="span12" style="background-image : url(${pageContext.request.contextPath}/resources/file/images/banner1.png);
-								background-repeat: no-repeat; 
-								background-size: cover; 
-								position: relative;
-								height : 35rem;">
-				<div style="text-align: center;background-image:linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);  width: 19rem;height: 5rem;position: absolute;top: 30%;right: 23%;line-height: 5rem;">
-					<a href="/listBook" style=" font-size: 3rem; color: white">
-						Mua Sách &rarr;</a>
-				</div>
+			<!-- Popular Products -->
+			<section class="padding-top-50 padding-bottom-150">
+				<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
+				<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
+				<div class="container">
 
-			</div>
-		</div>
+					<!-- Main Heading -->
+					<div class="heading text-center">
+						<h4>Thư viện sách phong phú</h4>
+						<span>--- Chọn sách phù hợp với bản thân ---</span> </div>
 
-		<!-- Feature 
-  ==============================================-->
+					<!-- Popular Item Slide -->
+					<div class="papular-block block-slide">
 
-
-		<div class="row feature-box">
-			<div class="span12 cnt-title">
-				<h1>Cung cấp các giao diện học và thi thân thiện.</h1>
-				<span>--- Học thử, Làm bài tập, Thi thử ---</span>
-			</div>
-
-			<div class="span4">
-				<img
-					src="${pageContext.request.contextPath}/resources/file/images/feature-vocabulary1.jpg">
-
-				<h2>Học từ vựng, ngữ pháp</h2>
-				<p>Các bài hướng dẫn đơn giản, dễ hiểu.</p>
-				<a href="#" id="modal1" class="openModalFunction">Chi tiết &rarr;</a>
-
-			</div>
-
-			<div class="span4">
-				<img
-					src="${pageContext.request.contextPath}/resources/file/images/feature-listenandread.jpg">
-				<h2>Bài tập phần nghe, đọc</h2>
-				<p>Sử dụng các dạng bài tập thường xuyên xuất hiện.</p>
-				<a  href="#" id="modal2" class="openModalFunction">Chi tiết &rarr;</a>
-			</div>
-
-			<div class="span4">
-				<img
-					src="${pageContext.request.contextPath}/resources/file/images/feature-lamdethithu.jpg"
-					height="170px" width="270px">
-				<h2>Đề thi thử</h2>
-				<p>Cập nhật, đổi mới liên tục, sát với đề thi thật nhất.</p>
-				<a href="#" class="doExam" id="doExam">Chi tiết &rarr;</a>
-			</div>
-		</div>
-
-
-		<!-- /.Feature -->
-		<!-- Row View -->
-	</div>
-
-
-	<!-- /.Row View -->
-
-
-
-	<!--Footer
-==========================-->
-	<jsp:include page="include/footerHome.jsp"></jsp:include>
-	<!--/.Footer-->
-
-
-	<!-- Start Modal -->
-
-	<div class="modal fade" id="openModal" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">DANH SÁCH LOẠT BÀI HƯỚNG DẪN</h4>
-				</div>
-
-				<div class="modal-body">
-
-					<div class="media">
-						<a class="pull-left"><img src="" id="image1" class="media-object"  /></a>
-						<div class="media-body">
-							<h3>
-								<a href="" id="name1" name="name1"></a>
-							</h3>
+						<!-- Item -->
+						<div class="item">
+							<!-- Item img -->
+							<div class="item-img"> <img class="img-1" src="/resources/web/images/product-1.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
+								<!-- Overlay -->
+								<div class="overlay">
+									<div class="position-center-center">
+										<div class="inn"><a href="/resources/web/images/product-1.jpg" data-lighter><i class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To WishList"><i class="icon-heart"></i></a></div>
+									</div>
+								</div>
+							</div>
+							<!-- Item Name -->
+							<div class="item-name"> <a href="#.">stone cup</a>
+								<p>Lorem ipsum dolor sit amet</p>
+							</div>
+							<!-- Price -->
+							<span class="price"><small>$</small>299</span>
 						</div>
+
 					</div>
+				</div>
+			</section>
 
-					<div class="media">
-						<a class="pull-left"><img src="" id="image2" class="media-object"  /></a>
-						<div class="media-body">
-							<h3>
-								<a href="" id="name2" name="name2"></a>
-							</h3>
-						</div>
+			<!-- Knowledge Share -->
+			<section class="light-gray-bg padding-top-150 padding-bottom-150">
+				<div class="container">
+
+					<!-- Main Heading -->
+					<div class="heading text-center">
+						<h4>Cung cấp các giao diện học và thi thân thiện.</h4>
+						<span>--- Học thử, Làm bài tập, Thi thử ---</span>
 					</div>
+					<div>
+						<ul class="row">
 
+							<!-- Post 1 -->
+							<li class="col-md-4" style="text-align: center">
+								<div class="date"> <span>Bài tập phần nghe, đọc</span></div>
+								<p>Sử dụng các dạng bài tập thường xuyên xuất hiện.</p>
+								<a href="/listVocab" >Bài hướng dẫn từ vựng</a>
+								<br />
+								<a href="/listGrammar" >Bài hướng dẫn ngữ pháp</a>
+							</li>
+
+							<!-- Post 2 -->
+							<li class="col-md-4" style="text-align: center">
+								<div class="date"> <span>Học từ vựng, ngữ pháp</span></div>
+								<p>Các bài hướng dẫn đơn giản, dễ hiểu.</p>
+								<a href="/listListening" >Bài tập phần nghe</a>
+								<br />
+								<a href="/listReading" >Bài tập phần đọc</a>
+							</li>
+
+							<!-- Post 3 -->
+							<li class="col-md-4" style="text-align: center">
+								<div class="date"> <span>Đề thi thử</span></div>
+								<p>Cập nhật, đổi mới liên tục, sát với đề thi thật nhất.</p>
+
+								<a href="#" class="doExam" id="doExam">Thi thử</a>
+
+							</li>
+						</ul>
+					</div>
 				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Thoát</button>
-				</div>
-
-			</div>
+			</section>
 		</div>
-	</div>
-	<!-- End Modal -->
 
+
+		<%--	Footer--%>
+		<jsp:include page="template/footer.jsp"></jsp:include>
+
+
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(document).on("click", ".doExam", function(event) {
+
+				var name = $('#nameUser').val();
+				if(name === ''){
+					var url = "/signin";
+					window.location.href = url;
+				}
+				else{
+					var url = "/listExam";
+					window.location.href = url;
+				}
+
+			});
+		});
+	</script>
 </body>
 </html>

@@ -13,13 +13,6 @@
 <meta name="author" content="">
 <meta name="google-translate-customization" content="9f841e7780177523-3214ceb76f765f38-gc38c6fe6f9d06436-c"></meta>
 
-
-<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'  />" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-<link rel="stylesheet" href="<c:url value='/css/bootstrap-responsive.min.css'  />" />
-<link rel="stylesheet" href="<c:url value='/css/style.css'  />" />
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="<c:url value='/js/bootstrap.min.js' />"></script>
 	<script type="text/javascript">
 		function googleTranslateElementInit() {
 			new google.translate.TranslateElement({pageLanguage: 'vi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
@@ -38,56 +31,52 @@
 </head>
 
 <body>
-	<!--HEADER ROW-->
-	<div id="header-row">
-		<div class="container">
-			<div class="row">
-				<!--LOGO-->
-				<div class="span3">
-					<a class="brand" href="/"><img src="/resources/file/images/logo.png" style="height : 5rem"/></a>
-				</div>
-				<!-- /LOGO -->
+<!-- header -->
+<header>
+    <div class="sticky" id="header-row">
+        <div class="container">
 
-				<!-- MAIN NAVIGATION -->
-				<div class="span9">
-					<div class="navbar  pull-right">
-						<div class="navbar-inner">
-							<a data-target=".navbar-responsive-collapse" data-toggle="collapse"
-								class="btn btn-navbar"><span class="icon-bar"></span><span
-								class="icon-bar"></span><span class="icon-bar"></span></a>
-							<div class="nav-collapse collapse navbar-responsive-collapse">
-								<ul class="nav">
-									<c:if test="${pageContext.request.userPrincipal.name == null}">
-										<li class="active"><a href="/">Trang chủ</a></li>
-										</li>
-										<li><a href="<%=request.getContextPath()%>/signin">Đăng nhập</a></li>
-										<li><a href="/cart/check-out"><i class="fas fa-shopping-cart" style="font-size: 1.5rem;"></i></a></li>
-										<li style="height: 40px; line-height: 40px"><div id="google_translate_element"></div></li>
-									</c:if>
-									<c:if test="${pageContext.request.userPrincipal.name != null}">
-										<li class="active"><a href="/">Trang chủ</a></li>
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown">${nguoiDung.fullName}<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<c:if test="${!nguoiDung.loginOauth2 }">
-													<li><a href="<%=request.getContextPath()%>/profile">Tài
-															khoản</a></li>
-												</c:if>
-												<li><a href="<%=request.getContextPath()%>/orderUser/${nguoiDung.id }">Đơn hàng của bạn</a></li>
-												<li><a href="<%=request.getContextPath()%>/wishlist">Yêu thích</a></li>
-												<li><a href="<%=request.getContextPath()%>/signout">Thoát</a></li>
-											</ul>
-										</li>
-										<li><a href="/cart/check-out"><i class="fas fa-shopping-cart" style="font-size: 1.5rem;"></i></a></li>
-										<li style="height: 40px; line-height: 40px><div id="google_translate_element"></div></li>
-									</c:if>
-								</ul>
-							</div>
+            <!-- Logo -->
+            <div class="logo"> <a href="/"><img class="img-responsive" src="/resources/file/images/logo.png" alt="" style="width: 20%"></a> </div>
+            <nav class="navbar ownmenu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"><i class="fa fa-navicon"></i></span> </button>
+                </div>
 
-						</div>
-					</div>
-				</div>
-				<!-- MAIN NAVIGATION -->
-			</div>
-		</div>
-	</div>
+                <!-- NAV -->
+                <div class="collapse navbar-collapse" id="nav-open-btn">
+                    <ul class="nav">
+                        <li> <a href="/">Trang chủ</a>
+                        </li>
+
+                        <c:if test="${pageContext.request.userPrincipal.name == null}">
+                            <li> <a href="/signin">Đăng nhập</a>
+                            </li>
+                        </c:if>
+
+                        <c:if test="${pageContext.request.userPrincipal.name != null}">
+                            <li class="dropdown user-acc"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" ><i class="icon-user"></i> </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <h6>HELLO! ${nguoiDung.fullName}</h6>
+                                    </li>
+                                    <c:if test="${!nguoiDung.loginOauth2 }">
+                                        <li><a href="/profile">Tài khoản</a></li>
+                                    </c:if>
+                                    <li><a href="/orderUser/${nguoiDung.id }">Đơn hàng của bạn</a></li>
+                                    <li><a href="/wishlist">Yêu thích</a></li>
+                                    <li><a href="/signout">Đăng xuất</a></li>
+                                </ul>
+                            </li>
+                        </c:if>
+
+                        <li class="user-basket"> <a href="/cart/check-out" ><i class="icon-basket-loaded"></i> </a>
+                        </li>
+                        <li><div id="google_translate_element"></div></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+</body>

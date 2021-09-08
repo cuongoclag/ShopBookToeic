@@ -9,73 +9,142 @@
 <head>
 <meta charset="UTF-8">
 <title>Đăng nhập</title>
-<link rel="stylesheet" href="<c:url value='/css/login.css'/>">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-	<div class="login-page">
-		<div class="form">
-			<h2 class="form-signin-heading" style="text-align: center">Đăng nhập</h2>
-			<hr>
-			<c:if test="${error!= null}">
-				<div class="alert alert-danger">
-					<p>${error }</p>
-				</div>
-			</c:if>
-			<c:if test="${message!= null}">
-				<div class="alert alert-success">
-					<p>${message }</p>
-				</div>
-			</c:if>
-			<c:if test="${param.error != null}">
-				<div class="alert alert-danger">
-					<p>Tên đăng nhập hoặc mật khẩu không đúng.</p>
-				</div>
-			</c:if>
-			<c:if test="${param.logout != null}">
-				<div class="alert alert-success">
-					<p>Bạn đã đăng xuất thành công.</p>
-				</div>
-			</c:if>
-			<c:if test="${param.accessDenied != null}">
-				<div class="alert alert-danger">
-					<p>Bạn không có quyền truy cập vào trang này</p>
-				</div>
-			</c:if>
+	<!-- Wrap -->
+	<div id="wrap">
 
-			<form class="login-form" method="POST" action="${contextPath}/login" onsubmit="return validateForm()">
+	<!-- Header -->
+<%--	<jsp:include page="client/template/header.jsp"></jsp:include>--%>
+	<!-- Content -->
+	<div id="content">
 
-				<input type="email" placeholder="Email" name="email" required="required" style="padding: 10px;" />
-				<input type="password" placeholder="Mật khẩu"
-					name="password" required="required" style="padding: 10px;" /> 
-				<input
-					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-				<label
-					style=" width: 100%; font-size: 15px; text-align: center;" id="label">
-				<div class="g-recaptcha" style="margin: 0 15%;" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
-				</label> <input id="submit" type="submit" value="ĐĂNG NHẬP">
-				<p class="message" style="font-size: 18; padding-top: 10px">
-					Chưa có tài khoản? <a href="<c:url value='/register'/> ">Tạo tài khoản
-						mới</a>
-				</p>
-				<p style="text-align: center; text-decoration: underline">
-					<a href="/forgot_password">Quên mật khẩu</a>
-				</p>
-			</form>
-		</div>
+		<!--======= PAGES INNER =========-->
+		<section class="chart-page padding-top-100 padding-bottom-100">
+			<div class="container">
+
+				<!-- Payments Steps -->
+				<div class="shopping-cart">
+
+					<!-- SHOPPING INFORMATION -->
+					<div class="cart-ship-info">
+						<div class="row">
+
+							<!-- ESTIMATE SHIPPING & TAX -->
+							<div class="col-sm-12">
+								<h6>ĐĂNG NHẬP</h6>
+								<c:if test="${error!= null}">
+									<div class="alert alert-danger">
+										<p>${error }</p>
+									</div>
+								</c:if>
+								<c:if test="${message!= null}">
+									<div class="alert alert-success">
+										<p>${message }</p>
+									</div>
+								</c:if>
+								<c:if test="${param.error != null}">
+									<div class="alert alert-danger">
+										<p>Tên đăng nhập hoặc mật khẩu không đúng.</p>
+									</div>
+								</c:if>
+								<c:if test="${param.logout != null}">
+									<div class="alert alert-success">
+										<p>Bạn đã đăng xuất thành công.</p>
+									</div>
+								</c:if>
+								<c:if test="${param.accessDenied != null}">
+									<div class="alert alert-danger">
+										<p>Bạn không có quyền truy cập vào trang này</p>
+									</div>
+								</c:if>
+								<form method="POST" action="${contextPath}/login" onsubmit="return validateForm()">
+									<ul class="row">
+
+										<!-- Name -->
+										<li class="col-md-12">
+											<label> USERNAME
+												<input type="email" placeholder="Email" name="email" required="required" >
+											</label>
+										</li>
+										<!-- LAST NAME -->
+										<li class="col-md-12">
+											<label> PASSWORD
+												<input type="password" placeholder="Mật khẩu" name="password" required="required">
+											</label>
+										</li>
+										<li>
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+										</li>
+
+										<!-- LOGIN -->
+										<li class="col-md-4">
+											<button type="submit" class="btn">ĐĂNG NHẬP</button>
+										</li>
+
+										<!-- CREATE AN ACCOUNT -->
+										<li class="col-md-4">
+											<div class="g-recaptcha" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
+										</li>
+
+										<!-- FORGET PASS -->
+										<li class="col-md-4">
+											<div class="checkbox margin-0 margin-top-20 text-right">
+												<a href="/forgot_password">Quên mật khẩu</a>
+											</div>
+										</li>
+									</ul>
+								</form>
+								<p class="margin-top-20" style="font-size: 18px; padding-top: 10px">
+									Bạn chưa có tài khoản? <a href="<c:url value='/register'/> ">Tạo tài khoản mới</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
 	</div>
 
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<!-- FOOTER  -->
+<%--	<jsp:include page="client/include/footerHome.jsp"></jsp:include>--%>
+	</div>
+
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 	<script type="text/javascript">
     
 	function validateForm(){

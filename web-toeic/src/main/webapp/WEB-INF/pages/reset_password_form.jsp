@@ -7,39 +7,90 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Đăng nhập</title>
-<link rel="stylesheet" href="<c:url value='/css/login.css'/>">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Reset Mật khẩu</title>
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-	<div class="login-page">
-		<div class="form">
-			<h2 class="form-signin-heading" style="text-align: center">Reset Mật khẩu</h2>
-			<hr>
-			<form class="sign-in-form" method="post" action="/reset_password">
-				<input type="hidden" name="token" value="${token }"/>
-				<div class="input-field">
-					<input type="password" placeholder="Nhập mật khẩu mới" name="password" id="password" required="required" autofocus="autofocus"/>
+
+	<div id="wrap">
+		<!-- Content -->
+		<div id="content">
+
+			<!--======= PAGES INNER =========-->
+			<section class="chart-page padding-top-100 padding-bottom-100">
+				<div class="container">
+
+					<!-- Payments Steps -->
+					<div class="shopping-cart">
+
+						<!-- SHOPPING INFORMATION -->
+						<div class="cart-ship-info">
+							<div class="row">
+
+								<!-- ESTIMATE SHIPPING & TAX -->
+								<div class="col-sm-12">
+									<h6>Reset Mật khẩu</h6>
+
+									<form method="post" action="/reset_password">
+										<input type="hidden" name="token" value="${token }"/>
+										<ul class="row">
+											<li class="col-md-12">
+												<label>
+													<input type="password" placeholder="Nhập mật khẩu mới" name="password" id="password" required="required" autofocus="autofocus">
+												</label>
+											</li>
+											<li class="col-md-12">
+												<label>
+													<input type="password" placeholder="Nhập lại mật khẩu" name="confirmPassword" required="required" autofocus="autofocus" oninput="checkPasswordMatch(this);">
+												</label>
+											</li>
+											<li class="col-md-4">
+												<button type="submit" class="btn">Đổi mật khẩu</button>
+											</li>
+										</ul>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="input-field">
-					<input type="password" placeholder="Nhập lại mật khẩu" name="confirmPassword" required="required" autofocus="autofocus" oninput="checkPasswordMatch(this);"/>
-				</div>
-				<button class="btn" id="submit"type="submit">Đổi mật khẩu</button>
-			</form>
+			</section>
+
+
 		</div>
 	</div>
 
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 	<script type="text/javascript">
 		function checkPasswordMatch(fieldConfirmPassword) {
 			if(fieldConfirmPassword.value != $("#password").val()){

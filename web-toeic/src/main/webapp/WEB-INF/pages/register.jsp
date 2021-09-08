@@ -8,13 +8,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Đăng ký</title>
-<link rel="stylesheet" href="<c:url value='/css/login.css' />">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -22,55 +34,107 @@
 
 
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-	<div class="login-page">
-		<div class="form">
-			<form:form method="POST" action='register' modelAttribute="newUser">
-				<h2 class="form-signin-heading" style="text-align: center">Đăng ký tài khoản</h2>
-				<hr />
-				<div class="form-group">
-					<form:input type="email" path="email" class="form-control"
-						placeholder="Email" autofocus="true" required="required"></form:input>
-					<form:errors class="error" path="email"></form:errors>
-				</div>
 
-				<div class="form-group">
-					<form:input type="password" path="password" class="form-control"
-						required="required" placeholder="Mật khẩu"></form:input>
-					<form:errors class="error" path="password"></form:errors>
-				</div>
+	<!-- Wrap -->
+	<div id="wrap">
+	<div id="content">
 
-				<div class="form-group">
-					<form:input type="password" path="confirmPassword"
-						class="form-control" placeholder="Nhắc lại mật khẩu"
-						required="required"></form:input>
-					<form:errors class="error" path="confirmPassword"></form:errors>
-				</div>
+		<!--======= PAGES INNER =========-->
+		<section class="chart-page padding-top-100 padding-bottom-100">
+			<div class="container">
 
-				<div class="form-group">
-					<form:input type="text" path="fullName" class="form-control"
-						placeholder="Họ và tên" required="required"></form:input>
-					<form:errors class="error" path="fullName"></form:errors>
-				</div>
+				<!-- Payments Steps -->
+				<div class="shopping-cart">
 
-				<div class="form-group">
-					<form:input type="number" path="phone" class="form-control"
-						placeholder="Số điện thoại" required="required"></form:input>
-					<form:errors class="error" path="phone"></form:errors>
-				</div>
+					<!-- SHOPPING INFORMATION -->
+					<div class="cart-ship-info register">
+						<div class="row">
 
-				<div class="form-group">
-					<form:input type="text" path="address" class="form-control"
-						placeholder="Địa chỉ" required="required"></form:input>
-					<form:errors class="error" path="address"></form:errors>
+							<!-- ESTIMATE SHIPPING & TAX -->
+							<div class="col-sm-12">
+								<h6>ĐĂNG KÝ</h6>
+								<form:form method="POST" action='register' modelAttribute="newUser">
+									<ul class="row">
+
+										<!-- Name -->
+										<li class="col-md-6">
+											<label> *EMAIL
+												<form:input type="email" path="email"
+															placeholder="" autofocus="true" required="required"></form:input>
+												<form:errors class="error" cssStyle="color: red" path="email"></form:errors>
+											</label>
+										</li>
+										<!-- LAST NAME -->
+										<li class="col-md-6">
+											<label> *MẬT KHẨU
+												<form:input type="password" path="password"
+															required="required" placeholder=""></form:input>
+												<form:errors class="error" cssStyle="color: red" path="password"></form:errors>
+											</label>
+										</li>
+
+										<!-- EMAIL ADDRESS -->
+										<li class="col-md-6">
+											<label> *HỌ VÀ TÊN
+												<form:input type="text" path="fullName"
+															placeholder="" required="required"></form:input>
+												<form:errors class="error" cssStyle="color: red" path="fullName"></form:errors>
+											</label>
+										</li>
+										<!-- PHONE -->
+										<li class="col-md-6">
+											<label> *NHẮC LẠI MẬT KHẨU
+												<form:input type="password" path="confirmPassword"
+															placeholder=""
+															required="required"></form:input>
+												<form:errors class="error" cssStyle="color: red" path="confirmPassword"></form:errors>
+											</label>
+										</li>
+
+										<!-- LAST NAME -->
+										<li class="col-md-6">
+											<label> *SỐ ĐIỆN THOẠI
+												<form:input type="number" path="phone"
+															placeholder="" required="required"></form:input>
+												<form:errors class="error" cssStyle="color: red" path="phone"></form:errors>
+											</label>
+										</li>
+
+										<!-- LAST NAME -->
+										<li class="col-md-6">
+											<label> *ĐỊA CHỈ
+												<form:input type="text" path="address"
+															placeholder="" required="required"></form:input>
+												<form:errors class="error" cssStyle="color: red" path="address"></form:errors>
+											</label>
+										</li>
+
+										<li class="col-md-6">
+											<button type="submit" class="btn">ĐĂNG KÝ NGAY</button>
+										</li>
+										<p style="font-size: 18; padding-top: 10px"> Bạn đã có tài khoản? <a href="<c:url value='/signin'/> ">Đăng nhập</a></p>
+									</ul>
+								</form:form>
+							</div>
+						</div>
+					</div>
 				</div>
-				<input id="submit" type="submit" value="ĐĂNG KÝ">
-				<p class="message" style="font-size: 18; padding-top: 10px"> Đã có tài khoản? <a
-						href="<c:url value='/signin'/> ">Đăng nhập</a></p>
-			</form:form>
-		</div>
+			</div>
+		</section>
 	</div>
-	<script
-		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	</div>
+
+
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 
 </body>
 </html>
