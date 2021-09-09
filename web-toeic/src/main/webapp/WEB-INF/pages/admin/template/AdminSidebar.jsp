@@ -28,7 +28,11 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value='/admin/' />">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Dashboard</span></a>
+        </li>
         <!-- Heading -->
         <div class="sidebar-heading" style="font-size: 15px; color: white">
             Toeic.
@@ -41,33 +45,33 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value='/admin/bai-nghe' />">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Listening.</span></a>
+                <span>Bài nghe.</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<c:url value='/admin/bai-doc' />">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Reading.</span></a>
+                <span>Bài đọc.</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<c:url value='/admin/grammar'/>">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Grammar.</span></a>
+                <span>Ngữ pháp.</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/vocab"/> ">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Vocabulary.</span></a>
+                <span>Từ vựng.</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/exam"/>">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Test Toeic.</span></a>
+                <span>Thi Toeic.</span></a>
         </li>
         <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading" style="font-size: 15px; color: white">
-            Book.
+            Cửa hàng.
         </div>
 
         <!-- Divider -->
@@ -76,33 +80,28 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/list-category"/> ">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Category.</span></a>
+                <span>Loại sản phẩm.</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/list-product"/> ">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Product.</span></a>
+                <span>Sản phẩm.</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/list-order"/> ">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Order.</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<c:url value='/admin/BarGraph' />">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Sales.</span></a>
+                <span>Đơn hàng.</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/listReview"/> ">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Review.</span></a>
+                <span>Đánh giá.</span></a>
         </li>
         <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading" style="font-size: 15px; color: white">
-            Account.
+            Tài khoản.
         </div>
 
         <!-- Divider -->
