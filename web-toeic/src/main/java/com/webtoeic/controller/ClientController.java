@@ -4,11 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.webtoeic.common.ProductSearch;
 import com.webtoeic.entities.Category;
 import com.webtoeic.entities.Product;
 import com.webtoeic.entities.SaleOrder;
 import com.webtoeic.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -66,8 +68,25 @@ public class ClientController {
 	}
 
 	@GetMapping(value = { "/"})
-	public String home(Model model, @AuthenticationPrincipal OAuth2User oauth2User, HttpServletRequest request) {
+	public String home(Model model, @AuthenticationPrincipal OAuth2User oauth2User, @Param("keyword") String keyword, HttpServletRequest request) {
 		model.addAttribute("listslidebanner", slideBannerService.findAll());
+
+		ProductSearch productSearch = new ProductSearch();
+
+		String price = request.getParameter("price");
+		keyword = request.getParameter("keyword");
+		productSearch.setStatusProduct(1);
+		if (keyword != null) {
+			productSearch.setKeyword(keyword);
+		}
+		if (price != null) {
+			productSearch.setTypePrice(price);
+		}
+
+		productSearch.parseRequest(request);
+
+		List<Category> categoryList = categoryService.findAllCategory();
+		model.addAttribute("listProduct", productService.search(productSearch));
 		return "client/home";
 	}
 

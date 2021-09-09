@@ -6,24 +6,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Trang chủ</title>
+    <title>Order</title>
 
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
-    <link
-            href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css"
-            rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/css/style.css"
-          rel="stylesheet">
-    <script
-            src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-    <script
-            src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
 
-    <script type="text/javascript"
-            src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script
-            src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
 
+    <!-- JavaScripts -->
+    <script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+    <!-- Online Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
 </head>
 <body>
@@ -64,15 +68,16 @@
                 <td>
                     <c:choose>
                         <c:when test="${list.status =='true'}">
-                            <a href="#">Đang Xử Lý</a>
+                            <span style="color: red">Đang Xử Lý</span>
                         </c:when>
                         <c:otherwise>
-                            <span style="color: red">Đã Giao Hàng</span>
+                            <span style="color: deepskyblue">Đã Giao Hàng</span>
                         </c:otherwise>
                     </c:choose>
                 </td>
                 <td>
-                    <a href="<%=request.getContextPath()%>/orderDetailsUser/${list.code }" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                    <a href="<%=request.getContextPath()%>/orderDetailsUser/${list.code }" class="btn" style="padding: 0">
+                        <i class="fas fa-edit"></i>
                     </a>
                 </td>
             </tr>
@@ -84,7 +89,19 @@
 
 </div>
 <!--Footer==========================-->
-<jsp:include page="include/footerHome.jsp"></jsp:include>
+<jsp:include page="template/footer.jsp"></jsp:include>
 <!--/.Footer-->
+
+
+<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 </body>
 </html>

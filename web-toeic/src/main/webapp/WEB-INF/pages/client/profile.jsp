@@ -7,6 +7,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tài khoản</title>
+
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<jsp:include page="template/header.jsp"></jsp:include>
@@ -20,52 +40,44 @@
 		<div>
 			<div class="tab-content">
 				<div class="tab-pane active" id="information">
-					<form class="form-profile" action="/profile/update" method="post">
-						<div class="form-group">
-							<label style="font-weight: bold" for="staticEmail"
-								class="col-sm-2 col-form-label">Email đăng ký</label>
-							<div class="col-sm-10">
-								<input type="text" readonly class="form-control-plaintext"
-									value="${user.email }" name="email">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-10">
-								<input type="hidden" class="form-control-plaintext nguoiDungId"
-									value="${user.id }" name="id">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="staticEmail" style="font-weight: bold"
-								class="col-sm-2 col-form-label">Họ Tên</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control-plaintext" value="${user.fullName }"
-									name="hoTen" required="required">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="staticEmail" style="font-weight: bold"
-								class="col-sm-2 col-form-label">Số điện thoại</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control-plaintext"
-									value="${user.phone }" name="soDienThoai" required="required">
-							</div>
-						</div>
+					<form action="/profile/update" method="post" style="margin: 2% 0;">
+						<ul class="row">
+							<li class="col-md-12">
+								<label> Email đăng ký
+									<input type="text" readonly
+										   value="${user.email }" name="email">
+								</label>
+							</li>
+							<li class="col-md-12">
+									<input type="hidden" class="nguoiDungId"
+										   value="${user.id }" name="id">
+							</li>
+							<li class="col-md-12">
+								<label> Họ Tên
+									<input type="text" value="${user.fullName }"
+										   name="hoTen" required="required">
+								</label>
+							</li>
+							<li class="col-md-12">
+								<label> Số điện thoại
+									<input type="text"
+										   value="${user.phone }" name="soDienThoai" required="required">
+								</label>
+							</li>
+							<li class="col-md-12">
+								<label> Địa chỉ
+									<input type="text"
+										   value="${user.address }" name="diaChi" required="required">
+								</label>
+							</li>
+						</ul>
 
-						<div class="form-group">
-							<label for="staticEmail" style="font-weight: bold"
-								class="col-sm-2 col-form-label">Địa chỉ</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control-plaintext"
-									value="${user.address }" name="diaChi" required="required">
-							</div>
-						</div>
 						<input class="btn btn-primary" id="btnSubmit" type="submit"
 							value="Xác nhận" />
 					</form>
 				</div>
 				<div class="tab-pane" id="changePass">
-					<form class="formDoiMatKhau">
+					<form class="formDoiMatKhau" style="margin: 2% 0;">
 
 						<div>
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -97,6 +109,16 @@
 	</div>
 
 	<jsp:include page="template/footer.jsp"></jsp:include>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 	<script src="<c:url value='/js/client/profileClient.js'/>"></script>
 </body>
 </html>

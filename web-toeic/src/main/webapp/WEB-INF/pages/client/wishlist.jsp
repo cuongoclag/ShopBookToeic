@@ -11,23 +11,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Trang chủ</title>
+<title>Yêu thích</title>
 
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
 
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
 
 </head>
@@ -48,24 +53,18 @@
 			<table class="table">
 			  <thead>
 			    <tr>
-				  <th></th>
 			      <th scope="col">SẢN PHẨM</th>
 			      <th scope="col">GIÁ</th>
-<%--			      <th scope="col">TOTAL</th>--%>
 			      <th scope="col"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			  <c:forEach items="${WISHLIST.cartItems}" var="item">
 			    <tr>
-
 					<td>
 						<a href="<%=request.getContextPath()%>/bookDetails/${item.productId }">${item.productName }</a>
 					</td>
 			      <td>${item.unitPriceVN }</td>
-<%--			      <td>--%>
-<%--			      ${item.unitPrice*item.quantity}--%>
-<%--			      </td>--%>
 			      <td><i class="far fa-times-circle" onclick="confirmDelete('${item.productId}')"></i></td>
 				  <td><button type="button" onclick="Shop.addItemToCart(${item.productId}, 1)" class="btn btn-primary">Thêm vào giỏ hàng</button></td>
 			    </tr>
@@ -77,12 +76,20 @@
 		
 	</div>
 	<!--Footer==========================-->
-	<jsp:include page="include/footerHome.jsp"></jsp:include>
+	<jsp:include page="template/footer.jsp"></jsp:include>
 	<!--/.Footer-->
 
-	<script src="<c:url value='/js/client/shop/jquery-3.5.1.js'/>" ></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 	<script src="<c:url value='/js/client/shop/Wishlist.js'/>" ></script>
-	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
 </body>
 
 </html>

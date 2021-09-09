@@ -13,21 +13,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trang chủ</title>
 
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
 
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('#images').change(function () {
@@ -60,31 +67,41 @@
 		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 
 		<div class="row">
-			<div class="span6">
-				<h3 style="color: #0e90d2">Vui lòng chọn 1 trong 2 cách thanh toán sau :</h3
+			<div class="col-md-6">
+				<h3 style="color: #0e90d2">Vui lòng chọn 1 trong 2 cách thanh toán sau :</h3>
 				<p>-Thanh toán bằng QR Code</p>
-				<img src="${qrcode}" style="width:350px; height:350px;" alt="qrcode"/ >
+				<img src="${qrcode}" style="width:350px; height:350px;" alt="qrcode" />
 
 				<p>-Thanh toán bằng chuyển khoản</p>
 				<p>Vietcombank : cpdenglish</p>
 				<p>STK : 2727272727</p>
 			</div>
-			<div class="span6">
+			<div class="col-md-6">
 				<h3 style="color: #0e90d2">Vui lòng gửi ảnh thanh toán tại đây :</h3>
 				<form action="${base }/cart/thankyouQR" method="post" enctype="multipart/form-data">
 					<input class="form-control" type="file" name="images" id="images" required/>
 					<br/>
 					<img id="thumbnail" alt="Review Images">
 					<br/>
-					<button type="submit" class="btn btn-primary" style="width: 30%; height: 3rem; font-size: 20px; font-weight: bold;">
-						Xác Nhận</button>
+					<button type="submit" class="btn">Xác Nhận</button>
 				</form>
 			</div>
 		</div>
 	</div>
 	<!--Footer==========================-->
-	<jsp:include page="include/footerHome.jsp"></jsp:include>
+	<jsp:include page="template/footer.jsp"></jsp:include>
 	<!--/.Footer-->
+
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 </body>
 
 </html>

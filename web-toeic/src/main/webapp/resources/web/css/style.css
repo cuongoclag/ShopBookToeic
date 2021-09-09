@@ -1524,6 +1524,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	height: 45px;
 	margin: 10px 0;
 	padding: 0 20px;
+	line-height: 45px;
 }
 .papular-block .tooltip .tooltip-inner {
 	font-style: italic;

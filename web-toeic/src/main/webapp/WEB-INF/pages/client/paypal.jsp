@@ -13,21 +13,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trang chủ</title>
 
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/style.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
 
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/client/home.js"></script>
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+    <!-- JavaScripts -->
+    <script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+    <!-- Online Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
 
 </head>
@@ -40,56 +45,59 @@
 
 	<!--/End Headter-->
 
-	<div class="container" id="resultsearch">
-		<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
-		<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
-		
-		<form class="ps-checkout__form" action="/pay" method="post">
-            <div class="row">
-                  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
-                    <div class="ps-checkout__billing">
-                      <h3>Thanh Toán Paypal</h3>
-                      <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:navy;"></i>
-                        <i class="fa fa-cc-amex" style="color:blue;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                        <i class="fa fa-cc-discover" style="color:orange;"></i>
-                      </div>
-                            <div class="form-group form-group--inline">
-                              <label for="price">Tổng<span>*</span>
-                              </label>
-                              <input class="form-control" type="text" id="price" name="price" value="${sum/20000}" readonly>
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="currency">Đơn vị tiền tệ<span>*</span>
-                              </label>
-                              <input class="form-control" type="text" id="currency" name="currency" value="USD">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="method">Phương thức thanh toán<span>*</span>
-                              </label>
-                              <input class="form-control" type="text" id="method" name="method" value="PayPal"> 
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="intent">Nội dung<span>*</span>
-                              </label>
-                              <input class="form-control" type="text" id="intent" name="intent" value="sale">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label for="description">Mô tả<span>*</span>
-                              </label>
-                              <input class="form-control" type="text" id="description" name="description" value="Payment Description">
-                            </div>
+    <div class="container" id="resultsearch">
+        <input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
+        <input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
+
+        <form class="ps-checkout__form" action="/pay" method="post">
+            <div class="row" style="margin: 3% 0">
+                    <div>
+                        <h3>Thanh Toán Paypal</h3>
+                        <div class="col-md-12">
+                            <label for="price">Tổng<span>*</span>
+                            </label>
+                            <input type="text" id="price" name="price" value="${sum/20000}" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="currency">Đơn vị tiền tệ<span>*</span>
+                            </label>
+                            <input type="text" id="currency" name="currency" value="USD">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="method">Phương thức thanh toán<span>*</span>
+                            </label>
+                            <input type="text" id="method" name="method" value="PayPal">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="intent">Nội dung<span>*</span>
+                            </label>
+                            <input type="text" id="intent" name="intent" value="sale">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="description">Mô tả<span>*</span>
+                            </label>
+                            <input  type="text" id="description" name="description" value="Payment Description">
+                        </div>
                     </div>
-                  </div>
-                  <button class="btn btn-primary">Xác nhận liên kết ví <i class="ps-icon-next"></i></button>
+                <button class="btn ">Xác nhận liên kết ví </button>
             </div>
-          </form>
-		
-	</div>
+        </form>
+
+    </div>
 	<!--Footer==========================-->
-	<jsp:include page="include/footerHome.jsp"></jsp:include>
+	<jsp:include page="template/footer.jsp"></jsp:include>
 	<!--/.Footer-->
+
+    <script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 </body>
 
 </html>

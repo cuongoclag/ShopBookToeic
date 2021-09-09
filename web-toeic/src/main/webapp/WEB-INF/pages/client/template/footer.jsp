@@ -40,7 +40,7 @@
         <!-- Rights -->
 
         <div class="rights">
-            <p>©  2017 PAVSHOP All right reserved. </p>
+            <p>©  2021 CPD English All right reserved. </p>
             <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
         </div>
     </div>

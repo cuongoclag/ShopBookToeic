@@ -69,6 +69,7 @@ public class BookController {
         model.addAttribute("listCategory", categoryList);
         return "client/listBook";
     }
+
     // ----------------------------------------------------------
     @RequestMapping(value = { "/bookDetails/{id}" }, method = RequestMethod.GET)
     public String detailsBook(@PathVariable("id") int id, final ModelMap model, final HttpServletRequest request,
@@ -91,51 +92,6 @@ public class BookController {
         return "redirect:/bookDetails/" + review.getProduct().getId();
     }
 
-//
-//    ---------------------------------------------------------------------------------
-//    @RequestMapping(value = "/searchBook/{search}", method = RequestMethod.POST)
-//    public String searchVocab(Model model, @PathVariable("search") String search,
-//                              @RequestParam(defaultValue = "1") int page) {
-//        if (search.equals("all"))
-//        {
-//            Page<Product> list = productRepository.getProduct(page - 1, 4);
-//            int totalPage = list.getTotalPages();
-//            model.addAttribute("totalPage", totalPage);
-//            model.addAttribute("listData", list.getContent());
-//            model.addAttribute("currentPage", page);
-//            List<Integer> pagelist = new ArrayList<Integer>();
-//            // Lap ra danh sach cac trang
-//            if (page == 1 || page == 2) {
-//                for (int i = 2; i <= 3 && i <= totalPage; i++) {
-//                    pagelist.add(i);
-//                }
-//            } else if (page == totalPage) {
-//                for (int i = totalPage; i >= totalPage - 2 && i > 1; i--) {
-//                    pagelist.add(i);
-//                }
-//                Collections.sort(pagelist);
-//            } else {
-//                for (int i = page; i <= page + 1 && i <= totalPage; i++) {
-//                    pagelist.add(i);
-//                }
-//                for (int i = page - 1; i >= page - 1 && i > 1; i--) {
-//                    pagelist.add(i);
-//                }
-//                Collections.sort(pagelist);
-//            }
-//            model.addAttribute("pageList", pagelist);
-//            model.addAttribute("search",search);
-//
-//        }
-//        else
-//        {
-//            List<Product> list = productRepository.searchListBook(search);
-//            model.addAttribute("listData", list);
-//            model.addAttribute("search",search);
-//        }
-//        return "client/resultSearchGrammar";
-//    }
-
     @RequestMapping(value = { "/wishlist" }, method = RequestMethod.GET)
     public String checkOut(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
             throws IOException {
@@ -153,8 +109,6 @@ public class BookController {
                 saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
                 saleOrderProducts.setQuantity(item.getQuantity());
                 saleOrder.addSaleOrderProducts(saleOrderProducts);
-
-
 
                 for (int i = 1; i <= item.getQuantity(); i++) {
                     sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());

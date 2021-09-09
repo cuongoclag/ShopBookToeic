@@ -43,7 +43,7 @@
 		<jsp:include page="template/header.jsp"></jsp:include>
 
 			<!-- Popular Products -->
-			<section class="padding-top-50 padding-bottom-150">
+			<section class="padding-top-50">
 				<input style="display:none;" id ="nameUser" value="${pageContext.request.userPrincipal.name}"/>
 				<input style="display:none;" id="baseUrl" value="${pageContext.request.contextPath}">
 				<div class="container">
@@ -51,31 +51,51 @@
 					<!-- Main Heading -->
 					<div class="heading text-center">
 						<h4>Thư viện sách phong phú</h4>
-						<span>--- Chọn sách phù hợp với bản thân ---</span> </div>
+						<h5>--- Chọn sách phù hợp với bản thân ---</h5> </div>
 
 					<!-- Popular Item Slide -->
 					<div class="papular-block block-slide">
 
 						<!-- Item -->
+						<c:forEach items="${listProduct}" var="list">
 						<div class="item">
 							<!-- Item img -->
-							<div class="item-img"> <img class="img-1" src="/resources/web/images/product-1.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
+							<div class="item-img">
+								<img class="img-1" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="" >
+								<img class="img-2" src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[0].path}" alt="" >
 								<!-- Overlay -->
 								<div class="overlay">
 									<div class="position-center-center">
-										<div class="inn"><a href="/resources/web/images/product-1.jpg" data-lighter><i class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a href="#." data-toggle="tooltip" data-placement="top" title="Add To WishList"><i class="icon-heart"></i></a></div>
 									</div>
 								</div>
 							</div>
 							<!-- Item Name -->
-							<div class="item-name"> <a href="#.">stone cup</a>
-								<p>Lorem ipsum dolor sit amet</p>
+							<div class="item-name" style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis; ">
+								<a href="<%=request.getContextPath()%>/bookDetails/${list.id }">${list.title}</a>
 							</div>
 							<!-- Price -->
-							<span class="price"><small>$</small>299</span>
+							<c:if test="${list.price == list.promotionalPrice}">
+								<div>
+									<span class="price">${list.priceVN}</span>
+								</div>
+							</c:if>
+							<c:if test="${list.price > list.promotionalPrice}">
+								<div style="display: flex; justify-content: space-evenly">
+									<div>
+										<span class="price">${list.promotionalPriceVN}</span>
+									</div>
+									<div>
+										<span class="price" style="text-decoration: line-through; font-size: 15px">${list.priceVN}</span>
+									</div>
+								</div>
+							</c:if>
 						</div>
-
+						</c:forEach>
 					</div>
+				</div>
+
+				<div style="text-align: center; margin: 3% 0">
+					<a href="/listBook" class="btn btn-primary" type="submit">MUA SÁCH NGAY</a>
 				</div>
 			</section>
 
@@ -86,35 +106,35 @@
 					<!-- Main Heading -->
 					<div class="heading text-center">
 						<h4>Cung cấp các giao diện học và thi thân thiện.</h4>
-						<span>--- Học thử, Làm bài tập, Thi thử ---</span>
+						<h5>--- Học thử, Làm bài tập, Thi thử ---</h5>
 					</div>
 					<div>
 						<ul class="row">
 
 							<!-- Post 1 -->
 							<li class="col-md-4" style="text-align: center">
-								<div class="date"> <span>Bài tập phần nghe, đọc</span></div>
+								<div class="date"> <h5>Bài tập phần nghe, đọc</h5></div>
 								<p>Sử dụng các dạng bài tập thường xuyên xuất hiện.</p>
-								<a href="/listVocab" >Bài hướng dẫn từ vựng</a>
+								<a style="color: deepskyblue" href="/listVocab" >Bài hướng dẫn từ vựng</a>
 								<br />
-								<a href="/listGrammar" >Bài hướng dẫn ngữ pháp</a>
+								<a style="color: deepskyblue" href="/listGrammar" >Bài hướng dẫn ngữ pháp</a>
 							</li>
 
 							<!-- Post 2 -->
 							<li class="col-md-4" style="text-align: center">
-								<div class="date"> <span>Học từ vựng, ngữ pháp</span></div>
+								<div class="date"> <h5>Học từ vựng, ngữ pháp</h5></div>
 								<p>Các bài hướng dẫn đơn giản, dễ hiểu.</p>
-								<a href="/listListening" >Bài tập phần nghe</a>
+								<a style="color: deepskyblue" href="/listListening" >Bài tập phần nghe</a>
 								<br />
-								<a href="/listReading" >Bài tập phần đọc</a>
+								<a style="color: deepskyblue" href="/listReading" >Bài tập phần đọc</a>
 							</li>
 
 							<!-- Post 3 -->
 							<li class="col-md-4" style="text-align: center">
-								<div class="date"> <span>Đề thi thử</span></div>
+								<div class="date"> <h5>Đề thi thử</h5></div>
 								<p>Cập nhật, đổi mới liên tục, sát với đề thi thật nhất.</p>
 
-								<a href="#" class="doExam" id="doExam">Thi thử</a>
+								<a style="color: deepskyblue" href="#" class="doExam" id="doExam">Thi thử</a>
 
 							</li>
 						</ul>
@@ -138,6 +158,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
+	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(document).on("click", ".doExam", function(event) {
