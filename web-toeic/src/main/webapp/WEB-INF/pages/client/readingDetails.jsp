@@ -22,16 +22,6 @@
 
 
 <style>
-    .paragraph {
-        white-space: pre-wrap;
-        word-break: break-word;
-        text-align: justify;
-        background: #f3f7fa;
-        color: #222;
-        font-size: 14px;
-
-    }
-
     #main {
         padding-top: 120px;
         overflow: hidden;
@@ -40,6 +30,7 @@
     @media ( min-width : 767px) {
         #navigation {
             margin-top: 50px;
+            margin-left: 100px;
             position: fixed;
         }
     }
@@ -72,22 +63,10 @@
         text-decoration: none;
     }
 
-    #btnSubmit {
-        margin-bottom: 15px;
-        margin-left: 15px;
-    }
-
     #btnResult {
         margin-bottom: 15px;
         margin-left: 25px;
     }
-
-    #btndoAgain {
-        display: none;
-        margin-bottom: 15px;
-        margin-left: 40px;
-    }
-
     .web-font {
         font-size: 15px;
         font-family: 'Arial';
@@ -106,7 +85,7 @@
         <br>
         <div style="display: block;">
             <p>
-                <a href="" id="backhome" style="display: inline;">&larr;
+                <a href="/" id="backhome" style="display: inline;">&larr;
                     Home</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                 &nbsp <span>Bài Reading</span>
             </p>
@@ -134,7 +113,7 @@
                         <hr width="60%">
                     </div>
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-4 ">
                     <!-- Placeholder - keep empty -->
                 </div>
                 <!--Nội dung bài test -->
@@ -155,10 +134,10 @@
                                 <b>Question ${list.number}:</b>
                             </p>
                             <br>
-<%--                            <audio controls> <source--%>
-<%--                                    src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"--%>
-<%--                                    type="audio/wav"></audio>--%>
-<%--                            <br>--%>
+                            <%--                            <audio controls> <source--%>
+                            <%--                                    src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"--%>
+                            <%--                                    type="audio/wav"></audio>--%>
+                            <%--                            <br>--%>
                             <input type="radio" name="question${list.number}"
                                    id="question.${list.number}" onclick="markColor(this.id)"
                                    value="A" /> A. ${list.answer_1}<br>

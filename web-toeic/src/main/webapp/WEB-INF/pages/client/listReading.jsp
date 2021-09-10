@@ -9,36 +9,25 @@
     <meta charset="ISO-8859-1">
     <title>Danh sách bài thi thử</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/resources/css/paging.css">
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-    <script
-            src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script
-            src="${pageContext.request.contextPath}/resources/js/html5shiv.js"></script>
-    <script
-            src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
-    <style type="text/css">
-        .hidden {
-            display: none;
-        }
-        .error-message {
-            color: red;
-        }
-        .anchor {
-            display: block;
-            height: 115px; /*same height as header*/
-            margin-top: -115px; /*same height as header*/
-            visibility: hidden;
-        }
-        .imageExam {
-            float: left;
-            height: 150px;
-            width: 250px;
-            margin-bottom: 25px;
-        }
-    </style>
+    <!-- Bootstrap Core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- JavaScripts -->
+    <script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+    <!-- Online Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
@@ -46,7 +35,7 @@
 <input id="baseUrl" value="${pageContext.request.contextPath}" style="display:none;"/>
 <div class="container">
     <!--PAGE TITLE-->
-    <div class="span9" style="text-align: center">
+    <div class="col-md-9" style="text-align: center">
         <div class="page-header">
             <h4 style="font-weight: bold;">DANH SÁCH BÀI Đọc</h4>
         </div>
@@ -55,29 +44,20 @@
     <!-- /. PAGE TITLE-->
     <div class="row">
 
-        <div class="span9">
+        <div class="col-md-9">
             <c:if test="${fn:length(listData) == 0 }">
                 <h3>Không tìm thấy dữ liệu</h3>
             </c:if>
 
             <c:forEach items="${listData}" var="list" varStatus="loop">
-
-                <div class="span9">
-                    <div class="span1"></div>
-                    <div class="span8">
-                        <h4 class="content-heading">
-                                ${list.readingTitle}</h4>
-                            <%--                        <button class="btn btn-primary openModalExam"--%>
-                            <%--                                value="${list.id}" id="openModalExam.${loop.index}">--%>
-                            <%--                            Chi tiết</button>--%>
-                        <a href="<%=request.getContextPath()%>/readingDetails/${list.id }" class="btn btn-primary">Chi Tiết</a>
-                    </div>
+                <div class="col-md-12">
+                    <h4 class="content-heading">${list.readingTitle}</h4>
+                    <a href="<%=request.getContextPath()%>/readingDetails/${list.id }" class="btn btn-primary">Chi Tiết</a>
                 </div>
-
             </c:forEach>
             <br>
         </div>
-        <div class="span3">
+        <div class="col-md-3">
             <div class="side-bar">
                 <h3>DANH MỤC</h3>
                 <ul class="nav nav-list">
@@ -121,8 +101,17 @@
         </c:if>
     </div>
 </c:if>
-<jsp:include page="include/footerHome.jsp"></jsp:include>
+<jsp:include page="template/footer.jsp"></jsp:include>
+<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
 
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 
 </body>
 

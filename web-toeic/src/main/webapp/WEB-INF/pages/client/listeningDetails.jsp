@@ -40,6 +40,7 @@
     @media ( min-width : 767px) {
         #navigation {
             margin-top: 50px;
+            margin-left: 100px;
             position: fixed;
         }
     }
@@ -106,7 +107,7 @@
         <br>
         <div style="display: block;">
             <p>
-                <a href="" id="backhome" style="display: inline;">&larr;
+                <a href="/" id="backhome" style="display: inline;">&larr;
                     Home</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                 &nbsp <span>Bài Listening</span>
             </p>
@@ -134,7 +135,7 @@
                         <hr width="60%">
                     </div>
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-4 ">
                     <!-- Placeholder - keep empty -->
                 </div>
                 <!--Nội dung bài test -->
