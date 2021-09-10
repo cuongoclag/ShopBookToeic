@@ -64,8 +64,22 @@
             <div class="container-fluid">
                 <div class="card-body" >
                     <div id="print_div">
-                        <img src="/resources/file/images/logo.png" alt="" style="width: 10rem; height: 10rem" id="headerTitlePrint">
+                        <div id="headerTitlePrint">
+                            <div style="display: flex; justify-content: space-between">
+                                <div>
+                                    <img src="/resources/file/images/logo.png" alt="" style="width: 10rem; height: 10rem">
+                                </div>
+                                <div>
+                                    <h5>CMT8 - Q3 - HCM</h5>
+                                    <h5>08-7070707070</h5>
+                                    <h5>fastsneakercompany@gmail.com</h5>
+                                </div>
+                            </div>
+                            <br />
+                            <br/>
+                        </div>
                         <h1 class="h3 mb-2 text-gray-800" style="text-align: center">Thông tin đặt hàng <span style="color: red;">${saleOrder.code }</span></h1>
+                        <br />
                         <div class="table-responsive">
                             <h3>Thông tin người dùng</h3>
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
@@ -87,6 +101,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <br />
                         <h3>Danh sách sản phẩm</h3>
                         <div class="table-responsive">
                             <table class="table" border="1">
@@ -127,15 +142,15 @@
                         <c:when test="${saleOrder.status =='true'}">
                             <button type="button" name=""
                                     onclick="confirmDelete('${saleOrder.id }')"
-                                    class="btn btn-primary" id="linkC">Complete </button>
+                                    class="btn btn-primary" id="linkC">Đang xử lý </button>
                         </c:when>
                         <c:otherwise>
                             <button type="button" name="" class="btn btn-danger" id="linkD"
-                            ">Completed</button>
+                            ">Đã giao hàng</button>
                         </c:otherwise>
                     </c:choose>
-                    <a href="${base }/admin/list-order" class="btn btn-danger" id="linkA">Back</a>
-                    <button type="button" name="" class="btn btn-primary" onclick="printdiv('print_div')" id="linkB">Print</button>
+                    <a href="${base }/admin/list-order" class="btn btn-danger" id="linkA">Trở lại</a>
+                    <button type="button" name="" class="btn btn-primary" onclick="printdiv('print_div')" id="linkB">In</button>
                 </div>
             </div>
         </div>

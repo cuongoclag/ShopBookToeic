@@ -62,26 +62,26 @@
                         <button class="btn btn-success btnAddExam" data-toggle="modal"
                                 data-target="#baiDocModal">Thêm mới</button>
                         <h4 style="color: red" id="info-success"></h4>
-                        <form class="form-inline" id="searchForm" name="searchObject">
-                            <div class="form-group">
-                                <select class="form-control" name="partSearch" id="partSearch">
-                                    <option value="">Tất cả</option>
-                                    <option value="5">Part 5</option>
-                                    <option value="6">Part 6</option>
-                                    <option value="7">Part 7</option>
-                                </select>
-                            </div>&nbsp;&nbsp;
-                            <%--			<div class="form-group">--%>
-                            <%--				<select class="form-control" name="doKhoSearch" id="doKhoSearch">--%>
-                            <%--					<option value="">Tất cả</option>--%>
-                            <%--					<option value="1">Mức dễ</option>--%>
-                            <%--					<option value="2">Mức trung bình</option>--%>
-                            <%--					<option value="3">Mức khó</option>--%>
-                            <%--				</select>--%>
-                            <%--			</div>--%>
-                            <%--			&nbsp;&nbsp;--%>
-                            <button type="button" class="btn btn-primary" id="btnDuyetBaiDoc">Duyệt Bài đọc</button>
-                        </form>
+<%--                        <form class="form-inline" id="searchForm" name="searchObject">--%>
+<%--                            <div class="form-group">--%>
+<%--                                <select class="form-control" name="partSearch" id="partSearch">--%>
+<%--                                    <option value="">Tất cả</option>--%>
+<%--                                    <option value="5">Part 5</option>--%>
+<%--                                    <option value="6">Part 6</option>--%>
+<%--                                    <option value="7">Part 7</option>--%>
+<%--                                </select>--%>
+<%--                            </div>&nbsp;&nbsp;--%>
+<%--                            			<div class="form-group">--%>
+<%--                            				<select class="form-control" name="doKhoSearch" id="doKhoSearch">--%>
+<%--                            					<option value="">Tất cả</option>--%>
+<%--                            					<option value="1">Mức dễ</option>--%>
+<%--                            					<option value="2">Mức trung bình</option>--%>
+<%--                            					<option value="3">Mức khó</option>--%>
+<%--                            				</select>--%>
+<%--                            			</div>--%>
+<%--                            			&nbsp;&nbsp;--%>
+<%--                            <button type="button" class="btn btn-primary" id="btnDuyetBaiDoc">Duyệt Bài đọc</button>--%>
+<%--                        </form>--%>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

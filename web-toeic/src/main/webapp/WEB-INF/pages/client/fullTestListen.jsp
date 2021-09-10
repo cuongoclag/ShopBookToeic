@@ -8,18 +8,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Bài test Toeic</title>
 
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<script
-	src="${pageContext.request.contextPath}/resources/js/client/baiTestListening.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/client/baiTestReading.js"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/client/baiTestListening.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/client/baiTestReading.js"></script>
+<script type="text/javascript" rc="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+	<!-- Online Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
+
 </head>
 
 
@@ -65,7 +79,6 @@
 
 #time {
 	font-size: 25px;
-	margin-left: 100px;
 	color: green
 }
 
@@ -104,32 +117,14 @@
 	<!--Header
 ==========================-->
 	<div class="testReading" id="testReading">
-		<div class="navbar navbar-default navbar-fixed-top">
-			<br>
-			<div style="display: block;">
-				<p>
-					<a href="" id="backhome" style="display: inline;">&larr;
-						Home</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-					&nbsp <span>Bài test Listening</span>
-				</p>
-			</div>
-
-			<!--  
-<div>
-		<c:forEach begin="1" end="50" varStatus="loop">
-			<div class="numberCircle" id="answer${loop.index}">${loop.index}</div>	  		 
-		</c:forEach>
-</div>
--->
-		</div>
-		<!--/End Header-->
 		<div id="content" class="container-fluid fill">
 			<form id="submitForm" name="submitForm">
 				<div class="row">
 					<div id="navigation" class="col-md-3">
 						<div class="fix-scrolling">
 							<br>
-							<div>
+							<div style="text-align: center">
+								<h5>Bài Test Listening</h5>
 								<span id="time">30:00</span>
 							</div>
 							<hr width="60%">
@@ -139,7 +134,8 @@
 							<br> <br>
 							<!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
 								<input type="button" class="btn btn-primary" id="btnResult"
-								value="Chấm điểm" /> <input type="button"
+								value="Chấm điểm" />
+								<input type="button"
 								class="btn btn-danger" id="btnSubmit" value="Làm bài đọc" /> <br>
 							<hr width="60%">
 						</div>
@@ -283,7 +279,7 @@
 
 
 						<hr>
-						<p>Kết thúc bài Listening</p>
+						<h5>Kết thúc bài Listening</h5>
 
 					</div>
 
@@ -298,6 +294,15 @@
 ==========================-->
 
 	<!--/.Footer-->
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
 
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 </body>
 </html>

@@ -89,7 +89,7 @@
 						<h4>Không tìm thấy dữ liệu</h4>
 					</c:if>
 					<!-- Popular Item Slide -->
-					<div class="papular-block row">
+					<div class="papular-block row" style="display: flex; flex-wrap: wrap">
 						<!-- Item -->
 						<c:forEach items="${listProduct}" var="list">
 						<div class="col-md-4">

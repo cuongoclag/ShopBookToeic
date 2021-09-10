@@ -116,7 +116,7 @@
 						<!-- REVIEW -->
 						<div role="tabpanel" class="tab-pane fade" id="review">
 							<!-- REVIEW PEOPLE 1 -->
-							<div class="media">
+							<div class="media" style="display: flex;flex-wrap: wrap-reverse;">
 								<!--  Details -->
 								<c:forEach var="r" items="${list.reviews}" varStatus="i">
 								<div class="media-body">
