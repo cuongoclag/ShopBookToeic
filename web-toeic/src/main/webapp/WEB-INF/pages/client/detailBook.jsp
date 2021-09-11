@@ -141,24 +141,24 @@
 								<ul class="row">
 									<li class="col-md-6">
 										<label> *TÊN
-											<form:input path="userName" placeholder="" name="userName" />
+											<form:input path="userName" placeholder="" name="userName" required="required"/>
 										</label>
 									</li>
 									<li class="col-md-6">
 										<label> *EMAIL
-											<form:input path="userEmail" placeholder="" name="userEmail" />
+											<form:input path="userEmail" placeholder="" name="userEmail" required="required"/>
 										</label>
 									</li>
 									<li class="col-md-12">
 										<label> *ĐÁNH GIÁ CỦA BẠN
-											<form:textarea path="comment"  rows="5"  placeholder="" name="comment" cols="50"></form:textarea>
+											<form:textarea path="comment"  rows="5"  placeholder="" name="comment" cols="50" required="required"></form:textarea>
 										</label>
 									</li>
 									<li class="col-md-6">
 										<!-- Rating Stars -->
 										<div class="stars">
 											<span>ĐÁNH GIÁ SAO</span> <div id="rateYo"></div>
-											<input type="hidden" name="hdrating" path="hdrating" id="hdrating"/>
+											<input type="hidden" name="hdrating" path="hdrating" id="hdrating" required="required"/>
 										</div>
 									</li>
 									<li class="col-md-6">
