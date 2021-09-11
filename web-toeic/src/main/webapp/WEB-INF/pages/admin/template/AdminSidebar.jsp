@@ -31,7 +31,7 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value='/admin/' />">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Dashboard</span></a>
+                <span>Thống kê</span></a>
         </li>
         <!-- Heading -->
         <div class="sidebar-heading" style="font-size: 15px; color: white">
@@ -110,7 +110,7 @@
         <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/tai-khoan"/> ">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Account Managment.</span></a>
+                <span>Quản lý tài khoản</span></a>
         </li>
         <%--    <li class="nav-item">--%>
         <%--        <a class="nav-link" href="<c:url value="/admin/profile"/> ">--%>
