@@ -122,7 +122,7 @@
                         </form>
 
                         <form class="formCapNhat"
-                              action="${contextPath }/admin/profile/update" method="post">
+                              action="${pageContext.request.contextPath}/admin/profile/update" method="post">
                             <div>
                                 <div class="modal fade" id="capNhatModal" tabindex="-1"
                                      role="dialog" aria-labelledby="exampleModalLabel"
@@ -147,15 +147,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="name">Họ tên</label> <input type="text"
-                                                                                            class="form-control" name="hoTen" required="required" />
+                                                      class="form-control" name="fullName" required="required" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="name">Số điện thoại</label> <input type="text"
-                                                                                                   class="form-control" name="soDienThoai" required="required" />
+                                                                                                   class="form-control" name="phone" required="required" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="name">Địa chỉ</label> <input type="text"
-                                                                                             class="form-control" name="diaChi" required="required" />
+                                                                                             class="form-control" name="address" required="required" />
                                                 </div>
 
                                                 <div class="modal-footer">

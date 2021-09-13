@@ -54,14 +54,19 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Listening</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Bài Nghe</h1>
                 </div>
                 <!------------------------------------------- Content Row---------------------------------------- -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <button class="btn btn-success btnAddExam" data-toggle="modal"
                                 data-target="#baiNgheModal">Thêm mới</button>
+                        <h4 style="color: blue" id="info-success"></h4>
 
+                        <c:if test="${errorInfo != null }">
+                            <h4 style="color: red" id="info-error">${error}</h4>
+                            <h4>error: ${errorInfo}</h4>
+                        </c:if>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -69,9 +74,9 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Liesting Title</th>
-                                        <th>Part</th>
-                                        <th>Action</th>
+                                        <th>Ảnh Bài Nghe</th>
+                                        <th>Tên Bài Nghe</th>
+                                        <th>Chức Năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -86,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-
+<%------------------------Modal-----------------------------%>
                 <div class="card shadow mb-4">
                     <div class="modal fade" id="baiNgheModal" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLable">
@@ -101,33 +106,20 @@
                                         <span class="bg-danger" id="vocab_errors"></span>
 
                                         <div class="form-group col-md-6">
-                                            <label>Tên bài Bài Nghe</label> <input id="namebainghe"
+                                            <label>Tên Bài Nghe</label> <input id="namebainghe"
                                                                                    class="form-control">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="name">Phần thi (Part)</label>
-                                            <select id="phanThi" class="form-control" name="part">
-                                                <option value="1">Part 1-Photographs</option>
-                                                <option value="2">Part 2-Question response</option>
-                                                <option value="3">Part 3-Short Conversations</option>
-                                                <option value="4">Part 4-Short talks</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="name">Độ Khó</label>
-                                            <select name="doKho" id="doKho" class="form-control">
-                                                <option value="1">Mức dễ</option>
-                                                <option value="2">Mức trung bình</option>
-                                                <option value="3">Mức khó</option>
-                                            </select>
+                                            <label>Ảnh Bài Nghe</label> <input type="file" id="file_Image"
+                                                                                  class="form-control" required accept="image/*">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="fileExcel">File nội dung (Excel):</label> <input
+                                            <label for="fileExcel">File Nội Dung (Excel):</label> <input
                                                 type="file" class="form-control" id="file_Excel"
                                                 name="file_Excel" required accept=".xlsx">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="fileAnhCauHoi">File ảnh:</label> <input
+                                            <label for="fileAnhCauHoi">File Ảnh:</label> <input
                                                 type="file" class="form-control" id="file_image_question"
                                                 name="file_Image_Question" required accept="image/*" multiple>
                                         </div>

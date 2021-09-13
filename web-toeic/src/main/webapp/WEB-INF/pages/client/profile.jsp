@@ -40,45 +40,39 @@
 		<div>
 			<div class="tab-content">
 				<div class="tab-pane active" id="information">
-					<form action="/profile/update" method="post" style="margin: 2% 0;">
-						<ul class="row">
-							<li class="col-md-12">
-								<label> Email đăng ký
-									<input type="text" readonly
-										   value="${user.email }" name="email">
-								</label>
-							</li>
-							<li class="col-md-12">
-									<input type="hidden" class="nguoiDungId"
-										   value="${user.id }" name="id">
-							</li>
-							<li class="col-md-12">
-								<label> Họ Tên
-									<input type="text" value="${user.fullName }"
-										   name="hoTen" required="required">
-								</label>
-							</li>
-							<li class="col-md-12">
-								<label> Số điện thoại
-									<input type="text"
-										   value="${user.phone }" name="soDienThoai" required="required">
-								</label>
-							</li>
-							<li class="col-md-12">
-								<label> Địa chỉ
-									<input type="text"
-										   value="${user.address }" name="diaChi" required="required">
-								</label>
-							</li>
-						</ul>
+					<form class="form-profile" style="margin: 2% 0;" action="${pageContext.request.contextPath}/profile/update" method="post">
+						<div class="form-group">
+							<label>Email đăng ký</label>
+							<input type="text" readonly class="form-control" value="${user.email }" name="email">
 
+						</div>
+						<div class="form-group">
+							<input type="hidden" class="form-control" value="${user.id }"
+								   name="id">
+						</div>
+						<div class="form-group">
+							<label>Họ Tên</label>
+							<input type="text" class="form-control" value="${user.fullName }"
+								   name="fullName" required="required">
+
+						</div>
+						<div class="form-group">
+							<label>Số điện thoại</label>
+								<input type="text" class="form-control" value="${user.phone }"
+									   name="phone" required="required">
+						</div>
+
+						<div class="form-group">
+							<label  >Địa chỉ</label>
+								<input type="text" class="form-control" value="${user.address }"
+									   name="address" required="required">
+						</div>
 						<input class="btn btn-primary" id="btnSubmit" type="submit"
-							value="Xác nhận" />
+							   value="Xác nhận" />
 					</form>
 				</div>
 				<div class="tab-pane" id="changePass">
 					<form class="formDoiMatKhau" style="margin: 2% 0;">
-
 						<div>
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</div>

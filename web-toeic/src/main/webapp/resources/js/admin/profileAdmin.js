@@ -46,7 +46,7 @@ $(document).ready(function(){
 	 				if(response.status == "success"){
 	 					$('#doiMKModal').modal('hide');
 	 					alert("Đổi mật khẩu thành công. Bạn phải đăng nhập lại để xác nhận");
-	 					location.href = "/logout";
+	 					location.href = "/signout";
 	 				} else {
 	 			    	$('input').next().remove();
 	 		            $.each(response.errorMessages, function(key,value){

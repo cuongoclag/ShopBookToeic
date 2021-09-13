@@ -199,7 +199,7 @@ public class AdminController {
 		currentUser.setFullName(nd.getFullName());
 		currentUser.setPhone(nd.getPhone());
 		nguoiDungService.updateUser(currentUser);
-		return "redirect:/admin/Profile";
+		return "redirect:/admin/profile";
 	}
 	
 	public NguoiDung getSessionUser(HttpServletRequest request) {
