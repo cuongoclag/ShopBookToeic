@@ -128,7 +128,7 @@
 								<h5>Bài Test Reading</h5>
 								<span id="timeReading">45:00</span>
 							</div>
-							<hr width="60%">
+							<hr>
 
 							<c:forEach begin="51" end="100" varStatus="loop">
 								<div class="numberCircle web-font" id="answer${loop.index}">${loop.index}</div>
@@ -141,7 +141,7 @@
 								class="note" id="noteReading">Click 'Nộp bài' để xem kết
 								quả <br> &nbsp (Listening + Reading)
 							</span>
-							<hr width="60%">
+							<hr>
 						</div>
 
 

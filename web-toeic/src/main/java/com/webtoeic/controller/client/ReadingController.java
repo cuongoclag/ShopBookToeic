@@ -85,7 +85,7 @@ public class ReadingController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         List<ReadingExercisesQuestions> list = readingExercisesQuestionsimp.findReadingById(id);
-        for (int i = 0;i<3;i++) {
+        for (int i = 0;i<10;i++) {
             list.get(i).setAnswerUser(jsonAnswerUser[i]);
         }
         model.addAttribute("socaudung",socaudung);

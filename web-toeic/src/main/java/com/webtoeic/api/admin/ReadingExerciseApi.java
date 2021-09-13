@@ -44,8 +44,8 @@ public class ReadingExerciseApi {
 		List<String> response = new ArrayList<String>();
 		for(int i = 0; i < list.size(); i++){
 			String json = "baidocid:" + list.get(i).getId() + ","
-					+ "tenbaidoc:" + list.get(i).getReadingTitle() + ","
-					+ "part:" + list.get(i).getPart();
+					+ "anhbaidoc:" + list.get(i).getReadingImage() + ","
+					+ "tenbaidoc:" + list.get(i).getReadingTitle() ;
 			response.add(json);
 		}
 		return response;
@@ -58,11 +58,9 @@ public class ReadingExerciseApi {
 	}
 	@PostMapping(value = "/save", consumes = "multipart/form-data")
 	@ResponseBody
-	public List<String> addBaiNghe(@RequestParam("file_excel") MultipartFile file_excel,
-								   @RequestParam("name") String name,
-								   @RequestParam("phanthi") int phanthi,
-								   @RequestParam("file_image_question") MultipartFile[] file_image_question,
-								   @RequestParam("file_reading") MultipartFile[] file_reading) {
+	public List<String> addBaiDoc(@RequestParam("file_excel") MultipartFile file_excel,
+								  @RequestParam("file_image") MultipartFile file_image,
+								   @RequestParam("name") String name ){
 		List<String> response = new ArrayList<String>();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 
@@ -74,20 +72,11 @@ public class ReadingExerciseApi {
 			// save file upload to local folder
 			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/reading/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
-
-			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/reading/"  + single_image.getOriginalFilename());
-				single_image.transferTo(new File(pathImageQuestion.toString()));
-			}
-
-			for (MultipartFile single_listening : file_reading) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/reading/" + single_listening.getOriginalFilename());
-				single_listening.transferTo(new File(pathListening.toString()));
-			}
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/reading/" + file_image.getOriginalFilename());
+			file_image.transferTo(new File(pathImage.toString()));
 
 			readingExercises.setReadingTitle(name);
-			readingExercises.setPart(phanthi);
-
+			readingExercises.setReadingImage(file_image.getOriginalFilename());
 			readingExercisesService.save(readingExercises);
 
 			// save data from file excel
@@ -113,12 +102,9 @@ public class ReadingExerciseApi {
 	@PostMapping(value = "/update")
 	@ResponseBody
 	public List<String> updateBaiDoc(@RequestParam("idReading") int id,
-									  @RequestParam("file_excel") MultipartFile file_excel,
-									  @RequestParam("name") String name,
-									  @RequestParam("phanthi") int phanthi,
-//									  @RequestParam("dokho") int dokho,
-									  @RequestParam("file_image_question") MultipartFile[] file_image_question,
-									  @RequestParam("file_reading") MultipartFile[] file_reading) {
+									 @RequestParam("file_excel") MultipartFile file_excel,
+									 @RequestParam("file_image") MultipartFile file_image,
+									 @RequestParam("name") String name) {
 
 		List<String> response = new ArrayList<String>();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -127,20 +113,11 @@ public class ReadingExerciseApi {
 			// save file upload to local folder
 			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/reading/" + file_excel.getOriginalFilename());
 			file_excel.transferTo(new File(pathExcel.toString()));
-
-			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/reading/" + single_image.getOriginalFilename());
-				single_image.transferTo(new File(pathImageQuestion.toString()));
-			}
-
-			for (MultipartFile single_listening : file_reading) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/reading/" + single_listening.getOriginalFilename());
-				single_listening.transferTo(new File(pathListening.toString()));
-			}
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/listening/" + file_image.getOriginalFilename());
+			file_image.transferTo(new File(pathImage.toString()));
 
 			readingExercises.setReadingTitle(name);
-			readingExercises.setPart(phanthi);
-//			readingExercises.setDifficult(dokho);
+			readingExercises.setReadingImage(file_image.getOriginalFilename());
 			readingExercisesService.save(readingExercises);
 
 			ReadingExerciseApi btt = new ReadingExerciseApi();
@@ -170,32 +147,32 @@ public class ReadingExerciseApi {
 
 				if (row.getCell(0) != null)
 					cauhoireading.setNumber((int) row.getCell(0).getNumericCellValue());
+
 				if (row.getCell(1) != null)
-					cauhoireading.setImage(
-							row.getCell(1).getStringCellValue().toString());
-				if (row.getCell(2) != null)
-					cauhoireading.setAudiomp3(
-							row.getCell(2).getStringCellValue().toString());
-				if (row.getCell(3) != null)
-					cauhoireading.setParagraph(row.getCell(3).getStringCellValue().toString());
+					cauhoireading.setQuestion(row.getCell(1).getStringCellValue().toString());
+
+				if (row.getCell(2) != null && row.getCell(2).getCellType() == row.getCell(2).CELL_TYPE_STRING)
+					cauhoireading.setAnswer_1(row.getCell(2).getStringCellValue().toString());
+				if (row.getCell(2) != null && row.getCell(2).getCellType() == row.getCell(2).CELL_TYPE_NUMERIC)
+					cauhoireading.setAnswer_1(String.valueOf(row.getCell(2).getNumericCellValue()));
+
+				if (row.getCell(3) != null && row.getCell(3).getCellType() == row.getCell(3).CELL_TYPE_STRING)
+					cauhoireading.setAnswer_2(row.getCell(3).getStringCellValue().toString());
+				if (row.getCell(3) != null && row.getCell(3).getCellType() == row.getCell(3).CELL_TYPE_NUMERIC)
+					cauhoireading.setAnswer_2(String.valueOf(row.getCell(3).getNumericCellValue()));
+
+				if (row.getCell(4) != null && row.getCell(4).getCellType() == row.getCell(4).CELL_TYPE_STRING)
+					cauhoireading.setAnswer_3(row.getCell(4).getStringCellValue().toString());
+				if (row.getCell(4) != null && row.getCell(4).getCellType() == row.getCell(4).CELL_TYPE_NUMERIC)
+					cauhoireading.setAnswer_3(String.valueOf(row.getCell(4).getNumericCellValue()));
+
 				if (row.getCell(5) != null && row.getCell(5).getCellType() == row.getCell(5).CELL_TYPE_STRING)
-					cauhoireading.setAnswer_1(row.getCell(5).getStringCellValue().toString());
+					cauhoireading.setAnswer_4(row.getCell(5).getStringCellValue().toString());
 				if (row.getCell(5) != null && row.getCell(5).getCellType() == row.getCell(5).CELL_TYPE_NUMERIC)
-					cauhoireading.setAnswer_1(String.valueOf(row.getCell(5).getNumericCellValue()));
-				if (row.getCell(6) != null && row.getCell(6).getCellType() == row.getCell(6).CELL_TYPE_STRING)
-					cauhoireading.setAnswer_2(row.getCell(6).getStringCellValue().toString());
-				if (row.getCell(6) != null && row.getCell(6).getCellType() == row.getCell(6).CELL_TYPE_NUMERIC)
-					cauhoireading.setAnswer_2(String.valueOf(row.getCell(6).getNumericCellValue()));
-				if (row.getCell(7) != null && row.getCell(7).getCellType() == row.getCell(7).CELL_TYPE_STRING)
-					cauhoireading.setAnswer_3(row.getCell(7).getStringCellValue().toString());
-				if (row.getCell(7) != null && row.getCell(7).getCellType() == row.getCell(7).CELL_TYPE_NUMERIC)
-					cauhoireading.setAnswer_3(String.valueOf(row.getCell(7).getNumericCellValue()));
-				if (row.getCell(8) != null && row.getCell(8).getCellType() == row.getCell(8).CELL_TYPE_STRING)
-					cauhoireading.setAnswer_4(row.getCell(8).getStringCellValue().toString());
-				if (row.getCell(8) != null && row.getCell(8).getCellType() == row.getCell(8).CELL_TYPE_NUMERIC)
-					cauhoireading.setAnswer_4(String.valueOf(row.getCell(8).getNumericCellValue()));
-				if (row.getCell(9) != null)
-					cauhoireading.setCorrectAnswer(row.getCell(9).getStringCellValue().toString());
+					cauhoireading.setAnswer_4(String.valueOf(row.getCell(5).getNumericCellValue()));
+
+				if (row.getCell(6) != null)
+					cauhoireading.setCorrectAnswer(row.getCell(6).getStringCellValue().toString());
 				cauhoireading.setReadingExercises(Reading);
 				list.add(cauhoireading);
 			}

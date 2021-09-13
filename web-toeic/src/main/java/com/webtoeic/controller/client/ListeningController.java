@@ -86,7 +86,7 @@ public class ListeningController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         List<ListeningExercisesQuestions> list = listeningExercisesQuestionsimp.findListeningById(id);
-        for (int i = 0;i<3;i++) {
+        for (int i = 0;i<10;i++) {
             list.get(i).setAnswerUser(jsonAnswerUser[i]);
         }
         model.addAttribute("socaudung",socaudung);

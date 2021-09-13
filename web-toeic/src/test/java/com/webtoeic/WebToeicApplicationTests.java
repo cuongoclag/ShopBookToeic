@@ -32,10 +32,5 @@ public class WebToeicApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Test
-	public void tesReadExcel() throws FileNotFoundException {
-		Page<ListeningExercises> page = repo.findByPartAndDifficult(1, 1, PageRequest.of(0,2));
-		System.out.println(page.getNumberOfElements());
-	}
 
 }

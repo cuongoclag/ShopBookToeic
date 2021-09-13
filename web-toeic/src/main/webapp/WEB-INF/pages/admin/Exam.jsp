@@ -54,14 +54,14 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Toeic Exam</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Bài Thi Toeic</h1>
                 </div>
                 <!------------------------------------------- Content Row---------------------------------------- -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <button class="btn btn-success btnAddExam" data-toggle="modal"
                                 data-target="#examModal">Thêm mới</button>
-                        <h4 style="color: red" id="info-success"></h4>
+                        <h4 style="color: blue" id="info-success"></h4>
 
                         <c:if test="${errorInfo != null }">
                             <h4 style="color: red" id="info-error">${error}</h4>
@@ -74,9 +74,9 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Reading Title</th>
+                                    <th>Tên Bài Thi Toeic</th>
                                     <th>Part</th>
-                                    <th>Action</th>
+                                    <th>Chức Năng</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -98,7 +98,7 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="titleModal">Thêm mới Exam</h4>
+                                    <h4 class="modal-title" id="titleModal">Thêm mới Bài Thi Toeic</h4>
                                 </div>
                                 <div class="modal-body">
                                     <input style="display:none" id="idExam">

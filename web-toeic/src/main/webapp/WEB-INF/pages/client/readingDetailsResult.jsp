@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Ket qua Reading</title>
+    <title>Ket qua Listening</title>
 </head>
 <style>
     .fix-top {
@@ -17,26 +17,26 @@
 
 <div id="main" class="web-font">
     <p class="fix-top">
-        Đáp án bài Reading : <span id="socaudung" style="color: red">Trả
-				lời đúng ${socaudung} / 15 </span>
+        Đáp án bài Listening : <span id="socaudung" style="color: blue">Trả
+				lời đúng ${socaudung} / 10 </span>
     </p>
 
     <c:forEach items="${list}" var="list">
-        <input class="hidden" id="id_bai_exam"
+
+        <input class="hidden" id="id_bai_reading"
                value="${list.getReadingExercises().getId()}" />
+
         <input class="hidden" id="correctanswer"
-               name="correctanswer${list.number}" value="${list.correctAnswer}" />
+               name="correctanswer ${list.number}" value="${list.correctAnswer}" />
+
         <input class="hidden" id="answerUser" name="question${list.number}"
                value="${list.getAnswerUser()}" />
 
         <!-- 	<p>Đáp án user: </p><br> -->
         <!-- show part1 -->
-        <c:if test="${list.number == 1 }">
-            <p>
-                <b>Part 2: ${list.paragraph}</b>
-            </p>
-        </c:if>
-        <c:if test="${list.number >=1  && list.number <4}">
+
+        <c:if test="${list.number > 0   && list.number <= 10}">
+
             <c:if test="${list.getAnswerUser() != ''}">
                 <p>
                     <b>Question ${list.number}:</b> ${list.question}
@@ -47,207 +47,136 @@
                 <p>
                     <b>Question ${list.number}:</b> ${list.question}
                 </p>
+
             </c:if>
-<%--            <audio controls> <source--%>
-<%--                    src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"--%>
-<%--                    type="audio/wav"></audio>--%>
             <br>
             <c:if test="${list.getAnswerUser() == ''}">
-                <c:if test="${list.correctAnswer == 'A'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;
+                <c:if test="${list.correctAnswer== 'A' }">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2}  <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}  <br>
+                </c:if>
+                <c:if test="${list.correctAnswer== 'B' }">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1} <br>
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_3}
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}  <br>
+                </c:if>
+                <c:if test="${list.correctAnswer== 'C' }">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1} <br>
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2}  <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3} &nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
                 </c:if>
-                <c:if test="${list.correctAnswer == 'B'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}
-                    <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_3}
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'C'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}
-                    <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_3}
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'D'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}
-                    <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_3}&nbsp;
-                    <br>
-                </c:if>
+
             </c:if>
-            <c:if test="${list.getAnswerUser() == 'A' }">
-                <c:if test="${list.correctAnswer == 'A'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;
+
+
+            <c:if test="${list.correctAnswer== 'A' }">
+                <c:if test="${list.getAnswerUser() == 'A'}">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2}  <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}  <br>
                 </c:if>
-                <c:if test="${list.correctAnswer == 'B'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;
+                <c:if test="${list.getAnswerUser() == 'B'}">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/incorrect.png">
                     <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}<br>
                 </c:if>
-                <c:if test="${list.correctAnswer == 'C'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;
+                <c:if test="${list.getAnswerUser() == 'C'}">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'D'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}<br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2}  <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/incorrect.png">
                     <br>
                 </c:if>
             </c:if>
 
-            <c:if test="${list.getAnswerUser() == 'B' }">
-                <c:if test="${list.correctAnswer == 'A'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;
+            <c:if test="${list.correctAnswer== 'B' }">
+                <c:if test="${list.getAnswerUser() == 'A'}">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/incorrect.png">
                     <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}&nbsp;
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}  <br>
                 </c:if>
-                <c:if test="${list.correctAnswer == 'B'}">
+                <c:if test="${list.getAnswerUser() == 'B'}">
                     <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}&nbsp;
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}  <br>
                 </c:if>
-                <c:if test="${list.correctAnswer == 'C'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}
+                <c:if test="${list.getAnswerUser() == 'C'}">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;<br>
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'D'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}<br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/incorrect.png">
                     <br>
                 </c:if>
             </c:if>
 
-            <c:if test="${list.getAnswerUser() == 'C' }">
-                <c:if test="${list.correctAnswer == 'A'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;
+            <c:if test="${list.correctAnswer== 'C' }">
+                <c:if test="${list.getAnswerUser() == 'A'}">
+                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/incorrect.png">
                     <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2}  <br>
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
                 </c:if>
-                <c:if test="${list.correctAnswer == 'B'}">
+                <c:if test="${list.getAnswerUser() == 'B'}">
                     <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;
+                    <input disabled type="radio" value="B" /> B. ${list.answer_2} &nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/incorrect.png">
                     <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
                 </c:if>
-                <c:if test="${list.correctAnswer == 'C'}">
+                <c:if test="${list.getAnswerUser() == 'C'}">
                     <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
                     <input disabled type="radio" value="B" /> B. ${list.answer_2}  <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'D'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}<br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
+                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;<img
+                    alt="img not found"
+                    src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                     <br>
                 </c:if>
-            </c:if>
-            <c:if test="${list.getAnswerUser() == 'D' }">
-                <c:if test="${list.correctAnswer == 'A'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'B'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'C'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}<br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}&nbsp;
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
-                </c:if>
-                <c:if test="${list.correctAnswer == 'D'}">
-                    <input disabled type="radio" value="A" /> A. ${list.answer_1}<br>
-                    <input disabled type="radio" value="B" /> B. ${list.answer_2}<br>
-                    <input disabled type="radio" value="C" /> C. ${list.answer_3}
-                    <br>
-                    <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;
-                    <br>
-                </c:if>
+
             </c:if>
             <br>
         </c:if>

@@ -7,33 +7,34 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Bài Listening</title>
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
-    <script
-            src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/web/css/ionicons.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/web/css/responsive.css" rel="stylesheet">
+
+    <!-- JavaScripts -->
+    <script src="${pageContext.request.contextPath}/resources/web/js/modernizr.js"></script>
+
+    <!-- Online Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" rc="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
     <script
             src="${pageContext.request.contextPath}/resources/js/client/baiListening.js"></script>
-    <script type="text/javascript"
-            src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 </head>
-
-
 <style>
-    .paragraph {
-        white-space: pre-wrap;
-        word-break: break-word;
-        text-align: justify;
-        background: #f3f7fa;
-        color: #222;
-        font-size: 14px;
-
-    }
-
     #main {
-        padding-top: 120px;
+        padding-top: 85px;
         overflow: hidden;
     }
 
@@ -68,27 +69,10 @@
         color: green
     }
 
-    #backhome {
-        margin-left: 25px;
-        text-decoration: none;
-    }
-
-    #btnSubmit {
-        margin-bottom: 15px;
-        margin-left: 15px;
-    }
-
     #btnResult {
         margin-bottom: 15px;
         margin-left: 25px;
     }
-
-    #btndoAgain {
-        display: none;
-        margin-bottom: 15px;
-        margin-left: 40px;
-    }
-
     .web-font {
         font-size: 15px;
         font-family: 'Arial';
@@ -103,17 +87,6 @@
 <!--Header
 ==========================-->
 <div class="testListening" id="testListening">
-    <div class="navbar navbar-default navbar-fixed-top">
-        <br>
-        <div style="display: block;">
-            <p>
-                <a href="/" id="backhome" style="display: inline;">&larr;
-                    Home</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                &nbsp <span>Bài Listening</span>
-            </p>
-        </div>
-
-    </div>
     <!--/End Header-->
     <div id="content" class="container-fluid fill">
         <form id="submitForm" name="submitForm">
@@ -124,15 +97,15 @@
                         <div>
                             <span id="time">30:00</span>
                         </div>
-                        <hr width="60%">
-                        <c:forEach begin="1" end="50" varStatus="loop">
+                        <hr>
+                        <c:forEach begin="1" end="10" varStatus="loop">
                             <div class="numberCircle" id="answer${loop.index}">${loop.index}</div>
                         </c:forEach>
                         <br> <br>
                         <!-- 	<input type="button" id="btndoAgain" class="btn btn-warning" value="Làm lại"> -->
                         <input type="button" class="btn btn-primary" id="btnResult"
                                value="Kiểm Tra Đáp Án" /><br>
-                        <hr width="60%">
+                        <hr>
                     </div>
                 </div>
                 <div class="col-md-4 ">
@@ -143,15 +116,47 @@
                     <c:forEach items="${list}" var="list">
                         <input class="hidden" id="correctanswer"
                                name="correctanswer${list.number}" value="${list.correctAnswer}" />
+
                         <c:if test="${list.number == 1 }">
                             <br>
                             <p>
-                                <b>Part 2: ${list.paragraph}</b>
                                 <input class="hidden" id="id_bai_listening"
                                        value="${list.getListeningExercises().getId()}" />
                             </p>
                         </c:if>
-                        <c:if test="${list.number >=1  && list.number <4}">
+                        <c:if test="${not empty list.image}">
+                            <div class="container-fluid">
+                                <p>
+                                    <b>Question ${list.number}: ${list.question}</b>
+                                </p>
+                                <img
+                                        src="${pageContext.request.contextPath}/resources/file/images/listening/${list.image}.jpg"
+                                        alt="image not found"
+                                        style="height: 300px; width: 400px; float: left; margin-right: 10px" />
+                                <audio controls> <source
+                                        src="${pageContext.request.contextPath}/resources/file/audio/listening/${list.audiomp3}.mp3"
+                                        type="audio/wav"></audio>
+                                <br>
+                                <input type="radio"
+                                       name="question${list.number}"
+                                       id="question.${list.number}"
+                                       value="A" onclick="markColor(this.id)" /> A <br>
+                                <input type="radio"
+                                       name="question${list.number}"
+                                       id="question.${list.number}" value="B"
+                                       onclick="markColor(this.id)" /> B <br>
+                                <input type="radio"
+                                       name="question${list.number}"
+                                       id="question.${list.number}" value="C"
+                                       onclick="markColor(this.id)" /> C <br>
+                                <input type="radio"
+                                       name="question${list.number}"
+                                       id="question.${list.number}" value="D"
+                                       onclick="markColor(this.id)" /> D <br>
+                            </div>
+                            <br>
+                        </c:if>
+                        <c:if test="${list.number >= 7 && list.number <=10 }">
                             <p>
                                 <b>Question ${list.number}:</b>
                             </p>
@@ -161,16 +166,13 @@
                             <br>
                             <input type="radio" name="question${list.number}"
                                    id="question.${list.number}" onclick="markColor(this.id)"
-                                   value="A" /> A. ${list.answer_1}<br>
+                                   value="A" /> A.${list.answer_1} <br>
                             <input type="radio" name="question${list.number}"
                                    id="question.${list.number}" onclick="markColor(this.id)"
-                                   value="B" /> B. ${list.answer_2} <br>
+                                   value="B" /> B.${list.answer_2}  <br>
                             <input type="radio" name="question${list.number}"
                                    id="question.${list.number}" onclick="markColor(this.id)"
-                                   value="C" /> C. ${list.answer_3} <br>
-                            <input type="radio" name="question${list.number}"
-                                   id="question.${list.number}" onclick="markColor(this.id)"
-                                   value="D" /> D. ${list.answer_4} <br>
+                                   value="C" /> C.${list.answer_3}  <br>
                             <br>
                         </c:if>
                     </c:forEach>
@@ -183,10 +185,16 @@
 
 </div>
 
-<!--Footer
-==========================-->
+<script src="${pageContext.request.contextPath}/resources/web/js/jquery-1.11.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/own-menu.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/jquery.lighter.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/owl.carousel.min.js"></script>
 
-<!--/.Footer-->
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 
 </body>
 </html>

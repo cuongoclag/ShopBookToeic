@@ -13,5 +13,4 @@ import java.util.List;
 @Repository
 public interface ListeningExercisesRepository extends JpaRepository<ListeningExercises, Integer> {
 	List<ListeningExercises> findById(int id);
-	Page<ListeningExercises> findByPartAndDifficult(int part, int difficult, Pageable pageable);
 }

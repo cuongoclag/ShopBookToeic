@@ -47,8 +47,9 @@ public class TestApi {
 		List<String> response = new ArrayList<String>();
 
 		for (int i = 0; i < list.size(); i++) {
-			String json = "baithithuid:" + list.get(i).getTestId() + "," + "anhbaithithu:"
-					+ list.get(i).getTestImage() + "," + "tenbaithithu:" + list.get(i).getTestTitle();
+			String json = "baithithuid:" + list.get(i).getTestId() + ","
+					+ "anhbaithithu:" + list.get(i).getTestImage() + ","
+					+ "tenbaithithu:" + list.get(i).getTestTitle();
 
 			response.add(json);
 		}
@@ -109,7 +110,8 @@ public class TestApi {
 
 	@PostMapping(value = "/update")
 	@ResponseBody
-	public List<String> updateBaiGrammar(@RequestParam("idExam") int id, @RequestParam("name") String name,
+	public List<String> updateBaiGrammar(@RequestParam("idExam") int id,
+										 @RequestParam("name") String name,
 										 @RequestParam("file_image") MultipartFile file_image,
 										 @RequestParam("file_image_question") MultipartFile[] file_image_question,
 										 @RequestParam("file_listening") MultipartFile[] file_listening,

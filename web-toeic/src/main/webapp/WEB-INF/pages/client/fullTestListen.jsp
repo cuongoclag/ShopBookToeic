@@ -120,14 +120,14 @@
 		<div id="content" class="container-fluid fill">
 			<form id="submitForm" name="submitForm">
 				<div class="row">
-					<div id="navigation" class="col-md-3">
+					<div id="navigation" class="col-md-4">
 						<div class="fix-scrolling">
 							<br>
 							<div style="text-align: center">
 								<h5>Bài Test Listening</h5>
 								<span id="time">30:00</span>
 							</div>
-							<hr width="60%">
+							<hr>
 							<c:forEach begin="1" end="50" varStatus="loop">
 								<div class="numberCircle" id="answer${loop.index}">${loop.index}</div>
 							</c:forEach>
@@ -137,10 +137,10 @@
 								value="Chấm điểm" />
 								<input type="button"
 								class="btn btn-danger" id="btnSubmit" value="Làm bài đọc" /> <br>
-							<hr width="60%">
+							<hr>
 						</div>
 					</div>
-					<div class="col-md-3 ">
+					<div class="col-md-4 ">
 						<!-- Placeholder - keep empty -->
 					</div>
 					<!--Nội dung bài test -->
@@ -201,7 +201,8 @@
 									type="audio/wav"></audio>
 								<br>
 								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
+									id="question.${list.number}"
+									   onclick="markColor(this.id)"
 									value="A" /> A <br>
 								<input type="radio" name="question${list.number}"
 									id="question.${list.number}" onclick="markColor(this.id)"

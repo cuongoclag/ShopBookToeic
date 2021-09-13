@@ -31,42 +31,6 @@ function answerUser(){
 	return answerArr;
 }
 $(document).ready(function(){
-//	$('#btnSubmit').click(function(){
-//		
-//		 var answerArr = answerUser();
-//
-//		 var correctArr = correctAnswer();
-//		 var countCorrect = 0;
-//			
-//			for(var i = 0; i<50; i++){
-//			 if(answerArr[i] == correctArr[i] && answerArr[i] != ' ' ) countCorrect++;
-//				
-//			}
-//		
-//		var examId = $("#id_bai_exam").val();
-//		var jsonAnswerUser = JSON.stringify(answerArr);
-//		
-//		$.ajax({
-//			headers : {
-//			'Accept' : 'application/json',
-//			'Content-Type' : 'application/json'
-//		           },
-//            dataType : "json",
-//			data:jsonAnswerUser,
-//			type:'POST',
-//			
-//			url:"http://localhost:8080/api/client/exam/ajaxTestListening/"+examId+"/"+countCorrect,
-//			
-//			 success: function(data){
-//				 window.location.href = "http://localhost:8080/reading?idExam="+examId;
-//			
-//				}, error : function(e) {
-//					 alert("error");
-//					 console.log("ERROR: ", e);
-//				  }
-//			});
-//
-//	});
 	$('#btnSubmit').click(function(){
 		startReadingClock ()
 		var answerArr = answerUser();

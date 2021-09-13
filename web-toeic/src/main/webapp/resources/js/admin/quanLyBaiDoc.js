@@ -2,28 +2,13 @@ $(document).ready(function(){
 //---------------------------- Insert Bai Nghe -----------------------
 	$('#btnAddNewReading').click(function () {
 		var formData = new FormData();
-
 		var file_excel = $('#file_Excel')[0].files[0];
-
+		var file_image = $('#file_Image')[0].files[0];
 		var name = $('#namebaidoc').val();
-		var phanthi = $('#phanThi').val();
-		var dokho = $('#doKho').val();
-
-		var countFileImage = document.getElementById('file_image_question').files.length;
-		var countFileMp3 = document.getElementById('file_reading').files.length;
-
-		for(var x = 0; x < countFileImage; x++){
-			formData.append("file_image_question", document.getElementById('file_image_question').files[x]);
-		}
-
-		for(var x = 0; x <countFileMp3; x++){
-			formData.append("file_reading", document.getElementById('file_reading').files[x]);
-		}
 
 		formData.append("file_excel", file_excel);
+		formData.append("file_image",file_image);
 		formData.append("name", name);
-		formData.append("phanthi", phanthi);
-		formData.append("dokho", dokho);
 
 		$.ajax({
 			data: formData,
@@ -50,23 +35,12 @@ $(document).ready(function(){
 
 		var formData = new FormData();
 		var file_excel = $('#file_Excel')[0].files[0];
+		var file_image = $('#file_Image')[0].files[0];
 		var name = $('#namebaidoc').val();
-		var phanthi = $('#phanThi').val();
-		var dokho = $('#dokho').val();
 
-		var countFileImage = document.getElementById('file_image_question').files.length;
-		var countFileMp3 = document.getElementById('file_reading').files.length;
-
-		for(var x = 0; x < countFileImage; x++){
-			formData.append("file_image_question", document.getElementById('file_image_question').files[x]);
-		}
-		for(var x = 0; x <countFileMp3; x++){
-			formData.append("file_reading", document.getElementById('file_reading').files[x]);
-		}
 		formData.append("file_excel",file_excel);
+		formData.append("file_image",file_image);
 		formData.append("name",name);
-		formData.append("phanthi", phanthi);
-		formData.append("dokho", dokho);
 		formData.append("idReading",ReadingId);
 		$.ajax({
 			data: formData,
@@ -143,7 +117,7 @@ $(document).ready(function(){
 			url:"http://localhost:8080/api/admin/bai-doc/all",
 			success:function(data){
 				var jsonArray = new Array();
-				var fields,id,tenbaidoc, part;
+				var fields,id,tenbaidoc, anhbaidoc;
 				for(var i = 0; i <data.length; i++){
 					var jsonObject = new Object();
 					fields = data[i].split(',');
@@ -154,18 +128,17 @@ $(document).ready(function(){
 					tenbaidoc = fields[1].split(':');
 					jsonObject.tenbaidoc = tenbaidoc[1];
 
-					part = fields[2].split(':');
-					jsonObject.part = part[1];
+					anhbaidoc = fields[2].split(':');
+					jsonObject.anhbaidoc = anhbaidoc[1];
+
 					jsonArray.push(jsonObject);
 				}
 				var jsonArr = JSON.parse(JSON.stringify(jsonArray));
 				var trHTML = "";
 				for(var i = 0; i<jsonArr.length; i++){
 					trHTML += '<tr><td class="center">' + jsonArr[i].baidocid + '</td>'
-						+'<td class="center">' + jsonArr[i].tenbaidoc+ '</td>'
-						+'<td class="center">'
-						+ jsonArr[i].part
-						+ '</td>'
+						+'<td class="center">' + jsonArr[i].tenbaidoc + '</td>'
+						+'<td class="center">' + jsonArr[i].anhbaidoc + '</td>'
 						+'<td class = "center"> <a id="edit.'+ jsonArr[i].baidocid +' "'
 						+'class="yellow editBaiDoc"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></a> '
 						+'<a id="delete.'+jsonArr[i].baidocid+' "'

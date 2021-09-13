@@ -5,10 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.webtoeic.common.ProductSearch;
-import com.webtoeic.entities.Category;
-import com.webtoeic.entities.Product;
-import com.webtoeic.entities.SaleOrder;
+import com.webtoeic.entities.*;
+import com.webtoeic.repository.ResultTestRepository;
 import com.webtoeic.service.*;
+import com.webtoeic.service.impl.ResultTestImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
@@ -22,8 +22,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import com.webtoeic.entities.NguoiDung;
-
 import java.util.List;
 
 @Controller
@@ -31,17 +29,15 @@ import java.util.List;
 public class ClientController {
 	@Autowired
 	private SlideBannerService slideBannerService;
+
 	@Autowired
-	private VocabularyExercisesService baitaptuvungService;
+	private ResultTestImpl resultTestImp;
 
 	@Autowired
 	private NguoiDungService nguoiDungService;
 
 	@Autowired
 	private ProductService productService;
-
-	@Autowired
-	private SaleOrderService saleOrderService;
 
 	@Autowired
 	private CategoryService categoryService;
@@ -120,4 +116,12 @@ public class ClientController {
 		return "redirect:/login?logout";
 	}
 
+
+	@RequestMapping(value = { "/toeicResultUser/{id}" }, method = RequestMethod.GET)
+	public String detailsBook(@PathVariable("id") int id, final ModelMap model, final HttpServletRequest request,
+							  final HttpServletResponse response) throws Exception {
+		List<ResultTest> list = resultTestImp.findResultTestByUserId(id);
+		model.addAttribute("listR", list);
+		return "client/listResultTest";
+	}
 }

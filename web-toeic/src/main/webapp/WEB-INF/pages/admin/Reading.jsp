@@ -54,34 +54,19 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Reading</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Bài Đọc</h1>
                 </div>
                 <!------------------------------------------- Content Row---------------------------------------- -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <button class="btn btn-success btnAddExam" data-toggle="modal"
                                 data-target="#baiDocModal">Thêm mới</button>
-                        <h4 style="color: red" id="info-success"></h4>
-<%--                        <form class="form-inline" id="searchForm" name="searchObject">--%>
-<%--                            <div class="form-group">--%>
-<%--                                <select class="form-control" name="partSearch" id="partSearch">--%>
-<%--                                    <option value="">Tất cả</option>--%>
-<%--                                    <option value="5">Part 5</option>--%>
-<%--                                    <option value="6">Part 6</option>--%>
-<%--                                    <option value="7">Part 7</option>--%>
-<%--                                </select>--%>
-<%--                            </div>&nbsp;&nbsp;--%>
-<%--                            			<div class="form-group">--%>
-<%--                            				<select class="form-control" name="doKhoSearch" id="doKhoSearch">--%>
-<%--                            					<option value="">Tất cả</option>--%>
-<%--                            					<option value="1">Mức dễ</option>--%>
-<%--                            					<option value="2">Mức trung bình</option>--%>
-<%--                            					<option value="3">Mức khó</option>--%>
-<%--                            				</select>--%>
-<%--                            			</div>--%>
-<%--                            			&nbsp;&nbsp;--%>
-<%--                            <button type="button" class="btn btn-primary" id="btnDuyetBaiDoc">Duyệt Bài đọc</button>--%>
-<%--                        </form>--%>
+                        <h4 style="color: blue" id="info-success"></h4>
+
+                        <c:if test="${errorInfo != null }">
+                            <h4 style="color: red" id="info-error">${error}</h4>
+                            <h4>error: ${errorInfo}</h4>
+                        </c:if>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -89,9 +74,9 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Reading Title</th>
-                                    <th>Part</th>
-                                    <th>Action</th>
+                                    <th>Ảnh Bài Đọc</th>
+                                    <th>Tên Bài Đọc</th>
+                                    <th>Chức Năng</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -121,39 +106,17 @@
                                         <span class="bg-danger" id="vocab_errors"></span>
 
                                         <div class="form-group col-md-6">
-                                            <label>Tên bài Bài Đọc</label> <input id="namebaidoc"
+                                            <label>Tên Bài Đọc</label> <input id="namebaidoc"
                                                                                   class="form-control">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="name">Phần thi (Part)</label>
-                                            <select id="phanThi" class="form-control" name="part">
-                                                <option value="5">Part 5-Complete sentence</option>
-                                                <option value="6">Part 6-Complete the paragraph</option>
-                                                <option value="7">Part 7-Reading comprehension</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="name">Do Kho</label>
-                                            <select name="doKho" id="doKho" class="form-control">
-                                                <option value="1">Mức dễ</option>
-                                                <option value="2">Mức trung bình</option>
-                                                <option value="3">Mức khó</option>
-                                            </select>
+                                            <label>Ảnh Bài Nghe</label> <input type="file" id="file_Image"
+                                                                               class="form-control" required accept="image/*">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="fileExcel">File nội dung (Excel):</label> <input
+                                            <label for="fileExcel">File Nội Dung (Excel):</label> <input
                                                 type="file" class="form-control" id="file_Excel"
                                                 name="file_Excel" required accept=".xlsx">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="fileAnhCauHoi">File ảnh:</label> <input
-                                                type="file" class="form-control" id="file_image_question"
-                                                name="file_Image_Question" required accept="image/*" multiple>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="fileNghe">File Audio:</label> <input
-                                                type="file" class="form-control" id="file_reading"
-                                                name="file_Excel" required multiple accept=".mp3,.org">
                                         </div>
                                     </div>
                                 </div>

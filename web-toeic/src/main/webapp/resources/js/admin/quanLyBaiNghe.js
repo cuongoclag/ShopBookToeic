@@ -4,10 +4,8 @@ $(document).ready(function () {
         var formData = new FormData();
 
         var file_excel = $('#file_Excel')[0].files[0];
-
+        var file_image = $('#file_Image')[0].files[0];
         var name = $('#namebainghe').val();
-        var phanthi = $('#phanThi').val();
-        var dokho = $('#dokho').val();
 
         var countFileImage = document.getElementById('file_image_question').files.length;
         var countFileMp3 = document.getElementById('file_listening').files.length;
@@ -21,9 +19,8 @@ $(document).ready(function () {
         }
 
         formData.append("file_excel", file_excel);
+        formData.append("file_image",file_image);
         formData.append("name", name);
-        formData.append("phanthi", phanthi);
-        formData.append("dokho", dokho);
 
         $.ajax({
             data: formData,
@@ -50,9 +47,8 @@ $(document).ready(function () {
 
         var formData = new FormData();
         var file_excel = $('#file_Excel')[0].files[0];
+        var file_image = $('#file_Image')[0].files[0];
         var name = $('#namebainghe').val();
-        var phanthi = $('#phanThi').val();
-        var dokho = $('#dokho').val();
 
         var countFileImage = document.getElementById('file_image_question').files.length;
         var countFileMp3 = document.getElementById('file_listening').files.length;
@@ -64,9 +60,8 @@ $(document).ready(function () {
             formData.append("file_listening", document.getElementById('file_listening').files[x]);
         }
         formData.append("file_excel",file_excel);
+        formData.append("file_image",file_image);
         formData.append("name",name);
-        formData.append("phanthi", phanthi);
-        formData.append("dokho", dokho);
         formData.append("idListening",ListeningId);
         $.ajax({
             data: formData,
@@ -146,16 +141,20 @@ $(document).ready(function () {
             url:"http://localhost:8080/api/admin/bai-nghe/all",
             success:function(data){
                 var jsonArray = new Array();
-                var fields,id,tenbainghe, part;
+                var fields,id,tenbainghe, anhbainghe;
                 for(var i = 0; i <data.length; i++){
                     var jsonObject = new Object();
                         fields = data[i].split(',');
+
                         id = fields[0].split(':');
                         jsonObject.baingheid = id[1];
+
                         tenbainghe = fields[1].split(':');
                         jsonObject.tenBaiNghe = tenbainghe[1];
-                        part = fields[2].split(':');
-                        jsonObject.part = part[1];
+
+                        anhbainghe = fields[2].split(':');
+                        jsonObject.anhbainghe = anhbainghe[1];
+
                         jsonArray.push(jsonObject);
                 }
                 var jsonArr = JSON.parse(JSON.stringify(jsonArray));
@@ -163,9 +162,7 @@ $(document).ready(function () {
                 for(var i = 0; i<jsonArr.length; i++){
                     trHTML += '<tr><td class="center">' + jsonArr[i].baingheid + '</td>'
                         +'<td class="center">' + jsonArr[i].tenBaiNghe+ '</td>'
-                        +'<td class="center">'
-                        + jsonArr[i].part
-                        + '</td>'
+                        +'<td class="center">' + jsonArr[i].anhbainghe+ '</td>'
                         +'<td class = "center"> <a id="edit.'+ jsonArr[i].baingheid +' "'
                         +'class="yellow editBaiNghe"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></a> '
                         +'<a id="delete.'+jsonArr[i].baingheid+' "'

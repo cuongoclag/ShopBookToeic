@@ -6,7 +6,7 @@ function markColor(id){
 }
 function correctAnswer(){
     var correctArr =[];
-    for (var i = 1; i < 4; i++) {
+    for (var i = 1; i < 11; i++) {
         var nameRadio = "correctanswer"+i;
         var x = document.getElementById("submitForm").elements.namedItem(nameRadio).value;
         correctArr.push(x);}
@@ -15,7 +15,7 @@ function correctAnswer(){
 
 function answerUser(){
     var answerArr = [];
-    for (var i = 1; i < 4; i++) {
+    for (var i = 1; i <  11; i++) {
         var nameRadio = "question"+i;
         var result = document.getElementById("submitForm").elements.namedItem(nameRadio);
         if(result == null) answerArr.push("");
@@ -41,7 +41,7 @@ $(document).ready(function(){
         var answerArr = answerUser();
         var correctArr = correctAnswer();
         var countCorrect = 0;
-        for(var i = 0; i<3; i++){
+        for(var i = 0; i<10; i++){
             if(answerArr[i] == correctArr[i] && answerArr[i] != ' ' ) countCorrect++;
         }
         var jsonAnswerUser = JSON.stringify(answerArr);

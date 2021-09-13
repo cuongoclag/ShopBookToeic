@@ -30,6 +30,14 @@
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 
 </head>
+<style type="text/css">
+    .image {
+        float: left;
+        height: 150px;
+        width: 250px;
+        margin-bottom: 25px;
+    }
+</style>
 <body>
 
 <jsp:include page="template/header.jsp"></jsp:include>
@@ -49,17 +57,22 @@
             <c:if test="${fn:length(listData) == 0 }">
                 <h3>Không tìm thấy dữ liệu</h3>
             </c:if>
+            <div class="papular-block row">
+                <c:forEach items="${listData}" var="list" varStatus="loop">
 
-            <c:forEach items="${listData}" var="list" varStatus="loop">
-
-                <div class="col-md-12">
-                    <h4 class="content-heading">
-                            ${list.listeningTitle}</h4>
-                    <a href="<%=request.getContextPath()%>/listeningDetails/${list.id }" class="btn btn-primary">Chi Tiết</a>
-                </div>
-
-            </c:forEach>
-            <br>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <img class="image"
+                                 src="${pageContext.request.contextPath}/resources/file/images/listening/${list.listeningImage}" />
+                        </div>
+                        <div class="col-md-8">
+                            <h6 class="content-heading" id="namebaithithu">
+                                    ${list.listeningTitle}</h6>
+                            <a href="<%=request.getContextPath()%>/listeningDetails/${list.id }" class="btn btn-primary">Chi Tiết</a>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
         <div class="col-md-3">
             <div class="side-bar">

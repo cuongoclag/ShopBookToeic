@@ -32,20 +32,21 @@
 	<h4>Tổng số câu đúng: ${total}/100</h4>
 	<h4>Số câu đúng phần Listening: ${correctListening}/50</h4>
 	<h4>Số câu đúng phần Reading: ${correctReading}/50</h4>
+	<hr>
 	<c:choose>
 		<c:when test="${ correctListening >= 35 && correctListening <=45}">
-			<h5 style="color: blue">Khả năng nghe tiếng anh của bạn tương đối tốt. Cần cải thiện hơn để đạt điểm tối đa</h5>
+			<h5 style="color: blue; font-size: 17px" >Khả năng nghe tiếng anh của bạn tương đối tốt. Cần cải thiện hơn để đạt điểm tối đa</h5>
 		</c:when>
 		<c:when test="${ correctListening < 35}">
-			<h5 style="color: red">Bạn Cần Cải Thiện thêm về khả năng nghe tiếng anh</h5>
+			<h5 style="color: red ; font-size: 17px">Bạn Cần Cải Thiện thêm về khả năng nghe tiếng anh</h5>
 		</c:when>
 	</c:choose>
 	<c:choose>
 		<c:when test="${ correctReading >= 35 && correctReading <= 45}">
-			<h5 style="color: blue">Khả năng đoc tiếng anh của bạn tương đối tốt. Cần cải thiện hơn để đạt điểm tối đa</h5>
+			<h5 style="color: blue ; font-size: 17px">Khả năng đoc tiếng anh của bạn tương đối tốt. Cần cải thiện hơn để đạt điểm tối đa</h5>
 		</c:when>
 		<c:when test="${ correctReading < 35}">
-			<h5 style="color: red">Bạn Cần Cải Thiện thêm về khả năng đọc tiếng anh</h5>
+			<h5 style="color: red; font-size: 17px">Bạn Cần Cải Thiện thêm về khả năng đọc tiếng anh</h5>
 		</c:when>
 	</c:choose>
 	<br>

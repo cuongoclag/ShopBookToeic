@@ -13,8 +13,6 @@
 }
 </style>
 <body>
-
-
 	<div id="main" class="web-font">
 		<p class="fix-top">
 			Đáp án bài thi Listening : <span id="socaudung" style="color: red">Trả
@@ -24,8 +22,10 @@
 		<c:forEach items="${listQuestion}" var="list">
 			<input class="hidden" id="id_bai_exam"
 				value="${list.getTest().getTestId()}" />
+
 			<input class="hidden" id="correctanswer"
 				name="correctanswer${list.number}" value="${list.correctAnswer}" />
+
 			<input class="hidden" id="answerUser" name="question${list.number}"
 				value="${list.getAnswerUser()}" />
 
@@ -482,7 +482,7 @@
 					src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"
 					type="audio/wav"></audio>
 				<br>
-				<c:if test="${list.getAnswerUser() == ''}">F
+				<c:if test="${list.getAnswerUser() == ''}">
 					<c:if test="${list.correctAnswer== 'A' }">
 						<input disabled type="radio" value="A" /> A. ${list.option1}&nbsp;<img
 							alt="img not found"

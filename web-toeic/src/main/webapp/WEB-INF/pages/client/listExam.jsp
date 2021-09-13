@@ -114,15 +114,13 @@
 							</div>
 
 						</c:forEach>
-
 					</div>
 				</div>
 
 				<!-- Shop SideBar -->
 				<div class="col-sm-3">
 					<div class="shop-sidebar">
-						<!-- Category -->
-						<h5 class="shop-tittle margin-bottom-30">DANH MỤC</h5>
+						<h3>DANH MỤC</h3>
 						<ul class="nav nav-list">
 							<li><a href="/listening">LUYỆN BÀI NGHE</a></li>
 							<li><a href="/reading">LUYỆN BÀI ĐỌC</a></li>
@@ -136,29 +134,29 @@
 			</div>
 
 			<c:if test="${listData.size() != 0}">
-				<div class="paging">
+				<div class="">
 					<c:if test="${currentPage != 1}">
-						<a href="/listExam?page=${currentPage-1}">Back</a>
+						<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=${currentPage-1}">Back</a>
 					</c:if>
 					<c:if test="${currentPage == 1}">
-						<a class="current">1</a>
+						<a class="btn btn-sm" style="padding: 1px 13px">1</a>
 					</c:if>
 
 					<c:if test="${currentPage != 1}">
-						<a href="/listExam?page=1">1</a>
+						<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=1">1</a>
 					</c:if>
 
 					<c:forEach var="pag" items="${pageList}" varStatus="loop">
 						<c:if test="${currentPage == pag}">
-							<a class="current">${pag}</a>
+							<a class="btn btn-sm" style="padding: 1px 13px">${pag}</a>
 						</c:if>
 						<c:if test="${currentPage != pag}">
-							<a href="/listExam?page=${pag}">${pag}</a>
+							<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=${pag}">${pag}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${currentPage != totalPage}">
-						<a href="/listExam?page=${currentPage+1} " class="pageNext">Next</a>
+						<a href="/listExam?page=${currentPage+1} " class="btn btn-sm" style="padding: 1px 13px">Next</a>
 					</c:if>
 				</div>
 			</c:if>

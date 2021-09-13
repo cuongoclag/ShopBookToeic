@@ -9,6 +9,7 @@
     <meta charset="ISO-8859-1">
     <title>Danh sách bài thi thử</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/web/rs-plugin/css/settings.css" media="screen" />
 
     <!-- Bootstrap Core CSS -->
@@ -29,6 +30,14 @@
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 
 </head>
+<style type="text/css">
+    .image {
+        float: left;
+        height: 150px;
+        width: 250px;
+        margin-bottom: 25px;
+    }
+</style>
 <body>
 
 <jsp:include page="template/header.jsp"></jsp:include>
@@ -37,7 +46,7 @@
     <!--PAGE TITLE-->
     <div class="col-md-9" style="text-align: center">
         <div class="page-header">
-            <h4 style="font-weight: bold;">DANH SÁCH BÀI Đọc</h4>
+            <h4 style="font-weight: bold;">DANH SÁCH BÀI Nghe</h4>
         </div>
     </div>
 
@@ -48,14 +57,22 @@
             <c:if test="${fn:length(listData) == 0 }">
                 <h3>Không tìm thấy dữ liệu</h3>
             </c:if>
+            <div class="papular-block row">
+                <c:forEach items="${listData}" var="list" varStatus="loop">
 
-            <c:forEach items="${listData}" var="list" varStatus="loop">
-                <div class="col-md-12">
-                    <h4 class="content-heading">${list.readingTitle}</h4>
-                    <a href="<%=request.getContextPath()%>/readingDetails/${list.id }" class="btn btn-primary">Chi Tiết</a>
-                </div>
-            </c:forEach>
-            <br>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <img class="image"
+                                 src="${pageContext.request.contextPath}/resources/file/images/reading/${list.readingImage}" />
+                        </div>
+                        <div class="col-md-8">
+                            <h6 class="content-heading">
+                                    ${list.readingTitle}</h6>
+                            <a href="<%=request.getContextPath()%>/readingDetails/${list.id }" class="btn btn-primary">Chi Tiết</a>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
         <div class="col-md-3">
             <div class="side-bar">
@@ -77,14 +94,14 @@
 
     <div class="paging">
         <c:if test="${currentPage != 1}">
-            <a href="/listReading?page=${currentPage-1}">Back</a>
+            <a href="/listListening?page=${currentPage-1}">Back</a>
         </c:if>
         <c:if test="${currentPage == 1}">
             <a class="current">1</a>
         </c:if>
 
         <c:if test="${currentPage != 1}">
-            <a href="/listReading?page=1">1</a>
+            <a href="/listListening?page=1">1</a>
         </c:if>
 
         <c:forEach var="pag" items="${pageList}" varStatus="loop">
@@ -97,7 +114,7 @@
         </c:forEach>
 
         <c:if test="${currentPage != totalPage}">
-            <a href="/listReading?page=${currentPage+1} " class="pageNext">Next</a>
+            <a href="/listListening?page=${currentPage+1} " class="pageNext">Next</a>
         </c:if>
     </div>
 </c:if>
@@ -112,6 +129,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.t.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
+
+
 
 </body>
 

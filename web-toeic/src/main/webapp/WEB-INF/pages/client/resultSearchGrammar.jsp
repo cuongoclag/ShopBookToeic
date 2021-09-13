@@ -57,7 +57,7 @@
 								 src="${pageContext.request.contextPath}/resources/file/images/grammar/${list.grammarImage}" />
 						</div>
 
-						<div class="span8">
+						<div class="col-md-8">
 							<div class="content-heading">
 								<h6>${list.grammarTitle}</h6>
 							</div>

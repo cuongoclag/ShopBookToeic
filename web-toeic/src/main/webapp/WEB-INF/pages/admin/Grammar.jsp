@@ -55,14 +55,14 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Grammar</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Bài Ngữ Pháp</h1>
                 </div>
                 <!------------------------------------------- Content Row---------------------------------------- -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <button class="btn btn-success btnAddExam" data-toggle="modal"
                                 data-target="#grammarModal">Thêm mới</button>
-                        <h4 style="color: red" id="info-success"></h4>
+                        <h4 style="color: blue" id="info-success"></h4>
 
                         <c:if test="${errorInfo != null }">
                             <h4 style="color: red" id="info-error">${error}</h4>
@@ -75,8 +75,8 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Grammar Title</th>
-                                    <th>Action</th>
+                                    <th>Tên Bài Ngữ Pháp</th>
+                                    <th>Chức Năng</th>
                                 </tr>
                                 </thead>
                                 <tbody>

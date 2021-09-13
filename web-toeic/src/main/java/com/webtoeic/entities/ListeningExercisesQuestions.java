@@ -28,8 +28,6 @@ public class ListeningExercisesQuestions {
 	private String audiomp3;
 
 	@Column(columnDefinition = "TEXT")
-	private String paragraph;
-	@Column(name = "question")
 	private String question;
 
 	private String answer_1;
@@ -73,14 +71,6 @@ public class ListeningExercisesQuestions {
 
 	public void setAudiomp3(String audiomp3) {
 		this.audiomp3 = audiomp3;
-	}
-
-	public String getParagraph() {
-		return paragraph;
-	}
-
-	public void setParagraph(String paragraph) {
-		this.paragraph = paragraph;
 	}
 
 	public String getAnswer_1() {
@@ -150,12 +140,11 @@ public class ListeningExercisesQuestions {
 		this.question = question;
 	}
 
-	public ListeningExercisesQuestions(Integer id, Integer number, String image, String audiomp3, String paragraph, String question, String answer_1, String answer_2, String answer_3, String answer_4, String correctAnswer, String answerUser, ListeningExercises listeningExercises) {
+	public ListeningExercisesQuestions(Integer id, Integer number, String image, String audiomp3, String question, String answer_1, String answer_2, String answer_3, String answer_4, String correctAnswer, String answerUser, ListeningExercises listeningExercises) {
 		this.id = id;
 		this.number = number;
 		this.image = image;
 		this.audiomp3 = audiomp3;
-		this.paragraph = paragraph;
 		this.question = question;
 		this.answer_1 = answer_1;
 		this.answer_2 = answer_2;

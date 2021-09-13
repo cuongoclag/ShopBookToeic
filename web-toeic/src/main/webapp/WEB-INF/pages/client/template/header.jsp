@@ -63,6 +63,7 @@
                                     <c:if test="${!nguoiDung.loginOauth2 }">
                                         <li><a href="/profile">Tài khoản</a></li>
                                     </c:if>
+                                    <li><a href="/toeicResultUser/${nguoiDung.id }">Kết quả thi Toeic</a></li>
                                     <li><a href="/orderUser/${nguoiDung.id }">Đơn hàng của bạn</a></li>
                                     <li><a href="/wishlist">Yêu thích</a></li>
                                     <li><a href="/signout">Đăng xuất</a></li>

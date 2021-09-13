@@ -25,14 +25,12 @@ public class ListeningExercises {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String listeningTitle;
+	private String listeningImage;
 
-	private int difficult; // 1: dễ, 2:trung bình, 3: khó
 
 	@Transient
 	@JsonIgnore
 	private MultipartFile listeningPhoto; // ảnh bài nghe nếu có
-
-	private int part; // phần 1,2,3,4 ?
 
 	@JsonIgnore
 	@Transient
@@ -95,20 +93,12 @@ public class ListeningExercises {
 		this.fileExcelQuestions = fileExcelQuestions;
 	}
 
-	public int getDifficult() {
-		return difficult;
+	public String getListeningImage() {
+		return listeningImage;
 	}
 
-	public void setDifficult(int difficult) {
-		this.difficult = difficult;
-	}
-
-	public int getPart() {
-		return part;
-	}
-
-	public void setPart(int part) {
-		this.part = part;
+	public void setListeningImage(String listeningImage) {
+		this.listeningImage = listeningImage;
 	}
 
 	@Override

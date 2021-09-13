@@ -23,17 +23,8 @@ public class ReadingExercises {
 	private Integer id;
 	private String readingTitle;
 
-	private int difficult; // 1: dễ, 2:trung bình, 3: khó
+	private String readingImage;
 
-	@Transient
-	@JsonIgnore
-	private MultipartFile readingPhoto; // ảnh bài nghe nếu có
-
-	private int part; // phần 1,2,3,4 ?
-
-	@JsonIgnore
-	@Transient
-	private MultipartFile audio; // audio bài nghe
 
 	@JsonIgnore
 	@Transient
@@ -59,38 +50,6 @@ public class ReadingExercises {
 		this.readingTitle = readingTitle;
 	}
 
-	public int getDifficult() {
-		return difficult;
-	}
-
-	public void setDifficult(int difficult) {
-		this.difficult = difficult;
-	}
-
-	public MultipartFile getReadingPhoto() {
-		return readingPhoto;
-	}
-
-	public void setReadingPhoto(MultipartFile readingPhoto) {
-		this.readingPhoto = readingPhoto;
-	}
-
-	public int getPart() {
-		return part;
-	}
-
-	public void setPart(int part) {
-		this.part = part;
-	}
-
-	public MultipartFile getAudio() {
-		return audio;
-	}
-
-	public void setAudio(MultipartFile audio) {
-		this.audio = audio;
-	}
-
 	public MultipartFile getFileExcelQuestions() {
 		return fileExcelQuestions;
 	}
@@ -106,6 +65,15 @@ public class ReadingExercises {
 	public void setReadingExercisesQuestions(List<ReadingExercisesQuestions> readingExercisesQuestions) {
 		this.readingExercisesQuestions = readingExercisesQuestions;
 	}
+
+	public String getReadingImage() {
+		return readingImage;
+	}
+
+	public void setReadingImage(String readingImage) {
+		this.readingImage = readingImage;
+	}
+
 	@Override
 	public String toString() {
 		return "ReadingExercises readingTitle=" + readingTitle;

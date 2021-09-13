@@ -19,15 +19,7 @@ public class ReadingExercisesQuestions {
 	@Column(name = "number")
 	private Integer number;
 
-	@Column(name = "image")
-	private String image;
-
-	@Column(name = "audiomp3")
-	private String audiomp3;
-
 	@Column(columnDefinition = "TEXT")
-	private String paragraph;
-	@Column(name = "question")
 	private String question;
 
 	private String answer_1;
@@ -56,30 +48,6 @@ public class ReadingExercisesQuestions {
 
 	public void setNumber(Integer number) {
 		this.number = number;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public String getAudiomp3() {
-		return audiomp3;
-	}
-
-	public void setAudiomp3(String audiomp3) {
-		this.audiomp3 = audiomp3;
-	}
-
-	public String getParagraph() {
-		return paragraph;
-	}
-
-	public void setParagraph(String paragraph) {
-		this.paragraph = paragraph;
 	}
 
 	public String getQuestion() {
@@ -149,12 +117,9 @@ public class ReadingExercisesQuestions {
 	public ReadingExercisesQuestions() {
 	}
 
-	public ReadingExercisesQuestions(Integer id, Integer number, String image, String audiomp3, String paragraph, String question, String answer_1, String answer_2, String answer_3, String answer_4, String correctAnswer, String answerUser, ReadingExercises readingExercises) {
+	public ReadingExercisesQuestions(Integer id, Integer number, String question, String answer_1, String answer_2, String answer_3, String answer_4, String correctAnswer, String answerUser, ReadingExercises readingExercises) {
 		this.id = id;
 		this.number = number;
-		this.image = image;
-		this.audiomp3 = audiomp3;
-		this.paragraph = paragraph;
 		this.question = question;
 		this.answer_1 = answer_1;
 		this.answer_2 = answer_2;

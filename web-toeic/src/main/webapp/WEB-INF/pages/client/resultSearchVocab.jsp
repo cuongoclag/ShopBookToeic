@@ -45,15 +45,14 @@
 				</c:if>
 
 				<c:forEach items="${listData}" var="list">
-					<div class="span9">
+					<div class="col-md-12">
 
-						<div class="span3">
+						<div class="col-md-4">
 							<img class="imageVocab"
 								 src="${pageContext.request.contextPath}/resources/file/images/vocab/${list.vocabularyImage}" />
 						</div>
-						<div class="span1"></div>
 
-						<div class="span5">
+						<div class="col-md-8">
 							<div class="content-heading">
 								<h4>${list.vocabularyTitle}</h4>
 							</div>
