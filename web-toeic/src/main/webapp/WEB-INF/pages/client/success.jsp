@@ -95,6 +95,18 @@
 							<td>${sumVN }</td>
 						</tr>
 					  </tbody>
+						<tbody>
+						<tr>
+							<td>Thuế</td>
+							<td>5%</td>
+						</tr>
+						</tbody>
+						<tbody>
+						<tr>
+							<td>Total:</td>
+							<td>${sumVNThue }</td>
+						</tr>
+						</tbody>
 					</table>
                   </div>
                   <form action="${base }/cart/thankyouPayPal" method="post">

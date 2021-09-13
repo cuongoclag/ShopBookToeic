@@ -34,6 +34,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		.modal-dialog{
+			width: max-content;
+			text-align: center;
+		}
+		.modal-content{
+			width: 100rem;
+		}
+	</style>
 </head>
 <body>
 
@@ -90,6 +99,36 @@
 
 							<!-- Short By -->
 							<div>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+									Đọc thử
+								</button>
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">${list.title}</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[1].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[2].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[3].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[4].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[5].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[6].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[7].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[8].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[9].path}"  alt="">
+												<img src="${pageContext.request.contextPath}/resources/file/images/upload/${list.productImages[10].path}"  alt="">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+											</div>
+										</div>
+									</div>
+								</div>
 								<!-- ADD TO CART -->
 								<button type="button" onclick="Shop.addItemToCart(${list.id}, 1)" class="btn">Thêm vào giỏ hàng</button>
 							</div>
@@ -141,17 +180,17 @@
 								<ul class="row">
 									<li class="col-md-6">
 										<label> *TÊN
-											<form:input path="userName" placeholder="" name="userName" required="required"/>
+											<form:input path="userName" placeholder="" name="userName" required="required" maxlength="40"/>
 										</label>
 									</li>
 									<li class="col-md-6">
 										<label> *EMAIL
-											<form:input path="userEmail" placeholder="" name="userEmail" required="required"/>
+											<form:input path="userEmail" placeholder="" name="userEmail" required="required" pattern="[^@]+@gmail+\.com"/>
 										</label>
 									</li>
 									<li class="col-md-12">
 										<label> *ĐÁNH GIÁ CỦA BẠN
-											<form:textarea path="comment"  rows="5"  placeholder="" name="comment" cols="50" required="required"></form:textarea>
+											<form:textarea path="comment"  rows="5"  placeholder="" name="comment" cols="50" required="required" maxlength="200" ></form:textarea>
 										</label>
 									</li>
 									<li class="col-md-6">

@@ -79,10 +79,18 @@
                         <td><p>${item.quantity }</p></td>
                     </tr>
                 </c:forEach>
-                <tr>
-                    <td  style="color: blue"><p>Tổng Giá</p></td>
-                    <td  style="color: blue"><p>${sumVN }</p></td>
-                </tr>
+                    <tr>
+                        <td  style="color: blue"><p>Giá</p></td>
+                        <td  style="color: blue"><p>${sumVN }</p></td>
+                    </tr>
+                    <tr>
+                        <td  style="color: blue"><p>Thuế</p></td>
+                        <td  style="color: blue"><p>5%</p></td>
+                    </tr>
+                    <tr>
+                        <td  style="color: blue"><p>Tổng Giá</p></td>
+                        <td  style="color: blue"><p>${sumVNThue }</p></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

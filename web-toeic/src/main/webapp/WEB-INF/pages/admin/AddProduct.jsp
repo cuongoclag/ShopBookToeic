@@ -68,24 +68,24 @@
                             <form:hidden path="id" />
                             <div class="form-group">
                                 <label for="inputAddress">Tên Sản Phẩm</label>
-                                <form:input type="text" class="form-control" path="title"  aria-describedby="" />
+                                <form:input type="text" class="form-control" path="title"  aria-describedby="" required="required" maxlength="50"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Giá</label>
-                                <form:input type="text" class="form-control" path="price"  aria-describedby="" />
+                                <form:input type="text" class="form-control" path="price"  aria-describedby="" required="required" max="2000000"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="inputAddress">Giá giảm</label>
-                                <form:input type="text" class="form-control" path="promotionalPrice"  aria-describedby="" />
+                                <form:input type="text" class="form-control" path="promotionalPrice"  aria-describedby="" max="2000000"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Mô Tả </label>
-                                <form:textarea class="form-control" id="txtshortDescription1" path="shortDes" />
+                                <form:textarea class="form-control" id="txtshortDescription1" path="shortDes" required="required" maxlength="3000"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Mô Tả Chi Tiết</label>
-                                <form:textarea class="form-control" id="txtDetailDescription" path="shortDetails" />
+                                <form:textarea class="form-control" id="txtDetailDescription" path="shortDetails" required="required" maxlength="10000"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Loại Sản Phẩm</label>
@@ -96,7 +96,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Hình Ảnh Sản Phẩm</label>
-                                <input class="form-control" type="file" name="images" multiple="multiple" />
+                                <input class="form-control" type="file" name="images" multiple="multiple" required="required"/>
                             </div>
                             <div class="form-group form-check">
                                 <form:checkbox path="status" class="form-check-input" id="exampleCheck1" />

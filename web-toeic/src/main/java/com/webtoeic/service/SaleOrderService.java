@@ -27,7 +27,9 @@ import javax.transaction.Transactional;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 @Service
@@ -204,6 +206,7 @@ public class SaleOrderService {
         List<CartItem> cartItems = cart.getCartItems();
 
         BigDecimal sum = new BigDecimal(0);
+        BigDecimal sumThue = new BigDecimal(0);
         for (CartItem item : cartItems) {
             SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
             saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
@@ -213,9 +216,13 @@ public class SaleOrderService {
             for (int i = 1; i <= item.getQuantity(); i++) {
                 sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
             }
+            BigDecimal thue = new BigDecimal(0.05);
+            BigDecimal newSum = sum.multiply(thue);
+            BigDecimal totalSum = sum.add(newSum);
+            sumThue = totalSum;
         }
         saleOrder.setCreatedDate(java.time.LocalDateTime.now());
-        saleOrder.setTotal(sum);
+        saleOrder.setTotal(sumThue);
         saleOrderRepo.save(saleOrder);
         sendEmail(saleOrder, cartItems);
         httpSession.setAttribute("SL_SP_GIO_HANG", 0);
@@ -322,7 +329,7 @@ public class SaleOrderService {
         List<CartItem> cartItems = cart.getCartItems();
 
         BigDecimal sum = new BigDecimal(0);
-
+        BigDecimal sumThue = new BigDecimal(0);
         for (CartItem item : cartItems) {
             SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
             saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
@@ -332,10 +339,13 @@ public class SaleOrderService {
             for (int i = 1; i <= item.getQuantity(); i++) {
                 sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
             }
-
+            BigDecimal thue = new BigDecimal(0.05);
+            BigDecimal newSum = sum.multiply(thue);
+            BigDecimal totalSum = sum.add(newSum);
+            sumThue = totalSum;
         }
         saleOrder.setCreatedDate(java.time.LocalDateTime.now());
-        saleOrder.setTotal(sum);
+        saleOrder.setTotal(sumThue);
         saleOrderRepo.save(saleOrder);
         sendEmailPaypal(saleOrder, cartItems);
         httpSession.setAttribute("SL_SP_GIO_HANG", 0);

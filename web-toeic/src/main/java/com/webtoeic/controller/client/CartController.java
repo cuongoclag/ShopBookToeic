@@ -69,9 +69,6 @@ public class CartController{
 				saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
 				saleOrderProducts.setQuantity(item.getQuantity());
 				saleOrder.addSaleOrderProducts(saleOrderProducts);
-				
-				
-				
 				for (int i = 1; i <= item.getQuantity(); i++) {
 					sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 				}
@@ -210,6 +207,7 @@ public class CartController{
 		List<CartItem> cartItems = cart.getCartItems();
 
 		BigDecimal sum = new BigDecimal(0);
+		String sumVNThue = null;
 		String sumVN = null;
 		for (CartItem item : cartItems) {
 			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
@@ -219,13 +217,18 @@ public class CartController{
 			for (int i = 1; i <= item.getQuantity(); i++) {
 				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
-			Locale locale = new Locale("vi", "VN");
-			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-			sumVN = fmt.format(sum);
+				BigDecimal thue = new BigDecimal(0.05);
+				BigDecimal newSum = sum.multiply(thue);
+				BigDecimal totalSum = sum.add(newSum);
+				Locale locale = new Locale("vi", "VN");
+				NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+				sumVNThue = fmt.format(totalSum);
+				sumVN = fmt.format(sum);
 		}
 		model.addAttribute("quantityCart", cartItems.size());
 		model.addAttribute("cartItems", cartItems);
 		model.addAttribute("sumVN", sumVN);
+		model.addAttribute("sumVNThue", sumVNThue);
 		model.addAttribute("sum", sum);
 		return "client/finish";
 	}
@@ -257,9 +260,12 @@ public class CartController{
 			for (int i = 1; i <= item.getQuantity(); i++) {
 				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
-			Locale locale = new Locale("vi", "VN");
-			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-			sumVN = fmt.format(sum);
+				BigDecimal thue = new BigDecimal(0.05);
+				BigDecimal newSum = sum.multiply(thue);
+				BigDecimal totalSum = sum.add(newSum);
+				Locale locale = new Locale("vi", "VN");
+				NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+				sumVN = fmt.format(totalSum);
 		}
 		model.addAttribute("quantityCart", cartItems.size());
 		model.addAttribute("cartItems", cartItems);
@@ -291,6 +297,7 @@ public class CartController{
 		List<CartItem> cartItems = cart.getCartItems();
 
 		BigDecimal sum = new BigDecimal(0);
+		BigDecimal sumThue = new BigDecimal(0);
 		String sumVN = null;
 		for (CartItem item : cartItems) {
 			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
@@ -300,14 +307,18 @@ public class CartController{
 			for (int i = 1; i <= item.getQuantity(); i++) {
 				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
-			Locale locale = new Locale("vi", "VN");
-			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-			sumVN = fmt.format(sum);
+				BigDecimal thue = new BigDecimal(0.05);
+				BigDecimal newSum = sum.multiply(thue);
+				BigDecimal totalSum = sum.add(newSum);
+				sumThue = totalSum;
+//				Locale locale = new Locale("vi", "VN");
+//				NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+//				sumVN = fmt.format(totalSum);
 		}
 		model.addAttribute("quantityCart", cartItems.size());
 		model.addAttribute("cartItems", cartItems);
 		model.addAttribute("sumVN", sumVN);
-		model.addAttribute("sum", sum);
+		model.addAttribute("sum", sumThue);
 		//saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, httpSession);
 		return "client/paypal";
 	}
@@ -338,9 +349,12 @@ public class CartController{
 			for (int i = 1; i <= item.getQuantity(); i++) {
 				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
-			Locale locale = new Locale("vi", "VN");
-			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-			sumVN = fmt.format(sum);
+				BigDecimal thue = new BigDecimal(0.05);
+				BigDecimal newSum = sum.multiply(thue);
+				BigDecimal totalSum = sum.add(newSum);
+				Locale locale = new Locale("vi", "VN");
+				NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+				sumVN = fmt.format(totalSum);
 		}
 		model.addAttribute("quantityCart", cartItems.size());
 		model.addAttribute("cartItems", cartItems);
@@ -382,9 +396,12 @@ public class CartController{
 			for (int i = 1; i <= item.getQuantity(); i++) {
 				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
-			Locale locale = new Locale("vi", "VN");
-			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-			sumVN = fmt.format(sum);
+				BigDecimal thue = new BigDecimal(0.05);
+				BigDecimal newSum = sum.multiply(thue);
+				BigDecimal totalSum = sum.add(newSum);
+				Locale locale = new Locale("vi", "VN");
+				NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+				sumVN = fmt.format(totalSum);
 		}
 		model.addAttribute("quantityCart", cartItems.size());
 		model.addAttribute("cartItems", cartItems);
@@ -426,9 +443,12 @@ public class CartController{
 			for (int i = 1; i <= item.getQuantity(); i++) {
 				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
-			Locale locale = new Locale("vi", "VN");
-			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-			sumVN = fmt.format(sum);
+				BigDecimal thue = new BigDecimal(0.05);
+				BigDecimal newSum = sum.multiply(thue);
+				BigDecimal totalSum = sum.add(newSum);
+				Locale locale = new Locale("vi", "VN");
+				NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+				sumVN = fmt.format(totalSum);
 		}
 		model.addAttribute("quantityCart", cartItems.size());
 		model.addAttribute("cartItems", cartItems);
