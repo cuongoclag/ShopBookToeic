@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>CPD Englisg Admin</title>
+    <title>CPD English Admin</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/admin/vendor/fontawesome-free/css/all.min.css">

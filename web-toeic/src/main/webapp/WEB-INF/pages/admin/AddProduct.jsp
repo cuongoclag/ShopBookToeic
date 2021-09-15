@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>CPD Englisg Admin</title>
+    <title>CPD English Admin</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/admin/vendor/fontawesome-free/css/all.min.css">
@@ -68,16 +68,16 @@
                             <form:hidden path="id" />
                             <div class="form-group">
                                 <label for="inputAddress">Tên Sản Phẩm</label>
-                                <form:input type="text" class="form-control" path="title"  aria-describedby="" required="required" maxlength="50"/>
+                                <form:input type="text" class="form-control" path="title"  aria-describedby="" required="required" maxlength="100"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Giá</label>
-                                <form:input type="text" class="form-control" path="price"  aria-describedby="" required="required" max="2000000"/>
+                                <form:input type="number" class="form-control" path="price"  aria-describedby="" required="required" maxlength="10" min="0"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="inputAddress">Giá giảm</label>
-                                <form:input type="text" class="form-control" path="promotionalPrice"  aria-describedby="" max="2000000"/>
+                                <form:input type="number" class="form-control" path="promotionalPrice"  aria-describedby="" maxlength="10" min="0"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Mô Tả </label>
