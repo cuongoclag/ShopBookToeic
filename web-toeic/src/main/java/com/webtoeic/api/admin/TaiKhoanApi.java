@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import com.webtoeic.entities.Roles;
+import com.webtoeic.repository.NguoiDungRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,6 +32,8 @@ import com.webtoeic.service.NguoiDungService;
 @RestController
 @RequestMapping("/api/admin/tai-khoan")
 public class TaiKhoanApi {
+	@Autowired
+	private NguoiDungRepository ndrepository;
 
 	@Autowired
 	private NguoiDungService nguoiDungService;
@@ -65,7 +68,7 @@ public class TaiKhoanApi {
 			nd.setPhone(dto.getSdt());
 			nd.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
 			nd.setRoles(Roles.findByAbbr(dto.getRoles()));
-			nguoiDungService.saveUser(nd);
+			ndrepository.save(nd);
 		}
 		return ro;
 	}

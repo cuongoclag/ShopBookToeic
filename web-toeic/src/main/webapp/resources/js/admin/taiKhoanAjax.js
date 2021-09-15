@@ -19,9 +19,10 @@ $(document).ready(function() {
 					                  '<td>' + taiKhoan.phone + '</td>' +
 					                  '<td>' + taiKhoan.address + '</td>'+ 
 					                  '<td>' + taiKhoan.roles + '</td>';
-					taiKhoanRow +='</td>' +
-						'<td><button class="delete btn btn-danger btnXoa" ><i class="fas fa-trash"></i></button></td>'+
-					                  '<td>'+'<input type="hidden" id="idTaiKhoan" value=' + taiKhoan.id + '>'+ '</td>';
+					taiKhoanRow +='</td>';
+						// +
+						// '<td><button class="delete btn btn-danger btnXoa" ><i class="fas fa-trash"></i></button></td>'+
+					    //               '<td>'+'<input type="hidden" id="idTaiKhoan" value=' + taiKhoan.id + '>'+ '</td>';
 					$('.taiKhoanTable tbody').append(taiKhoanRow);
 				});
 								
@@ -99,8 +100,7 @@ $(document).ready(function() {
  				console.log("ERROR: ", e);
  			}
  		}); 
-    }    
-    
+    }
 	// delete request
     $(document).on("click",".btnXoa", function() {
 		

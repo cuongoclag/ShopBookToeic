@@ -92,7 +92,7 @@
                                     <th>Số Điện Thoại</th>
                                     <th>Địa Chỉ</th>
                                     <th>Vai Trò</th>
-                                    <th>Action</th>
+<%--                                    <th>Action</th>--%>
 
                                 </tr>
                                 </thead>
@@ -104,7 +104,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+<%--                                    <td></td>--%>
                                 </tr>
                                 </tbody>
                             </table>
@@ -153,15 +153,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="name">Họ tên:</label> <input type="text"
-                                                                                         class="form-control" name="fullName" required />
+                                                                                         class="form-control" name="hoTen" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="name">Số điện thoại:</label> <input type="text"
-                                                                                                class="form-control" name="phone" required />
+                                                                                                class="form-control" name="sdt" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="name">Địa chỉ:</label> <input type="text"
-                                                                                          class="form-control" name="address" required />
+                                                                                          class="form-control" name="diaChi" required />
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"

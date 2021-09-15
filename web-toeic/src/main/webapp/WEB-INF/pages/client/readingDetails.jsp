@@ -138,6 +138,9 @@
                             <input type="radio" name="question${list.number}"
                                    id="question.${list.number}" onclick="markColor(this.id)"
                                    value="C" /> C.${list.answer_3}  <br>
+                            <input type="radio" name="question${list.number}"
+                                   id="question.${list.number}" onclick="markColor(this.id)"
+                                   value="D" /> D.${list.answer_4}  <br>
                             <br>
                         </c:if>
                     </c:forEach>

@@ -8,7 +8,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.webtoeic.entities.CommentVocabulary;
 import com.webtoeic.entities.VocabularyExercises;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.webtoeic.entities.NguoiDung;
 import com.webtoeic.entities.VocabularyContent;
 import com.webtoeic.service.VocabularyExercisesService;
-import com.webtoeic.service.CommentVocabularyService;
 import com.webtoeic.service.NguoiDungService;
 import com.webtoeic.service.VocabularyContentService;
 
@@ -39,9 +37,6 @@ public class VocabularyController {
 
 	@Autowired
     VocabularyContentService noidungbaitaptuvungService;
-
-	@Autowired
-	CommentVocabularyService cmttuvungService;
 
 	@Autowired
 	private NguoiDungService nguoiDungService;
@@ -100,13 +95,11 @@ public class VocabularyController {
 		Optional<VocabularyExercises> bttuvung = baitaptuvungService.getVocabularyExercisesById(id);
 		List<VocabularyContent> list = noidungbaitaptuvungService.getListVocabularyExercises(bttuvung.get());
 		List<VocabularyExercises> baitaptuvung = baitaptuvungService.getVocabularyExercises(id);
-		List<CommentVocabulary> listCmt = cmttuvungService.findByBaiTapTuVung(baitaptuvung.get(0));
 
-		model.addAttribute("listcomment", listCmt);
 		model.addAttribute("idBaiTuVung", list.get(0).getVocabularyExercises().getId());
 		model.addAttribute("bttuvung", bttuvung.get());
 		model.addAttribute("listCauHoi", list);
-		model.addAttribute("countCmt", listCmt.size());
+
 
 		return "client/chiTietHocTuVung";
 

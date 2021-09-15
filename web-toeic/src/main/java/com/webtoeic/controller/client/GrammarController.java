@@ -22,19 +22,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.webtoeic.entities.CommentGrammar;
 import com.webtoeic.entities.NguoiDung;
 import com.webtoeic.service.GrammarService;
-import com.webtoeic.service.CommentGrammarService;
 import com.webtoeic.service.NguoiDungService;
 
 @Controller
 public class GrammarController {
 	@Autowired
 	GrammarService baigrammarService;
-
-	@Autowired
-	CommentGrammarService commentgrammarService;
 
 	@Autowired
 	private NguoiDungService nguoiDungService;
@@ -92,41 +87,10 @@ public class GrammarController {
 
 		Grammar baigrammar = baigrammarService.getGrammar(idGram).get(0);
 
-		List<CommentGrammar> listCmt = commentgrammarService.findByBaiGrammar(baigrammar);
-
-		model.addAttribute("listcomment", listCmt);
-
-		model.addAttribute("countCmt", listCmt.size());
 		model.addAttribute("baigrammar", baigrammar);
 		model.addAttribute("idBaiGrammar", baigrammar.getGrammarId());
 
 		return "client/detailGrammar";
-
-	}
-
-	@RequestMapping(value = "/grammar/ajaxCmtGram/{contentComment}/{baiGrammarId}", method = RequestMethod.POST)
-	@ResponseBody
-	public List<String> getAjax(@PathVariable("contentComment") String contentComment,
-			@PathVariable("baiGrammarId") int id) {
-
-		List<String> response = new ArrayList<String>();
-
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		NguoiDung currentUser = nguoiDungService.findByEmail(auth.getName());
-
-		Grammar baigrammar = baigrammarService.getGrammar(id).get(0);
-		Date time = new Date();
-
-		// save comment
-		CommentGrammar cmt = new CommentGrammar();
-		cmt.setGrammar(baigrammar);
-		cmt.setNguoidung(currentUser);
-		cmt.setDayComment(time);
-		cmt.setCmtGrammarContent(contentComment);
-		commentgrammarService.save(cmt);
-
-		response.add(cmt.toString());
-		return response;
 
 	}
 
