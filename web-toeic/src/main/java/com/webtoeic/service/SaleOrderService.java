@@ -113,7 +113,7 @@ public class SaleOrderService {
         String subject = "Thông báo xác nhận đơn hàng";
         String senderName = "CPD ENGLSH";
         String mailContent = "<p> Dear " + saleOrder.getCustomerName() + "</p>";
-        mailContent += "<img src='C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/ShopBookToeic/web-toeic/src/main/webapp/resources/file/images/logo.png' style='width:100px;height:100px;'/>";
+        mailContent += "<img src='logo' style='width:100px;height:100px;'/>";
         mailContent += "<h2 style=\"text-align: center\"> Thông tin đơn hàng " + saleOrder.getCode() + "</h2>";
         mailContent += "<h2> Thông tin khách hàng </h2>";
         mailContent += "<table class=\"table table-bordered\" width=\"100%\" cellspacing=\"0\" border=\"1\">\n" +
@@ -408,6 +408,7 @@ public class SaleOrderService {
         List<CartItem> cartItems = cart.getCartItems();
 
         BigDecimal sum = new BigDecimal(0);
+        BigDecimal sumThue = new BigDecimal(0);
         for (CartItem item : cartItems) {
             SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
             saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
@@ -417,9 +418,13 @@ public class SaleOrderService {
             for (int i = 1; i <= item.getQuantity(); i++) {
                 sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
             }
+            BigDecimal thue = new BigDecimal(0.05);
+            BigDecimal newSum = sum.multiply(thue);
+            BigDecimal totalSum = sum.add(newSum);
+            sumThue = totalSum;
         }
         saleOrder.setCreatedDate(java.time.LocalDateTime.now());
-        saleOrder.setTotal(sum);
+        saleOrder.setTotal(sumThue);
         saleOrderRepo.save(saleOrder);
         //sendEmailQR(saleOrder, cartItems);
         httpSession.setAttribute("SL_SP_GIO_HANG", 0);

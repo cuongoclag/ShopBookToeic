@@ -1,5 +1,5 @@
 function confirmDelete(id) {
-	var del = confirm("Do you have completed this application ?");
+	var del = confirm("Bạn có muốn xác nhận giao hàng không?");
 	if (del == true) {
 		SaleOrder.deleteSaleOrder(id);
 	} else {
@@ -21,7 +21,7 @@ var SaleOrder = {
 				// về dữ liệu.
 
 				if (jsonResult.status == 200) {
-					alert('Success');
+					alert('Thành Công');
 					location.reload(true);
 				} else {
 					alert('Error');

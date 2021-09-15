@@ -51,7 +51,7 @@
 		<div class="row" style="margin: 3% 0">
                   <div class="col-md-12">
                     <div >
-				      <h3 style="color: red">Bạn đã thanh toán thành công số tiền ${sumVN }</h3>
+				      <h3 style="color: red">Bạn đã thanh toán thành công số tiền ${sumVNThue }</h3>
                       <h3>Thông tin đơn hàng</h3>
 						<table>
 							<tbody>
