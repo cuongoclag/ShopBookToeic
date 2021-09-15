@@ -67,6 +67,12 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Thi Toeic.</span></a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/admin/listResultTest"/>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Kết Quả Thi Toeic.</span></a>
+        </li>
         <hr class="sidebar-divider">
 
         <!-- Heading -->
