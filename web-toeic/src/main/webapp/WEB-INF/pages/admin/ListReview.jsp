@@ -79,6 +79,7 @@
                                     <th>Email</th>
                                     <th>Nôi Dung</th>
                                     <th>Rating</th>
+                                    <th>Sản phẩm</th>
                                     <th>Chức Năng</th>
                                 </tr>
                                 </thead>
@@ -89,6 +90,7 @@
                                         <td>${r.userEmail }</td>
                                         <td>${r.comment }</td>
                                         <td>${r.rating }</td>
+                                        <td>${r.getProduct().getId() }</td>
                                         <td>
                                             <a href="<c:url value='/admin/delete-review/${r.id}' />"
                                                class="delete btn btn-danger"><i class="fas fa-trash"></i></a>
