@@ -27,6 +27,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <style type="text/css">
+        #headerTitlePrint{
+            display: none;
+        }
+        @media print {
+            #headerTitlePrint {
+                display: block;
+            }
+            #linkA, #linkB , #linkC, #linkD{
+                display: none;
+            }
+        }
+    </style>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -53,11 +66,25 @@
 
             <!-- -------------------------------------Noi Dung----------------------------------------------------------- -->
             <!-- Begin Page Content -->
-            <div class="container-fluid">
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Danh sách Kết Quả Thi Toeic</h1>
+            <div class="container-fluid" id="print_div">
+                <div id="headerTitlePrint">
+                    <div style="display: flex; justify-content: space-between">
+                        <div>
+                            <img src="/resources/file/images/logo.png" alt="" style="width: 10rem; height: 10rem">
+                        </div>
+                        <div>
+                            <h5>CMT8 - Q3 - HCM</h5>
+                            <h5>08-7070707070</h5>
+                            <h5>fastsneakercompany@gmail.com</h5>
+                        </div>
+                    </div>
+                    <br />
+                    <br/>
                 </div>
+                <!-- Page Heading -->
+
+                    <h1 class="h3 mb-0 text-gray-800" style="text-align: center; padding: 2rem 0">Danh sách Kết Quả Thi Toeic</h1>
+
                 <!------------------------------------------- Content Row---------------------------------------- -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
@@ -73,7 +100,7 @@
                                     <th>Số Câu Đúng Phần Đọc</th>
                                     <th>Số Câu Đúng Phần Nghe</th>
                                     <th>Time</th>
-                                    <th>Chức Nang</th>
+                                    <th id="linkC">Chức Nang</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -87,7 +114,7 @@
                                         <td>${list.correctReading }/50</td>
                                         <td>${list.correctListen }/50</td>
                                         <td>${list.dayTest }</td>
-                                        <td>
+                                        <td id="linkD">
                                             <a href="<c:url value='/admin/delete/${list.resultId}'/>"
                                                onclick="return confirm('Are you sure you want to delete this item?');"
                                                class="delete btn btn-danger"><i class="fas fa-trash"></i></a>
@@ -97,6 +124,8 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <button type="button" name="" class="btn btn-primary" onclick="printdiv('print_div')" id="linkB">In</button>
                     </div>
                 </div>
 
@@ -107,7 +136,7 @@
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
+            <div class="container my-auto" id="linkA">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; Your Website 2021</span>
                 </div>
@@ -121,6 +150,12 @@
 </div>
 <!------------------------------ Insert footer --------------------------------------->
 <jsp:include page="template/AdminFooter.jsp"></jsp:include>
+
+<script type="text/javascript">
+    function printdiv(printpage) {
+        window.print();
+    }
+</script>
 
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="<c:url value='./js/admin/jquery.easing.min.js'/>" ></script>
