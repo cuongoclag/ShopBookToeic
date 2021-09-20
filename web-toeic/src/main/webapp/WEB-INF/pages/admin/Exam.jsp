@@ -166,7 +166,7 @@
                                         <div class="form-group col-md-12">
                                             <label for="fileExcel">File nội dung (Excel):</label> <input
                                                 type="file" class="form-control" id="file_Excel1"
-                                                name="file_Excel" required accept=".xlsx, .xls" >
+                                                name="file_Excel" required accept=".xlsx" >
                                         </div>
                                     </div>
                                 </div>

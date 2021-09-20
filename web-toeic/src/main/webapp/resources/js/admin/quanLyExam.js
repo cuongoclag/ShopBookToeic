@@ -45,8 +45,8 @@ $(document).ready(function() {
 
 	$('#btnAddNewExam1').click(function() {
 		var formData = new FormData();
-		var file_excel = $('#file_Excel')[0].files[0];
-		var file_image = $('#file_Image')[0].files[0];
+		var file_excel = $('#file_Excel1')[0].files[0];
+		var file_image = $('#file_Image1')[0].files[0];
 		var name = $('#nameBaiThiThu1').val();
 
 		//var file_image_question = $('#file_image_question')
@@ -55,7 +55,7 @@ $(document).ready(function() {
 		formData.append("file_image",file_image);
 		formData.append("name",name);
 
-		console.log(formData)
+		// console.log(formData)
 		$.ajax({
 			data: formData,
 			type:'POST',

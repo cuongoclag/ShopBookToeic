@@ -320,8 +320,7 @@
 <%--                exportExcel('tablePart1','','');--%>
 <%--            });--%>
 <%--        })--%>
-
-
+<%--        --%>
 <%--    </script>--%>
 <%--    <script type="text/javascript">--%>
 <%--        let button = document.querySelector("#btnExport");--%>

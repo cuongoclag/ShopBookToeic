@@ -48,25 +48,25 @@ public class WarehouseExamImpl implements WarehouseExamService {
     }
 
     public List<WarehouseExam> randomPart1() {
-        String sql = "select * from warehouse_exam where part = 1 ORDER BY RAND() LIMIT 15";
+        String sql = "select * from warehouse_exam where part = 1 ORDER BY RAND() LIMIT 25";
         Query query = entityManager.createNativeQuery(sql, WarehouseExam.class);
         return  query.getResultList();
     }
 
     public List<WarehouseExam> randomPart2() {
-        String sql = "select * from warehouse_exam where part = 2 ORDER BY RAND() LIMIT 15";
+        String sql = "select * from warehouse_exam where part = 2 ORDER BY RAND() LIMIT 25";
         Query query = entityManager.createNativeQuery(sql, WarehouseExam.class);
         return  query.getResultList();
     }
 
     public List<WarehouseExam> randomPart3() {
-        String sql = "select * from warehouse_exam where part = 3 ORDER BY RAND() LIMIT 30";
+        String sql = "select * from warehouse_exam where part = 3 ORDER BY RAND() LIMIT 25";
         Query query = entityManager.createNativeQuery(sql, WarehouseExam.class);
         return  query.getResultList();
     }
 
     public List<WarehouseExam> randomPart4() {
-        String sql = "select * from warehouse_exam where part = 4 ORDER BY RAND() LIMIT 15";
+        String sql = "select * from warehouse_exam where part = 4 ORDER BY RAND() LIMIT 25";
         Query query = entityManager.createNativeQuery(sql, WarehouseExam.class);
         return  query.getResultList();
     }

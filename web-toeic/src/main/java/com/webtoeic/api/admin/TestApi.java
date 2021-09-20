@@ -130,6 +130,7 @@ public class TestApi {
 			file_image.transferTo(new File(pathImage.toString()));
 
 			test.setTestTitle(name);
+			test.setTestImage(file_image.getOriginalFilename());
 			testService.save(test);
 			// save data from file excel
 			TestApi btt = new TestApi();

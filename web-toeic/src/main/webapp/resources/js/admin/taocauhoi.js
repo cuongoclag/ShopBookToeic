@@ -24,13 +24,13 @@ $(document).ready(function() {
             cache : false,
             processData : false,
             success: function(data){
-                $('#examModalOne').modal('hide');
-                // loadAllBaiThiThu();
+                $('#ModalOne').modal('hide');
+                loadAll();
                 $('#info-success').text("Thêm mới thành công");
             },
             error : function(e) {
                 alert("error");
-                $('#examModalOne').modal('hide');
+                $('#ModalOne').modal('hide');
                 console.log("ERROR: ", e);
             }
         });

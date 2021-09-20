@@ -39,7 +39,7 @@
 								Chưa chọn câu trả lời</span>
 						</p>
 					</c:if>
-					<img src="${pageContext.request.contextPath}/resources/file/images/examquestion/${list.image}.jpg"
+					<img src="${pageContext.request.contextPath}/resources/file/images/examquestion/${list.image}"
 						 alt="image not found"
 						 style="height: 300px; width: 400px; float: left; margin-right: 10px" />
 					<c:if test="${list.getAnswerUser() == ''}">

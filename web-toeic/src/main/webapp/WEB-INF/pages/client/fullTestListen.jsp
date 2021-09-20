@@ -159,12 +159,12 @@
 										<b>Part 1: Question ${list.number}: ${list.question}</b>
 									</p>
 									<img
-										src="${pageContext.request.contextPath}/resources/file/images/examquestion/${list.image}.jpg"
+										src="${pageContext.request.contextPath}/resources/file/images/examquestion/${list.image}"
 										alt="image not found"
 										style="height: 300px; width: 400px; float: left; margin-right: 10px" />
 
 									<audio controls> <source
-										src="${pageContext.request.contextPath}/resources/file/audio/examquestion/${list.audiomp3}.mp3"
+										src="${pageContext.request.contextPath}/resources/file/audio/examquestion/${list.audiomp3}"
 										type="audio/wav"></audio>
 									<br>
 									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="A" onclick="markColor(this.id)" /> A: ${list.answer_1}<br>
@@ -181,7 +181,7 @@
 									<b>Part 2: Question ${list.number}: ${list.question}</b>
 								</p>
 								<audio controls> <source
-									src="${pageContext.request.contextPath}/resources/file/audio/examquestion/${list.audiomp3}.mp3"
+									src="${pageContext.request.contextPath}/resources/file/audio/examquestion/${list.audiomp3}"
 									type="audio/wav"></audio>
 								<br>
 								<input type="radio" name="question${list.number}" id="question.${list.number}" onclick="markColor(this.id)" value="A" /> A <br>
