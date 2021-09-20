@@ -179,6 +179,10 @@
 				<!-- Shop SideBar -->
 				<div class="col-sm-3">
 					<div class="shop-sidebar">
+						<form action="${base}/listBook" method="get">
+							<input class="form-control" name="keyword" th:value="${keyword }" type="text" placeholder="Tìm Kiếm Sách...">
+							<button class="btn btn-primary" type="submit" value="Search">Tìm kiếm</button>
+						</form>
 
 						<!-- Category -->
 						<h5 class="shop-tittle margin-bottom-30">DANH MỤC</h5>
