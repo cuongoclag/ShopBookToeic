@@ -65,10 +65,8 @@
 				<h3 style="text-align: center; color: blue">Chủ đề:
 					${bttuvung.getVocabularyTitle()}</h3>
 				<!-- -->
-
-				<img
-						src="${pageContext.request.contextPath}/resources/file/images/vocabulary.jpg"
-						style="height: 330px; width: 870px">
+				<img src="${pageContext.request.contextPath}/resources/file/images/vocabulary.jpg"
+					 style="height: 330px; width: 870px">
 				<p>
 					<c:forEach items="${listCauHoi}" var="list">
 

@@ -46,7 +46,7 @@ $(document).ready(function() {
 								},
 		
 			 error : function(e) {
-			 alert("error");
+			 alert("error: Các trường không được để trống.");
 			 $('#vocabModal').modal('hide');
 			 console.log("ERROR: ", e);
 		  }

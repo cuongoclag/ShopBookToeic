@@ -23,14 +23,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style type="text/css">
-        .hidden {
-            display: none;
-        }
-        .error-message {
-            color: red;
-        }
-    </style>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
 
 <body id="page-top">
@@ -54,15 +56,15 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Bài Thi Toeic</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Tạo Câu Hỏi Thi Toeic</h1>
                 </div>
                 <!------------------------------------------- Content Row---------------------------------------- -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <button class="btn btn-success btnAddExam" data-toggle="modal"
-                                data-target="#examModal">Thêm Với File Excel Tự Tạo</button>
+                                data-target="#ModalOne">Thêm Mới Với File Excel</button>
                         <button class="btn btn-success btnAddExam" data-toggle="modal"
-                                data-target="#examModal1">Thêm Với File Excel.</button>
+                                data-target="#ModalTow">Thêm Mới Từng Câu</button>
                         <h4 style="color: blue" id="info-success"></h4>
 
                         <c:if test="${errorInfo != null }">
@@ -71,18 +73,37 @@
                         </c:if>
                     </div>
                     <div class="card-body">
+                        <input class="table-responsive col-6" id="myInput" type="text" placeholder="Search.." style="margin-bottom: 20px">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Tên Bài Thi Toeic</th>
-                                    <th>Ảnh Bài Thi</th>
+                                    <th>Id Câu Hỏi</th>
+                                    <th>Câu Hỏi</th>
+                                    <th>Đáp Án A</th>
+                                    <th>Đáp Án B</th>
+                                    <th>Đáp Án C</th>
+                                    <th>Đáp Án D</th>
+                                    <th>Đáp Án Đúng</th>
+                                    <th>Ảnh</th>
+                                    <th>Âm Thanh</th>
+                                    <th>Part</th>
+                                    <th>Độ Khó</th>
+                                    <th>Thời Gian</th>
                                     <th>Chức Năng</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -95,30 +116,22 @@
                 </div>
                 <%------------------------Modal------------------------------------%>
                 <div class="card shadow mb-4">
-                    <div class="modal fade" id="examModal" tabindex="-1" role="dialog"
+                    <!------------------------------------------- Modal Thêm Nhiều câu hỏi---------------------------------------- -->
+                    <div class="modal fade" id="ModalOne" tabindex="-1" role="dialog"
                          aria-labelleby="myModalLable">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="titleModal">Thêm mới Bài Thi Toeic</h4>
+                                    <h4 class="modal-title" id="titleModalOne">Tạo Kho Đề Thi Toeic</h4>
                                 </div>
                                 <div class="modal-body">
                                     <input style="display:none" id="idExam">
                                     <div class="row">
-                                        <span class="bg-danger" id="vocab_errors"></span>
 
-                                        <div class="form-group col-md-6">
-                                            <label>Tên bài thi thử</label> <input id="nameBaiThiThu"
-                                                                                  class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Ảnh bài thi thử</label> <input type="file" id="file_Image"
-                                                                                  class="form-control" required accept="image/*">
-                                        </div>
                                         <div class="form-group col-md-12">
                                             <label for="fileExcel">File nội dung (Excel):</label> <input
                                                 type="file" class="form-control" id="file_Excel"
-                                                name="file_Excel" required accept=".xlsx, .xls" >
+                                                name="file_Excel" required accept=".xlsx">
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="fileAnhCauHoi">File ảnh câu hỏi:</label> <input
@@ -134,45 +147,85 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" id="btnAddNewExam" class="btn btn-primary">Xác nhận</button>
-                                    <button type="button" style="display:none;" id="btnUpdateExam" class="btn btn-primary">Cập nhật</button>
+                                    <button type="button" id="btnAddNewOne" class="btn btn-primary">Xác nhận</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!------------------------------------------- Content Row---------------------------------------- -->
-                </div>
-                <div class="card shadow mb-4">
-                    <div class="modal fade" id="examModal1" tabindex="-1" role="dialog"
+                    <!------------------------------------------- Modal Thêm Từng Câu Hỏi---------------------------------------- -->
+                    <div class="modal fade" id="ModalTow" tabindex="-1" role="dialog"
                          aria-labelleby="myModalLable">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="titleModal1">Thêm mới Bài Thi Toeic</h4>
+                                    <h4 class="modal-title" id="titleModalTow">Tạo Kho Đề Thi Toeic</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <input style="display:none" id="idExam1">
+                                    <input style="display:none" id="idExam">
                                     <div class="row">
-                                        <span class="bg-danger" id="vocab_errors1"></span>
-
-                                        <div class="form-group col-md-6">
-                                            <label>Tên bài thi thử</label> <input id="nameBaiThiThu1"
-                                                                                  class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Ảnh bài thi thử</label> <input type="file" id="file_Image1"
-                                                                                  class="form-control" required accept="image/*">
+                                        <div class="form-group col-md-12">
+                                            <label>Nôi Dung Câu Hỏi</label>
+                                            <input id="question" class="form-control">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="fileExcel">File nội dung (Excel):</label> <input
-                                                type="file" class="form-control" id="file_Excel1"
-                                                name="file_Excel" required accept=".xlsx, .xls" >
+                                            <label>Đáp Án A: </label>
+                                            <input id="answer_1" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Đáp Án B:</label>
+                                            <input id="answer_2" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Đáp Án C</label>
+                                            <input id="answer_3" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Đáp Án D</label>
+                                            <input id="answer_4" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>Đáp Án Đúng</label>
+                                            <input id="correctAnswer" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Ảnh Bài Câu Hỏi</label>
+                                            <input type="file" id="file_Image" class="form-control" required accept="image/*">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Audio Câu Hỏi</label>
+                                            <input type="file" id="file_Audio" class="form-control" required accept=".mp3,.org">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="name">Phần thi (Part)</label>
+                                            <select id="part" class="form-control" name="part">
+                                                <option value="1">Part 1: Hình Ảnh + Audio -> Chọn Đáp Án</option>
+                                                <option value="2">Part 2: Audio -> Chọn Đáp Án</option>
+                                                <option value="3">Part 3: Hình Ảnh -> Chọn Đáp Án</option>
+                                                <option value="4">Part 4: Hoàn Thành Câu</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="name">Độ Khó Câu Hỏi</label>
+                                            <select name="difficult" id="difficult" class="form-control">
+                                                <option value="1">Mức dễ</option>
+                                                <option value="2">Mức trung bình</option>
+                                                <option value="3">Mức khó</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="name">Thời gian Làm.</label>
+                                            <select name="time" id="time" class="form-control">
+                                                <option value="30">30 s</option>
+                                                <option value="60">60 s</option>
+                                                <option value="120">120 s</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" id="btnAddNewExam1" class="btn btn-primary">Xác nhận</button>
+                                    <button type="button" id="btnAddNewTow" class="btn btn-primary">Xác nhận</button>
+                                    <button type="button" style="display:none;" id="btnUpdateTow" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +251,7 @@
     <!------------------------------ Insert footer --------------------------------------->
     <jsp:include page="template/AdminFooter.jsp"></jsp:include>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-    <script src="<c:url value='/js/admin/quanLyExam.js'/>"></script>
+    <script src="<c:url value='/js/admin/taocauhoi.js'/>"></script>
 </body>
 
 </html>

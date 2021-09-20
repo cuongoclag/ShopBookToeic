@@ -51,6 +51,10 @@
 	</c:choose>
 	<br>
 	<a style="text-decoration: none;"
+	   href="<%=request.getContextPath()%>/"> &larr; Trang Chủ</a>
+	<br>
+	<br>
+	<a style="text-decoration: none;"
 		href="<%=request.getContextPath()%>/listExam"> &larr; Làm cách bài
 		test khác</a>
 	<br>

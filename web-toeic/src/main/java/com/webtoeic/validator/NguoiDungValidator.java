@@ -27,7 +27,7 @@ public class NguoiDungValidator implements Validator {
 
 		NguoiDung user = (NguoiDung) target;
 
-		ValidationUtils.rejectIfEmpty(errors, "email", "error.fullName", "Họ tên không được bỏ trống");
+		ValidationUtils.rejectIfEmpty(errors, "fullName", "error.fullName", "Họ tên không được bỏ trống");
 		ValidationUtils.rejectIfEmpty(errors, "phone", "error.phone", "Số điện thoại không được bỏ trống");
 		ValidationUtils.rejectIfEmpty(errors, "address", "error.address", "Địa chỉ không được bỏ trống");
 
@@ -39,7 +39,7 @@ public class NguoiDungValidator implements Validator {
 		Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
 		if (!(pattern.matcher(user.getEmail()).matches())) {
-			errors.rejectValue("email", "error.email", "Địa chỉ email không phù hợp");
+			errors.rejectValue("email", "error.email1", "Địa chỉ email không phù hợp");
 		}
 
 		// check địa chi email đã được dùng chưa

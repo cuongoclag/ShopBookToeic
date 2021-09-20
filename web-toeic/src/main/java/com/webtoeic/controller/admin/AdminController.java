@@ -149,6 +149,15 @@ public class AdminController {
 		model.addAttribute("quantity", quantity);
 		return "admin/AdminIndex";
 	}
+	@GetMapping({"/CreateToeic"})
+	public String CreateToeic() {
+		return "admin/CreateToeicQuestion";
+	}
+
+	@GetMapping({"/createExamToeic"})
+	public String CreateExamToeic() {
+		return "admin/CreateExamToeic";
+	}
 
 	@GetMapping({"/bai-nghe"})
 	public String quanLyBaiNghePage() {

@@ -60,7 +60,7 @@
 										<li class="col-md-6">
 											<label> *EMAIL
 												<form:input type="email" path="email"
-															placeholder="" autofocus="true" required="required"></form:input>
+															placeholder="" autofocus="true" ></form:input>
 												<form:errors class="error" cssStyle="color: red" path="email"></form:errors>
 											</label>
 										</li>
@@ -68,7 +68,7 @@
 										<li class="col-md-6">
 											<label> *MẬT KHẨU
 												<form:input type="password" path="password"
-															required="required" placeholder=""></form:input>
+															 placeholder=""></form:input>
 												<form:errors class="error" cssStyle="color: red" path="password"></form:errors>
 											</label>
 										</li>
@@ -77,7 +77,7 @@
 										<li class="col-md-6">
 											<label> *HỌ VÀ TÊN
 												<form:input type="text" path="fullName"
-															placeholder="" required="required"></form:input>
+															placeholder="" ></form:input>
 												<form:errors class="error" cssStyle="color: red" path="fullName"></form:errors>
 											</label>
 										</li>
@@ -85,8 +85,7 @@
 										<li class="col-md-6">
 											<label> *NHẮC LẠI MẬT KHẨU
 												<form:input type="password" path="confirmPassword"
-															placeholder=""
-															required="required"></form:input>
+															placeholder=""></form:input>
 												<form:errors class="error" cssStyle="color: red" path="confirmPassword"></form:errors>
 											</label>
 										</li>
@@ -95,7 +94,7 @@
 										<li class="col-md-6">
 											<label> *SỐ ĐIỆN THOẠI
 												<form:input type="number" path="phone"
-															placeholder="" required="required"></form:input>
+															placeholder="" ></form:input>
 												<form:errors class="error" cssStyle="color: red" path="phone"></form:errors>
 											</label>
 										</li>
@@ -104,7 +103,7 @@
 										<li class="col-md-6">
 											<label> *ĐỊA CHỈ
 												<form:input type="text" path="address"
-															placeholder="" required="required"></form:input>
+															placeholder="" ></form:input>
 												<form:errors class="error" cssStyle="color: red" path="address"></form:errors>
 											</label>
 										</li>

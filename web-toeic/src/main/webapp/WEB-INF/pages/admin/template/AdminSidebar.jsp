@@ -42,6 +42,7 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Pages Collapse Menu -->
+
         <li class="nav-item">
             <a class="nav-link" href="<c:url value='/admin/bai-nghe' />">
                 <i class="fas fa-fw fa-chart-area"></i>
@@ -63,9 +64,21 @@
                 <span>Từ vựng.</span></a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/admin/CreateToeic"/>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Thêm Câu Hỏi Thi Toeic.</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/admin/createExamToeic"/>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tạo Đề Thi Toeic.</span></a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="<c:url value="/admin/exam"/>">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Thi Toeic.</span></a>
+                <span>Thêm Bài Thi Toeic.</span></a>
         </li>
 
         <li class="nav-item">

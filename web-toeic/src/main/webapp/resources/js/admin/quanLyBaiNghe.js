@@ -2,22 +2,17 @@ $(document).ready(function () {
     //---------------------------- Insert Bai Nghe -----------------------
     $('#btnAddNewLiestening').click(function () {
         var formData = new FormData();
-
         var file_excel = $('#file_Excel')[0].files[0];
         var file_image = $('#file_Image')[0].files[0];
         var name = $('#namebainghe').val();
-
         var countFileImage = document.getElementById('file_image_question').files.length;
         var countFileMp3 = document.getElementById('file_listening').files.length;
-
         for(var x = 0; x < countFileImage; x++){
             formData.append("file_image_question", document.getElementById('file_image_question').files[x]);
         }
-
         for(var x = 0; x <countFileMp3; x++){
             formData.append("file_listening", document.getElementById('file_listening').files[x]);
         }
-
         formData.append("file_excel", file_excel);
         formData.append("file_image",file_image);
         formData.append("name", name);
@@ -44,15 +39,12 @@ $(document).ready(function () {
     // Update
     $('#btnUpdateLiestening').click(function() {
         var ListeningId = $('#idListening').val();
-
         var formData = new FormData();
         var file_excel = $('#file_Excel')[0].files[0];
         var file_image = $('#file_Image')[0].files[0];
         var name = $('#namebainghe').val();
-
         var countFileImage = document.getElementById('file_image_question').files.length;
         var countFileMp3 = document.getElementById('file_listening').files.length;
-
         for(var x = 0; x < countFileImage; x++){
             formData.append("file_image_question", document.getElementById('file_image_question').files[x]);
         }
@@ -77,13 +69,12 @@ $(document).ready(function () {
                 $('#info-success').text("Cập nhật bài thi thử thành công");
                 loadAll();
             }, error : function(e) {
-                alert("error");
+                alert("error: Các trường không được để trống");
                 console.log("ERROR: ", e);
             }
         });
     });
     //edit
-
     var editId,idBaiNghe,fields;
     $(document).on('click','.editBaiNghe',function(e){
         e.stopPropagation();
@@ -91,7 +82,6 @@ $(document).ready(function () {
         editId = $(this).attr('id');
         fields = editId.split('.');
         idBaiNghe = fields[1];
-
         $('#btnUpdateLiestening').show();
         $('#btnAddNewLiestening').hide();
         $('#baiNgheModal').modal('show');

@@ -38,7 +38,7 @@
 			width: 250px;
 			margin-bottom: 25px;
 		}
-	</style>>
+	</style>
 	<script type="text/javascript">
 		function Search(){
 			var baseUrl = document.getElementById('baseUrl').value;
@@ -145,7 +145,6 @@
 		</div>
 		<!--Pagination-->
 		<c:if test="${listData.size() != 0}">
-
 			<div class="paging">
 				<c:if test="${currentPage != 1}">
 					<a href="/listGrammar?page=${currentPage-1}">Back</a>
@@ -173,7 +172,6 @@
 				</c:if>
 			</div>
 		</c:if>
-
 	</div>
 
 	<!--/.End Pagination-->

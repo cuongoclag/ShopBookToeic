@@ -23,7 +23,7 @@ $(document).ready(function(){
 				loadAll();
 				$('#info-success').text("Thêm Bai Đọc Thành Công");
 			}, error:function (e) {
-				alert("error");
+				alert("error: Các trường không được để trống.");
 				$("#baiNgheModal").modal('hide');
 				console.log("ERROR: ", e);
 			}

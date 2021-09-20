@@ -110,7 +110,7 @@
                                                                                   class="form-control">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Ảnh Bài Nghe</label> <input type="file" id="file_Image"
+                                            <label>Ảnh Bài Đoc</label> <input type="file" id="file_Image"
                                                                                class="form-control" required accept="image/*">
                                         </div>
                                         <div class="form-group col-md-12">

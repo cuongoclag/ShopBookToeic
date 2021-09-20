@@ -20,6 +20,8 @@ $(document).ready(function() {
 		formData.append("file_excel",file_excel);
 		formData.append("file_image",file_image);
 		formData.append("name",name);
+
+		console.log(formData)
 		$.ajax({
 				data: formData,
 				type:'POST',
@@ -38,6 +40,40 @@ $(document).ready(function() {
 			 $('#examModal').modal('hide');
 			 console.log("ERROR: ", e);
 		  }
+		});
+	});
+
+	$('#btnAddNewExam1').click(function() {
+		var formData = new FormData();
+		var file_excel = $('#file_Excel')[0].files[0];
+		var file_image = $('#file_Image')[0].files[0];
+		var name = $('#nameBaiThiThu1').val();
+
+		//var file_image_question = $('#file_image_question')
+
+		formData.append("file_excel",file_excel);
+		formData.append("file_image",file_image);
+		formData.append("name",name);
+
+		console.log(formData)
+		$.ajax({
+			data: formData,
+			type:'POST',
+			url:"http://localhost:8080/api/admin/exam/save1",
+			enctype : 'multipart/form-data',
+			contentType : false,
+			cache : false,
+			processData : false,
+			success: function(data){
+				$('#examModal1').modal('hide');
+				loadAllBaiThiThu();
+				$('#info-success').text("Thêm mới bài thi thử thành công");
+			},
+			error : function(e) {
+				alert("error");
+				$('#examModal1').modal('hide');
+				console.log("ERROR: ", e);
+			}
 		});
 	});
 
@@ -132,7 +168,6 @@ $(document).ready(function() {
 	
 	
 	function loadAllBaiThiThu(){
-
 		$.ajax({
 			dataType : 'json',
 			type:'GET',
@@ -191,9 +226,7 @@ $(document).ready(function() {
 			});
 		
 	}
-	
 
-	
 	//default. load all object baithithu
 	window.onload = function () {
 		loadAllBaiThiThu();

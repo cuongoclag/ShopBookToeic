@@ -32,7 +32,10 @@ public class TestQuestions {
 	private Integer testQuestionId;
 
 	@Column(name = "number")
-	private Integer number;
+	private int number;
+
+	@Column(name = "idQuestion")
+	private Integer idQuestion;
 
 	@Column(name = "image")
 	private String image;
@@ -40,23 +43,29 @@ public class TestQuestions {
 	@Column(name = "audiomp3")
 	private String audiomp3;
 
-	@Column(columnDefinition = "TEXT")
-	private String paragraph;
+	@Column(name = "part")
+	private int part;
 
-	@Column(name = "question")
+	@Column(name = "difficult")
+	private int difficult;
+
+	@Column(name = "time")
+	private int time;
+
+	@Column(name ="question", columnDefinition = "TEXT")
 	private String question;
 
-	@Column(name = "option1")
-	private String option1;
+	@Column(name = "answer_1")
+	private String answer_1;
 
-	@Column(name = "option2")
-	private String option2;
+	@Column(name = "answer_2")
+	private String answer_2;
 
-	@Column(name = "option3")
-	private String option3;
+	@Column(name = "answer_3")
+	private String answer_3;
 
-	@Column(name = "option4")
-	private String option4;
+	@Column(name = "answer_4")
+	private String answer_4;
 
 	@Column(name = "correctAnswer")
 	private String correctAnswer;
@@ -66,26 +75,35 @@ public class TestQuestions {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private Test test;
-
-
 	public TestQuestions() {
 
 	}
 
-	public TestQuestions(String answerUser, Integer testQuestionId, Integer number, String image, String audiomp3, String paragraph, String question, String option1, String option2, String option3, String option4, String correctAnswer, Test test) {
+	public TestQuestions(String answerUser, Integer testQuestionId, int number, Integer idQuestion, String image, String audiomp3, int part, int difficult, int time, String question, String answer_1, String answer_2, String answer_3, String answer_4, String correctAnswer, Test test) {
 		this.answerUser = answerUser;
 		this.testQuestionId = testQuestionId;
 		this.number = number;
+		this.idQuestion = idQuestion;
 		this.image = image;
 		this.audiomp3 = audiomp3;
-		this.paragraph = paragraph;
+		this.part = part;
+		this.difficult = difficult;
+		this.time = time;
 		this.question = question;
-		this.option1 = option1;
-		this.option2 = option2;
-		this.option3 = option3;
-		this.option4 = option4;
+		this.answer_1 = answer_1;
+		this.answer_2 = answer_2;
+		this.answer_3 = answer_3;
+		this.answer_4 = answer_4;
 		this.correctAnswer = correctAnswer;
 		this.test = test;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	public Integer getTestQuestionId() {
@@ -96,12 +114,12 @@ public class TestQuestions {
 		this.testQuestionId = testQuestionId;
 	}
 
-	public Integer getNumber() {
-		return number;
+	public Integer getIdQuestion() {
+		return idQuestion;
 	}
 
-	public void setNumber(Integer number) {
-		this.number = number;
+	public void setIdQuestion(Integer idQuestion) {
+		this.idQuestion = idQuestion;
 	}
 
 	public String getImage() {
@@ -120,12 +138,28 @@ public class TestQuestions {
 		this.audiomp3 = audiomp3;
 	}
 
-	public String getParagraph() {
-		return paragraph;
+	public int getPart() {
+		return part;
 	}
 
-	public void setParagraph(String paragraph) {
-		this.paragraph = paragraph;
+	public void setPart(int part) {
+		this.part = part;
+	}
+
+	public int getDifficult() {
+		return difficult;
+	}
+
+	public void setDifficult(int difficult) {
+		this.difficult = difficult;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
 	}
 
 	public String getQuestion() {
@@ -136,36 +170,36 @@ public class TestQuestions {
 		this.question = question;
 	}
 
-	public String getOption1() {
-		return option1;
+	public String getAnswer_1() {
+		return answer_1;
 	}
 
-	public void setOption1(String option1) {
-		this.option1 = option1;
+	public void setAnswer_1(String answer_1) {
+		this.answer_1 = answer_1;
 	}
 
-	public String getOption2() {
-		return option2;
+	public String getAnswer_2() {
+		return answer_2;
 	}
 
-	public void setOption2(String option2) {
-		this.option2 = option2;
+	public void setAnswer_2(String answer_2) {
+		this.answer_2 = answer_2;
 	}
 
-	public String getOption3() {
-		return option3;
+	public String getAnswer_3() {
+		return answer_3;
 	}
 
-	public void setOption3(String option3) {
-		this.option3 = option3;
+	public void setAnswer_3(String answer_3) {
+		this.answer_3 = answer_3;
 	}
 
-	public String getOption4() {
-		return option4;
+	public String getAnswer_4() {
+		return answer_4;
 	}
 
-	public void setOption4(String option4) {
-		this.option4 = option4;
+	public void setAnswer_4(String answer_4) {
+		this.answer_4 = answer_4;
 	}
 
 	public String getCorrectAnswer() {
@@ -183,5 +217,4 @@ public class TestQuestions {
 	public void setTest(Test test) {
 		this.test = test;
 	}
-
 }

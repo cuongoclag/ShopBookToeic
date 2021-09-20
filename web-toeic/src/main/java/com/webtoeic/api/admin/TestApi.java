@@ -85,11 +85,11 @@ public class TestApi {
 			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + file_image.getOriginalFilename());
 			file_image.transferTo(new File(pathImage.toString()));
 			for (MultipartFile single_image : file_image_question) {
-				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/exam/"  + single_image.getOriginalFilename());
+				Path pathImageQuestion = Paths.get(rootDirectory + "/resources/file/images/examquestion/"  + single_image.getOriginalFilename());
 				single_image.transferTo(new File(pathImageQuestion.toString()));
 			}
 			for (MultipartFile single_listening : file_listening) {
-				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/exam/" + single_listening.getOriginalFilename());
+				Path pathListening = Paths.get(rootDirectory + "/resources/file/audio/examquestion/" + single_listening.getOriginalFilename());
 				single_listening.transferTo(new File(pathListening.toString()));
 			}
 			baithithu.setTestTitle(name);
@@ -98,6 +98,42 @@ public class TestApi {
 			// save data from file excel
 			TestApi btt = new TestApi();
 			List<TestQuestions> listCauHoiFull = btt.getListFromExcel(pathExcel.toString(), baithithu);
+			for (int i = 0; i < listCauHoiFull.size(); i++) {
+				testQuestionsService.save(listCauHoiFull.get(i));
+			}
+		} catch (Exception e) {
+			response.add(e.toString());
+			System.out.println("ErrorReadFileExcel:" + e);
+		}
+		return response;
+	}
+
+
+	@PostMapping(value = "/save1", consumes = "multipart/form-data")
+	@ResponseBody
+	public List<String> addBaiThiThu1(@RequestParam("file_excel") MultipartFile file_excel,
+									  @RequestParam("file_image") MultipartFile file_image,
+									 @RequestParam("name") String name) {
+		List<String> response = new ArrayList<String>();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+
+		Test test = new Test();
+		testService.save(test);
+
+		// System.out.println("id="+baithithu.getBaithithuid());
+		try {
+			// save file upload to local folder
+			Path pathExcel = Paths.get(rootDirectory + "/resources/file/excel/exam/" + file_excel.getOriginalFilename());
+			file_excel.transferTo(new File(pathExcel.toString()));
+
+			Path pathImage = Paths.get(rootDirectory + "/resources/file/images/exam/" + file_image.getOriginalFilename());
+			file_image.transferTo(new File(pathImage.toString()));
+
+			test.setTestTitle(name);
+			testService.save(test);
+			// save data from file excel
+			TestApi btt = new TestApi();
+			List<TestQuestions> listCauHoiFull = btt.getListFromExcel(pathExcel.toString(), test);
 			for (int i = 0; i < listCauHoiFull.size(); i++) {
 				testQuestionsService.save(listCauHoiFull.get(i));
 			}
@@ -180,39 +216,48 @@ public class TestApi {
 					cauhoiexam.setNumber((int) row.getCell(0).getNumericCellValue());
 
 				if (row.getCell(1) != null)
-					cauhoiexam.setImage(
-							row.getCell(1).getStringCellValue().toString());
+					cauhoiexam.setIdQuestion((int) row.getCell(1).getNumericCellValue());
 
-				if (row.getCell(2) != null)
-					cauhoiexam.setAudiomp3(
-							 row.getCell(2).getStringCellValue().toString());
+				if(row.getCell(2) != null){
+					cauhoiexam.setQuestion(row.getCell(2).getStringCellValue().toString());
+				}
+				if (row.getCell(3) != null && row.getCell(3).getCellType() == row.getCell(3).CELL_TYPE_STRING)
+					cauhoiexam.setAnswer_1(row.getCell(3).getStringCellValue().toString());
+				if (row.getCell(3) != null && row.getCell(3).getCellType() == row.getCell(3).CELL_TYPE_NUMERIC)
+					cauhoiexam.setAnswer_1(String.valueOf(row.getCell(3).getNumericCellValue()));
 
-				if (row.getCell(3) != null)
-					cauhoiexam.setParagraph(row.getCell(3).getStringCellValue().toString());
-				if (row.getCell(4) != null)
-					cauhoiexam.setQuestion(row.getCell(4).getStringCellValue().toString());
+				if (row.getCell(4) != null && row.getCell(4).getCellType() == row.getCell(4).CELL_TYPE_STRING)
+					cauhoiexam.setAnswer_2(row.getCell(4).getStringCellValue().toString());
+				if (row.getCell(4) != null && row.getCell(4).getCellType() == row.getCell(4).CELL_TYPE_NUMERIC)
+					cauhoiexam.setAnswer_2(String.valueOf(row.getCell(4).getNumericCellValue()));
 
 				if (row.getCell(5) != null && row.getCell(5).getCellType() == row.getCell(5).CELL_TYPE_STRING)
-					cauhoiexam.setOption1(row.getCell(5).getStringCellValue().toString());
+					cauhoiexam.setAnswer_3(row.getCell(5).getStringCellValue().toString());
 				if (row.getCell(5) != null && row.getCell(5).getCellType() == row.getCell(5).CELL_TYPE_NUMERIC)
-					cauhoiexam.setOption1(String.valueOf(row.getCell(5).getNumericCellValue()));
+					cauhoiexam.setAnswer_3(String.valueOf(row.getCell(5).getNumericCellValue()));
 
 				if (row.getCell(6) != null && row.getCell(6).getCellType() == row.getCell(6).CELL_TYPE_STRING)
-					cauhoiexam.setOption2(row.getCell(6).getStringCellValue().toString());
+					cauhoiexam.setAnswer_4(row.getCell(6).getStringCellValue().toString());
 				if (row.getCell(6) != null && row.getCell(6).getCellType() == row.getCell(6).CELL_TYPE_NUMERIC)
-					cauhoiexam.setOption2(String.valueOf(row.getCell(6).getNumericCellValue()));
+					cauhoiexam.setAnswer_4(String.valueOf(row.getCell(6).getNumericCellValue()));
 
-				if (row.getCell(7) != null && row.getCell(7).getCellType() == row.getCell(7).CELL_TYPE_STRING)
-					cauhoiexam.setOption3(row.getCell(7).getStringCellValue().toString());
-				if (row.getCell(7) != null && row.getCell(7).getCellType() == row.getCell(7).CELL_TYPE_NUMERIC)
-					cauhoiexam.setOption3(String.valueOf(row.getCell(7).getNumericCellValue()));
+				if (row.getCell(7) != null)
+					cauhoiexam.setCorrectAnswer(row.getCell(7).getStringCellValue().toString());
 
-				if (row.getCell(8) != null && row.getCell(8).getCellType() == row.getCell(8).CELL_TYPE_STRING)
-					cauhoiexam.setOption4(row.getCell(8).getStringCellValue().toString());
-				if (row.getCell(8) != null && row.getCell(8).getCellType() == row.getCell(8).CELL_TYPE_NUMERIC)
-					cauhoiexam.setOption4(String.valueOf(row.getCell(8).getNumericCellValue()));
+				if (row.getCell(8) != null)
+					cauhoiexam.setImage(row.getCell(8).getStringCellValue().toString());
+
 				if (row.getCell(9) != null)
-					cauhoiexam.setCorrectAnswer(row.getCell(9).getStringCellValue().toString());
+					cauhoiexam.setAudiomp3(row.getCell(9).getStringCellValue().toString());
+
+				if (row.getCell(10) != null)
+					cauhoiexam.setPart((int) row.getCell(10).getNumericCellValue());
+
+				if (row.getCell(11) != null)
+					cauhoiexam.setDifficult((int) row.getCell(11).getNumericCellValue());
+
+				if (row.getCell(12) != null)
+					cauhoiexam.setTime((int) row.getCell(12).getNumericCellValue());
 				cauhoiexam.setTest(baithithu);
 				list.add(cauhoiexam);
 

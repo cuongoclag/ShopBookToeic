@@ -28,10 +28,10 @@ public class Category {
     @Column(name = "status", nullable = false)
     private boolean status;
 
-    @Column(name = "name", length = 45, nullable = false)
+    @Column(name = "name", length = 255, nullable = false)
     private String name;
 
-    @Column(name = "description", length = 45, nullable = false)
+    @Column(name = "description", length = 255, nullable = false)
     private String description;
 
     // 1 category -> N products

@@ -133,33 +133,33 @@
 				</div>
 			</div>
 
-			<c:if test="${listData.size() != 0}">
-				<div class="">
-					<c:if test="${currentPage != 1}">
-						<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=${currentPage-1}">Back</a>
-					</c:if>
-					<c:if test="${currentPage == 1}">
-						<a class="btn btn-sm" style="padding: 1px 13px">1</a>
-					</c:if>
+<%--			<c:if test="${listData.size() != 0}">--%>
+<%--				<div class="">--%>
+<%--					<c:if test="${currentPage != 1}">--%>
+<%--						<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=${currentPage-1}">Back</a>--%>
+<%--					</c:if>--%>
+<%--					<c:if test="${currentPage == 1}">--%>
+<%--						<a class="btn btn-sm" style="padding: 1px 13px">1</a>--%>
+<%--					</c:if>--%>
 
-					<c:if test="${currentPage != 1}">
-						<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=1">1</a>
-					</c:if>
+<%--					<c:if test="${currentPage != 1}">--%>
+<%--						<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=1">1</a>--%>
+<%--					</c:if>--%>
 
-					<c:forEach var="pag" items="${pageList}" varStatus="loop">
-						<c:if test="${currentPage == pag}">
-							<a class="btn btn-sm" style="padding: 1px 13px">${pag}</a>
-						</c:if>
-						<c:if test="${currentPage != pag}">
-							<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=${pag}">${pag}</a>
-						</c:if>
-					</c:forEach>
+<%--					<c:forEach var="pag" items="${pageList}" varStatus="loop">--%>
+<%--						<c:if test="${currentPage == pag}">--%>
+<%--							<a class="btn btn-sm" style="padding: 1px 13px">${pag}</a>--%>
+<%--						</c:if>--%>
+<%--						<c:if test="${currentPage != pag}">--%>
+<%--							<a class="btn btn-sm" style="padding: 1px 13px" href="/listExam?page=${pag}">${pag}</a>--%>
+<%--						</c:if>--%>
+<%--					</c:forEach>--%>
 
-					<c:if test="${currentPage != totalPage}">
-						<a href="/listExam?page=${currentPage+1} " class="btn btn-sm" style="padding: 1px 13px">Next</a>
-					</c:if>
-				</div>
-			</c:if>
+<%--					<c:if test="${currentPage != totalPage}">--%>
+<%--						<a href="/listExam?page=${currentPage+1} " class="btn btn-sm" style="padding: 1px 13px">Next</a>--%>
+<%--					</c:if>--%>
+<%--				</div>--%>
+<%--			</c:if>--%>
 			<div class="modal fade" id="examModal" role="dialog">
 				<div class="modal-dialog">
 					<!-- Modal content -->

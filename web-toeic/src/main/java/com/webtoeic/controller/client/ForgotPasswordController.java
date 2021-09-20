@@ -39,16 +39,19 @@ public class ForgotPasswordController {
     public String processForgotPasswordForm(HttpServletRequest request, Model model){
         String email = request.getParameter("email");
         String token = RandomString.make(255);
-        try {
-            nguoiDungService.updateResetPasswordToken(token, email);
-            String resetPasswordLink = Utilities.getSiteURL(request) + "/reset_password?token=" + token;
-            sendEmail(email, resetPasswordLink);
-
-            model.addAttribute("message", "Chúng tôi đã gửi link reset password qua email của bạn!");
-        } catch (NguoiDungNotFoundException ex) {
-            model.addAttribute("error", ex.getMessage());
-        } catch (UnsupportedEncodingException | MessagingException e) {
-            model.addAttribute("error", "Lỗi gửi mail!");
+        if (nguoiDungService.findByEmail(email) == null) {
+            model.addAttribute("message", "Email của bạn chưa được đăng ký!");
+        }else {
+            try {
+                nguoiDungService.updateResetPasswordToken(token, email);
+                String resetPasswordLink = Utilities.getSiteURL(request) + "/reset_password?token=" + token;
+                sendEmail(email, resetPasswordLink);
+                model.addAttribute("message", "Chúng tôi đã gửi link reset password qua email của bạn!");
+            } catch (NguoiDungNotFoundException ex) {
+                model.addAttribute("error", ex.getMessage());
+            } catch (UnsupportedEncodingException | MessagingException e) {
+                model.addAttribute("error", "Lỗi gửi mail!");
+            }
         }
         return "forgot_password_form";
     }

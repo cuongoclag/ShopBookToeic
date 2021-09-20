@@ -98,11 +98,6 @@ $(document).ready(function(){
 
 		xhttp.send(jsonAnswerUser);
 	});
-	
-	
-
-
-
 
 var timecheck;
 function startTimer(duration, display) {
@@ -127,9 +122,6 @@ function startTimer(duration, display) {
 
 	        }
 	    },1000);
-	    
-    
-   
 }
 
 window.onload = function () {
@@ -139,10 +131,6 @@ window.onload = function () {
          display = document.querySelector('#time');
     	 startTimer(thirtyMinutes, display);
     };
-
-
-
-
 });
 
 

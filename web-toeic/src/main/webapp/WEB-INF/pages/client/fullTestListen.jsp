@@ -149,142 +149,50 @@
 							<input class="hidden" id="correctanswer"
 								name="correctanswer${list.number}" value="${list.correctAnswer}" />
 							<!-- show part1 -->
-							<c:if test="${list.number == 1 }">
-								<p>
-									<b>Part 1: ${list.paragraph}</b>
-								</p>
+							<c:if test="${list.part == 1 }">
 								<input class="hidden" id="id_bai_exam"
 									value="${list.getTest().getTestId()}" />
-
 							</c:if>
-							<c:if test="${not empty list.image}">
+							<c:if test="${list.part == 1}">
 								<div class="container">
 									<p>
-										<b>Question ${list.number}:</b>
+										<b>Part 1: Question ${list.number}: ${list.question}</b>
 									</p>
 									<img
-										src="${pageContext.request.contextPath}/resources/file/images/exam/${list.image}.jpg"
+										src="${pageContext.request.contextPath}/resources/file/images/examquestion/${list.image}.jpg"
 										alt="image not found"
 										style="height: 300px; width: 400px; float: left; margin-right: 10px" />
+
 									<audio controls> <source
-										src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"
+										src="${pageContext.request.contextPath}/resources/file/audio/examquestion/${list.audiomp3}.mp3"
 										type="audio/wav"></audio>
-									<br> <input class="part1" type="radio"
-										name="question${list.number}" id="question.${list.number}"
-										value="A" onclick="markColor(this.id)" /> A <br> <input
-										class="part1" type="radio" name="question${list.number}"
-										id="question.${list.number}" value="B"
-										onclick="markColor(this.id)" /> B <br> <input
-										class="part1" type="radio" name="question${list.number}"
-										id="question.${list.number}" value="C"
-										onclick="markColor(this.id)" /> C <br> <input
-										class="part1" type="radio" name="question${list.number}"
-										id="question.${list.number}" value="D"
-										onclick="markColor(this.id)" /> D <br>
+									<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="A" onclick="markColor(this.id)" /> A: ${list.answer_1}<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="B" onclick="markColor(this.id)" /> B: ${list.answer_2}<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="C" onclick="markColor(this.id)" /> C: ${list.answer_3}<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="D" onclick="markColor(this.id)" /> D: ${list.answer_4}<br>
 								</div>
 								<br>
 							</c:if>
 							<!-- show part 2 -->
-							<c:if test="${list.number == 4 }">
-								<br>
-								<p>
-									<b>Part 2: ${list.paragraph}</b>
-								</p>
-							</c:if>
 
-							<c:if test="${list.number >=4  && list.number <15}">
+							<c:if test="${list.part == 2}">
 								<p>
-									<b>Question ${list.number}:</b>
+									<b>Part 2: Question ${list.number}: ${list.question}</b>
 								</p>
 								<audio controls> <source
-									src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"
+									src="${pageContext.request.contextPath}/resources/file/audio/examquestion/${list.audiomp3}.mp3"
 									type="audio/wav"></audio>
 								<br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}"
-									   onclick="markColor(this.id)"
-									value="A" /> A <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="B" /> B <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="C" /> C <br>
+								<input type="radio" name="question${list.number}" id="question.${list.number}" onclick="markColor(this.id)" value="A" /> A <br>
+								<input type="radio" name="question${list.number}" id="question.${list.number}" onclick="markColor(this.id)" value="B" /> B <br>
+								<input type="radio" name="question${list.number}" id="question.${list.number}" onclick="markColor(this.id)" value="C" /> C <br>
 								<br>
 							</c:if>
-
-							<!-- show part 3 -->
-
-							<c:if test="${list.number == 15 }">
-								<br>
-								<p>
-									<b>Part 3: ${list.paragraph}</b>
-								</p>
-							</c:if>
-							<c:if test="${list.number >= 15 && list.number <=35}">
-								<p>
-									<b>Question ${list.number}:</b>
-								</p>
-								<audio controls> <source
-									src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"
-									type="audio/wav"></audio>
-
-								<br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="A" /> A.${list.option1} <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="B" /> B.${list.option2}  <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="C" /> C.${list.option3}  <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="D" /> D.${list.option4}  <br>
-								<br>
-							</c:if>
-
-							<!-- show part 4 -->
-							<c:if test="${list.number == 36 }">
-								<p>
-									<b>Part 4: ${list.paragraph}</b>
-								</p>
-							</c:if>
-							<c:if test="${list.number >= 36 && list.number <=50 }">
-								<p>
-									<b>Question ${list.number}:</b>
-								</p>
-								<audio controls> <source
-									src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"
-									type="audio/wav"></audio>
-
-								<br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="A" /> A.${list.option1} <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="B" /> B.${list.option2}  <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="C" /> C.${list.option3}  <br>
-								<input type="radio" name="question${list.number}"
-									id="question.${list.number}" onclick="markColor(this.id)"
-									value="D" /> D.${list.option4}  <br>
-								<br>
-							</c:if>
-
 						</c:forEach>
-
-
-
 						<hr>
 						<h5>Kết thúc bài Listening</h5>
-
 					</div>
-
-
 				</div>
 			</form>
 		</div>
