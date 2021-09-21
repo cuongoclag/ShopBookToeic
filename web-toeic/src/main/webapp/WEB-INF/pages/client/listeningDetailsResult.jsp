@@ -233,7 +233,7 @@
                         alt="img not found"
                         src="${pageContext.request.contextPath}/resources/file/images/correct.png">
                         <br>
-                        <input disabled type="radio" value="D" /> D. ${list.oanswer_4}&nbsp;<img
+                        <input disabled type="radio" value="D" /> D. ${list.answer_4}&nbsp;<img
                         alt="img not found"
                         src="${pageContext.request.contextPath}/resources/file/images/incorrect.png">
                         <br>
