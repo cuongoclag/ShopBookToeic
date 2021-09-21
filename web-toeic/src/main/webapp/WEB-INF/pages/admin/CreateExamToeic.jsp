@@ -27,6 +27,30 @@
 <%--    <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>--%>
 
     <script lang="javascript" src="<c:url value='/js/admin/taodethi.js'/>"></script>
+    <style>
+        tbody {
+            display: block;
+            overflow: auto;
+            height: 500px;
+            width: 100%;
+        }
+
+        thead tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        thead, tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        thead {
+            width: calc( 100% - 1em )
+        }
+    </style>
 </head>
 
 <body id="page-top">
