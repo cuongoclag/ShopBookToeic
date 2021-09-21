@@ -36,6 +36,10 @@
         .error-message {
             color: red;
         }
+        .error {
+            font-size: 18px;
+            color: red;
+        }
     </style>
 </head>
 
@@ -69,28 +73,28 @@
                             <div class="form-group">
                                 <label for="inputAddress">Tên Sản Phẩm</label>
                                 <form:input type="text" class="form-control" path="title"  aria-describedby="" required="required" maxlength="100"/>
-                                <form:errors class="error" cssStyle="color: red" path="title"></form:errors>
+                                <form:errors class="error"  path="title"></form:errors>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Giá</label>
                                 <form:input type="number" class="form-control" path="price"  aria-describedby="" required="required" maxlength="10" min="0"/>
-                                <form:errors class="error" cssStyle="color: red" path="price"></form:errors>
+                                <form:errors class="error"  path="price"></form:errors>
                             </div>
 
                             <div class="form-group">
                                 <label for="inputAddress">Giá giảm</label>
                                 <form:input type="number" class="form-control" path="promotionalPrice"  aria-describedby="" maxlength="10" min="0"/>
-                                <form:errors class="error" cssStyle="color: red" path="promotionalPrice"></form:errors>
+                                <form:errors class="error"  path="promotionalPrice"></form:errors>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Mô Tả </label>
                                 <form:textarea class="form-control" id="txtshortDescription1" path="shortDes" required="required" maxlength="3000"/>
-                                <form:errors class="error" cssStyle="color: red" path="shortDes"></form:errors>
+                                <form:errors class="error"  path="shortDes"></form:errors>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Mô Tả Chi Tiết</label>
                                 <form:textarea class="form-control" id="txtDetailDescription" path="shortDetails" required="required" maxlength="10000"/>
-                                <form:errors class="error" cssStyle="color: red" path="shortDetails"></form:errors>
+                                <form:errors class="error"  path="shortDetails"></form:errors>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Loại Sản Phẩm</label>

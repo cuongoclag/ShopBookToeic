@@ -22,25 +22,18 @@ public class productValidator implements Validator {
         BigDecimal min = new BigDecimal(0);
         BigDecimal max = new BigDecimal(2000000);
 
-        if (product.getPrice().compareTo(min) > 0  ) {
+        if (product.getPrice().compareTo(min) < 0 || product.getPrice().compareTo(max) > 0   ) {
             errors.rejectValue("price", "error.price", "Giá từ 0 -> 2.000.000 đ.");
         }
 
-        if ( product.getPrice().compareTo(max) < 0  ) {
-            errors.rejectValue("price", "error.price", "Giá từ 0 -> 2.000.000 đ.");
+        if (product.getPromotionalPrice().compareTo(min) < 0 || product.getPromotionalPrice().compareTo(max) > 0  ) {
+            errors.rejectValue("promotionalPrice", "error.promotionalPrice", "Giá từ 0 -> 2.000.000 đ.");
         }
 
-        if (product.getPromotionalPrice().compareTo(min) > 0  ) {
-            errors.rejectValue("price", "error.price", "Giá từ 0 -> 2.000.000 đ.");
-        }
-
-        if ( product.getPromotionalPrice().compareTo(max) < 0  ) {
-            errors.rejectValue("price", "error.price", "Giá từ 0 -> 2.000.000 đ.");
-        }
-        if (product.getShortDes().length() < 3000) {
+        if (product.getShortDes().length() > 3000) {
             errors.rejectValue("shortDes", "error.shortDes", "Độ dài nhỏ hơn 3000 ký tự");
         }
-        if (product.getShortDes().length() < 10000) {
+        if (product.getShortDes().length() > 10000) {
             errors.rejectValue("shortDetails", "error.shortDetails", "Độ dài nhỏ hơn 10000 ký tự");
         }
     }
