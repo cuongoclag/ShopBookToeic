@@ -167,10 +167,10 @@
 										src="${pageContext.request.contextPath}/resources/file/audio/examquestion/${list.audiomp3}"
 										type="audio/wav"></audio>
 									<br>
-									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="A" onclick="markColor(this.id)" /> A: ${list.answer_1}<br>
-									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="B" onclick="markColor(this.id)" /> B: ${list.answer_2}<br>
-									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="C" onclick="markColor(this.id)" /> C: ${list.answer_3}<br>
-									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="D" onclick="markColor(this.id)" /> D: ${list.answer_4}<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="A" onclick="markColor(this.id)" /> A:<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="B" onclick="markColor(this.id)" /> B:<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="C" onclick="markColor(this.id)" /> C:<br>
+									<input class="part1" type="radio" name="question${list.number}" id="question.${list.number}" value="D" onclick="markColor(this.id)" /> D:<br>
 								</div>
 								<br>
 							</c:if>
