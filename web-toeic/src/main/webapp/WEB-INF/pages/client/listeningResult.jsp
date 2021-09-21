@@ -45,11 +45,11 @@
 						</p>
 					</c:if>
 					<img
-						src="${pageContext.request.contextPath}/resources/file/images/exam/${list.image}.jpg"
+						src="${pageContext.request.contextPath}/resources/file/images/exam/${list.image}"
 						alt="image not found"
 						style="height: 300px; width: 400px; float: left; margin-right: 10px" />
 					<audio controls> <source
-						src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"
+						src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}"
 						type="audio/wav"></audio>
 					<br>
 					<c:if test="${list.getAnswerUser() == ''}">
@@ -263,7 +263,7 @@
 					</p>
 				</c:if>
 				<audio controls> <source
-					src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}.mp3"
+					src="${pageContext.request.contextPath}/resources/file/audio/exam/${list.audiomp3}"
 					type="audio/wav"></audio>
 				<br>
 				<c:if test="${list.getAnswerUser() == ''}">

@@ -10,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import com.webtoeic.validator.productValidator;
 
 @Controller
 public class AdminProductController {
@@ -25,6 +28,8 @@ public class AdminProductController {
     ProductService productService;
     @Autowired
     public ProductRepository productRepo;
+    @Autowired
+    private productValidator productValidator;
 
     @RequestMapping(value = { "/admin/list-product" }, method = RequestMethod.GET)
     public String listProduct(final ModelMap model, final HttpServletRequest request,
@@ -54,8 +59,17 @@ public class AdminProductController {
 
     @RequestMapping(value = { "/admin/save-product" }, method = RequestMethod.POST)
     public String saveProduct(@RequestParam("images") MultipartFile[] images,
-                              @ModelAttribute("product") Product product, final ModelMap model, final HttpServletRequest request,
+                              @ModelAttribute("product") Product product,
+                              @Valid Product productnew,
+                              BindingResult bindingResult,
+                              final ModelMap model,
+                              final HttpServletRequest request,
                               final HttpServletResponse response) throws Exception {
+
+        productValidator.validate(product, bindingResult);
+        if(bindingResult.hasErrors()){
+            return "admin/AddProduct";
+        }
         productService.saveProduct(images, product);
 
 //		return "admin/product/add-product";

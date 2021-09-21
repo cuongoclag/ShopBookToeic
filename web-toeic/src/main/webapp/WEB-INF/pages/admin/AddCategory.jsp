@@ -68,11 +68,11 @@
                             <form:hidden path="id" />
                             <div class="form-group">
                                 <label for="inputAddress">Tên Loại</label>
-                                <form:input type="text" class="form-control" path="name" aria-describedby="" required="required" maxlength="45"/>
+                                <form:input type="text" class="form-control" path="name" aria-describedby="" required="required" maxlength="255"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Mô Tả</label>
-                                <form:input type="text" class="form-control" path="description" aria-describedby="" required="required" maxlength="455"/>
+                                <form:input type="text" class="form-control" path="description" aria-describedby="" required="required" maxlength="255"/>
                             </div>
                             <div class="form-group form-check">
                                 <form:checkbox path="status" class="form-check-input" id="exampleCheck1" />
