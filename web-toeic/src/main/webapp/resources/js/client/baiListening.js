@@ -30,7 +30,7 @@ $(document).ready(function(){
     $('#btnResult').click(function(){
 
         //clear clock,stop countdown
-        clearInterval(timecheck);
+        // clearInterval(timecheck);
         //tranfer information
 
         //remove btn XemdapAn, show btn lamlai
@@ -70,36 +70,32 @@ $(document).ready(function(){
     });
 
 
-    var timecheck;
-    function startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
-        timecheck= setInterval(function () {
-            minutes = parseInt(timer / 60, 10)
-            seconds = parseInt(timer % 60, 10);
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            display.textContent = minutes + ":" + seconds;
-            if (--timer < 0) {
-                clearInterval(timecheck);
-                //do someth after countdown
-                var examId = $("#id_bai_exam").val();
-                alert("Đã hết thời gian làm bài test Listening. Hệ thống sẽ tự động chuyển qua bài test Reading");
-                $("#btnSubmit").click()
-                //window.location.href = "http://localhost:8080/reading?idExam="+examId;
-            }
-        },1000);
-    }
-    window.onload = function () {
-        //change time here
-        //var thirtyMinutes = 0.2 * 30;
-        var thirtyMinutes = 60 * 30;
-        display = document.querySelector('#time');
-        startTimer(thirtyMinutes, display);
-    };
-
-
-
-
+    // var timecheck;
+    // function startTimer(duration, display) {
+    //     var timer = duration, minutes, seconds;
+    //     timecheck= setInterval(function () {
+    //         minutes = parseInt(timer / 60, 10)
+    //         seconds = parseInt(timer % 60, 10);
+    //         minutes = minutes < 10 ? "0" + minutes : minutes;
+    //         seconds = seconds < 10 ? "0" + seconds : seconds;
+    //         display.textContent = minutes + ":" + seconds;
+    //         if (--timer < 0) {
+    //             clearInterval(timecheck);
+    //             //do someth after countdown
+    //             var examId = $("#id_bai_exam").val();
+    //             alert("Đã hết thời gian làm bài test Listening. Hệ thống sẽ tự động chuyển qua bài test Reading");
+    //             $("#btnSubmit").click()
+    //             //window.location.href = "http://localhost:8080/reading?idExam="+examId;
+    //         }
+    //     },1000);
+    // }
+    // window.onload = function () {
+    //     //change time here
+    //     //var thirtyMinutes = 0.2 * 30;
+    //     var thirtyMinutes = 60 * 30;
+    //     display = document.querySelector('#time');
+    //     startTimer(thirtyMinutes, display);
+    // };
 });
 
 

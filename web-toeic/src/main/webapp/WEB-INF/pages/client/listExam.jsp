@@ -120,14 +120,16 @@
 				<!-- Shop SideBar -->
 				<div class="col-sm-3">
 					<div class="shop-sidebar">
-						<h3>DANH MỤC</h3>
-						<ul class="nav nav-list">
-							<li><a href="/listening">LUYỆN BÀI NGHE</a></li>
-							<li><a href="/reading">LUYỆN BÀI ĐỌC</a></li>
-							<li><a href="/listExam">THI THỬ</a></li>
-							<li><a href="/listGrammar">HỌC NGỮ PHÁP</a></li>
-							<li><a href="/listVocab">HỌC TỪ VỰNG</a></li>
-						</ul>
+						<div class="side-bar">
+							<h5 class="shop-tittle margin-bottom-30">DANH MỤC</h5>
+							<ul class="shop-cate">
+								<li><a href="/listening">LUYỆN BÀI NGHE</a></li>
+								<li><a href="/reading">LUYỆN BÀI ĐỌC</a></li>
+								<li><a href="/listExam">THI THỬ</a></li>
+								<li><a href="/listGrammar">HỌC NGỮ PHÁP</a></li>
+								<li><a href="/listVocab">HỌC TỪ VỰNG</a></li>
+							</ul>
+						</div>
 						<!-- Lọc -->
 					</div>
 				</div>

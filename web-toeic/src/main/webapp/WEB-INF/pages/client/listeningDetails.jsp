@@ -95,7 +95,7 @@
                     <div class="fix-scrolling">
                         <br>
                         <div>
-                            <span id="time">30:00</span>
+<%--                            <span id="time">30:00</span>--%>
                         </div>
                         <hr>
                         <c:forEach begin="1" end="10" varStatus="loop">

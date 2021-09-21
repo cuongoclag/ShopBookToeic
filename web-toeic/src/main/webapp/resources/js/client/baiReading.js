@@ -26,7 +26,7 @@ function answerUser(){
 }
 $(document).ready(function(){
     $('#btnResult').click(function(){
-        clearInterval(timecheck);
+        // clearInterval(timecheck);
         $('#btnResult').hide();
         var answerArr = answerUser();
         var correctArr = correctAnswer();
@@ -58,29 +58,29 @@ $(document).ready(function(){
         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttp.send(jsonAnswerUser);
     });
-    var timecheck;
-    function startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
-        timecheck= setInterval(function () {
-            minutes = parseInt(timer / 60, 10)
-            seconds = parseInt(timer % 60, 10);
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            display.textContent = minutes + ":" + seconds;
-            if (--timer < 0) {
-                clearInterval(timecheck);
-                var examId = $("#id_bai_exam").val();
-                alert("Đã hết thời gian làm bài test Reading.");
-                $("#btnSubmit").click()
-
-            }
-        },1000);
-    }
-    window.onload = function () {
-        var thirtyMinutes = 60 * 30;
-        display = document.querySelector('#time');
-        startTimer(thirtyMinutes, display);
-    };
+    // var timecheck;
+    // function startTimer(duration, display) {
+    //     var timer = duration, minutes, seconds;
+    //     timecheck= setInterval(function () {
+    //         minutes = parseInt(timer / 60, 10)
+    //         seconds = parseInt(timer % 60, 10);
+    //         minutes = minutes < 10 ? "0" + minutes : minutes;
+    //         seconds = seconds < 10 ? "0" + seconds : seconds;
+    //         display.textContent = minutes + ":" + seconds;
+    //         if (--timer < 0) {
+    //             clearInterval(timecheck);
+    //             var examId = $("#id_bai_exam").val();
+    //             alert("Đã hết thời gian làm bài test Reading.");
+    //             $("#btnSubmit").click()
+    //
+    //         }
+    //     },1000);
+    // }
+    // window.onload = function () {
+    //     var thirtyMinutes = 60 * 30;
+    //     display = document.querySelector('#time');
+    //     startTimer(thirtyMinutes, display);
+    // };
 });
 
 
