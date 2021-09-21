@@ -115,6 +115,7 @@
 							<li class="col-md-4" style="text-align: center">
 								<div class="date"> <h5>Học từ vựng, ngữ pháp</h5></div>
 								<p>Các bài hướng dẫn đơn giản, dễ hiểu.</p>
+								<img style="width: 30rem; height: 25rem" src="${pageContext.request.contextPath}/resources/file/images/feature-vocabulary1.jpg" alt="" >
 								<h5><a style="color: deepskyblue" href="/listVocab" >Bài hướng dẫn từ vựng</a></h5>
 								<h5><a style="color: deepskyblue" href="/listGrammar" >Bài hướng dẫn ngữ pháp</a></h5>
 							</li>
@@ -123,6 +124,7 @@
 							<li class="col-md-4" style="text-align: center">
 								<div class="date"> <h5>Bài tập phần nghe, đọc</h5></div>
 								<p>Sử dụng các dạng bài tập thường xuyên xuất hiện.</p>
+								<img style="width: 30rem; height: 25rem" src="${pageContext.request.contextPath}/resources/file/images/feature-listenandread.jpg" alt="" >
 								<h5><a style="color: deepskyblue" href="/listListening" >Bài tập phần nghe</a></h5>
 								<h5><a style="color: deepskyblue" href="/listReading" >Bài tập phần đọc</a></h5>
 							</li>
@@ -131,7 +133,7 @@
 							<li class="col-md-4" style="text-align: center">
 								<div class="date"> <h5>Đề thi thử</h5></div>
 								<p>Cập nhật, đổi mới liên tục, sát với đề thi thật nhất.</p>
-
+								<img style="width: 30rem; height: 25rem" src="${pageContext.request.contextPath}/resources/file/images/feature-lamdethithu.jpg" alt="" >
 								<h5><a style="color: deepskyblue" href="#" class="doExam" id="doExam">Thi thử</a></h5>
 
 							</li>

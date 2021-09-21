@@ -91,11 +91,11 @@
                                             <c:choose>
                                                 <c:when test="${category.status =='true'}">
                                                <span
-                                                       style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Active&nbsp;</span>
+                                                       style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Hiện&nbsp;</span>
                                                 </c:when>
                                                 <c:otherwise>
                                                             <span
-                                                                    style="background: #c12731; border-radius: 5px; color: white;">&nbsp;Inactive&nbsp;</span>
+                                                                    style="background: #c12731; border-radius: 5px; color: white;">&nbsp;Ẩn&nbsp;</span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>

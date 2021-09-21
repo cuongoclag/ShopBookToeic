@@ -43,6 +43,16 @@
             $('.images-enlarge a').fancybox();
         });
     </script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#dataTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
 
 <body id="page-top">
@@ -68,6 +78,7 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Danh sách đơn hàng</h1>
                 </div>
+                <input id="myInput" type="text" placeholder="Tìm kiếm.." style="margin-bottom: 20px; width: 20%">
                 <!------------------------------------------- Content Row---------------------------------------- -->
                 <div class="card shadow mb-4">
                     <div class="card-body">

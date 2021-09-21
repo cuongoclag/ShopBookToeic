@@ -38,6 +38,16 @@
             color: red;
         }
     </style>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#dataTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
 
 <body id="page-top">
@@ -69,8 +79,8 @@
                         <a href="<c:url value='/admin/add-product'/> " class="btn btn-success btn-icon-split">
                             <span class="text">Thêm sản phẩm</span>
                         </a>
-
                     </div>
+                    <input id="myInput" type="text" placeholder="Tìm kiếm.." style="margin-bottom: 20px; width: 20%">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -90,11 +100,11 @@
                                         <td>
                                             <c:choose>
                                                 <c:when test="${product.status =='true'}">
-                                                    <span style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Active&nbsp;</span>
+                                                    <span style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Hiện&nbsp;</span>
                                                 </c:when>
                                                 <c:otherwise>
 														<span
-                                                                style="background: #c12731; border-radius: 5px; color: white;">&nbsp;Inactive&nbsp;</span>
+                                                                style="background: #c12731; border-radius: 5px; color: white;">&nbsp;Ẩn&nbsp;</span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>

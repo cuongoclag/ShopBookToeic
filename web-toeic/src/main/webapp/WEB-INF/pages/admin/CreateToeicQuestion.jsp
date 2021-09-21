@@ -73,7 +73,7 @@
                         </c:if>
                     </div>
                     <div class="card-body">
-                        <input class="table-responsive col-6" id="myInput" type="text" placeholder="Search.." style="margin-bottom: 20px">
+                        <input class="table-responsive col-6" id="myInput" type="text" placeholder="Tìm kiếm.." style="margin-bottom: 20px">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                                 <thead>
