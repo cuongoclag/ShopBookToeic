@@ -66,7 +66,7 @@
 					</td>
 			      <td>${item.unitPriceVN }</td>
 			      <td><i class="far fa-times-circle" onclick="confirmDelete('${item.productId}')"></i></td>
-				  <td><button type="button" onclick="Shop.addItemToCart(${item.productId}, 1)" class="btn btn-primary">Thêm vào giỏ hàng</button></td>
+				  <td><button type="button" onclick="Shop.addItemToCart(${list.id}, 1)" class="btn">Thêm vào giỏ hàng</button></td>
 			    </tr>
 			  </c:forEach>
 			  </tbody>
@@ -90,6 +90,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/web/rs-plugin/js/jquery.tp.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/web/js/main.js"></script>
 	<script src="<c:url value='/js/client/shop/Wishlist.js'/>" ></script>
+	<script src="<c:url value='/js/client/shop/shop.js'/>" ></script>
 </body>
 
 </html>
