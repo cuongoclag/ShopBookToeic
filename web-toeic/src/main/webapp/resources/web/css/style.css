@@ -1571,6 +1571,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .papular-block .overlay a:hover {
 }
 .papular-block .item img {
+	height: 25em;
 	width: 100%;
 	margin-top: 0px;
 	top: 0px;
